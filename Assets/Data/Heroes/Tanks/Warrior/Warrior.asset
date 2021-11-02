@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662586b450e2eb8468cb314300f4a955, type: 3}
+  m_Name: Warrior
+  m_EditorClassIdentifier: 
+  heroName: Warrior
+  heroImage: {fileID: -2823817046287055957, guid: 9cbaf84559ea2e04d9bbfd6c9090c233, type: 3}
+  model: {fileID: 3278287855122211867, guid: 7b90ca6966ae2dd4eaca3189529781a8, type: 3}
+  type: 0
+  hp: 150
+  hpPerLevel: 15
+  armor: 50
+  armorPerLevel: 5
+  passives:
+  - {fileID: 11400000, guid: aa13abf86ea283f499637cdaff6e264c, type: 2}
+  attack: 60
+  attackPerLevel: 6
+  attackCooldown: 6
+  isHealer: 0
+  threatRatio: 50
+  critPower: 0

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8382c598ece5e6249a525842a3df1073, type: 3}
+  m_Name: Broken Blade
+  m_EditorClassIdentifier: 
+  itemName: Broken Blade
+  rarity: 0
+  description: +{0} attack
+  itemImage: {fileID: 21300000, guid: b3ef5a65c34fe41449923ede4e488281, type: 3}
+  hp: 0
+  hpPerLevel: 0
+  armor: 0
+  armorPerLevel: 0
+  attack: 16
+  attackPerLevel: 4
+  attackCooldown: 0
+  isHealer: 0
+  threatRatio: 0
+  critPower: 0
+  haste: 0
+  hastePerLevel: 0
+  damageModifier: 0
+  damageModifierPerLevel: 0
+  passives: []
+  values:
+  - 16
+  scaling:
+  - 4

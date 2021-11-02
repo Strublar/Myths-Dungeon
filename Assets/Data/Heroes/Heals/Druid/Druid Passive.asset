@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117da2f1d5dd34e4eb06ec66ad9b2194, type: 3}
+  m_Name: Druid Passive
+  m_EditorClassIdentifier: 
+  descrpition: 'Heal : Heal {0}(+1) hp per second for 2 seconds to the lowest health
+    hero'
+  trigger: 3
+  triggerCount: 1
+  endTrigger: 0
+  endTriggerCount: 0
+  targets: {fileID: 11400000, guid: 22e1fb1e963cd6d4eb108dd1b2cc4ca5, type: 2}
+  conditions:
+  - {fileID: 11400000, guid: 1895fe8def357404c8eb761235bcdd18, type: 2}
+  effects:
+  - {fileID: 11400000, guid: f5a3e0bcdda4e354385ca31ac0cd2622, type: 2}
+  values:
+  - 10
+  scaling:
+  - 1

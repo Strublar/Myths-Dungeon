@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8852701518136035801
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3091394029832462169, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3965155859976047339, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3965155859976047339, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3965155859976047339, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3965155859976047339, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3965155859976047339, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3965155859976047339, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3965155859976047339, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3965155859976047339, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3965155859976047339, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3965155859976047339, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3965155859976047339, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7517696930645148425, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: armor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7517696930645148425, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: maxHp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7517696930645148425, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7517696930645148425, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: attack
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7517696930645148425, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: isHealer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7517696930645148425, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: currentHp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7517696930645148425, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: definition
+      value: 
+      objectReference: {fileID: 11400000, guid: 13094759cd72dc74fa24deff9046e540, type: 2}
+    - target: {fileID: 7517696930645148425, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: threatRatio
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7517696930645148425, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: attackCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274237507804731579, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: m_Name
+      value: Priest
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}

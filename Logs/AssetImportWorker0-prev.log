@@ -1,0 +1,104 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.9f1 (108be757e447) revision 1084391'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Home; OS build 19043.1110; Version 2009; 64bit' Language: 'fr' Physical Memory: 16226 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.3.9f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+D:/Desktop/Dungeon Guild/Dungeon Guild
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+50516
+Successfully changed project path to: D:/Desktop/Dungeon Guild/Dungeon Guild
+D:/Desktop/Dungeon Guild/Dungeon Guild
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 36.89 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.9f1 (108be757e447)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.9f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/Desktop/Dungeon Guild/Dungeon Guild/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1060 (ID=0x1c20)
+    Vendor:   
+    VRAM:     6052 MB
+    Driver:   26.21.14.4614
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.9f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.9f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.9f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56732
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.9f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.003292 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 39.04 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.332 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.000992 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 46.14 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.137 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 0.42 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1870 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 88.3 MB.
+System memory in use after: 88.3 MB.
+
+Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 2313.
+Total: 2.876700 ms (FindLiveObjects: 0.261500 ms CreateObjectMapping: 0.110000 ms MarkObjects: 2.329400 ms  DeleteObjects: 0.174200 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Scripts/CombatComponents/Passives/PassiveDefinition.cs
+  artifactKey: Guid(117da2f1d5dd34e4eb06ec66ad9b2194) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/CombatComponents/Passives/PassiveDefinition.cs using Guid(117da2f1d5dd34e4eb06ec66ad9b2194) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5327efeaff3a5eb134245db80fc66f48') in 0.079180 seconds
+  Import took 0.116753 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5159.303568 seconds.
+  path: Assets/Resources/Fonts/prstart SDF.asset
+  artifactKey: Guid(f166646435b9df240977b3a1a8fef31b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts/prstart SDF.asset using Guid(f166646435b9df240977b3a1a8fef31b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b19fde75b427961ac7308e3145151d54') in 0.265001 seconds
+  Import took 0.346040 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 605.616488 seconds.
+  path: Assets/Scripts/Entities/Definitions/HeroDefinition.cs
+  artifactKey: Guid(662586b450e2eb8468cb314300f4a955) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Entities/Definitions/HeroDefinition.cs using Guid(662586b450e2eb8468cb314300f4a955) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '108ffec5a035eaa94de77cbdc10852ae') in 0.002710 seconds
+  Import took 0.059543 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.374808 seconds.
+  path: Assets/Data/Heroes/DPSs/Archer/Archer.asset
+  artifactKey: Guid(c1fecfbcd59f90d4794a4914caeeb374) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Data/Heroes/DPSs/Archer/Archer.asset using Guid(c1fecfbcd59f90d4794a4914caeeb374) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5b260e7481260cfc6550d68e96875bc') in 0.012691 seconds
+  Import took 0.060721 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

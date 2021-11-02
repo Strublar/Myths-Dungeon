@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639c2a09b9f658c4ca6617bc5f7b5126, type: 3}
+  m_Name: Anakiros Throw
+  m_EditorClassIdentifier: 
+  minLevel: 2
+  effects:
+  - {fileID: 11400000, guid: a9d9fa8c2666a0e4b9f61083b1b4e150, type: 2}
+  coolDown: 5
+  currentCooldown: 3.9272506
+  targets: {fileID: 11400000, guid: c8de416a8f9d4834da61b2af94bb82e6, type: 2}

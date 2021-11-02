@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662586b450e2eb8468cb314300f4a955, type: 3}
+  m_Name: Cleric
+  m_EditorClassIdentifier: 
+  heroName: Cleric
+  heroImage: {fileID: -1554650709892831339, guid: 1304cd02df03bd84ca0c11b129b15290, type: 3}
+  model: {fileID: 8812129247048847249, guid: abbe99dd2d9792d40bd1e948c50de830, type: 3}
+  type: 1
+  hp: 100
+  hpPerLevel: 10
+  armor: 0
+  armorPerLevel: 0
+  passives:
+  - {fileID: 11400000, guid: 11a4ec2c17d950246a8899f3a63f53ba, type: 2}
+  attack: 30
+  attackPerLevel: 3
+  attackCooldown: 3
+  isHealer: 1
+  threatRatio: 1
+  critPower: 0

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662586b450e2eb8468cb314300f4a955, type: 3}
+  m_Name: Mage
+  m_EditorClassIdentifier: 
+  heroName: Mage
+  heroImage: {fileID: 7145629810653026102, guid: 1d06040d2d3fd04449662851d6119f22, type: 3}
+  model: {fileID: 1350831365295414573, guid: ec4c456ca052bf3409730eab4cb6a666, type: 3}
+  type: 2
+  hp: 80
+  hpPerLevel: 8
+  armor: 0
+  armorPerLevel: 0
+  passives:
+  - {fileID: 11400000, guid: bbcbbde39edfeb744bef6cd254235a37, type: 2}
+  attack: 160
+  attackPerLevel: 16
+  attackCooldown: 8
+  isHealer: 0
+  threatRatio: 1
+  critPower: 0

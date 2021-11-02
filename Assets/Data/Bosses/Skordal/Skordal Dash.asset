@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639c2a09b9f658c4ca6617bc5f7b5126, type: 3}
+  m_Name: Skordal Dash
+  m_EditorClassIdentifier: 
+  minLevel: 2
+  effects:
+  - {fileID: 11400000, guid: e50d234220b4b404da6f3dbdf8608c39, type: 2}
+  coolDown: 4
+  currentCooldown: 4.4507055
+  targets: {fileID: 11400000, guid: 38b3ad92a21961d44b7a843b019484cf, type: 2}

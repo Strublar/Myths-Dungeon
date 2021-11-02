@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662586b450e2eb8468cb314300f4a955, type: 3}
+  m_Name: Rogue
+  m_EditorClassIdentifier: 
+  heroName: Rogue
+  heroImage: {fileID: 2853568465542924096, guid: 424b7fec21abaee49a0127443f206713, type: 3}
+  model: {fileID: 529051984557133680, guid: b585e840ef251e94b91c9990711154b1, type: 3}
+  type: 2
+  hp: 120
+  hpPerLevel: 12
+  armor: 10
+  armorPerLevel: 1
+  passives:
+  - {fileID: 11400000, guid: 8e512b3d72f54bf4092af40d87ab299e, type: 2}
+  attack: 80
+  attackPerLevel: 4
+  attackCooldown: 4
+  isHealer: 0
+  threatRatio: 1
+  critPower: 0

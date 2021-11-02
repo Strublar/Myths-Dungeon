@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662586b450e2eb8468cb314300f4a955, type: 3}
+  m_Name: Archer
+  m_EditorClassIdentifier: 
+  heroName: Archer
+  heroImage: {fileID: 5420657165879536120, guid: f2bf1e3009250f64894887044a1ae2ae, type: 3}
+  model: {fileID: 6410435743571936100, guid: 094400ff52db9cb48bdaa2ef6b555a6c, type: 3}
+  type: 2
+  hp: 100
+  hpPerLevel: 10
+  armor: 10
+  armorPerLevel: 1
+  passives:
+  - {fileID: 11400000, guid: cb3d4b654f249ab4eab02478643e6465, type: 2}
+  attack: 30
+  attackPerLevel: 3
+  attackCooldown: 4
+  isHealer: 0
+  threatRatio: 1
+  critPower: 0

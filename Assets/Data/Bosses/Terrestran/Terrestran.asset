@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b904a86b408cbf2419158446c76790e1, type: 3}
+  m_Name: Terrestran
+  m_EditorClassIdentifier: 
+  bossName: Terrestran
+  model: {fileID: 2172587256300959795, guid: 58466a7842581a240a0769d0e50d99a8, type: 3}
+  hp: 800
+  hpPerLevel: 300
+  armor: 50
+  armorPerLevel: 15
+  spells:
+  - {fileID: 11400000, guid: 333ca02d519186841a7ea7487af701a7, type: 2}
+  - {fileID: 11400000, guid: a7b4481afe15e9a4aa530a55a8474753, type: 2}
+  - {fileID: 11400000, guid: bdf9a58e4caad4741b53b17d5f00bbc0, type: 2}
+  - {fileID: 11400000, guid: caae18dfd0897cd4b88103393d88391d, type: 2}
+  passives: []

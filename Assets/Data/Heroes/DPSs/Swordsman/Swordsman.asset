@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662586b450e2eb8468cb314300f4a955, type: 3}
+  m_Name: Swordsman
+  m_EditorClassIdentifier: 
+  heroName: Swordsman
+  heroImage: {fileID: 4068203885823228941, guid: 89bcbef0df82ec54c9a188f25ab0192f, type: 3}
+  model: {fileID: 6659128185413003083, guid: ad816e09915606c448bb5458d1c1e6bc, type: 3}
+  type: 2
+  hp: 100
+  hpPerLevel: 10
+  armor: 20
+  armorPerLevel: 2
+  passives:
+  - {fileID: 11400000, guid: 52b3e81f7cb9a494783189a96610e3cb, type: 2}
+  attack: 100
+  attackPerLevel: 10
+  attackCooldown: 5
+  isHealer: 0
+  threatRatio: 1
+  critPower: 0
