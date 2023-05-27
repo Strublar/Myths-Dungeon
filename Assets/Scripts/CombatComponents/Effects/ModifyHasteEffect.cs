@@ -19,9 +19,9 @@ public class ModifyHasteEffect : Effect
             passiveComponent.level = level;
             passiveComponent.holder = target;
             passiveComponent.definition = ScriptableObject.CreateInstance<PassiveDefinition>();
-            passiveComponent.definition.trigger = Trigger.EveryPersonalSecond;
+            passiveComponent.definition.trigger = Trigger.EveryPersonalTick;
             passiveComponent.definition.triggerCount = duration;
-            passiveComponent.definition.endTrigger = Trigger.EveryPersonalSecond;
+            passiveComponent.definition.endTrigger = Trigger.EveryPersonalTick;
             passiveComponent.definition.endTriggerCount = duration;
             passiveComponent.definition.targets = ScriptableObject.CreateInstance<PassiveHolderTargetSelector>();
             passiveComponent.definition.conditions = new List<Condition>();

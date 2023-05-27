@@ -9,8 +9,8 @@ public enum Trigger
     OnPull,
     OnAttack,
     OnHealed,
-    EverySecond,
-    EveryPersonalSecond,
+    EveryTick,
+    EveryPersonalTick,
     FightEnd,
 }
 
@@ -39,14 +39,14 @@ public class TriggerManager : MonoBehaviour
         { Trigger.OnPull,OnPull},
         { Trigger.OnAttack,OnAttack},
         { Trigger.OnHealed,OnHealed},
-        { Trigger.EverySecond,EverySecond},
-        { Trigger.EveryPersonalSecond,EveryPersonalSecond},
+        { Trigger.EveryTick,EverySecond},
+        { Trigger.EveryPersonalTick,EveryPersonalSecond},
         { Trigger.FightEnd,FightEnd},
 
 
     };
 
-    private float timer1s = 1f;
+    private float timer1s = 0.1f;
 
     public void Awake()
     {
@@ -58,10 +58,10 @@ public class TriggerManager : MonoBehaviour
         if(GameManager.gm.fightStarted)
         {
             timer1s -= Time.deltaTime;
-            if(timer1s<0)
+            while(timer1s<0)
             {
-                timer1s = 1f;
-                triggerMap[Trigger.EverySecond].Invoke(new Context());
+                timer1s += 0.1f;
+                triggerMap[Trigger.EveryTick].Invoke(new Context());
             }
         }
     }

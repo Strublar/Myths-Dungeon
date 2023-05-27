@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   descrpition: Deal {0}(+4) damage every 3 seconds to the boss
   trigger: 4
-  triggerCount: 3
+  triggerCount: 3000
   endTrigger: 0
   endTriggerCount: 0
   targets: {fileID: 11400000, guid: 4439b93750600aa4f845d6cb4f9b5679, type: 2}

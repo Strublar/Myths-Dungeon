@@ -10,8 +10,8 @@ public class Passive : MonoBehaviour
     public int triggerCount = 0;
     public int endTriggerCount = 0;
 
-    public float clock = 1f;
-    public float clockEnd = 1f;
+    public float clock = 0.05f;
+    public float clockEnd = 0.05f;
     public void Start()
     {
         TriggerManager.triggerMap[definition.trigger].AddListener(Execute);
@@ -23,26 +23,26 @@ public class Passive : MonoBehaviour
     {
         if(GameManager.gm.fightStarted)
         {
-            if(definition.trigger == Trigger.EveryPersonalSecond)
+            if(definition.trigger == Trigger.EveryPersonalTick)
             {
                 clock -= Time.deltaTime;
-                if(clock<=0)
+                while(clock<=0)
                 {
                     Context context = new Context();
                     context.passiveHolder = holder;
                     Execute(context);
-                    clock = 1f;
+                    clock += 0.1f;
                 }
             }
-            if (definition.endTrigger == Trigger.EveryPersonalSecond)
+            if (definition.endTrigger == Trigger.EveryPersonalTick)
             {
                 clockEnd -= Time.deltaTime;
-                if (clockEnd <= 0)
+                while (clockEnd <= 0)
                 {
                     Context context = new Context();
                     context.passiveHolder = holder;
                     OnEndTrigger(context);
-                    clockEnd = 1f;
+                    clockEnd += 0.1f;
                 }
             }
         }
