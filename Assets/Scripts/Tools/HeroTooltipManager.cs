@@ -27,23 +27,27 @@ public class HeroTooltipManager : MonoBehaviour
     }
     public void InitHeroTooltip(Hero hero)
     {
+        var context = new Context
+        {
+            source = hero,
+            level = hero.level
+        };
         heroName.text = hero.definition.heroName;
         heroImage.sprite = hero.definition.heroImage;
         stats.text = "Level : " + hero.level +
                      "\nHp :  " + hero.maxHp +
                      "\nArmor :  " + hero.armor +
-                     "\nAttack :  " + hero.attack*(hero.damageModifier/100) +
-                     "\nCooldown :  " + string.Format("{0:0.#}",hero.definition.attackCooldown / (hero.haste / 100))+"s" +
+                     "\nCritChance :  " + hero.definition.critChance + "%" +
+                     "\nCritPower :  " + hero.definition.critPower +
                      "\nThreat :  x" + hero.definition.threatRatio;
 
         string[] formatList = new string[hero.definition.passives[0].values.Count];
         for(int i =0;i< hero.definition.passives[0].values.Count;i++)
         {
-            formatList[i] = (hero.definition.passives[0].values[i] + hero.level *
-                hero.definition.passives[0].scaling[i]).ToString();
+            formatList[i] = hero.definition.passives[0].values[i].computeValue(context).ToString();
         }
        
-        passive.text = string.Format(hero.definition.passives[0].descrpition, formatList);
+        passive.text = string.Format(hero.definition.passives[0].description, formatList);
 
         string[] formatListItem = new string[0];
         if (hero.item.definition != null)
@@ -51,8 +55,7 @@ public class HeroTooltipManager : MonoBehaviour
             formatListItem = new string[hero.item.definition.values.Count];
             for (int i = 0; i < hero.item.definition.values.Count; i++)
             {
-                formatListItem[i] = (hero.item.definition.values[i] + hero.item.level *
-                    hero.item.definition.scaling[i]).ToString();
+                formatListItem[i] = hero.item.definition.values[i].computeValue(context).ToString();
             }
         }
         

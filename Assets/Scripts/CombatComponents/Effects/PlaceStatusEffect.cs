@@ -7,12 +7,12 @@ public class PlaceStatusEffect : Effect
 {
     public PassiveDefinition status;
 
-    public override void Apply(Entity source, Entity target, int level)
+    public override void Apply(Context context)
     {
-        GameObject newPassive = Instantiate(target.passivePrefab, target.transform);
-        newPassive.GetComponent<Passive>().holder = target;
+        GameObject newPassive = Instantiate(context.target.passivePrefab, context.target.transform);
+        newPassive.GetComponent<Passive>().holder = context.target;
         newPassive.GetComponent<Passive>().definition = status;
-        newPassive.GetComponent<Passive>().level = level;
+        newPassive.GetComponent<Passive>().level = context.level;
 
     }
 }

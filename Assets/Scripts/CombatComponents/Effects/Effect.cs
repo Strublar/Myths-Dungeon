@@ -5,7 +5,7 @@ using UnityEngine;
 public class Effect : ScriptableObject
 {
 
-    public virtual void Apply(Entity source, Entity target, int level)
+    public virtual void Apply(Context context)
     {
 
     }

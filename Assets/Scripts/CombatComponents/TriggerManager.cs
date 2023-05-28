@@ -8,10 +8,11 @@ public enum Trigger
     Never,
     OnPull,
     OnAttack,
-    OnHealed,
+    OnHeal,
     EveryTick,
     EveryPersonalTick,
     FightEnd,
+    OnDamageReceived,
 }
 
 public struct Context
@@ -19,7 +20,10 @@ public struct Context
     public Entity source;
     public Entity target;
     public Entity passiveHolder;
-    
+    public int level;
+    public int value;
+    public int percentHpLost;
+
 }
 
 public class TriggerManager : MonoBehaviour
@@ -32,18 +36,18 @@ public class TriggerManager : MonoBehaviour
     public static UnityEvent<Context> EverySecond = new UnityEvent<Context>();
     public static UnityEvent<Context> EveryPersonalSecond = new UnityEvent<Context>();
     public static UnityEvent<Context> FightEnd = new UnityEvent<Context>();
+    public static UnityEvent<Context> OnDamageReceived = new UnityEvent<Context>();
 
     public static Dictionary<Trigger, UnityEvent<Context>> triggerMap = new Dictionary<Trigger, UnityEvent<Context>>
     {
         { Trigger.Never,Never},
         { Trigger.OnPull,OnPull},
         { Trigger.OnAttack,OnAttack},
-        { Trigger.OnHealed,OnHealed},
+        { Trigger.OnHeal,OnHealed},
         { Trigger.EveryTick,EverySecond},
         { Trigger.EveryPersonalTick,EveryPersonalSecond},
         { Trigger.FightEnd,FightEnd},
-
-
+        { Trigger.OnDamageReceived,OnDamageReceived},
     };
 
     private float timer1s = 0.1f;

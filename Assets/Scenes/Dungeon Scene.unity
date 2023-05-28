@@ -704,6 +704,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heal 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1337327916767857360, guid: fda5d5d4576fc4c4dbb6e6a93b027d7a, type: 3}
+      propertyPath: skill
+      value: 
+      objectReference: {fileID: 11400000, guid: b47cc470af23cf147837a95b1e815325, type: 2}
+    - target: {fileID: 1337327916767857360, guid: fda5d5d4576fc4c4dbb6e6a93b027d7a, type: 3}
+      propertyPath: ability
+      value: 
+      objectReference: {fileID: 11400000, guid: 8adb28e4fa84b904caff90d9efbf3871, type: 2}
     - target: {fileID: 5610373665207157554, guid: fda5d5d4576fc4c4dbb6e6a93b027d7a, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1199,9 +1207,7 @@ MonoBehaviour:
   - {fileID: 1532542702}
   - {fileID: 760456858}
   bossPool:
-  - {fileID: 11400000, guid: 9d804e14b344297499b1a64f8dfb93fa, type: 2}
-  - {fileID: 11400000, guid: 449805c388d6f1849b473f3a7bc5c4b5, type: 2}
-  - {fileID: 11400000, guid: 7501e8d62c0e3024689dc6e3f7c803f8, type: 2}
+  - {fileID: 11400000, guid: 13184284f32a4904cb3c01804e01b9c1, type: 2}
   boss: {fileID: 1344515080}
   mostThreatHero: {fileID: 0}
   fightStarted: 0
@@ -1948,7 +1954,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.4245283, g: 0.18222678, b: 0.18222678, a: 0}
+  m_BackGroundColor: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -4201,6 +4207,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2444265132148806365, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
+      propertyPath: skill
+      value: 
+      objectReference: {fileID: 11400000, guid: b47cc470af23cf147837a95b1e815325, type: 2}
+    - target: {fileID: 2444265132148806365, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
+      propertyPath: ability
+      value: 
+      objectReference: {fileID: 11400000, guid: 8adb28e4fa84b904caff90d9efbf3871, type: 2}
+    - target: {fileID: 2444265132148806365, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
       propertyPath: definition
       value: 
       objectReference: {fileID: 11400000, guid: c1fecfbcd59f90d4794a4914caeeb374, type: 2}
@@ -4980,6 +4994,14 @@ PrefabInstance:
       propertyPath: level
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4715543860532776583, guid: 8807004c03dfca744840f7d6941045e4, type: 3}
+      propertyPath: skill
+      value: 
+      objectReference: {fileID: 11400000, guid: b47cc470af23cf147837a95b1e815325, type: 2}
+    - target: {fileID: 4715543860532776583, guid: 8807004c03dfca744840f7d6941045e4, type: 3}
+      propertyPath: ability
+      value: 
+      objectReference: {fileID: 11400000, guid: 8adb28e4fa84b904caff90d9efbf3871, type: 2}
     - target: {fileID: 5888414062946241176, guid: 8807004c03dfca744840f7d6941045e4, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -5035,6 +5057,14 @@ PrefabInstance:
       propertyPath: level
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2444265132148806365, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
+      propertyPath: skill
+      value: 
+      objectReference: {fileID: 11400000, guid: b47cc470af23cf147837a95b1e815325, type: 2}
+    - target: {fileID: 2444265132148806365, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
+      propertyPath: ability
+      value: 
+      objectReference: {fileID: 11400000, guid: 8adb28e4fa84b904caff90d9efbf3871, type: 2}
     - target: {fileID: 2444265132148806365, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
       propertyPath: definition
       value: 
@@ -6526,7 +6556,7 @@ Transform:
   m_GameObject: {fileID: 1970652590}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 291403969}
   m_RootOrder: 0
@@ -7180,6 +7210,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1189954841}
     - target: {fileID: 4715543860532776583, guid: 8807004c03dfca744840f7d6941045e4, type: 3}
+      propertyPath: skill
+      value: 
+      objectReference: {fileID: 11400000, guid: b47cc470af23cf147837a95b1e815325, type: 2}
+    - target: {fileID: 4715543860532776583, guid: 8807004c03dfca744840f7d6941045e4, type: 3}
+      propertyPath: ability
+      value: 
+      objectReference: {fileID: 11400000, guid: 8adb28e4fa84b904caff90d9efbf3871, type: 2}
+    - target: {fileID: 4715543860532776583, guid: 8807004c03dfca744840f7d6941045e4, type: 3}
       propertyPath: definition
       value: 
       objectReference: {fileID: 11400000, guid: 2a89c719acab02c49aee880f1ae7d823, type: 2}
@@ -7262,6 +7300,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 813859600}
     m_Modifications:
+    - target: {fileID: 2444265132148806365, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
+      propertyPath: skill
+      value: 
+      objectReference: {fileID: 11400000, guid: b47cc470af23cf147837a95b1e815325, type: 2}
+    - target: {fileID: 2444265132148806365, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
+      propertyPath: ability
+      value: 
+      objectReference: {fileID: 11400000, guid: 8adb28e4fa84b904caff90d9efbf3871, type: 2}
     - target: {fileID: 4281797914760989039, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
       propertyPath: m_Name
       value: DPS 1
@@ -7475,6 +7521,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heal 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1337327916767857360, guid: fda5d5d4576fc4c4dbb6e6a93b027d7a, type: 3}
+      propertyPath: skill
+      value: 
+      objectReference: {fileID: 11400000, guid: b47cc470af23cf147837a95b1e815325, type: 2}
+    - target: {fileID: 1337327916767857360, guid: fda5d5d4576fc4c4dbb6e6a93b027d7a, type: 3}
+      propertyPath: ability
+      value: 
+      objectReference: {fileID: 11400000, guid: 8adb28e4fa84b904caff90d9efbf3871, type: 2}
     - target: {fileID: 1337327916767857360, guid: fda5d5d4576fc4c4dbb6e6a93b027d7a, type: 3}
       propertyPath: definition
       value: 

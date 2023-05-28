@@ -81,15 +81,16 @@ MonoBehaviour:
   maxHp: 150
   currentHp: 100
   armor: 30
+  haste: 0
+  damageModifier: 0
   isAlive: 1
   level: 0
   definition: {fileID: 0}
   item: {fileID: 375069853958771926}
-  currentCooldown: 0
-  attack: 0
-  haste: 0
-  damageModifier: 0
+  skill: {fileID: 0}
+  ability: {fileID: 0}
   threat: 0
+  resources: 0
   model: {fileID: 0}
   healthBar: {fileID: 997799019947067766}
 --- !u!114 &375069853958771926
@@ -105,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  quality: 0
   definition: {fileID: 0}
 --- !u!1001 &1251120285819281908
 PrefabInstance:
@@ -246,7 +248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8054542238875490016, guid: 6704b3fecf18a6d448dceb8b7cb2ebc7, type: 3}
       propertyPath: m_Name
-      value: CooldownBar
+      value: ResourceBar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6704b3fecf18a6d448dceb8b7cb2ebc7, type: 3}

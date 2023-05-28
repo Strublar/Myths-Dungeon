@@ -48,13 +48,15 @@ public class ItemTooltipManager : MonoBehaviour
 
     }
     public void InitItemTooltip(Item item)
-    {
+    {var context = new Context
+        {
+            level = item.level
+        };
         itemImage.sprite = item != null ? item.definition.itemImage : null;
         string[] formatListItem = new string[item.definition.values.Count];
         for (int i = 0; i < item.definition.values.Count; i++)
         {
-            formatListItem[i] = (item.definition.values[i] + item.level *
-                item.definition.scaling[i]).ToString();
+            formatListItem[i] = item.definition.values[i].computeValue(context).ToString();
         }
 
         itemDescription.text = item != null ? 

@@ -5,37 +5,40 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewEffect", menuName = "Effects/DealDamage")]
 public class DealDamageEffect : Effect
 {
-    public float damage;
-    public float damagePerLevel;
+    public DynamicValue value;
     public int duration;
-    public bool modified;
+    public bool modified = true;
 
-    public override void Apply(Entity source, Entity target, int level)
+    public override void Apply(Context context)
     {
-        float ratio = modified ? source.damageModifier/100 : 1;
-
-        target.SendMessage("DealDamage", (damage+damagePerLevel*level)*ratio,SendMessageOptions.DontRequireReceiver);
+        float ratio = modified ? (float)context.source.damageModifier/100 : 1;
+        int damageValue = Mathf.RoundToInt(value.computeValue(context) * ratio);
+        context.target.DealDamage(damageValue, context.source);
+        if (context.source is Hero hero)
+        {
+            hero.threat += damageValue * hero.definition.threatRatio;
+            GameManager.gm.UpdateMostThreatHero(hero);
+        }
         if (duration != 0)
         {
-            GameObject newPassive = Instantiate(target.passivePrefab, target.transform);
+            GameObject newPassive = Instantiate(context.target.passivePrefab, context.target.transform);
             Passive passiveComponent = newPassive.GetComponent<Passive>();
-            target.passiveObjects.Add(passiveComponent);
-            passiveComponent.level = level;
-            passiveComponent.holder = target;
-            passiveComponent.definition = ScriptableObject.CreateInstance<PassiveDefinition>();
+            context.target.passiveObjects.Add(passiveComponent);
+            passiveComponent.level = context.level;
+            passiveComponent.holder = context.target;
+            passiveComponent.definition = CreateInstance<PassiveDefinition>();
             passiveComponent.definition.trigger = Trigger.EveryPersonalTick;
-            passiveComponent.definition.triggerCount = 1;
+            passiveComponent.definition.triggerCount = 10;
             passiveComponent.definition.endTrigger = Trigger.EveryPersonalTick;
             passiveComponent.definition.endTriggerCount = duration;
-            passiveComponent.definition.targets = ScriptableObject.CreateInstance<PassiveHolderTargetSelector>();
+            passiveComponent.definition.targets = CreateInstance<PassiveHolderTargetSelector>();
             passiveComponent.definition.conditions = new List<Condition>();
-            passiveComponent.definition.effects = new List<Effect>()
+            passiveComponent.definition.effects = new List<Effect>
             {
-                ScriptableObject.CreateInstance<DealDamageEffect>()
+                CreateInstance<DealDamageEffect>()
             };
-            (passiveComponent.definition.effects[0] as DealDamageEffect).damage = damage*ratio;
-            (passiveComponent.definition.effects[0] as DealDamageEffect).damagePerLevel = damagePerLevel*ratio;
-            (passiveComponent.definition.effects[0] as DealDamageEffect).duration = 0;
+            ((DealDamageEffect)passiveComponent.definition.effects[0]).value = value;
+            ((DealDamageEffect)passiveComponent.definition.effects[0]).duration = 0;
 
         }
     }

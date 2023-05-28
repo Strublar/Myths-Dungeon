@@ -10,17 +10,26 @@ public class HeroDefinition : ScriptableObject
     public GameObject model;
     public HeroType type;
     [Header("Stats")]
-    public float hp;
-    public float hpPerLevel;
-    public float armor;
-    public float armorPerLevel;
-    public List<PassiveDefinition> passives;
-    public float attack;
-    public float attackPerLevel;
-    public float attackCooldown;
-    public bool isHealer;
+    public int hp;
+    public int hpPerLevel;
+    public int armor;
+    public int armorPerLevel;
     public float threatRatio;
-    public float critPower;
-    
+    public int critChance;
+    public int critChancePerLevel;
+    public int critPower;
+    public int critPowerPerLevel;
+    [Header("Abilities and Passives")]
+    public List<PassiveDefinition> passives;
+    public List<PassiveDefinition> availableAbilities;
+    public List<PassiveDefinition> availableSkills;
+    [Header("Resource")]
+    public Color resourceBarColor;
+    public int startResources;
+    public int maxResources;
+    public int resourceRegeneration;
+    public int resourceRegenerationTickDelay;
+    public bool canResourceOverflow = false;
 
+    public bool isHealer => type == HeroType.Heal;
 }

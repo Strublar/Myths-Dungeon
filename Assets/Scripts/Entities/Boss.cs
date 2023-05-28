@@ -11,11 +11,6 @@ public class Boss : Entity
     public GameObject model;
     public PassiveDefinition bossFrenzy;
 
-    public void Start()
-    {
-        
-    }
-
     public void LoadDefinition()
     {
         ClearPassives();
@@ -42,7 +37,7 @@ public class Boss : Entity
         }
         if(level>=10)//creep //TODO Cible, casting bar
         {
-            maxHp *= Mathf.Pow(1.1f, level - 10);
+            maxHp *= Mathf.RoundToInt(Mathf.Pow(1.1f, level - 10));
             GameObject newPassive = Instantiate(passivePrefab, this.transform);
             Passive pass = newPassive.GetComponent<Passive>();
             pass.holder = this;
@@ -78,14 +73,19 @@ public class Boss : Entity
     public void Cast(BossSpellDefinition spell)
     {
         List<Entity> spellTargets = spell.targets.GetTargets(new Context());
-
+        var context = new Context
+        {
+            passiveHolder = this,
+            source = this,
+            level = level
+        };
         foreach(Entity ent in spellTargets)
         {
             if(ent != null)
             {
                 foreach (Effect eff in spell.effects)
                 {
-                    eff.Apply(this,ent,level);
+                    eff.Apply(context);
                 }
             }
             

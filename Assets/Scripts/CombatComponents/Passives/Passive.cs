@@ -28,8 +28,11 @@ public class Passive : MonoBehaviour
                 clock -= Time.deltaTime;
                 while(clock<=0)
                 {
-                    Context context = new Context();
-                    context.passiveHolder = holder;
+                    Context context = new Context
+                    {
+                        passiveHolder = holder,
+                        level = level
+                    };
                     Execute(context);
                     clock += 0.1f;
                 }
@@ -39,8 +42,10 @@ public class Passive : MonoBehaviour
                 clockEnd -= Time.deltaTime;
                 while (clockEnd <= 0)
                 {
-                    Context context = new Context();
-                    context.passiveHolder = holder;
+                    Context context = new Context
+                    {
+                        passiveHolder = holder
+                    };
                     OnEndTrigger(context);
                     clockEnd += 0.1f;
                 }
@@ -54,6 +59,7 @@ public class Passive : MonoBehaviour
         if(triggerCount >= definition.triggerCount && definition.triggerCount != 0)
         {
             context.passiveHolder = holder;
+            context.source = holder;
             bool shouldTrigger = true;
             foreach (Condition condition in definition.conditions)
             {
@@ -70,7 +76,8 @@ public class Passive : MonoBehaviour
                 {
                     foreach (Entity target in definition.targets.GetTargets(context))
                     {
-                        effect.Apply(holder,target,level);
+                        context.target = target;
+                        effect.Apply(context);
                     }
                 }
             }

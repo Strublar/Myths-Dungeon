@@ -20,11 +20,17 @@ MonoBehaviour:
   hpPerLevel: 8
   armor: 0
   armorPerLevel: 0
-  passives:
-  - {fileID: 11400000, guid: cc66de1fd1ed7d041973e12b727eb005, type: 2}
-  attack: 120
-  attackPerLevel: 12
-  attackCooldown: 6
-  isHealer: 0
   threatRatio: 1
+  critChance: 0
+  critChancePerLevel: 0
   critPower: 0
+  critPowerPerLevel: 0
+  passives: []
+  availableAbilities: []
+  availableSkills: []
+  resourceBarColor: {r: 0.5277982, g: 0, b: 0.8867924, a: 1}
+  startResources: 0
+  maxResources: 0
+  resourceRegeneration: 0
+  resourceRegenerationTickDelay: 0
+  canResourceOverflow: 0

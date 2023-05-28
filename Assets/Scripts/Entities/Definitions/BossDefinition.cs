@@ -8,10 +8,10 @@ public class BossDefinition : ScriptableObject
     public string bossName;
     public GameObject model;
     [Header("Stats")]
-    public float hp;
-    public float hpPerLevel;
-    public float armor;
-    public float armorPerLevel;
+    public int hp;
+    public int hpPerLevel;
+    public int armor;
+    public int armorPerLevel;
     public List<BossSpellDefinition> spells;
     public List<PassiveDefinition> passives;
 }

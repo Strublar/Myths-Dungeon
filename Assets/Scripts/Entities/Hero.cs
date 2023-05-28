@@ -9,27 +9,27 @@ public enum HeroType
     DPS,
     none
 }
+
 public class Hero : Entity
 {
     #region Stats
-    public int level;
-    [Header("Definition")]
-    public HeroDefinition definition;
-    public Item item;
-    [HideInInspector]
-    public float currentCooldown = 0f;
-    [Header("FightStats")]
-    public float attack;
-    
-    
-    public float threat;
 
-    [Header("Component objects")]
-    public GameObject model;
+    public int level;
+
+    [Header("Definition")] public HeroDefinition definition;
+    public Item item;
+    public PassiveDefinition skill;
+    public AbilityDefinition ability;
+
+    [Header("FightStats")] public float threat;
+    public int resources;
+
+    [Header("Component objects")] public GameObject model;
     public GameObject healthBar;
     private bool isDragging;
     private Vector3 modelInitialPos;
 
+    private Context attackContext;
 
     #endregion
 
@@ -40,8 +40,7 @@ public class Hero : Entity
 
     public void Update()
     {
-        currentCooldown -= Time.deltaTime*Mathf.Max(haste/100,0);
-        if(Input.touchCount>0)
+        if (Input.touchCount > 0)
         {
             if (isDragging)
             {
@@ -56,11 +55,10 @@ public class Hero : Entity
             model.transform.localPosition = modelInitialPos;
         }
 
-        if(currentCooldown>0&& GameManager.gm.fightStarted)
+        if (!CanCast() && GameManager.gm.fightStarted)
             model.GetComponent<SpriteRenderer>().color = Color.gray;
         else
             model.GetComponent<SpriteRenderer>().color = Color.white;
-
     }
 
     public void LoadDefinition()
@@ -74,14 +72,15 @@ public class Hero : Entity
         healthBar.SetActive(true);
         ClearPassives();
 
-        maxHp = definition.hp+definition.hpPerLevel*level;
-        armor = definition.armor+definition.armorPerLevel * level;
-        attack = definition.attack + definition.attackPerLevel * level;
-        haste = 100+3*level;
+        maxHp = definition.hp + definition.hpPerLevel * level;
+        armor = definition.armor + definition.armorPerLevel * level;
+        haste = 100 + 3 * level;
         damageModifier = 100;
         threat = 0;
-        currentCooldown = 0;
-        foreach (PassiveDefinition passive in definition.passives)
+        var passives = new List<PassiveDefinition>(definition.passives);
+        passives.Add(skill);
+        passives.Add(ability.linkedPassive);
+        foreach (PassiveDefinition passive in passives)
         {
             GameObject newPassive = Instantiate(passivePrefab, this.transform);
             Passive pass = newPassive.GetComponent<Passive>();
@@ -91,35 +90,49 @@ public class Hero : Entity
             passiveObjects.Add(pass);
         }
 
-        if(item.definition != null)
+        if (item.definition != null)
         {
             if (item.quality == ItemQuality.legacy)
                 item.level = level;
             //Stats
             maxHp += item.definition.hp + item.definition.hpPerLevel * item.level;
             armor += item.definition.armor + item.definition.armorPerLevel * item.level;
-            attack += item.definition.attack + item.definition.attackPerLevel * item.level;
             haste += item.definition.haste + item.definition.hastePerLevel * item.level;
             damageModifier += item.definition.damageModifier + item.definition.damageModifierPerLevel * item.level;
             //Passives
             foreach (PassiveDefinition passive in item.definition.passives)
             {
-                GameObject newPassive = Instantiate(passivePrefab, this.transform);
+                GameObject newPassive = Instantiate(passivePrefab, transform);
                 Passive pass = newPassive.GetComponent<Passive>();
                 pass.holder = this;
                 pass.definition = passive;
                 pass.level = item.level;
                 passiveObjects.Add(pass);
             }
+            //resource passive
+            GameObject resourcePassiveObject = Instantiate(passivePrefab, transform);
+            Passive resourcePassive = resourcePassiveObject.GetComponent<Passive>();
+            resourcePassive.holder = this;
+            resourcePassive.definition = PassiveDefinition.BuildResourcePassive(this);
+            resourcePassive.level = item.level;
+            passiveObjects.Add(resourcePassive);
+            
         }
+        
 
+        attackContext = new Context
+        {
+            passiveHolder = this, source = this
+        };
+
+        resources = definition.startResources;
         currentHp = maxHp;
     }
 
     public void OnTap()
     {
         isDragging = false;
-        if(GameManager.gm.isDeckbuilding)
+        if (GameManager.gm.isDeckbuilding)
         {
             GameManager.gm.ShowHeroes(definition.type);
         }
@@ -132,38 +145,36 @@ public class Hero : Entity
 
     public void OnDrag(GameObject target)
     {
-        if(isAlive && currentCooldown<=0 )
+        if (isAlive && CanCast())
         {
             if (!definition.isHealer)
             {
                 if (target.CompareTag("Boss"))
                 {
                     Pull(target);
-                    target.SendMessage("DealDamage", attack*Mathf.Max(damageModifier/100,0), SendMessageOptions.DontRequireReceiver);
-                    Context context;
-                    context.source = this;
-                    context.target = target.GetComponent<Entity>();
-                    context.passiveHolder = null;
+                    Context context = new Context
+                    {
+                        source = this,
+                        target = target.GetComponent<Entity>(),
+                        passiveHolder = null
+                    };
                     TriggerManager.triggerMap[Trigger.OnAttack].Invoke(context);
-                    threat += attack * Mathf.Max(damageModifier / 100, 0) * definition.threatRatio;
-                    currentCooldown = definition.attackCooldown;
-                    
+                    resources += ability.resourceModification;
                 }
             }
             else
             {
-                if (target.CompareTag("Hero") && GameManager.gm.fightStarted )
+                if (target.CompareTag("Hero") && GameManager.gm.fightStarted)
                 {
                     Pull(target);
-                    target.SendMessage("Heal", definition.attack * Mathf.Max(damageModifier / 100, 0), SendMessageOptions.DontRequireReceiver);
-                    Context context;
-                    context.source = this;
-                    context.target = target.GetComponent<Entity>();
-                    context.passiveHolder = null;
-                    TriggerManager.triggerMap[Trigger.OnHealed].Invoke(context);
-                    threat += attack * Mathf.Max(damageModifier / 100, 0) * definition.threatRatio;
-                    currentCooldown = definition.attackCooldown;
-                    
+                    Context context = new Context
+                    {
+                        source = this,
+                        target = target.GetComponent<Entity>(),
+                        passiveHolder = null
+                    };
+                    TriggerManager.triggerMap[Trigger.OnHeal].Invoke(context);
+                    resources += ability.resourceModification;
                 }
             }
 
@@ -171,14 +182,14 @@ public class Hero : Entity
             {
                 GameManager.gm.mostThreatHero = this;
             }
+
             if (threat >= GameManager.gm.mostThreatHero.threat)
             {
                 GameManager.gm.mostThreatHero = this;
             }
-            
         }
+
         isDragging = false;
-        
     }
 
     public void Pull(GameObject target)
@@ -187,16 +198,19 @@ public class Hero : Entity
         {
             GameManager.gm.fightStarted = true;
             GameManager.gm.bossTimer = Time.time;
-            Context context;
-            context.source = this;
-            context.target = target.GetComponent<Entity>();
-            context.passiveHolder = null;
+            Context context = new Context
+            {
+                source = this,
+                target = target.GetComponent<Entity>(),
+                passiveHolder = null
+            };
             TriggerManager.triggerMap[Trigger.OnPull].Invoke(context);
         }
     }
+
     public void OnStartDragging()
     {
-        if(currentCooldown<=0)
+        if (CanCast())
             isDragging = true;
     }
 
@@ -205,6 +219,19 @@ public class Hero : Entity
         HeroTooltipManager.instance.InitHeroTooltip(this);
         HeroTooltipManager.instance.ShowToolTip();
         isDragging = false;
+    }
+
+    public bool CanCast()
+    {
+        int resourcePreview = resources + ability.resourceModification;
+        bool canCast = resourcePreview >= 0 &&
+                       (resourcePreview <= definition.maxResources || definition.canResourceOverflow);
+        foreach (var condition in ability.castConditions)
+        {
+            canCast &= condition.ShouldTrigger(attackContext);
+        }
+
+        return canCast;
     }
 
     public override void Die()

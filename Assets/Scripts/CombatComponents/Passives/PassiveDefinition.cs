@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "NewPassive", menuName = "Passive")]
 public class PassiveDefinition : ScriptableObject
 {
-    public string descrpition;
+    public string description;
     public Trigger trigger;
     public int triggerCount;
     public Trigger endTrigger;
@@ -14,9 +15,24 @@ public class PassiveDefinition : ScriptableObject
     public List<Condition> conditions;
     public List<Effect> effects;
     [Header("Serialization")]
-    public List<float> values;
-    public List<float> scaling;
+    public List<DynamicValue> values;
 
-
+    public static PassiveDefinition BuildResourcePassive(Hero hero)
+    {
+        var passiveDef = CreateInstance<PassiveDefinition>();
+        passiveDef.trigger = Trigger.EveryPersonalTick;
+        passiveDef.triggerCount = hero.definition.resourceRegenerationTickDelay;
+        passiveDef.endTrigger = Trigger.Never;
+        passiveDef.targets = CreateInstance<PassiveHolderTargetSelector>();
+        var dynamicValue = CreateInstance<ConstantDynamicValue>();
+        dynamicValue.value = hero.definition.resourceRegeneration;
+        var passiveEffect = CreateInstance<ModifyResourcesEffect>();
+        passiveEffect.value = dynamicValue;
+        passiveDef.effects = new List<Effect>
+        {
+            passiveEffect
+        };
+        return passiveDef;
+    }
     
 }

@@ -50,9 +50,8 @@ public class GameManager : MonoBehaviour
         do
         {
             boss.definition = bossPool[Random.Range(0, bossPool.Count)];
-        } while (boss.definition == lastBoss);
-
-            boss.LoadDefinition();
+        } while (boss.definition == lastBoss && bossPool.Count != 1);
+        boss.LoadDefinition();
         boss.gameObject.SetActive(true);
         deadHeroes = 0;
         foreach (Hero hero in heroes)
@@ -171,6 +170,19 @@ public class GameManager : MonoBehaviour
                 tankOptions.SetActive(false);
                 healOptions.SetActive(false);
                 break;
+        }
+    }
+
+    public void UpdateMostThreatHero(Hero hero)
+    {
+        if (mostThreatHero == null)
+        {
+            mostThreatHero = hero;
+        }
+
+        if (hero.threat >= GameManager.gm.mostThreatHero.threat)
+        {
+            mostThreatHero = hero;
         }
     }
 }

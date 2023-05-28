@@ -10,26 +10,20 @@ public class ItemDefinition : ScriptableObject
     public string description;
     public Sprite itemImage;
     [Header("Stats")]
-    public float hp;
-    public float hpPerLevel;
-    public float armor;
-    public float armorPerLevel;
-    public float attack;
-    public float attackPerLevel;
-    public float attackCooldown;
-    public bool isHealer;
-    public float threatRatio;
-    public float critPower;
-    public float haste;
-    public float hastePerLevel;
-    public float damageModifier;
-    public float damageModifierPerLevel;
+    public int hp;
+    public int hpPerLevel;
+    public int armor;
+    public int armorPerLevel;
+    public int critPower;
+    public int haste;
+    public int hastePerLevel;
+    public int damageModifier;
+    public int damageModifierPerLevel;
 
     public List<PassiveDefinition> passives;
 
     [Header("Serialization")]
-    public List<float> values;
-    public List<float> scaling;
+    public List<DynamicValue> values;
 }
 
 public enum ItemRarity
