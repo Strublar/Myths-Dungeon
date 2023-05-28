@@ -109,15 +109,15 @@ public class Hero : Entity
                 pass.level = item.level;
                 passiveObjects.Add(pass);
             }
-            //resource passive
-            GameObject resourcePassiveObject = Instantiate(passivePrefab, transform);
-            Passive resourcePassive = resourcePassiveObject.GetComponent<Passive>();
-            resourcePassive.holder = this;
-            resourcePassive.definition = PassiveDefinition.BuildResourcePassive(this);
-            resourcePassive.level = item.level;
-            passiveObjects.Add(resourcePassive);
-            
         }
+        
+        //resource passive
+        GameObject resourcePassiveObject = Instantiate(passivePrefab, transform);
+        Passive resourcePassive = resourcePassiveObject.GetComponent<Passive>();
+        resourcePassive.holder = this;
+        resourcePassive.definition = PassiveDefinition.BuildResourcePassive(this);
+        resourcePassive.level = item.level;
+        passiveObjects.Add(resourcePassive);
         
 
         attackContext = new Context

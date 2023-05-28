@@ -23,7 +23,10 @@ public class PassiveDefinition : ScriptableObject
         passiveDef.trigger = Trigger.EveryPersonalTick;
         passiveDef.triggerCount = hero.definition.resourceRegenerationTickDelay;
         passiveDef.endTrigger = Trigger.Never;
+        passiveDef.endTriggerCount = 0;
         passiveDef.targets = CreateInstance<PassiveHolderTargetSelector>();
+        passiveDef.conditions = new List<Condition>();
+        passiveDef.values = new List<DynamicValue>();
         var dynamicValue = CreateInstance<ConstantDynamicValue>();
         dynamicValue.value = hero.definition.resourceRegeneration;
         var passiveEffect = CreateInstance<ModifyResourcesEffect>();
