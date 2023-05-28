@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Entity : MonoBehaviour
 {
     #region Stats
 
-    [Header("Components")] public GameObject damagebubble;
-    public GameObject healingBubble;
-    public GameObject armorBubble;
+    public BubbleBehaviour damageBubble;
+    public BubbleBehaviour healingBubble;
+    public BubbleBehaviour armorBubble;
     public GameObject passivePrefab;
     public List<Passive> passiveObjects;
 
@@ -21,7 +22,7 @@ public class Entity : MonoBehaviour
 
     #endregion
 
-    public void DealDamage(int value, Entity source)
+    public void DealDamage(int value, Entity source, bool isCritical)
     {
         if (isAlive)
         {
@@ -34,16 +35,16 @@ public class Entity : MonoBehaviour
 
             if (damageValue > 0)
             {
-                GameObject bubble = Instantiate(damagebubble, transform);
+                BubbleBehaviour bubble = Instantiate(damageBubble, transform);
                 bubble.transform.localPosition = new Vector3(Random.Range(-1f, 1f), Random.Range(-1.5f, -0.5f), 0);
-                bubble.GetComponent<DamageBubbleBehaviour>().text.text = "-" + Mathf.RoundToInt(damageValue);
+                bubble.text.text = "-" + Mathf.RoundToInt(damageValue) + (isCritical ? "!!!" : "");
             }
 
             TriggerManager.OnDamageReceived.Invoke(new Context()
             {
                 source = source, target = this,
                 value = damageValue,
-                percentHpLost = Mathf.RoundToInt((float)damageValue/maxHp*100)
+                percentHpLost = Mathf.RoundToInt((float)damageValue / maxHp * 100)
             });
 
             if (currentHp <= 0)
@@ -53,7 +54,7 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public void Heal(int value)
+    public void Heal(int value, bool isCritical)
     {
         if (isAlive)
         {
@@ -62,9 +63,9 @@ public class Entity : MonoBehaviour
 
             if (healingValue > 0)
             {
-                GameObject bubble = Instantiate(healingBubble, transform);
+                BubbleBehaviour bubble = Instantiate(healingBubble, transform);
                 bubble.transform.localPosition = new Vector3(Random.Range(-.6f, .6f), Random.Range(-1.5f, -0.5f), 0);
-                bubble.GetComponent<DamageBubbleBehaviour>().text.text = "+" + Mathf.RoundToInt(healingValue);
+                bubble.text.text = "+" + Mathf.RoundToInt(healingValue) + (isCritical ? "!!!" : "");
             }
         }
     }

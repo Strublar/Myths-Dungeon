@@ -23,6 +23,8 @@ public class Hero : Entity
 
     [Header("FightStats")] public float threat;
     public int resources;
+    public int critChance;
+    public int critPower;
 
     [Header("Component objects")] public GameObject model;
     public GameObject healthBar;
@@ -77,6 +79,9 @@ public class Hero : Entity
         haste = 100 + 3 * level;
         damageModifier = 100;
         threat = 0;
+        critChance = definition.critChance + definition.critChancePerLevel * level;
+        critPower = definition.critPower + definition.critPowerPerLevel * level;
+        
         var passives = new List<PassiveDefinition>(definition.passives);
         passives.Add(skill);
         passives.Add(ability.linkedPassive);
@@ -110,7 +115,7 @@ public class Hero : Entity
                 passiveObjects.Add(pass);
             }
         }
-        
+
         //resource passive
         GameObject resourcePassiveObject = Instantiate(passivePrefab, transform);
         Passive resourcePassive = resourcePassiveObject.GetComponent<Passive>();
@@ -118,7 +123,7 @@ public class Hero : Entity
         resourcePassive.definition = PassiveDefinition.BuildResourcePassive(this);
         resourcePassive.level = item.level;
         passiveObjects.Add(resourcePassive);
-        
+
 
         attackContext = new Context
         {
@@ -156,7 +161,8 @@ public class Hero : Entity
                     {
                         source = this,
                         target = target.GetComponent<Entity>(),
-                        passiveHolder = null
+                        passiveHolder = null,
+                        isCritical = Random.Range(0, 100) <= critChance
                     };
                     TriggerManager.triggerMap[Trigger.OnAttack].Invoke(context);
                     resources += ability.resourceModification;
@@ -171,7 +177,8 @@ public class Hero : Entity
                     {
                         source = this,
                         target = target.GetComponent<Entity>(),
-                        passiveHolder = null
+                        passiveHolder = null,
+                        isCritical = Random.Range(0, 100) <= critChance
                     };
                     TriggerManager.triggerMap[Trigger.OnHeal].Invoke(context);
                     resources += ability.resourceModification;

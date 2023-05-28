@@ -242,9 +242,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b645509685e329c4f8dd8b0156d246dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagebubble: {fileID: 7205400398037728276, guid: ef16a162897a83349a0b309821db9235, type: 3}
-  healingBubble: {fileID: 1169866467984761236, guid: e72d2ef4f3bf7c04b945c1124c4c98a5, type: 3}
-  armorBubble: {fileID: 2272767035296440346, guid: e987aced3c7075041b29307dfaafc320, type: 3}
+  damageBubble: {fileID: 1904282042216898216, guid: ef16a162897a83349a0b309821db9235, type: 3}
+  healingBubble: {fileID: 7615538915002155816, guid: e72d2ef4f3bf7c04b945c1124c4c98a5, type: 3}
+  armorBubble: {fileID: 7357081350883410598, guid: e987aced3c7075041b29307dfaafc320, type: 3}
   passivePrefab: {fileID: 6010278707440170961, guid: ba820befb37e48c40b4d9a4425dc6e3c, type: 3}
   passiveObjects: []
   maxHp: 0

@@ -13,9 +13,9 @@ public class ModifyArmorEffect : Effect
         context.target.armor += armorModif;
         if (armorModif != 0)
         {
-            GameObject bubble = Instantiate(context.target.armorBubble, context.target.transform);
+            BubbleBehaviour bubble = Instantiate(context.target.armorBubble, context.target.transform);
             bubble.transform.localPosition = new Vector3(Random.Range(-.6f, .6f), -1, 0);
-            bubble.GetComponent<DamageBubbleBehaviour>().text.text = (armorModif>0 ?"+":"") + Mathf.RoundToInt(armorModif);
+            bubble.GetComponent<BubbleBehaviour>().text.text = (armorModif>0 ?"+":"") + Mathf.RoundToInt(armorModif);
         }
 
         if (duration != 0)

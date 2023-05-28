@@ -21,9 +21,9 @@ MonoBehaviour:
   armor: 0
   armorPerLevel: 0
   threatRatio: 1
-  critChance: 0
+  critChance: 50
   critChancePerLevel: 0
-  critPower: 0
+  critPower: 200
   critPowerPerLevel: 0
   passives: []
   availableAbilities: []

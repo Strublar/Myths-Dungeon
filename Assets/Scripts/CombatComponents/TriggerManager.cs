@@ -23,6 +23,7 @@ public struct Context
     public int level;
     public int value;
     public int percentHpLost;
+    public bool isCritical;
 
 }
 

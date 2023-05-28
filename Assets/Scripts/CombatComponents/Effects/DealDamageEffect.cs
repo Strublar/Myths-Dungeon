@@ -8,12 +8,13 @@ public class DealDamageEffect : Effect
     public DynamicValue value;
     public int duration;
     public bool modified = true;
-
+    public bool canCrit = true;
     public override void Apply(Context context)
     {
+        float critModifier = canCrit && context.isCritical && context.source is Hero heroSource ? heroSource.critPower : 100;
         float ratio = modified ? (float)context.source.damageModifier/100 : 1;
-        int damageValue = Mathf.RoundToInt(value.computeValue(context) * ratio);
-        context.target.DealDamage(damageValue, context.source);
+        int damageValue = Mathf.RoundToInt(value.computeValue(context) * ratio * critModifier/100f);
+        context.target.DealDamage(damageValue, context.source, context.isCritical);
         if (context.source is Hero hero)
         {
             hero.threat += damageValue * hero.definition.threatRatio;

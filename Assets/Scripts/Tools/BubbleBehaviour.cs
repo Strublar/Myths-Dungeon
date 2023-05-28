@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DamageBubbleBehaviour : MonoBehaviour
+public class BubbleBehaviour : MonoBehaviour
 {
     public TextMeshPro text;
     public float speed;
@@ -13,6 +13,7 @@ public class DamageBubbleBehaviour : MonoBehaviour
     private void Start()
     {
         baseDuration = duration;
+        
     }
     // Update is called once per frame
     void Update()

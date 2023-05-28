@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 5}
+  m_SizeDelta: {x: 30, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &7815127474471030604
 MeshRenderer:
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: -88
+  m_text: -88!!!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f166646435b9df240977b3a1a8fef31b, type: 2}
   m_sharedMaterial: {fileID: 6955258260545066293, guid: f166646435b9df240977b3a1a8fef31b, type: 2}

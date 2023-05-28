@@ -12,6 +12,7 @@ public class Passive : MonoBehaviour
 
     public float clock = 0.05f;
     public float clockEnd = 0.05f;
+
     public void Start()
     {
         TriggerManager.triggerMap[definition.trigger].AddListener(Execute);
@@ -21,12 +22,12 @@ public class Passive : MonoBehaviour
 
     public void Update()
     {
-        if(GameManager.gm.fightStarted)
+        if (GameManager.gm.fightStarted)
         {
-            if(definition.trigger == Trigger.EveryPersonalTick)
+            if (definition.trigger == Trigger.EveryPersonalTick)
             {
                 clock -= Time.deltaTime;
-                while(clock<=0)
+                while (clock <= 0)
                 {
                     Context context = new Context
                     {
@@ -37,6 +38,7 @@ public class Passive : MonoBehaviour
                     clock += 0.1f;
                 }
             }
+
             if (definition.endTrigger == Trigger.EveryPersonalTick)
             {
                 clockEnd -= Time.deltaTime;
@@ -56,10 +58,9 @@ public class Passive : MonoBehaviour
     public void Execute(Context context)
     {
         triggerCount++;
-        if(triggerCount >= definition.triggerCount && definition.triggerCount != 0)
+        if (triggerCount >= definition.triggerCount && definition.triggerCount != 0)
         {
             context.passiveHolder = holder;
-            context.source = holder;
             bool shouldTrigger = true;
             foreach (Condition condition in definition.conditions)
             {
@@ -68,10 +69,11 @@ public class Passive : MonoBehaviour
                     shouldTrigger = false;
                     break;
                 }
-
             }
+
             if (shouldTrigger)
             {
+                context.source = holder;
                 foreach (Effect effect in definition.effects)
                 {
                     foreach (Entity target in definition.targets.GetTargets(context))
@@ -81,25 +83,22 @@ public class Passive : MonoBehaviour
                     }
                 }
             }
+
             triggerCount = 0;
         }
-        
-        
     }
 
     public void OnEndTrigger(Context context)
     {
         endTriggerCount++;
-        if(endTriggerCount >= definition.endTriggerCount && definition.endTriggerCount != 0)
+        if (endTriggerCount >= definition.endTriggerCount && definition.endTriggerCount != 0)
         {
             Delete(context);
         }
-        
     }
 
     public void Delete(Context context)
     {
-        
         TriggerManager.triggerMap[definition.trigger].RemoveListener(Execute);
         TriggerManager.triggerMap[definition.endTrigger].RemoveListener(OnEndTrigger);
         Destroy(gameObject);
