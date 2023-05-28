@@ -89,9 +89,9 @@ public class LootManager : MonoBehaviour
         List<ItemDefinition> loots = GetLoots();
 
         //level
-        lootedItems[0].item.level = GameManager.gm.bossBeaten-1;
-        lootedItems[1].item.level = GameManager.gm.bossBeaten-1;
-        lootedItems[2].item.level = GameManager.gm.bossBeaten-1;
+        lootedItems[0].item.level = GameManager.gm.bossBeaten;
+        lootedItems[1].item.level = GameManager.gm.bossBeaten;
+        lootedItems[2].item.level = GameManager.gm.bossBeaten;
 
         //item
         lootedItems[0].item.definition = loots[0];

@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         //StartNewBoss();
         foreach (Hero hero in heroes)
         {
-            hero.level = 0;
+            hero.level = 1;
             hero.item.definition = null;
             hero.LoadDefinition();
         }
@@ -40,10 +40,10 @@ public class GameManager : MonoBehaviour
 
     public void StartNewBoss()
     {
-        currentLevel.text = "Level : " + bossBeaten;
+        currentLevel.text = "Level : " + (bossBeaten + 1);
         victoryScreen.SetActive(false);
         bossTimer = 0;
-        boss.level = bossBeaten;
+        boss.level = bossBeaten+1;
         if (boss.model != null)
             Destroy(boss.model);
         BossDefinition lastBoss = boss.definition;
@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
         mostThreatHero = null;
         foreach (Hero hero in heroes)
         {
-            hero.level++;
+            hero.AddXp(1);
             hero.LoadDefinition();
         }
 
@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
         foreach (Hero hero in heroes)
         {
 
-            hero.level = 0;
+            hero.level = 1;
             hero.item.definition = null;
         }
         StartNewBoss();

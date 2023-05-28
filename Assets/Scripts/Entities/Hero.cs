@@ -15,6 +15,7 @@ public class Hero : Entity
     #region Stats
 
     public int level;
+    public int xp;
 
     [Header("Definition")] public HeroDefinition definition;
     public Item item;
@@ -248,5 +249,15 @@ public class Hero : Entity
         healthBar.SetActive(false);
         GameManager.gm.GetNewThreatHero();
         GameManager.gm.HeroDies();
+    }
+
+    public void AddXp(int i)
+    {
+        xp += i;
+        while (xp >= level)
+        {
+            xp -= level;
+            level++;
+        }
     }
 }

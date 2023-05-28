@@ -13,7 +13,7 @@ public class ExperienceItem : MonoBehaviour
         if (target.CompareTag("Hero"))
         {
             Hero heroTarget = target.GetComponent<Hero>();
-            heroTarget.level += 1;
+            heroTarget.AddXp(1);
             heroTarget.LoadDefinition();
             LootManager.lm.Choose(id);
         }
