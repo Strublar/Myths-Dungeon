@@ -42,7 +42,8 @@ public class Entity : MonoBehaviour
             TriggerManager.OnDamageReceived.Invoke(new Context()
             {
                 source = source, target = this,
-                value = damageValue
+                value = damageValue,
+                percentHpLost = Mathf.RoundToInt((float)damageValue/maxHp*100)
             });
 
             if (currentHp <= 0)
