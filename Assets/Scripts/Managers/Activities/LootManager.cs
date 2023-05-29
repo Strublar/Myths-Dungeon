@@ -129,7 +129,7 @@ public class LootManager : MonoBehaviour
         experienceItems[id].gameObject.SetActive(false);
         if(lootChosen == lootedItems.Count)
         {
-            SceneManager.LoadScene("ContinueScene", LoadSceneMode.Additive);
+            SceneManager.LoadScene("ActivityScene", LoadSceneMode.Additive);
             SceneManager.UnloadSceneAsync("LootScene");
         }
     }

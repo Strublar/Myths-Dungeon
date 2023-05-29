@@ -1208,7 +1208,6 @@ MonoBehaviour:
   fightStarted: 0
   bossBeaten: 0
   lastBoss: {fileID: 0}
-  victoryScreen: {fileID: 0}
   loseScreen: {fileID: 1069181400}
   victoryText: {fileID: 1113693514}
 --- !u!4 &312890237
@@ -2829,7 +2828,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1113693513
 RectTransform:
   m_ObjectHideFlags: 0

@@ -26,8 +26,12 @@ MonoBehaviour:
   critPower: 200
   critPowerPerLevel: 0
   passives: []
-  availableAbilities: []
-  availableSkills: []
+  availableAbilities:
+  - {fileID: 11400000, guid: 8adb28e4fa84b904caff90d9efbf3871, type: 2}
+  - {fileID: 11400000, guid: 136546d39f598f74480da9a82d9f08bd, type: 2}
+  availableSkills:
+  - {fileID: 11400000, guid: b47cc470af23cf147837a95b1e815325, type: 2}
+  - {fileID: 11400000, guid: 306fdb14a2937ba43b8983afbcb5445a, type: 2}
   resourceBarColor: {r: 0, g: 0.77702427, b: 1, a: 1}
   startResources: 100
   maxResources: 100

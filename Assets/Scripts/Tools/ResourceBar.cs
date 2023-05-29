@@ -7,16 +7,7 @@ public class ResourceBar : MonoBehaviour
     public Hero linkedHero;
     public GameObject bar;
     public SpriteRenderer barSprite;
-    public bool isInit = false;
 
-    public void Init()
-    {
-        if(isInit)
-            return;
-        
-        isInit = true;
-        barSprite.color = linkedHero.definition.resourceBarColor;
-    }
 
     // Update is called once per frame
     void Update()
@@ -28,7 +19,7 @@ public class ResourceBar : MonoBehaviour
         }
 
         bar.SetActive(true);
-        Init();
+        barSprite.color = linkedHero.definition.resourceBarColor;
         if (linkedHero.definition.maxResources == 0)
         {
             bar.SetActive(false);

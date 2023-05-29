@@ -21,7 +21,7 @@ public class HeroDefinition : ScriptableObject
     public int critPowerPerLevel;
     [Header("Abilities and Passives")]
     public List<PassiveDefinition> passives;
-    public List<PassiveDefinition> availableAbilities;
+    public List<AbilityDefinition> availableAbilities;
     public List<PassiveDefinition> availableSkills;
     [Header("Resource")]
     public Color resourceBarColor;

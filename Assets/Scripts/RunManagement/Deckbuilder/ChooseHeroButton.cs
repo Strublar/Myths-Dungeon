@@ -24,16 +24,13 @@ public class ChooseHeroButton : MonoBehaviour
             {
                 targetHero.definition = hero.definition;
                 targetHero.LoadDefinition();
+                TavernManager.instance.HeroChosen();
             }
             
         }
     }
 
-    public void OnEnable()
-    {
-        hero.LoadDefinition();
-    }
-    public void OnDisable()
+    public void OnDestroy()
     {
         hero.ClearPassives();
     }
