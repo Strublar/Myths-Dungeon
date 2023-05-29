@@ -41,13 +41,13 @@ public class HeroTooltipManager : MonoBehaviour
                      "\nCritPower :  " + hero.definition.critPower + "%" +
                      "\nThreat :  x" + hero.definition.threatRatio;
 
-        string[] formatList = new string[hero.definition.passives[0].values.Count];
-        for(int i =0;i< hero.definition.passives[0].values.Count;i++)
+        string[] formatList = new string[hero.ability.linkedPassive.values.Count];
+        for(int i =0;i< hero.ability.linkedPassive.values.Count;i++)
         {
-            formatList[i] = hero.definition.passives[0].values[i].computeValue(context).ToString();
+            formatList[i] = hero.ability.linkedPassive.values[i].computeValue(context).ToString();
         }
        
-        passive.text = string.Format(hero.definition.passives[0].description, formatList);
+        passive.text = string.Format(hero.ability.linkedPassive.description, formatList);
 
         string[] formatListItem = new string[0];
         if (hero.item.definition != null)
