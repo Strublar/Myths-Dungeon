@@ -28,7 +28,7 @@ MonoBehaviour:
   passives: []
   availableAbilities: []
   availableSkills: []
-  resourceBarColor: {r: 0.8396226, g: 0.8244358, b: 0.5029815, a: 1}
+  resourceBarColor: {r: 0.78431374, g: 0.4321516, b: 0, a: 1}
   startResources: 10
   maxResources: 10
   resourceRegeneration: 1
