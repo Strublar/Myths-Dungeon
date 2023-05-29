@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Vagabond Ability
   m_EditorClassIdentifier: 
   castConditions: []
-  resourceModification: -10
+  resourceModification: -100
   linkedPassive: {fileID: 11400000, guid: b47cc470af23cf147837a95b1e815325, type: 2}

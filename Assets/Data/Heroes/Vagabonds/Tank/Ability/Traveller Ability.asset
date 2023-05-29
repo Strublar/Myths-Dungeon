@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Traveller Ability
   m_EditorClassIdentifier: 
   castConditions: []
-  resourceModification: -10
+  resourceModification: -120
   linkedPassive: {fileID: 11400000, guid: 306fdb14a2937ba43b8983afbcb5445a, type: 2}

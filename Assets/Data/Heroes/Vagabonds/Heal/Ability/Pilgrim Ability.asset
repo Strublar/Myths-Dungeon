@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Pilgrim Ability
   m_EditorClassIdentifier: 
   castConditions: []
-  resourceModification: -10
+  resourceModification: -80
   linkedPassive: {fileID: 11400000, guid: de40f630889e7d647b6791fc94e78a4f, type: 2}

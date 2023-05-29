@@ -21,7 +21,7 @@ public class ResourceBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.gm.fightStarted || linkedHero == null)
+        if (linkedHero == null)
         {
             bar.SetActive(false);
             return;

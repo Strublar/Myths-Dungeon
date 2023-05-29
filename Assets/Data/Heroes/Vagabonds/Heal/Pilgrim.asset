@@ -29,8 +29,8 @@ MonoBehaviour:
   availableAbilities: []
   availableSkills: []
   resourceBarColor: {r: 0.026412103, g: 0.78431374, b: 0, a: 1}
-  startResources: 10
-  maxResources: 10
+  startResources: 80
+  maxResources: 80
   resourceRegeneration: 1
-  resourceRegenerationTickDelay: 8
+  resourceRegenerationTickDelay: 1
   canResourceOverflow: 0
