@@ -24,12 +24,16 @@ public class HeroDefinition : ScriptableObject
     public List<AbilityDefinition> availableAbilities;
     public List<PassiveDefinition> availableSkills;
     [Header("Resource")]
+    public string resourceName;
+    public string resourceDescription;
+    
     public Color resourceBarColor;
     public int startResources;
     public int maxResources;
     public int resourceRegeneration;
     public int resourceRegenerationTickDelay;
     public bool canResourceOverflow = false;
-
-    public bool isHealer => type == HeroType.Heal;
+   
+    public List<DynamicValue> resourceValues;
+    public bool IsHealer => type == HeroType.Heal;
 }

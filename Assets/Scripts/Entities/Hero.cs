@@ -145,7 +145,7 @@ public class Hero : Entity
     {
         if (isAlive && CanCast())
         {
-            if (!definition.isHealer)
+            if (!definition.IsHealer)
             {
                 if (target.CompareTag("Boss"))
                 {
