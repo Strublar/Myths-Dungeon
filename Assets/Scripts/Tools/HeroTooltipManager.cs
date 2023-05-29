@@ -37,8 +37,8 @@ public class HeroTooltipManager : MonoBehaviour
         stats.text = "Level : " + hero.level +
                      "\nHp :  " + hero.maxHp +
                      "\nArmor :  " + hero.armor +
-                     "\nCritChance :  " + hero.definition.critChance + "%" +
-                     "\nCritPower :  " + hero.definition.critPower + "%" +
+                     "\nCritChance :  " + hero.critChance + "%" +
+                     "\nCritPower :  " + hero.critPower + "%" +
                      "\nThreat :  x" + hero.definition.threatRatio;
 
         string[] formatList = new string[hero.ability.linkedPassive.values.Count];

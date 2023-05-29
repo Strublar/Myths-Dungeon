@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LootManager : MonoBehaviour
 {
-    public static LootManager lm;
+    public static LootManager instance;
     public List<ItemDefinition> lootTable;
     public List<LootedItem> lootedItems;
     public List<ExperienceItem> experienceItems;
-    public GameObject continueButton;
     public int commonProbability, rareProbability, epicProbability, legendaryProbability;
     public int normalProbability, enhancedProbability, masterworkProbability, legacyProbability;
     public int lootChosen = 0;
 
     public void Awake()
     {
-        lm = this;
+        instance = this;
     }
     public List<ItemDefinition> GetLoots()
     {
@@ -83,15 +83,15 @@ public class LootManager : MonoBehaviour
         }
     }
 
-    public void OnEnable()
+    public void Start()
     {
         lootChosen = 0;
         List<ItemDefinition> loots = GetLoots();
 
         //level
-        lootedItems[0].item.level = GameManager.gm.bossBeaten;
-        lootedItems[1].item.level = GameManager.gm.bossBeaten;
-        lootedItems[2].item.level = GameManager.gm.bossBeaten;
+        lootedItems[0].item.level = RunManager.instance.bossBeaten;
+        lootedItems[1].item.level = RunManager.instance.bossBeaten;
+        lootedItems[2].item.level = RunManager.instance.bossBeaten;
 
         //item
         lootedItems[0].item.definition = loots[0];
@@ -119,9 +119,6 @@ public class LootManager : MonoBehaviour
         experienceItems[0].gameObject.SetActive(true);
         experienceItems[1].gameObject.SetActive(true);
         experienceItems[2].gameObject.SetActive(true);
-
-        continueButton.SetActive(false);
-        
     }
 
     public void Choose(int id)
@@ -130,9 +127,10 @@ public class LootManager : MonoBehaviour
 
         lootedItems[id].gameObject.SetActive(false);
         experienceItems[id].gameObject.SetActive(false);
-        if(lootChosen == 3)
+        if(lootChosen == lootedItems.Count)
         {
-            continueButton.SetActive(true);
+            SceneManager.LoadScene("ContinueScene", LoadSceneMode.Additive);
+            SceneManager.UnloadSceneAsync("LootScene");
         }
     }
 

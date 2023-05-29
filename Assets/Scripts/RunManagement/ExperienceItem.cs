@@ -15,7 +15,7 @@ public class ExperienceItem : MonoBehaviour
             Hero heroTarget = target.GetComponent<Hero>();
             heroTarget.AddXp(1);
             heroTarget.LoadDefinition();
-            LootManager.lm.Choose(id);
+            LootManager.instance.Choose(id);
         }
         isDragging = false;
     }

@@ -22,7 +22,7 @@ public class Passive : MonoBehaviour
 
     public void Update()
     {
-        if (GameManager.gm.fightStarted)
+        if (RunManager.instance.fightStarted)
         {
             if (definition.trigger == Trigger.EveryPersonalTick)
             {

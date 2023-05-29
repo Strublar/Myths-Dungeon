@@ -6,6 +6,6 @@ public class ReturnToMenuButton : MonoBehaviour
 {
     public void OnTap()
     {
-        GameManager.gm.ReturnToMenu();
+        RunManager.instance.ReturnToMenu();
     }
 }

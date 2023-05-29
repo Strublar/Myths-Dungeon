@@ -60,7 +60,7 @@ public class TriggerManager : MonoBehaviour
 
     public void Update()
     {
-        if(GameManager.gm.fightStarted)
+        if(RunManager.instance.fightStarted)
         {
             timer1s -= Time.deltaTime;
             while(timer1s<0)

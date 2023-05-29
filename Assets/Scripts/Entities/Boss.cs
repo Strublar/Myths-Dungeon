@@ -52,7 +52,7 @@ public class Boss : Entity
 
     public void Update()
     {
-        if (GameManager.gm.fightStarted && isAlive)
+        if (RunManager.instance.fightStarted && isAlive)
         {
             foreach(BossSpellDefinition spell in definition.spells)
             {
@@ -96,6 +96,6 @@ public class Boss : Entity
     {
         base.Die();
         gameObject.SetActive(false);
-        GameManager.gm.BossDefeated();
+        RunManager.instance.BossDefeated();
     }
 }

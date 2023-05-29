@@ -10,7 +10,7 @@ public class RandomHeroTargetSelector : TargetSelector
     public override List<Entity> GetTargets(Context context)
     {
         List<Entity> newTargets = new List<Entity>();
-        List<Hero> aliveHeroes = (from hero in GameManager.gm.heroes
+        List<Hero> aliveHeroes = (from hero in RunManager.instance.heroes
                                  where hero.isAlive
                                  select hero).ToList();
         if (aliveHeroes.Count <= count)

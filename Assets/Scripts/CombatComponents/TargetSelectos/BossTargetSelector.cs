@@ -9,6 +9,6 @@ public class BossTargetSelector : TargetSelector
     public override List<Entity> GetTargets(Context context)
     {
 
-        return new List<Entity>() {GameManager.gm.boss };
+        return new List<Entity>() {FightManager.instance.boss };
     }
 }

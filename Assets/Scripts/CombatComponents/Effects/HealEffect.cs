@@ -19,7 +19,7 @@ public class HealEffect : Effect
         if (context.source is Hero hero)
         {
             hero.threat += healValue * hero.definition.threatRatio;
-            GameManager.gm.UpdateMostThreatHero(hero);
+            FightManager.instance.UpdateMostThreatHero(hero);
         }
 
         if (duration != 0)

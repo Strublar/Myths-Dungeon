@@ -53,7 +53,7 @@ public class Hero : Entity
             model.transform.localPosition = modelInitialPos;
         }
 
-        if (!CanCast() && GameManager.gm.fightStarted)
+        if (!CanCast() && RunManager.instance.fightStarted)
             model.GetComponent<SpriteRenderer>().color = Color.gray;
         else
             model.GetComponent<SpriteRenderer>().color = Color.white;
@@ -134,11 +134,7 @@ public class Hero : Entity
     public void OnTap()
     {
         isDragging = false;
-        if (GameManager.gm.isDeckbuilding)
-        {
-            GameManager.gm.ShowHeroes(definition.type);
-        }
-        else if (!GameManager.gm.fightStarted)
+        if (!RunManager.instance.fightStarted)
         {
             HeroTooltipManager.instance.InitHeroTooltip(this);
             HeroTooltipManager.instance.ShowToolTip();
@@ -167,7 +163,7 @@ public class Hero : Entity
             }
             else
             {
-                if (target.CompareTag("Hero") && GameManager.gm.fightStarted)
+                if (target.CompareTag("Hero") && RunManager.instance.fightStarted)
                 {
                     Pull(target);
                     Context context = new Context
@@ -182,14 +178,14 @@ public class Hero : Entity
                 }
             }
 
-            if (GameManager.gm.mostThreatHero == null)
+            if (FightManager.instance.mostThreatHero == null)
             {
-                GameManager.gm.mostThreatHero = this;
+                FightManager.instance.mostThreatHero = this;
             }
 
-            if (threat >= GameManager.gm.mostThreatHero.threat)
+            if (threat >= FightManager.instance.mostThreatHero.threat)
             {
-                GameManager.gm.mostThreatHero = this;
+                FightManager.instance.mostThreatHero = this;
             }
         }
 
@@ -198,10 +194,10 @@ public class Hero : Entity
 
     public void Pull(GameObject target)
     {
-        if (!GameManager.gm.fightStarted)
+        if (!RunManager.instance.fightStarted)
         {
-            GameManager.gm.fightStarted = true;
-            GameManager.gm.bossTimer = Time.time;
+            RunManager.instance.fightStarted = true;
+            FightManager.instance.bossTimer = Time.time;
             Context context = new Context
             {
                 source = this,
@@ -243,8 +239,8 @@ public class Hero : Entity
         base.Die();
         model.SetActive(false);
         healthBar.SetActive(false);
-        GameManager.gm.GetNewThreatHero();
-        GameManager.gm.HeroDies();
+        FightManager.instance.GetNewThreatHero();
+        FightManager.instance.HeroDies();
     }
 
     public void AddXp(int i)

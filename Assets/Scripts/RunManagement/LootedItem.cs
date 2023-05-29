@@ -58,7 +58,7 @@ public class LootedItem : MonoBehaviour
             heroTarget.item.quality = item.quality;
             heroTarget.LoadDefinition();
 
-            LootManager.lm.Choose(id);
+            LootManager.instance.Choose(id);
         }
         isDragging = false;
     }

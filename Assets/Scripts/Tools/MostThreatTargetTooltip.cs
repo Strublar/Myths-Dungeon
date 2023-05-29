@@ -9,12 +9,12 @@ public class MostThreatTargetTooltip : MonoBehaviour
     public void Update()
     {
         model.SetActive(false);
-        if (GameManager.gm.fightStarted)
+        if (RunManager.instance.fightStarted)
         {
-            if(GameManager.gm.mostThreatHero != null)
+            if(FightManager.instance.mostThreatHero != null)
             {
                 model.SetActive(true);
-                transform.parent = GameManager.gm.mostThreatHero.transform;
+                transform.parent = FightManager.instance.mostThreatHero.transform;
                 transform.localPosition = Vector3.zero;
             }
         }

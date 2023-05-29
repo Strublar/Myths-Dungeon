@@ -8,6 +8,6 @@ public class MostThreatHeroTargetSelector : TargetSelector
     
     public override List<Entity> GetTargets(Context context)
     {
-        return new List<Entity>() {GameManager.gm.mostThreatHero };
+        return new List<Entity>() {FightManager.instance.mostThreatHero };
     }
 }

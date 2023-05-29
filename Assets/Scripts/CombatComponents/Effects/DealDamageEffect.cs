@@ -18,7 +18,7 @@ public class DealDamageEffect : Effect
         if (context.source is Hero hero)
         {
             hero.threat += damageValue * hero.definition.threatRatio;
-            GameManager.gm.UpdateMostThreatHero(hero);
+            FightManager.instance.UpdateMostThreatHero(hero);
         }
         if (duration != 0)
         {
