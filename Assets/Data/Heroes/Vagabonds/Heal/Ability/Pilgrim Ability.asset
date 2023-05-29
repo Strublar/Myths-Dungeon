@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca61f0287dde43ad8afc6f35b38edf83, type: 3}
-  m_Name: Test Ability
+  m_Name: Pilgrim Ability
   m_EditorClassIdentifier: 
   castConditions: []
   resourceModification: -10
-  linkedPassive: {fileID: 11400000, guid: b47cc470af23cf147837a95b1e815325, type: 2}
+  linkedPassive: {fileID: 11400000, guid: de40f630889e7d647b6791fc94e78a4f, type: 2}

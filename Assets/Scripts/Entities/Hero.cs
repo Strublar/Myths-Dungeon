@@ -36,11 +36,6 @@ public class Hero : Entity
 
     #endregion
 
-    public void Start()
-    {
-        modelInitialPos = model.transform.localPosition;
-    }
-
     public void Update()
     {
         if (Input.touchCount > 0)
@@ -70,6 +65,7 @@ public class Hero : Entity
             Destroy(model);
         model = Instantiate(definition.model, transform);
         model.transform.localPosition = new Vector3(.15f, -.5f);
+        modelInitialPos = model.transform.localPosition;
         isAlive = true;
         model.SetActive(true);
         healthBar.SetActive(true);
@@ -82,7 +78,7 @@ public class Hero : Entity
         threat = 0;
         critChance = definition.critChance + definition.critChancePerLevel * level;
         critPower = definition.critPower + definition.critPowerPerLevel * level;
-        
+
         var passives = new List<PassiveDefinition>(definition.passives);
         passives.Add(skill);
         passives.Add(ability.linkedPassive);

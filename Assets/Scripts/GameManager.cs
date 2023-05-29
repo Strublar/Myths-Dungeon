@@ -185,4 +185,12 @@ public class GameManager : MonoBehaviour
             mostThreatHero = hero;
         }
     }
+
+    public void ResetThreat()
+    {
+        foreach (var hero in heroes)
+        {
+            hero.threat = 0;
+        }
+    }
 }

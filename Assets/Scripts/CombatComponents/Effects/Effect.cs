@@ -2,11 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Effect : ScriptableObject
+public abstract class Effect : ScriptableObject
 {
-
-    public virtual void Apply(Context context)
-    {
-
-    }
+    public abstract void Apply(Context context);
 }
