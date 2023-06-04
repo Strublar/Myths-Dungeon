@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca61f0287dde43ad8afc6f35b38edf83, type: 3}
   m_Name: Traveller Ability
   m_EditorClassIdentifier: 
+  abilityName: Cut
   castConditions: []
-  resourceModification: -120
-  linkedPassive: {fileID: 11400000, guid: 306fdb14a2937ba43b8983afbcb5445a, type: 2}
+  cooldown: 8
+  linkedPassives:
+  - {fileID: 11400000, guid: 306fdb14a2937ba43b8983afbcb5445a, type: 2}

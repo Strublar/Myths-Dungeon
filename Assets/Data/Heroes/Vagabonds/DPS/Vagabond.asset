@@ -16,8 +16,8 @@ MonoBehaviour:
   heroImage: {fileID: 4068203885823228941, guid: 89bcbef0df82ec54c9a188f25ab0192f, type: 3}
   model: {fileID: 6659128185413003083, guid: ad816e09915606c448bb5458d1c1e6bc, type: 3}
   type: 2
-  hp: 100
-  hpPerLevel: 20
+  hp: 80
+  hpPerLevel: 16
   armor: 0
   armorPerLevel: 0
   threatRatio: 1
@@ -28,9 +28,4 @@ MonoBehaviour:
   passives: []
   availableAbilities: []
   availableSkills: []
-  resourceBarColor: {r: 0.78431374, g: 0.4321516, b: 0, a: 1}
-  startResources: 100
-  maxResources: 100
-  resourceRegeneration: 1
-  resourceRegenerationTickDelay: 1
-  canResourceOverflow: 0
+  cooldownBarColor: {r: 1, g: 0.9473685, b: 0, a: 1}

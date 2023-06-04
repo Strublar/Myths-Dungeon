@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "NewHeroDefininition", menuName = "Hero/HeroDefinition")]
 public class HeroDefinition : ScriptableObject
@@ -22,18 +23,8 @@ public class HeroDefinition : ScriptableObject
     [Header("Abilities and Passives")]
     public List<PassiveDefinition> passives;
     public List<AbilityDefinition> availableAbilities;
-    public List<PassiveDefinition> availableSkills;
-    [Header("Resource")]
-    public string resourceName;
-    public string resourceDescription;
+    public List<SkillDefinition> availableSkills;
     
-    public Color resourceBarColor;
-    public int startResources;
-    public int maxResources;
-    public int resourceRegeneration;
-    public int resourceRegenerationTickDelay;
-    public bool canResourceOverflow = false;
-   
-    public List<DynamicValue> resourceValues;
+    public Color cooldownBarColor;
     public bool IsHealer => type == HeroType.Heal;
 }

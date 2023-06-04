@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117da2f1d5dd34e4eb06ec66ad9b2194, type: 3}
+  m_Name: Passive
+  m_EditorClassIdentifier: 
+  description: +{0}% Damage for 5 seconds for every percent hp lost when taking damage
+  trigger: 7
+  triggerCount: 1
+  endTrigger: 0
+  endTriggerCount: 0
+  targets: {fileID: 11400000, guid: 6d4c675a7773b3348a19abd85e699b56, type: 2}
+  conditions:
+  - {fileID: 11400000, guid: dc187a930ec555e4a8566c3fe632d2f3, type: 2}
+  effects:
+  - {fileID: 11400000, guid: ea3e41f0d7e626e4aa6cac46855a9a8b, type: 2}
+  values:
+  - {fileID: 11400000, guid: e98b9e485fb59004890a14af85931bf7, type: 2}

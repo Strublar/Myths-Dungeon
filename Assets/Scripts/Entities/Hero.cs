@@ -19,11 +19,12 @@ public class Hero : Entity
 
     [Header("Definition")] public HeroDefinition definition;
     public Item item;
-    public PassiveDefinition skill;
+    public SkillDefinition skill;
     public AbilityDefinition ability;
 
-    [Header("FightStats")] public float threat;
-    public int resources;
+    [Header("FightStats")] [HideInInspector]
+    public float currentCooldown = 0f;
+    public float threat;
     public int critChance;
     public int critPower;
 
@@ -38,6 +39,7 @@ public class Hero : Entity
 
     public void Update()
     {
+        currentCooldown -= Time.deltaTime * Mathf.Max(haste / 100, 0);
         if (Input.touchCount > 0)
         {
             if (isDragging)
@@ -80,8 +82,17 @@ public class Hero : Entity
         critPower = definition.critPower + definition.critPowerPerLevel * level;
 
         var passives = new List<PassiveDefinition>(definition.passives);
-        passives.Add(skill);
-        passives.Add(ability.linkedPassive);
+        
+        foreach (var passive in skill.passives)
+        {
+            passives.Add(passive);
+        }
+        
+        foreach (var passive in ability.linkedPassives)
+        {
+            passives.Add(passive);
+        }
+
         foreach (PassiveDefinition passive in passives)
         {
             GameObject newPassive = Instantiate(passivePrefab, this.transform);
@@ -113,21 +124,12 @@ public class Hero : Entity
             }
         }
 
-        //resource passive
-        GameObject resourcePassiveObject = Instantiate(passivePrefab, transform);
-        Passive resourcePassive = resourcePassiveObject.GetComponent<Passive>();
-        resourcePassive.holder = this;
-        resourcePassive.definition = PassiveDefinition.BuildResourcePassive(this);
-        resourcePassive.level = item.level;
-        passiveObjects.Add(resourcePassive);
-
-
         attackContext = new Context
         {
             passiveHolder = this, source = this
         };
 
-        resources = definition.startResources;
+        currentCooldown = 0f;
         currentHp = maxHp;
     }
 
@@ -149,32 +151,37 @@ public class Hero : Entity
             {
                 if (target.CompareTag("Boss"))
                 {
+                    currentCooldown = ability.cooldown;
                     Pull(target);
                     Context context = new Context
                     {
                         source = this,
                         target = target.GetComponent<Entity>(),
                         passiveHolder = null,
-                        isCritical = Random.Range(0, 100) <= critChance
+                        isCritical = Random.Range(0, 100) <= critChance,
+                        level = level
                     };
                     TriggerManager.triggerMap[Trigger.OnAttack].Invoke(context);
-                    resources += ability.resourceModification;
+                    FightManager.instance.lastAbilityName = ability.abilityName;
                 }
             }
             else
             {
                 if (target.CompareTag("Hero") && RunManager.instance.fightStarted)
                 {
+                    currentCooldown = ability.cooldown;
                     Pull(target);
                     Context context = new Context
                     {
                         source = this,
                         target = target.GetComponent<Entity>(),
                         passiveHolder = null,
-                        isCritical = Random.Range(0, 100) <= critChance
+                        isCritical = Random.Range(0, 100) <= critChance,
+                        level = level
                     };
                     TriggerManager.triggerMap[Trigger.OnHeal].Invoke(context);
-                    resources += ability.resourceModification;
+                    FightManager.instance.lastAbilityName = ability.abilityName;
+                    
                 }
             }
 
@@ -196,6 +203,7 @@ public class Hero : Entity
     {
         if (!RunManager.instance.fightStarted)
         {
+            FightManager.instance.mostThreatHero = this;
             RunManager.instance.fightStarted = true;
             FightManager.instance.bossTimer = Time.time;
             Context context = new Context
@@ -223,9 +231,7 @@ public class Hero : Entity
 
     public bool CanCast()
     {
-        int resourcePreview = resources + ability.resourceModification;
-        bool canCast = resourcePreview >= 0 &&
-                       (resourcePreview <= definition.maxResources || definition.canResourceOverflow);
+        bool canCast = currentCooldown <= 0;
         foreach (var condition in ability.castConditions)
         {
             canCast &= condition.ShouldTrigger(attackContext);

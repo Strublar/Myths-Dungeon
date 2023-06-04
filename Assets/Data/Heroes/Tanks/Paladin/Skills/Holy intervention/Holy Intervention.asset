@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06846dd2ac6e489f801127972533f3f1, type: 3}
+  m_Name: Holy Intervention
+  m_EditorClassIdentifier: 
+  description: When you fall below {0}% health, heal {1} hp (20s cooldown)
+  passives:
+  - {fileID: 11400000, guid: 432c9727f4b3b9d438c4aacdb2c3cef7, type: 2}
+  values:
+  - {fileID: 11400000, guid: d9740fcebd7aca743ae61ea71c9464fb, type: 2}
+  - {fileID: 11400000, guid: 419c716b4f2144f44b0fd903c2fedda3, type: 2}

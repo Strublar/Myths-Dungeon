@@ -13,8 +13,6 @@ public class HeroTooltipManager : MonoBehaviour
     [Header("HeroTooltip")] public TMP_Text heroName;
     public Image heroImage;
     public TMP_Text stats;
-    public TMP_Text resourceName;
-    public TMP_Text resource;
     public TMP_Text abilityName;
     public TMP_Text ability;
     public TMP_Text passive;
@@ -37,38 +35,30 @@ public class HeroTooltipManager : MonoBehaviour
         };
         heroName.text = hero.definition.heroName;
         heroImage.sprite = hero.definition.heroImage;
-        stats.text = "Level :\t" + hero.level +
+        stats.text = "Level :\t" + (hero.level + 1) +
                      "\nHp :\t" + hero.maxHp +
                      "\nArmor :\t" + hero.armor +
                      "\nCrit% :\t" + hero.critChance + "%" +
                      "\nCritPow :\t" + hero.critPower + "%" +
                      "\nThreat :\tx" + hero.definition.threatRatio;
 
-        string[] formatList = new string[hero.ability.linkedPassive.values.Count];
-        for (int i = 0; i < hero.ability.linkedPassive.values.Count; i++)
+        abilityName.text = hero.ability.abilityName + " (" + $"{hero.ability.cooldown / hero.haste * 100:0.#}" + "s)";
+
+        var formatListAbility = new string[hero.ability.linkedPassives[0].values.Count];
+        for (int i = 0; i < hero.ability.linkedPassives[0].values.Count; i++)
         {
-            formatList[i] = hero.ability.linkedPassive.values[i].computeValue(context).ToString();
+            formatListAbility[i] = hero.ability.linkedPassives[0].values[i].computeValue(context).ToString();
         }
 
-        resourceName.text = hero.definition.resourceName + " (" + hero.definition.maxResources + ")";
-        
-        var formatListResource = new string[hero.definition.resourceValues.Count];
-        for (int i = 0; i < hero.definition.resourceValues.Count; i++)
-        {
-            formatListResource[i] = hero.definition.resourceValues[i].computeValue(context).ToString();
-        }
-        resource.text = string.Format(hero.definition.resourceDescription, formatListResource);
+        ability.text = string.Format(hero.ability.linkedPassives[0].description, formatListAbility);
 
-        abilityName.text = hero.ability.abilityName;
-
-        var formatListAbility = new string[hero.ability.linkedPassive.values.Count];
-        for (int i = 0; i < hero.ability.linkedPassive.values.Count; i++)
+        string[] formatListSkill = new string[hero.skill.values.Count];
+        for (int i = 0; i < hero.skill.values.Count; i++)
         {
-            formatListAbility[i] = hero.ability.linkedPassive.values[i].computeValue(context).ToString();
+            formatListSkill[i] = hero.skill.values[i].computeValue(context).ToString();
         }
 
-        ability.text = string.Format(hero.ability.linkedPassive.description, formatListAbility);
-        passive.text = string.Format(hero.ability.linkedPassive.description, formatList);
+        passive.text = string.Format(hero.skill.description, formatListSkill);
 
         string[] formatListItem = Array.Empty<string>();
         if (hero.item.definition != null)

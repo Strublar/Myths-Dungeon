@@ -23,6 +23,8 @@ public class ChooseHeroButton : MonoBehaviour
             if(targetHero.definition.type == hero.definition.type)
             {
                 targetHero.definition = hero.definition;
+                targetHero.ability = hero.ability;
+                targetHero.skill = hero.skill;
                 targetHero.LoadDefinition();
                 TavernManager.instance.HeroChosen();
             }

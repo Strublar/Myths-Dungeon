@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -369,6 +369,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   availableHeroes:
   - {fileID: 11400000, guid: 3318061418498f6489ca4cbd8c1723db, type: 2}
+  - {fileID: 11400000, guid: 6ba6ca40b35d21c418aecd13e0d5197d, type: 2}
+  - {fileID: 11400000, guid: 911cc7879e27b4b4084d122fa252f3a5, type: 2}
   tavernSlots:
   - {fileID: 1656770373}
   - {fileID: 131160168}

@@ -9,9 +9,10 @@ public class Passive : MonoBehaviour
     public PassiveDefinition definition;
     public int triggerCount = 0;
     public int endTriggerCount = 0;
+    public float currentCooldown = 0;
 
-    public float clock = 0.05f;
-    public float clockEnd = 0.05f;
+    public float clock = 0.1f;
+    public float clockEnd = 0.1f;
 
     public void Start()
     {
@@ -24,6 +25,7 @@ public class Passive : MonoBehaviour
     {
         if (RunManager.instance.fightStarted)
         {
+            currentCooldown -= Time.deltaTime;
             if (definition.trigger == Trigger.EveryPersonalTick)
             {
                 clock -= Time.deltaTime;
@@ -58,7 +60,7 @@ public class Passive : MonoBehaviour
     public void Execute(Context context)
     {
         triggerCount++;
-        if (triggerCount >= definition.triggerCount && definition.triggerCount != 0)
+        if (triggerCount >= definition.triggerCount && definition.triggerCount != 0 && currentCooldown <= definition.internalCooldown)
         {
             context.passiveHolder = holder;
             bool shouldTrigger = true;
@@ -85,6 +87,7 @@ public class Passive : MonoBehaviour
             }
 
             triggerCount = 0;
+            currentCooldown = definition.internalCooldown;
         }
     }
 

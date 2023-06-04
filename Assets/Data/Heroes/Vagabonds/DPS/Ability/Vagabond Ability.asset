@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca61f0287dde43ad8afc6f35b38edf83, type: 3}
   m_Name: Vagabond Ability
   m_EditorClassIdentifier: 
+  abilityName: Slash
   castConditions: []
-  resourceModification: -100
-  linkedPassive: {fileID: 11400000, guid: b47cc470af23cf147837a95b1e815325, type: 2}
+  cooldown: 7
+  linkedPassives:
+  - {fileID: 11400000, guid: b47cc470af23cf147837a95b1e815325, type: 2}

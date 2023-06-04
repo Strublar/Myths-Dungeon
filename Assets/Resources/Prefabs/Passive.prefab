@@ -43,5 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce7e5ac447218446979b26027ec7ed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 0
   holder: {fileID: 0}
   definition: {fileID: 0}
+  triggerCount: 0
+  endTriggerCount: 0
+  clock: 0
+  clockEnd: 0

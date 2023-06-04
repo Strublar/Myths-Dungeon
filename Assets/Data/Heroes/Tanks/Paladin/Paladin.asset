@@ -17,20 +17,21 @@ MonoBehaviour:
   model: {fileID: 8461778819654013387, guid: 23e00506a4903c944af70043e69b86c2, type: 3}
   type: 0
   hp: 200
-  hpPerLevel: 20
-  armor: 30
-  armorPerLevel: 3
-  threatRatio: 4
-  critChance: 0
-  critChancePerLevel: 0
-  critPower: 0
+  hpPerLevel: 40
+  armor: 50
+  armorPerLevel: 10
+  threatRatio: 5
+  critChance: 10
+  critChancePerLevel: 2
+  critPower: 150
   critPowerPerLevel: 0
   passives: []
-  availableAbilities: []
-  availableSkills: []
-  resourceBarColor: {r: 1, g: 0.97662324, b: 0, a: 1}
-  startResources: 3
-  maxResources: 3
-  resourceRegeneration: 1
-  resourceRegenerationTickDelay: 50
-  canResourceOverflow: 0
+  availableAbilities:
+  - {fileID: 11400000, guid: b1e6230e65093374d9caa0a84cf74e5a, type: 2}
+  - {fileID: 11400000, guid: 9b7def6f57ab41542ac71555cc7de25a, type: 2}
+  - {fileID: 11400000, guid: ff4ec69986b0703409e088aa5180c134, type: 2}
+  availableSkills:
+  - {fileID: 11400000, guid: 2232ad07bbcf4c048b31c84fa7729e2e, type: 2}
+  - {fileID: 11400000, guid: ed01f897bd728834cb63f138e6e6903a, type: 2}
+  - {fileID: 11400000, guid: ca6d72a64f392f94f8db79f893b5db1e, type: 2}
+  cooldownBarColor: {r: 1, g: 0.9635534, b: 0, a: 1}

@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca61f0287dde43ad8afc6f35b38edf83, type: 3}
   m_Name: Pilgrim Ability
   m_EditorClassIdentifier: 
+  abilityName: First aid
   castConditions: []
-  resourceModification: -80
-  linkedPassive: {fileID: 11400000, guid: de40f630889e7d647b6791fc94e78a4f, type: 2}
+  cooldown: 6
+  linkedPassives:
+  - {fileID: 11400000, guid: de40f630889e7d647b6791fc94e78a4f, type: 2}

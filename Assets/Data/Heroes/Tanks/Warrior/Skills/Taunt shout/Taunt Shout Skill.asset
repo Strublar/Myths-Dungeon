@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06846dd2ac6e489f801127972533f3f1, type: 3}
+  m_Name: Taunt Shout Skill
+  m_EditorClassIdentifier: 
+  description: 'When boss target falls below {0}% hp, taunt and shout (5s cooldown).
+    Shouts refund {1}% cooldown '
+  passives:
+  - {fileID: 11400000, guid: 9682e34e445c0164bbde9d7888b3b582, type: 2}
+  - {fileID: 11400000, guid: 8254be2f2318d7f41b80552f03f542dd, type: 2}
+  values:
+  - {fileID: 11400000, guid: 1607a2eaf0d4d864892e9cd53426b58b, type: 2}
+  - {fileID: 11400000, guid: 682202500cc7fb941a4c66569f8cdfc7, type: 2}

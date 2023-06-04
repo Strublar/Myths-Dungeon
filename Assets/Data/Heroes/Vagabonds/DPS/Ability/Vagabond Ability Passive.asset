@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117da2f1d5dd34e4eb06ec66ad9b2194, type: 3}
   m_Name: Vagabond Ability Passive
   m_EditorClassIdentifier: 
-  description: 'Attack : Deal {0} damage'
+  description: Deal {0} damage
   trigger: 2
   triggerCount: 1
   endTrigger: 0

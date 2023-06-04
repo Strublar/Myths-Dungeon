@@ -22,27 +22,27 @@ public class Entity : MonoBehaviour
 
     #endregion
 
-    public void DealDamage(int value, Entity source, bool isCritical)
+    public void DealDamage(Context context)
     {
         if (isAlive)
         {
             int damageValue = 0;
             if (armor >= 0)
-                damageValue = Mathf.RoundToInt(value * (100.0f / (100 + armor)));
+                damageValue = Mathf.RoundToInt(context.value * (100.0f / (100 + armor)));
             else
-                damageValue = Mathf.RoundToInt(value * ((100.0f - armor) / 100));
+                damageValue = Mathf.RoundToInt(context.value * ((100.0f - armor) / 100));
             currentHp -= damageValue;
 
             if (damageValue > 0)
             {
                 BubbleBehaviour bubble = Instantiate(damageBubble, transform);
                 bubble.transform.localPosition = new Vector3(Random.Range(-1f, 1f), Random.Range(-1.5f, -0.5f), 0);
-                bubble.text.text = "-" + Mathf.RoundToInt(damageValue) + (isCritical ? "!!!" : "");
+                bubble.text.text = "-" + Mathf.RoundToInt(damageValue) + (context.isCritical ? "!!!" : "");
             }
 
             TriggerManager.OnDamageReceived.Invoke(new Context()
             {
-                source = source, target = this,
+                source = context.source, target = this,
                 value = damageValue,
                 percentHpLost = Mathf.RoundToInt((float)damageValue / maxHp * 100)
             });

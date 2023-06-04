@@ -13,6 +13,7 @@ public enum Trigger
     EveryPersonalTick,
     FightEnd,
     OnDamageReceived,
+    OnSpecificEvent,
 }
 
 public struct Context
@@ -24,7 +25,8 @@ public struct Context
     public int value;
     public int percentHpLost;
     public bool isCritical;
-
+    public DamageType damageType;
+    public SpecificEvent specificEvent;
 }
 
 public class TriggerManager : MonoBehaviour
@@ -38,6 +40,7 @@ public class TriggerManager : MonoBehaviour
     public static UnityEvent<Context> EveryPersonalSecond = new UnityEvent<Context>();
     public static UnityEvent<Context> FightEnd = new UnityEvent<Context>();
     public static UnityEvent<Context> OnDamageReceived = new UnityEvent<Context>();
+    public static UnityEvent<Context> OnSpecificEvent = new UnityEvent<Context>();
 
     public static Dictionary<Trigger, UnityEvent<Context>> triggerMap = new Dictionary<Trigger, UnityEvent<Context>>
     {
@@ -49,6 +52,8 @@ public class TriggerManager : MonoBehaviour
         { Trigger.EveryPersonalTick,EveryPersonalSecond},
         { Trigger.FightEnd,FightEnd},
         { Trigger.OnDamageReceived,OnDamageReceived},
+        { Trigger.OnSpecificEvent,OnSpecificEvent},
+        
     };
 
     private float timer1s = 0.1f;

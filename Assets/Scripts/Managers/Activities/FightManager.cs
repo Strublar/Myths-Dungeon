@@ -8,13 +8,14 @@ using Random = UnityEngine.Random;
 public class FightManager : MonoBehaviour
 {
     public static FightManager instance;
-    
+
     public List<BossDefinition> bossPool;
     public Boss boss;
     public Hero mostThreatHero = null;
     public int deadHeroes;
-    public float bossTimer= 0f;
+    public float bossTimer = 0f;
     public TextMeshPro currentLevel;
+    public string lastAbilityName = "";
 
     public void Awake()
     {
@@ -26,11 +27,11 @@ public class FightManager : MonoBehaviour
         var bossBeaten = RunManager.instance.bossBeaten;
         currentLevel.text = "Level : " + (bossBeaten + 1);
         bossTimer = 0;
-        boss.level = bossBeaten+1;
-        
+        boss.level = bossBeaten + 1;
+
         if (boss.model != null)
             Destroy(boss.model);
-        
+
         do
         {
             boss.definition = bossPool[Random.Range(0, bossPool.Count)];
@@ -41,25 +42,25 @@ public class FightManager : MonoBehaviour
         boss.LoadDefinition();
         boss.gameObject.SetActive(true);
         deadHeroes = 0;
+        lastAbilityName = "";
 
         RunManager.instance.ReloadHeroes();
     }
-    
-    
+
 
     public void GetNewThreatHero()
     {
         float maxThreat = -1;
-        foreach(Hero hero in RunManager.instance.heroes)
+        foreach (Hero hero in RunManager.instance.heroes)
         {
-            if(hero.threat > maxThreat && hero.isAlive)
+            if (hero.threat > maxThreat && hero.isAlive)
             {
                 mostThreatHero = hero;
                 maxThreat = mostThreatHero.threat;
             }
         }
     }
-    
+
     public void UpdateMostThreatHero(Hero hero)
     {
         if (mostThreatHero == null)
@@ -72,7 +73,7 @@ public class FightManager : MonoBehaviour
             mostThreatHero = hero;
         }
     }
-    
+
     public void ResetThreat()
     {
         foreach (var hero in RunManager.instance.heroes)
@@ -80,11 +81,11 @@ public class FightManager : MonoBehaviour
             hero.threat = 0;
         }
     }
-    
+
     public void HeroDies()
     {
         deadHeroes++;
-        if(deadHeroes == RunManager.instance.heroes.Count)
+        if (deadHeroes == RunManager.instance.heroes.Count)
         {
             //loseScreen.SetActive(true);
             //fightStarted = false;

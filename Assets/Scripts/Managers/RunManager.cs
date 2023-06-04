@@ -55,7 +55,7 @@ public class RunManager : MonoBehaviour
         foreach (Hero hero in heroes)
         {
 
-            hero.level = 1;
+            hero.level = 0;
             hero.item.definition = null;
         }
         ReloadHeroes();

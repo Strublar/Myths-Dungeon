@@ -707,7 +707,7 @@ PrefabInstance:
     - target: {fileID: 1337327916767857360, guid: fda5d5d4576fc4c4dbb6e6a93b027d7a, type: 3}
       propertyPath: skill
       value: 
-      objectReference: {fileID: 11400000, guid: e91d789fbf459b746978473660b08afe, type: 2}
+      objectReference: {fileID: 11400000, guid: 07f38a578eb3e314fa631c49e562d348, type: 2}
     - target: {fileID: 1337327916767857360, guid: fda5d5d4576fc4c4dbb6e6a93b027d7a, type: 3}
       propertyPath: ability
       value: 
@@ -869,7 +869,7 @@ PrefabInstance:
     - target: {fileID: 2444265132148806365, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
       propertyPath: skill
       value: 
-      objectReference: {fileID: 11400000, guid: e91d789fbf459b746978473660b08afe, type: 2}
+      objectReference: {fileID: 11400000, guid: 07f38a578eb3e314fa631c49e562d348, type: 2}
     - target: {fileID: 2444265132148806365, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
       propertyPath: ability
       value: 
@@ -1238,7 +1238,7 @@ PrefabInstance:
     - target: {fileID: 1337327916767857360, guid: fda5d5d4576fc4c4dbb6e6a93b027d7a, type: 3}
       propertyPath: skill
       value: 
-      objectReference: {fileID: 11400000, guid: e91d789fbf459b746978473660b08afe, type: 2}
+      objectReference: {fileID: 11400000, guid: 07f38a578eb3e314fa631c49e562d348, type: 2}
     - target: {fileID: 1337327916767857360, guid: fda5d5d4576fc4c4dbb6e6a93b027d7a, type: 3}
       propertyPath: ability
       value: 
@@ -1862,8 +1862,6 @@ MonoBehaviour:
   heroName: {fileID: 373952961}
   heroImage: {fileID: 309895060}
   stats: {fileID: 1234729426}
-  resourceName: {fileID: 850576529}
-  resource: {fileID: 739362067}
   abilityName: {fileID: 2096070615}
   ability: {fileID: 2121706808}
   passive: {fileID: 1483959246}
@@ -3592,7 +3590,7 @@ PrefabInstance:
     - target: {fileID: 2444265132148806365, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
       propertyPath: skill
       value: 
-      objectReference: {fileID: 11400000, guid: e91d789fbf459b746978473660b08afe, type: 2}
+      objectReference: {fileID: 11400000, guid: 07f38a578eb3e314fa631c49e562d348, type: 2}
     - target: {fileID: 2444265132148806365, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
       propertyPath: ability
       value: 
@@ -3681,7 +3679,7 @@ PrefabInstance:
     - target: {fileID: 2444265132148806365, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
       propertyPath: skill
       value: 
-      objectReference: {fileID: 11400000, guid: e91d789fbf459b746978473660b08afe, type: 2}
+      objectReference: {fileID: 11400000, guid: 07f38a578eb3e314fa631c49e562d348, type: 2}
     - target: {fileID: 2444265132148806365, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
       propertyPath: ability
       value: 
@@ -3754,7 +3752,7 @@ PrefabInstance:
     - target: {fileID: 2444265132148806365, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
       propertyPath: skill
       value: 
-      objectReference: {fileID: 11400000, guid: e91d789fbf459b746978473660b08afe, type: 2}
+      objectReference: {fileID: 11400000, guid: 07f38a578eb3e314fa631c49e562d348, type: 2}
     - target: {fileID: 2444265132148806365, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
       propertyPath: ability
       value: 
@@ -4486,7 +4484,7 @@ PrefabInstance:
     - target: {fileID: 4715543860532776583, guid: 8807004c03dfca744840f7d6941045e4, type: 3}
       propertyPath: skill
       value: 
-      objectReference: {fileID: 11400000, guid: e91d789fbf459b746978473660b08afe, type: 2}
+      objectReference: {fileID: 11400000, guid: 07f38a578eb3e314fa631c49e562d348, type: 2}
     - target: {fileID: 4715543860532776583, guid: 8807004c03dfca744840f7d6941045e4, type: 3}
       propertyPath: ability
       value: 
@@ -4553,7 +4551,7 @@ PrefabInstance:
     - target: {fileID: 2444265132148806365, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
       propertyPath: skill
       value: 
-      objectReference: {fileID: 11400000, guid: e91d789fbf459b746978473660b08afe, type: 2}
+      objectReference: {fileID: 11400000, guid: 07f38a578eb3e314fa631c49e562d348, type: 2}
     - target: {fileID: 2444265132148806365, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
       propertyPath: ability
       value: 
@@ -5423,7 +5421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1952650499
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6456,7 +6454,7 @@ PrefabInstance:
     - target: {fileID: 4715543860532776583, guid: 8807004c03dfca744840f7d6941045e4, type: 3}
       propertyPath: skill
       value: 
-      objectReference: {fileID: 11400000, guid: e91d789fbf459b746978473660b08afe, type: 2}
+      objectReference: {fileID: 11400000, guid: 07f38a578eb3e314fa631c49e562d348, type: 2}
     - target: {fileID: 4715543860532776583, guid: 8807004c03dfca744840f7d6941045e4, type: 3}
       propertyPath: ability
       value: 
@@ -6481,7 +6479,7 @@ PrefabInstance:
     - target: {fileID: 2444265132148806365, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
       propertyPath: skill
       value: 
-      objectReference: {fileID: 11400000, guid: e91d789fbf459b746978473660b08afe, type: 2}
+      objectReference: {fileID: 11400000, guid: 07f38a578eb3e314fa631c49e562d348, type: 2}
     - target: {fileID: 2444265132148806365, guid: daadea648f7849141bdceb9c5bdf6932, type: 3}
       propertyPath: ability
       value: 
@@ -6554,7 +6552,7 @@ PrefabInstance:
     - target: {fileID: 1337327916767857360, guid: fda5d5d4576fc4c4dbb6e6a93b027d7a, type: 3}
       propertyPath: skill
       value: 
-      objectReference: {fileID: 11400000, guid: e91d789fbf459b746978473660b08afe, type: 2}
+      objectReference: {fileID: 11400000, guid: 07f38a578eb3e314fa631c49e562d348, type: 2}
     - target: {fileID: 1337327916767857360, guid: fda5d5d4576fc4c4dbb6e6a93b027d7a, type: 3}
       propertyPath: ability
       value: 
