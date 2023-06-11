@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: c5c8f5d8874ab934f823cdd3501126b6
+  - enabled: 1
+    path: Assets/Scenes/MenuScene.unity
+    guid: c1e068c5198851443a855b4c416495fd
+  - enabled: 1
+    path: Assets/Scenes/RunScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/ContinueScene.unity
+    guid: a9c5fe2e55bdec249b7fe57f0ba7d2c8
+  - enabled: 1
+    path: Assets/Scenes/RunScenes/ActivityScene.unity
+    guid: aaf53708506be004aa46324685e326b9
+  - enabled: 1
+    path: Assets/Scenes/RunScenes/Activities/FightScene.unity
+    guid: 0b3b62f5b185e674383c0eaec1fbc10f
+  - enabled: 1
+    path: Assets/Scenes/RunScenes/Activities/LootScene.unity
+    guid: dc75692852ef6d5449b79aa5650945b6
+  - enabled: 1
+    path: Assets/Scenes/RunScenes/Activities/TavernScene.unity
+    guid: dde5739839c28d04db9412cee6d6f3a9
+  m_configObjects: {}
