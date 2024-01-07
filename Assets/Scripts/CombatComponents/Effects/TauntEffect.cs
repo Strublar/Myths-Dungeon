@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewEffect", menuName = "Effects/Taunt")]
+[CreateAssetMenu(fileName = "TauntEffect", menuName = "Effects/Taunt")]
 
 public class TauntEffect : Effect
 {

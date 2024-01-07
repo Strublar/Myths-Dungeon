@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "NewBossSpell", menuName= "Boss/BossSpell")]
-public class BossSpellDefinition : ScriptableObject
+[CreateAssetMenu(fileName = "EnemySpell", menuName= "Enemy/EnemySpell")]
+public class EnemySpellDefinition : ScriptableObject
 {
     #region Stats
 

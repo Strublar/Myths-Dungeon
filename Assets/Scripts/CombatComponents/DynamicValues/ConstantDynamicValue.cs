@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewDynamicValue", menuName = "DynamicValue/Constant")]
+[CreateAssetMenu(fileName = "Value", menuName = "DynamicValue/Constant")]
 public class ConstantDynamicValue : DynamicValue
 {
 

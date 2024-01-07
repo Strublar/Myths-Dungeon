@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class FightManager : MonoBehaviour
 {
     public static FightManager instance;
 
-    public List<BossDefinition> bossPool;
-    public Boss boss;
+    public List<EnemyDefinition> bossPool;
+    public Enemy boss;
     public Hero mostThreatHero = null;
     public int deadHeroes;
     public float bossTimer = 0f;
@@ -25,7 +26,7 @@ public class FightManager : MonoBehaviour
     public void Start()
     {
         var bossBeaten = RunManager.instance.bossBeaten;
-        currentLevel.text = "Level : " + (bossBeaten + 1);
+        currentLevel.text = "Boss : " + (bossBeaten + 1);
         bossTimer = 0;
         boss.level = bossBeaten + 1;
 

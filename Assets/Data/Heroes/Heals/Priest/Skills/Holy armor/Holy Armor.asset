@@ -9,15 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b904a86b408cbf2419158446c76790e1, type: 3}
-  m_Name: TestBoss
+  m_Script: {fileID: 11500000, guid: 06846dd2ac6e489f801127972533f3f1, type: 3}
+  m_Name: Holy Armor
   m_EditorClassIdentifier: 
-  enemyName: 
-  model: {fileID: 2172587256300959795, guid: 58466a7842581a240a0769d0e50d99a8, type: 3}
-  isBoss: 1
-  hp: 200
-  hpPerLevel: 0
-  armor: 0
-  armorPerLevel: 0
-  spells: []
-  passives: []
+  description: 
+  passives:
+  - {fileID: 0}
+  values: []

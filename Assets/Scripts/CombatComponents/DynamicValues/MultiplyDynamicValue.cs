@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewDynamicValue", menuName = "DynamicValue/Operation/Multiply")]
+[CreateAssetMenu(fileName = "MultiplyValue", menuName = "DynamicValue/Operation/Multiply")]
 public class MultiplyDynamicValue : DynamicValue
 {
     public List<DynamicValue> values;

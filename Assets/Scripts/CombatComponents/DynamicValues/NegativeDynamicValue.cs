@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewDynamicValue", menuName = "DynamicValue/Operation/Negative")]
+[CreateAssetMenu(fileName = "NegativeValue", menuName = "DynamicValue/Operation/Negative")]
 public class NegativeDynamicValue : DynamicValue
 {
     public DynamicValue value;

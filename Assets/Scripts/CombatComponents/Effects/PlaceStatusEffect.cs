@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewEffect", menuName = "Effects/PlaceStatus")]
+[CreateAssetMenu(fileName = "PlacePassiveEffect", menuName = "Effects/PlaceStatus")]
 public class PlaceStatusEffect : Effect
 {
     public PassiveDefinition status;

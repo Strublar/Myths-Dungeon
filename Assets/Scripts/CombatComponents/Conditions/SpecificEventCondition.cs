@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewCondition", menuName = "Conditions/SpecificEvent")]
+[CreateAssetMenu(fileName = "SpecificEventCondition", menuName = "Conditions/SpecificEvent")]
 public class SpecificEventCondition : Condition
 {
     public SpecificEvent specificEvent;

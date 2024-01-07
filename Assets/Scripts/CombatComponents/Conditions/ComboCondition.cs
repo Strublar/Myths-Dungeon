@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewCondition", menuName = "Conditions/Combo")]
+[CreateAssetMenu(fileName = "ComboCondition", menuName = "Conditions/Combo")]
 public class ComboCondition : Condition
 {
     public string lastAbilityName;

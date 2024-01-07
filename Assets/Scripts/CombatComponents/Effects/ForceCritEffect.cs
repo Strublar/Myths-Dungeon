@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewEffect", menuName = "Effects/ForceCrit")]
+[CreateAssetMenu(fileName = "ForceCritEffect", menuName = "Effects/ForceCrit")]
 
 public class ForceCritEffect : Effect
 {

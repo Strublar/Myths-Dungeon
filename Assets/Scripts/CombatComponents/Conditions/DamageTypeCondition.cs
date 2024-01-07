@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewCondition", menuName = "Conditions/DamageType")]
+[CreateAssetMenu(fileName = "DamageTypeCondition", menuName = "Conditions/DamageType")]
 public class DamageTypeCondition : Condition
 {
     public DamageType damageType = DamageType.None;

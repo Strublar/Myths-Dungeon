@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewEffect", menuName = "Effects/RefundCooldown")]
+[CreateAssetMenu(fileName = "RefundCooldownEffect", menuName = "Effects/RefundCooldown")]
 
 public class RefundCooldownEffect : Effect
 {

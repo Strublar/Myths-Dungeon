@@ -44,7 +44,7 @@ public class TavernManager : MonoBehaviour
 
     private HeroType GetHeroType()
     {
-        switch(ActivityManager.chosenActivity)
+        switch(HubManager.chosenActivity)
         {
             case Activity.TavernTank:
                 return HeroType.Tank;

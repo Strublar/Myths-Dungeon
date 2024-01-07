@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewCondition", menuName = "Conditions/Comparator")]
+[CreateAssetMenu(fileName = "ComparatorCondition", menuName = "Conditions/Comparator")]
 public class ComparatorCondition : Condition
 {
     public enum Operation

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-[CreateAssetMenu(fileName = "NewPassive", menuName = "Passive")]
+[CreateAssetMenu(fileName = "Passive", menuName = "Passive")]
 public class PassiveDefinition : ScriptableObject
 {
     public string description;

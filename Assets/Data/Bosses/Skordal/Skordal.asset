@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b904a86b408cbf2419158446c76790e1, type: 3}
   m_Name: Skordal
   m_EditorClassIdentifier: 
-  bossName: Skordal
+  enemyName: 
   model: {fileID: 8610014897091649695, guid: 8fb383ac895985948b1c3f4ede0612af, type: 3}
+  isBoss: 1
   hp: 800
   hpPerLevel: 300
   armor: 50

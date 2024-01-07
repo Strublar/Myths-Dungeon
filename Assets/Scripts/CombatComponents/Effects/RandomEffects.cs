@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewEffect", menuName = "Effects/Random")]
+[CreateAssetMenu(fileName = "RandomEffect", menuName = "Effects/Random")]
 
 public class RandomEffects : Effect
 {

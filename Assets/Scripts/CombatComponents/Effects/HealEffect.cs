@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewEffect", menuName = "Effects/Heal")]
+[CreateAssetMenu(fileName = "HealEffect", menuName = "Effects/Heal")]
 public class HealEffect : Effect
 {
     public DynamicValue value;

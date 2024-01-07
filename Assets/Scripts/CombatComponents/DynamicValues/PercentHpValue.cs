@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-[CreateAssetMenu(fileName = "NewDynamicValue", menuName = "DynamicValue/PercentHpValue")]
+[CreateAssetMenu(fileName = "PercentHpValue", menuName = "DynamicValue/PercentHpValue")]
 public class PercentHpValue : DynamicValue
 {
     public TargetSelector targetSelector;

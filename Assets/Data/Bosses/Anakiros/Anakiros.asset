@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b904a86b408cbf2419158446c76790e1, type: 3}
   m_Name: Anakiros
   m_EditorClassIdentifier: 
-  bossName: Anakiros
+  enemyName: 
   model: {fileID: 777939509765277824, guid: a40c689313f33cb4593395a456d8cc4e, type: 3}
+  isBoss: 1
   hp: 800
   hpPerLevel: 300
   armor: 50

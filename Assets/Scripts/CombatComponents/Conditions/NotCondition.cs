@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewCondition", menuName = "Conditions/Not")]
+[CreateAssetMenu(fileName = "NotCondition", menuName = "Conditions/Not")]
 public class NotCondition : Condition
 {
     public Condition condition;

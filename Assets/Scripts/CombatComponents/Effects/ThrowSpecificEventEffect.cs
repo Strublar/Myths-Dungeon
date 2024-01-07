@@ -6,7 +6,7 @@ public enum SpecificEvent
     Shout
 }
 
-[CreateAssetMenu(fileName = "NewEffect", menuName = "Effects/ThrowSpecificEvent")]
+[CreateAssetMenu(fileName = "ThrowEventEffect", menuName = "Effects/ThrowSpecificEvent")]
 public class ThrowSpecificEventEffect : Effect
 {
     public SpecificEvent specificEvent;

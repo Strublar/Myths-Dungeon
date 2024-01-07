@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/ContinueScene.unity
     guid: a9c5fe2e55bdec249b7fe57f0ba7d2c8
   - enabled: 1
-    path: Assets/Scenes/RunScenes/ActivityScene.unity
+    path: Assets/Scenes/RunScenes/HubScene.unity
     guid: aaf53708506be004aa46324685e326b9
   - enabled: 1
     path: Assets/Scenes/RunScenes/Activities/FightScene.unity

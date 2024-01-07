@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewEffect", menuName = "Effects/ThrowSpecificTrigger")]
+[CreateAssetMenu(fileName = "ThrowTriggerEffect", menuName = "Effects/ThrowSpecificTrigger")]
 public class ThrowSpecificTriggerEffect : Effect
 {
     public Trigger trigger;

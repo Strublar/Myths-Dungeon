@@ -23,4 +23,6 @@ MonoBehaviour:
   effects:
   - {fileID: 11400000, guid: 84dcd3d328418e74e9487c1255f5499e, type: 2}
   - {fileID: 11400000, guid: 5dda116f04eb8f04fb924b4d08bc69dc, type: 2}
-  values: []
+  internalCooldown: 0
+  values:
+  - {fileID: 11400000, guid: b1dccaf833f0621488f01beb1a1582ef, type: 2}

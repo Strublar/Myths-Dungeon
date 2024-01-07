@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewEffect", menuName = "Effects/ModifyCritChance")]
+[CreateAssetMenu(fileName = "CritChanceEffect", menuName = "Effects/ModifyCritChance")]
 public class ModifyCritChanceEffect : Effect
 {
     public DynamicValue value;

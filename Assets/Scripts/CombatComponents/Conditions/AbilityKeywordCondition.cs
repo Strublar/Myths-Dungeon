@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewCondition", menuName = "Conditions/AbilityKeyword")]
+[CreateAssetMenu(fileName = "AbilityKeywordCondition", menuName = "Conditions/AbilityKeyword")]
 public class AbilityKeywordCondition : Condition
 {
     public string keyword = "";

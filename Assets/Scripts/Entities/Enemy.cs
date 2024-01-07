@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class Boss : Entity
+public class Enemy : Entity
 {
     public int level;
-    public BossDefinition definition;
-    public TextMeshPro bossName;
+    public EnemyDefinition definition;
+    public TextMeshPro enemyNameMesh;
     public GameObject model;
     public PassiveDefinition bossFrenzy;
 
@@ -18,9 +19,9 @@ public class Boss : Entity
         
         haste = 100;
         armor = definition.armor + definition.armorPerLevel * level;
-        bossName.text = definition.bossName;
+        enemyNameMesh.text = definition.enemyName;
         isAlive = true;
-        foreach(BossSpellDefinition spell in definition.spells)
+        foreach(EnemySpellDefinition spell in definition.spells)
         {
             spell.currentCooldown = spell.coolDown;
         }
@@ -54,7 +55,7 @@ public class Boss : Entity
     {
         if (RunManager.instance.fightStarted && isAlive)
         {
-            foreach(BossSpellDefinition spell in definition.spells)
+            foreach(EnemySpellDefinition spell in definition.spells)
             {
                 if(spell.minLevel <= level)
                 {
@@ -70,7 +71,7 @@ public class Boss : Entity
             
         }
     }
-    public void Cast(BossSpellDefinition spell)
+    public void Cast(EnemySpellDefinition spell)
     {
         List<Entity> spellTargets = spell.targets.GetTargets(new Context());
         var context = new Context
@@ -96,6 +97,7 @@ public class Boss : Entity
     {
         base.Die();
         gameObject.SetActive(false);
-        RunManager.instance.BossDefeated();
+        if(definition.isBoss)
+            RunManager.instance.BossDefeated();
     }
 }

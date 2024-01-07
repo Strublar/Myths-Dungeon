@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewEffect", menuName = "Effects/PreventDeath")]
+[CreateAssetMenu(fileName = "ReviveEffect", menuName = "Effects/PreventDeath")]
 
 public class PreventDeathEffect : Effect
 {

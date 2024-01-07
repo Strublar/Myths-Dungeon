@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewEffect", menuName = "Effects/Conditional")]
+[CreateAssetMenu(fileName = "ConditionalEffect", menuName = "Effects/Conditional")]
 
 public class ConditionalEffects : Effect
 {

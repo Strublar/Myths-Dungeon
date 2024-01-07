@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewEffect", menuName = "Effects/ModifyHaste")]
+[CreateAssetMenu(fileName = "HasteEffect", menuName = "Effects/ModifyHaste")]
 public class ModifyHasteEffect : Effect
 {
     public DynamicValue value;

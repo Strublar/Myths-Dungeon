@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewDynamicValue", menuName = "DynamicValue/ContextValue")]
+[CreateAssetMenu(fileName = "ContextValue", menuName = "DynamicValue/ContextValue")]
 public class ContextValueDynamicValue : DynamicValue
 {
     public override int computeValue(Context context)

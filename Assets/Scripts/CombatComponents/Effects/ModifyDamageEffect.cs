@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewEffect", menuName = "Effects/ModifyDamage")]
+[CreateAssetMenu(fileName = "DamageBuffEffect", menuName = "Effects/ModifyDamage")]
 public class ModifyDamageEffect : Effect
 {
     public DynamicValue value;

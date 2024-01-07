@@ -12,10 +12,10 @@ public enum Activity
     TavernHeal = 2,
 }
 
-public class ActivityManager : MonoBehaviour
+public class HubManager : MonoBehaviour
 {
     public static Activity chosenActivity;
-    public static ActivityManager instance;
+    public static HubManager instance;
 
     public List<Activity> availableActivities;
     public List<Sprite> activitySprites;
@@ -88,6 +88,6 @@ public class ActivityManager : MonoBehaviour
                 throw new ArgumentOutOfRangeException(nameof(activity), activity, null);
         }
 
-        SceneManager.UnloadSceneAsync("ActivityScene");
+        SceneManager.UnloadSceneAsync("HubScene");
     }
 }

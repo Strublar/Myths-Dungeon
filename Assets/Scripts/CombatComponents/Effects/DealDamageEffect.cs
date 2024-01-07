@@ -8,7 +8,7 @@ public enum DamageType
     Bleed
 }
 
-[CreateAssetMenu(fileName = "NewEffect", menuName = "Effects/DealDamage")]
+[CreateAssetMenu(fileName = "DamageEffect", menuName = "Effects/DealDamage")]
 public class DealDamageEffect : Effect
 {
     public DynamicValue value;

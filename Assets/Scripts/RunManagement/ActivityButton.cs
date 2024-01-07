@@ -12,12 +12,12 @@ public class ActivityButton : MonoBehaviour
     public void Init(Activity activity)
     {
         linkedActivity = activity;
-        activityImage.sprite = ActivityManager.GetSpriteForActivity(linkedActivity);
-        activityName.text = ActivityManager.GetActivityName(linkedActivity);
+        activityImage.sprite = HubManager.GetSpriteForActivity(linkedActivity);
+        activityName.text = HubManager.GetActivityName(linkedActivity);
     }
 
     public void OnTap()
     {
-        ActivityManager.instance.ChooseActivity(linkedActivity);
+        HubManager.instance.ChooseActivity(linkedActivity);
     }
 }

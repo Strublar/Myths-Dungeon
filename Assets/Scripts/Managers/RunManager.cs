@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class RunManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class RunManager : MonoBehaviour
     public List<Hero> heroes;
     public bool fightStarted;
     public int bossBeaten = 0;
-    public BossDefinition lastBoss;
+    public EnemyDefinition lastBoss;
     [Header("Components")]
     public GameObject loseScreen;
     public TextMeshPro victoryText;
