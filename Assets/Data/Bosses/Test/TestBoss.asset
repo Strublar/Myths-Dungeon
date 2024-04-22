@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: TestBoss
   m_EditorClassIdentifier: 
   enemyName: 
-  model: {fileID: 2172587256300959795, guid: 58466a7842581a240a0769d0e50d99a8, type: 3}
+  sprite: {fileID: -9128590032158951111, guid: fd573fef1b14977408c2657271b176fa, type: 3}
+  animatorController: {fileID: 9100000, guid: 6a9205318b884384e8261ea6e17a008b, type: 2}
   isBoss: 1
   hp: 200
   hpPerLevel: 0

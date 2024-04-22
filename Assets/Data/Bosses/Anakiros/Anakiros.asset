@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Anakiros
   m_EditorClassIdentifier: 
   enemyName: 
-  model: {fileID: 777939509765277824, guid: a40c689313f33cb4593395a456d8cc4e, type: 3}
+  sprite: {fileID: -1186098299047624040, guid: 678446ae4b1c1eb45bb95dbeb949a1a6, type: 3}
+  animatorController: {fileID: 9100000, guid: 9e86ee432e4ad1e499c5cd00d9985b3d, type: 2}
   isBoss: 1
   hp: 800
   hpPerLevel: 300

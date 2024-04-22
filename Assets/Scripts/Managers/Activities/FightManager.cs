@@ -30,9 +30,6 @@ public class FightManager : MonoBehaviour
         bossTimer = 0;
         boss.level = bossBeaten + 1;
 
-        if (boss.model != null)
-            Destroy(boss.model);
-
         do
         {
             boss.definition = bossPool[Random.Range(0, bossPool.Count)];

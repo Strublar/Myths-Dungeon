@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Skordal
   m_EditorClassIdentifier: 
   enemyName: 
-  model: {fileID: 8610014897091649695, guid: 8fb383ac895985948b1c3f4ede0612af, type: 3}
+  sprite: {fileID: 88829501488533710, guid: 7b443a38eb268dd409fca8b82f3fcf4f, type: 3}
+  animatorController: {fileID: 9100000, guid: aee83ad8363920047b86fff923c48bdd, type: 2}
   isBoss: 1
   hp: 800
   hpPerLevel: 300

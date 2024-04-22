@@ -1,17 +1,19 @@
-using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Enemy : Entity
 {
     public int level;
     public EnemyDefinition definition;
-    public TextMeshPro enemyNameMesh;
-    public GameObject model;
+    [CanBeNull] public TextMeshPro enemyNameMesh;
+    
+    public SpriteRenderer model;
+    public Animator animator;
+    
     public PassiveDefinition bossFrenzy;
-
+    
     public void LoadDefinition()
     {
         ClearPassives();
@@ -19,14 +21,18 @@ public class Enemy : Entity
         
         haste = 100;
         armor = definition.armor + definition.armorPerLevel * level;
-        enemyNameMesh.text = definition.enemyName;
+        if(enemyNameMesh != null)
+            enemyNameMesh.text = definition.enemyName;
         isAlive = true;
         foreach(EnemySpellDefinition spell in definition.spells)
         {
             spell.currentCooldown = spell.coolDown;
         }
-        model = Instantiate(definition.model, transform);
-        model.transform.localPosition = new Vector3(0, -1, 0);
+
+        model.gameObject.SetActive(true);
+        model.sprite = definition.sprite;
+        animator.runtimeAnimatorController = definition.animatorController;
+        
         foreach (PassiveDefinition passive in definition.passives)
         {
             GameObject newPassive = Instantiate(passivePrefab, this.transform);
