@@ -10,17 +10,17 @@ public class HeroDefinition : ScriptableObject
     public Sprite heroImage;
     public GameObject model;
     public HeroType type;
-    [Header("Stats")]
+
+    [Header("Stats")] 
     public int hp;
-    public int hpPerLevel;
     public int armor;
-    public int armorPerLevel;
-    public float threatRatio;
+    public float attackCooldown;
     public int critChance;
-    public int critChancePerLevel;
     public int critPower;
-    public int critPowerPerLevel;
+    public float threatRatio;
+
     [Header("Abilities and Passives")]
+    public PassiveDefinition attackPassive;
     public List<PassiveDefinition> passives;
     public List<AbilityDefinition> availableAbilities;
     public List<SkillDefinition> availableSkills;

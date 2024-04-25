@@ -19,7 +19,7 @@ public class DealDamageEffect : Effect
     public override void Apply(Context context)
     {
         float critModifier = canCrit && context.isCritical && context.source is Hero heroSource ? heroSource.critPower : 100;
-        float ratio = modified ? (float)context.source.damageModifier/100 : 1;
+        float ratio = modified ? (float)context.source.power/100 : 1;
         int damageValue = Mathf.RoundToInt(value.computeValue(context) * ratio * critModifier/100f);
         context.value = damageValue;
         context.damageType = damageType;
@@ -34,7 +34,6 @@ public class DealDamageEffect : Effect
             GameObject newPassive = Instantiate(context.target.passivePrefab, context.target.transform);
             Passive passiveComponent = newPassive.GetComponent<Passive>();
             context.target.passiveObjects.Add(passiveComponent);
-            passiveComponent.level = context.level;
             passiveComponent.holder = context.target;
             passiveComponent.definition = CreateInstance<PassiveDefinition>();
             passiveComponent.definition.trigger = Trigger.EveryPersonalTick;

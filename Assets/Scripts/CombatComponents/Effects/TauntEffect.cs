@@ -9,7 +9,7 @@ public class TauntEffect : Effect
         FightManager.instance.ResetThreat();
         if (context.source is Hero hero)
         {
-            hero.threat += 100f * (1 + 0.2f * hero.level);
+            hero.threat += 100f;
             FightManager.instance.UpdateMostThreatHero(hero);
         }
     }

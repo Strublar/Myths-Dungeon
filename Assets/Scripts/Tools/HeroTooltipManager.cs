@@ -31,12 +31,10 @@ public class HeroTooltipManager : MonoBehaviour
         var context = new Context
         {
             source = hero,
-            level = hero.level
         };
         heroName.text = hero.definition.heroName;
         heroImage.sprite = hero.definition.heroImage;
-        stats.text = "Level :\t" + (hero.level + 1) +
-                     "\nHp :\t" + hero.maxHp +
+        stats.text = "\nHp :\t" + hero.maxHp +
                      "\nArmor :\t" + hero.armor +
                      "\nCrit% :\t" + hero.critChance + "%" +
                      "\nCritPow :\t" + hero.critPower + "%" +

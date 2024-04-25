@@ -42,7 +42,6 @@ public class RunManager : MonoBehaviour
         
         foreach (Hero hero in heroes)
         {
-            hero.AddXp(1);
             hero.LoadDefinition();
         }
     }
@@ -55,8 +54,6 @@ public class RunManager : MonoBehaviour
         bossBeaten = 0;
         foreach (Hero hero in heroes)
         {
-
-            hero.level = 0;
             hero.item.definition = null;
         }
         ReloadHeroes();

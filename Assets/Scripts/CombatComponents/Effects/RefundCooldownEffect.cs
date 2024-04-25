@@ -9,7 +9,7 @@ public class RefundCooldownEffect : Effect
     {
         if (context.source is Hero hero)
         {
-            hero.currentCooldown -= percentAmount.computeValue(context) / 100f * hero.ability.cooldown;
+            hero.currentAbilityCooldown -= percentAmount.computeValue(context) / 100f * hero.ability.cooldown;
         }
     }
 }

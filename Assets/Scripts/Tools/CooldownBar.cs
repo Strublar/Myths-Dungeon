@@ -22,6 +22,6 @@ public class CooldownBar : MonoBehaviour
         barSprite.color = linkedHero.definition.cooldownBarColor;
 
         bar.transform.localScale =
-            new Vector3(Mathf.Max(linkedHero.currentCooldown,0) / linkedHero.ability.cooldown, 1, 1);
+            new Vector3(Mathf.Max(linkedHero.currentAbilityCooldown,0) / linkedHero.ability.cooldown, 1, 1);
     }
 }
