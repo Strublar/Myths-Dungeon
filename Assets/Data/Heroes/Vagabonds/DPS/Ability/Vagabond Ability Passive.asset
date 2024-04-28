@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Vagabond Ability Passive
   m_EditorClassIdentifier: 
   description: Deal {0} damage
-  trigger: 2
+  trigger: 3
   triggerCount: 1
   endTrigger: 0
   endTriggerCount: 0

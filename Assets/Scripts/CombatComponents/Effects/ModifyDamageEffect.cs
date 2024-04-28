@@ -9,7 +9,7 @@ public class ModifyDamageEffect : Effect
 
     public override void Apply(Context context)
     {
-        context.target.power += value.computeValue(context);
+        context.target.percentPower += value.computeValue(context);
         if (duration != 0)
         {
             GameObject newPassive = Instantiate(context.target.passivePrefab, context.target.transform);

@@ -5,8 +5,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewTargetSelector", menuName = "TargetSelector/LowestHealthHero")]
 public class LowestHealthHeroTargetSelector : TargetSelector
-{
-    
+{ 
     public override List<Entity> GetTargets(Context context)
     {
         List<Entity> newTargets = new List<Entity>();

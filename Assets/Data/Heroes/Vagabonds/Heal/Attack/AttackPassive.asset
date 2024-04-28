@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 117da2f1d5dd34e4eb06ec66ad9b2194, type: 3}
-  m_Name: Traveller Ability Passive
+  m_Name: AttackPassive
   m_EditorClassIdentifier: 
-  description: Deal {0} damage
-  trigger: 3
+  description: 
+  trigger: 2
   triggerCount: 1
   endTrigger: 0
   endTriggerCount: 0
@@ -21,8 +21,6 @@ MonoBehaviour:
   conditions:
   - {fileID: 11400000, guid: 1895fe8def357404c8eb761235bcdd18, type: 2}
   effects:
-  - {fileID: 11400000, guid: 84dcd3d328418e74e9487c1255f5499e, type: 2}
-  - {fileID: 11400000, guid: cc97c4dbcb1cc0949ad650f9272638eb, type: 2}
+  - {fileID: 11400000, guid: d49dfa17dc301f441b0e004b9a609bea, type: 2}
   internalCooldown: 0
-  values:
-  - {fileID: 11400000, guid: 299dc288161bae443bb99ea99da9401c, type: 2}
+  values: []

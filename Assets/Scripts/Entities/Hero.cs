@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public enum HeroType
 {
@@ -13,30 +14,39 @@ public enum HeroType
 public class Hero : Entity
 {
     #region Stats
-    
+
     [Header("Definition")] public HeroDefinition definition;
     public Item item;
     public SkillDefinition skill;
     public AbilityDefinition ability;
 
     [Header("FightStats")] [HideInInspector]
-    public float currentAbilityCooldown = 0f;
+    public float currentAttackCooldown = 0f;
+    [HideInInspector] public float currentAbilityCooldown = 0f;
     public float threat;
+    public int power;
     public int critChance;
     public int critPower;
+    public Entity currentTarget;
 
     [Header("Component objects")] public GameObject model;
     public GameObject healthBar;
     private bool isDragging;
     private Vector3 modelInitialPos;
 
-    private Context attackContext;
+    private Context selfContext;
 
     #endregion
 
     public void Update()
     {
-        currentAbilityCooldown -= Time.deltaTime * Mathf.Max(haste / 100, 0);
+        currentAttackCooldown -= Time.deltaTime * Mathf.Max((100+haste) / 100, 0);
+        if (CanAttack())
+        {
+            currentTarget = definition.attackTargetSelector.GetTargets(selfContext)[0];
+            Attack(currentTarget);
+        }
+        currentAbilityCooldown -= Time.deltaTime * Mathf.Max((100+haste) / 100, 0);
         if (Input.touchCount > 0)
         {
             if (isDragging)
@@ -58,6 +68,9 @@ public class Hero : Entity
             model.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
+    
+
+
     public void LoadDefinition()
     {
         if (model != null)
@@ -72,19 +85,22 @@ public class Hero : Entity
 
         maxHp = definition.hp;
         armor = definition.armor;
-        haste = 100;
-        power = 100;
+        power = definition.power;
+        haste = 0;
+        percentPower = 0;
+        
         threat = 0;
         critChance = definition.critChance;
         critPower = definition.critPower;
+        if(FightManager.instance != null)
+            currentTarget = FightManager.instance.boss;
 
         var passives = new List<PassiveDefinition>(definition.passives);
-        
+        passives.Add(definition.attackPassive);
         foreach (var passive in skill.passives)
         {
             passives.Add(passive);
         }
-        
         foreach (var passive in ability.linkedPassives)
         {
             passives.Add(passive);
@@ -105,7 +121,7 @@ public class Hero : Entity
             maxHp += item.definition.hp + item.definition.hpPerLevel * item.level;
             armor += item.definition.armor + item.definition.armorPerLevel * item.level;
             haste += item.definition.haste + item.definition.hastePerLevel * item.level;
-            power += item.definition.damageModifier + item.definition.damageModifierPerLevel * item.level;
+            percentPower += item.definition.damageModifier + item.definition.damageModifierPerLevel * item.level;
             //Passives
             foreach (PassiveDefinition passive in item.definition.passives)
             {
@@ -118,7 +134,7 @@ public class Hero : Entity
             }
         }
 
-        attackContext = new Context
+        selfContext = new Context
         {
             passiveHolder = this, source = this
         };
@@ -141,39 +157,18 @@ public class Hero : Entity
     {
         if (isAlive && CanCast())
         {
-            if (!definition.IsHealer)
+            if (!definition.IsSupport)
             {
                 if (target.CompareTag("Boss"))
                 {
-                    currentAbilityCooldown = ability.cooldown;
-                    Pull(target);
-                    Context context = new Context
-                    {
-                        source = this,
-                        target = target.GetComponent<Entity>(),
-                        passiveHolder = null,
-                        isCritical = Random.Range(0, 100) <= critChance,
-                    };
-                    TriggerManager.triggerMap[Trigger.OnAttack].Invoke(context);
-                    FightManager.instance.lastAbilityName = ability.abilityName;
+                    CastAbility(target.GetComponent<Entity>());
                 }
             }
             else
             {
                 if (target.CompareTag("Hero") && RunManager.instance.fightStarted)
                 {
-                    currentAbilityCooldown = ability.cooldown;
-                    Pull(target);
-                    Context context = new Context
-                    {
-                        source = this,
-                        target = target.GetComponent<Entity>(),
-                        passiveHolder = null,
-                        isCritical = Random.Range(0, 100) <= critChance,
-                    };
-                    TriggerManager.triggerMap[Trigger.OnHeal].Invoke(context);
-                    FightManager.instance.lastAbilityName = ability.abilityName;
-                    
+                    CastAbility(target.GetComponent<Entity>());
                 }
             }
 
@@ -191,7 +186,7 @@ public class Hero : Entity
         isDragging = false;
     }
 
-    public void Pull(GameObject target)
+    public void Pull(Entity target)
     {
         if (!RunManager.instance.fightStarted)
         {
@@ -201,7 +196,7 @@ public class Hero : Entity
             Context context = new Context
             {
                 source = this,
-                target = target.GetComponent<Entity>(),
+                target = target,
                 passiveHolder = null
             };
             TriggerManager.triggerMap[Trigger.OnPull].Invoke(context);
@@ -226,12 +221,44 @@ public class Hero : Entity
         bool canCast = currentAbilityCooldown <= 0;
         foreach (var condition in ability.castConditions)
         {
-            canCast &= condition.ShouldTrigger(attackContext);
+            canCast &= condition.ShouldTrigger(selfContext);
         }
 
         return canCast;
     }
+    private bool CanAttack()
+    {
+        return currentAttackCooldown < 0 && RunManager.instance.fightStarted;
+    }
 
+
+    private void Attack(Entity target)
+    {
+        currentAttackCooldown = definition.attackCooldown;
+        Context context = new Context
+        {
+            source = this,
+            target = target,
+            passiveHolder = null,
+            isCritical = Random.Range(0, 100) <= critChance,
+        };
+        TriggerManager.triggerMap[Trigger.OnAttack].Invoke(context);
+    }
+
+    private void CastAbility(Entity target)
+    {
+        currentAbilityCooldown = ability.cooldown;
+        Pull(target);
+        Context context = new Context
+        {
+            source = this,
+            target = target,
+            passiveHolder = null,
+            isCritical = Random.Range(0, 100) <= critChance,
+        };
+        TriggerManager.triggerMap[Trigger.OnUseAbility].Invoke(context);
+        FightManager.instance.lastAbilityName = ability.abilityName;
+    }
     public override void Die()
     {
         base.Die();
@@ -240,5 +267,8 @@ public class Hero : Entity
         FightManager.instance.GetNewThreatHero();
         FightManager.instance.HeroDies();
     }
-
+    
+    private void FindHealerTarget()
+    {
+    }
 }

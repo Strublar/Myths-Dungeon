@@ -16,7 +16,7 @@ public class Entity : MonoBehaviour
     public int currentHp;
     public int armor;
     public int haste;
-    public int power;
+    public int percentPower;
 
     [HideInInspector] public bool isAlive = true;
 

@@ -15,16 +15,17 @@ public class HeroDefinition : ScriptableObject
     public int hp;
     public int armor;
     public float attackCooldown;
+    public int power;
     public int critChance;
     public int critPower;
     public float threatRatio;
 
-    [Header("Abilities and Passives")]
+    [Header("Abilities and Passives")] public TargetSelector attackTargetSelector;
     public PassiveDefinition attackPassive;
     public List<PassiveDefinition> passives;
     public List<AbilityDefinition> availableAbilities;
     public List<SkillDefinition> availableSkills;
     
     public Color cooldownBarColor;
-    public bool IsHealer => type == HeroType.Heal;
+    public bool IsSupport => type == HeroType.Heal;
 }
