@@ -18,7 +18,7 @@ MonoBehaviour:
   type: 0
   hp: 150
   armor: 50
-  attackCooldown: 3
+  attackCooldown: 2.5
   power: 20
   critChance: 10
   critPower: 150
