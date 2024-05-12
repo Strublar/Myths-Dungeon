@@ -17,19 +17,17 @@ MonoBehaviour:
   model: {fileID: 3278287855122211867, guid: 7b90ca6966ae2dd4eaca3189529781a8, type: 3}
   type: 0
   hp: 300
-  hpPerLevel: 60
-  armor: 30
-  armorPerLevel: 6
-  threatRatio: 5
+  armor: 50
+  attack: 80
+  attackCooldown: 4
   critChance: 10
-  critChancePerLevel: 2
   critPower: 150
-  critPowerPerLevel: 0
+  threatRatio: 5
+  attackTargetSelector: {fileID: 11400000, guid: 6c1bbbeac2d54884fa11c0e2048ef209, type: 2}
+  attackPassive: {fileID: 11400000, guid: faae1dfe8dba5954394ddb52dfce7223, type: 2}
+  baseAbility: {fileID: 11400000, guid: 136546d39f598f74480da9a82d9f08bd, type: 2}
   passives: []
-  availableAbilities:
-  - {fileID: 11400000, guid: fe6fdea97fc15af4cbfcb14c225e3ec2, type: 2}
-  - {fileID: 11400000, guid: 5234521f35c00b84fb3a69b198ca10df, type: 2}
-  - {fileID: 11400000, guid: c180ef8802264944ca920cb8c84c2e6a, type: 2}
+  availableAbilities: []
   availableSkills:
   - {fileID: 11400000, guid: 3dc83dc1c7891c64996577327703a90f, type: 2}
   - {fileID: 11400000, guid: 591de949f9561674cb47eb08d9a2ce50, type: 2}
