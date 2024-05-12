@@ -9,7 +9,7 @@ public class PreventDeathEffect : Effect
         if (context.target is Hero hero)
         {
             hero.isAlive = true;
-            hero.currentHp = 1;
+            hero.caracs[Carac.currentHp] = 1;
         }
     }
 }

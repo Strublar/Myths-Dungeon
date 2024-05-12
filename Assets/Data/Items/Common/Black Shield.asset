@@ -20,18 +20,10 @@ MonoBehaviour:
   hpPerLevel: 0
   armor: 40
   armorPerLevel: 10
-  attack: 0
-  attackPerLevel: 0
-  attackCooldown: 0
-  isHealer: 0
-  threatRatio: 0
   critPower: 0
   haste: 0
   hastePerLevel: 0
   damageModifier: 0
   damageModifierPerLevel: 0
   passives: []
-  values:
-  - 40
-  scaling:
-  - 10
+  values: []

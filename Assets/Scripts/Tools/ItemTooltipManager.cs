@@ -23,21 +23,12 @@ public class ItemTooltipManager : MonoBehaviour
     public Color enhancedColor;
     public Color masterworkColor;
     public Color legacyColor;
-    public Dictionary<ItemQuality, Color> qualityMap;
     public Dictionary<ItemRarity, Color> rarityMap;
 
     public void Awake()
     {
         instance = this;
-
-        qualityMap = new Dictionary<ItemQuality, Color>
-        {
-            { ItemQuality.normal, normalColor },
-            { ItemQuality.enhanced, enhancedColor },
-            { ItemQuality.masterwork, masterworkColor },
-            { ItemQuality.legacy, legacyColor }
-        };
-
+        
         rarityMap = new Dictionary<ItemRarity, Color>
         {
             { ItemRarity.common, commonColor },
@@ -48,9 +39,10 @@ public class ItemTooltipManager : MonoBehaviour
 
     }
     public void InitItemTooltip(Item item)
-    {var context = new Context
+    {
+        var context = new Context
         {
-            level = item.level
+            level = item.qualityLevel
         };
         itemImage.sprite = item != null ? item.definition.itemImage : null;
         string[] formatListItem = new string[item.definition.values.Count];
@@ -60,9 +52,9 @@ public class ItemTooltipManager : MonoBehaviour
         }
 
         itemDescription.text = item != null ? 
-            item.GetName()+"\n\n"+ string.Format(item.definition.description, formatListItem) : "";
+            item.definition.itemName+"\n\n"+ string.Format(item.definition.description, formatListItem) : "";
         rarityFrame.color = rarityMap[item.definition.rarity];
-        background.color = qualityMap[item.quality];
+        background.color = instance.normalColor;
     }
 
     public void ShowToolTip()

@@ -17,10 +17,7 @@ public class Enemy : Entity
     public void LoadDefinition()
     {
         ClearPassives();
-        maxHp = definition.hp + definition.hpPerLevel*level;
-        
-        haste = 100;
-        armor = definition.armor + definition.armorPerLevel * level;
+        caracs[Carac.maxHp] = definition.hp + definition.hpPerLevel*level;
         if(enemyNameMesh != null)
             enemyNameMesh.text = definition.enemyName;
         isAlive = true;
@@ -44,7 +41,7 @@ public class Enemy : Entity
         }
         if(level>=10)//creep //TODO Cible, casting bar
         {
-            maxHp *= Mathf.RoundToInt(Mathf.Pow(1.1f, level - 10));
+            caracs[Carac.maxHp] *= Mathf.RoundToInt(Mathf.Pow(1.1f, level - 10));
             GameObject newPassive = Instantiate(passivePrefab, this.transform);
             Passive pass = newPassive.GetComponent<Passive>();
             pass.holder = this;
@@ -52,7 +49,7 @@ public class Enemy : Entity
             pass.level = level;
             passiveObjects.Add(pass);
         }
-        currentHp = maxHp;
+        caracs[Carac.currentHp] = GetCarac(Carac.maxHp);
 
     }
 
@@ -65,7 +62,7 @@ public class Enemy : Entity
             {
                 if(spell.minLevel <= level)
                 {
-                    spell.currentCooldown -= Time.deltaTime*haste/100;
+                    spell.currentCooldown -= Time.deltaTime;
                     if (spell.currentCooldown < 0)
                     {
                         Cast(spell);

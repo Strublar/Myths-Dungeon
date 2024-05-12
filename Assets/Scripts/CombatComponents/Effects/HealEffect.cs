@@ -7,13 +7,14 @@ public class HealEffect : Effect
 {
     public DynamicValue value;
     public int duration;
-    public bool modified = true;
+    public bool fromAbility = true;
     public bool canCrit = true;
     public override void Apply(Context context)
     {
-        float critModifier = canCrit && context.isCritical && context.source is Hero heroSource ? heroSource.critPower : 100;
-        float ratio = modified ? (100+context.source.percentPower) / 100 : 1;
-        int healValue = Mathf.RoundToInt(value.computeValue(context) * ratio * critModifier/100f);
+        float critModifier = canCrit && context.isCritical && context.source is Hero heroSource
+            ? heroSource.GetCarac(Carac.critPower)
+            : 100;        float abilityBuff = fromAbility ? (float)(100 + context.source.GetCarac(Carac.abilityPower)) / 100 : 1;
+        int healValue = Mathf.RoundToInt(value.computeValue(context) * abilityBuff * critModifier/100f);
         context.target.Heal(healValue,context.isCritical);
 
         if (context.source is Hero hero)

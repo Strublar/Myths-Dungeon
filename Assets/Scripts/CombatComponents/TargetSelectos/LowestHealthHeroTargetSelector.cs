@@ -9,9 +9,9 @@ public class LowestHealthHeroTargetSelector : TargetSelector
     public override List<Entity> GetTargets(Context context)
     {
         List<Entity> newTargets = new List<Entity>();
-        var aliveHeroes = from hero in RunManager.instance.heroes where hero.isAlive select hero;
-        float test = aliveHeroes.Max(r => r.currentHp);
-        var lowestHealth = from hero in aliveHeroes where hero.currentHp == aliveHeroes.Min(r => r.currentHp)
+        var aliveHeroes = (from hero in RunManager.instance.heroes where hero.isAlive select hero).ToList();
+        int lowestHp = aliveHeroes.Max(r =>  r.GetCarac(Carac.currentHp));
+        var lowestHealth = from hero in aliveHeroes where hero.GetCarac(Carac.currentHp) == lowestHp
                            select hero; 
         newTargets.Add(lowestHealth.First());
         return newTargets;

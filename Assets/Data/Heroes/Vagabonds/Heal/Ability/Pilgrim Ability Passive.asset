@@ -21,6 +21,7 @@ MonoBehaviour:
   conditions:
   - {fileID: 11400000, guid: 1895fe8def357404c8eb761235bcdd18, type: 2}
   effects:
-  - {fileID: 11400000, guid: 1e26e3db829860640bbb12037ac03a58, type: 2}
+  - {fileID: 11400000, guid: 530d5909fad10ce4787eef19f18e74c8, type: 2}
+  internalCooldown: 0
   values:
   - {fileID: 11400000, guid: 933cb3d8817fa1e4a8cd84eae1c7d64d, type: 2}

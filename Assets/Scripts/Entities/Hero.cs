@@ -19,16 +19,22 @@ public class Hero : Entity
     public Item item;
     public SkillDefinition skill;
     public AbilityDefinition ability;
+    
+    [Header("Bonus Stats")] public int bonusAttack;
+    public int bonusAttackPercent;
+    public int bonusAttackSpeed;
+    public int bonusHp;
+    public int bonusHpPercent;
+    public int bonusArmor;
+    public int bonusArmorPercent;
+    public int bonusCritChance;
+    public int bonusCritPower;
+    
 
-    [Header("FightStats")] [HideInInspector]
-    public float currentAttackCooldown = 0f;
-    [HideInInspector] public float currentAbilityCooldown = 0f;
+    [Header("Fight Stats")] public Entity currentTarget;
     public float threat;
-    public int power;
-    public int critChance;
-    public int critPower;
-    public Entity currentTarget;
-
+    [HideInInspector] public float currentAttackCooldown = 0f;
+    [HideInInspector] public float currentAbilityCooldown = 0f;
     [Header("Component objects")] public GameObject model;
     public GameObject healthBar;
     private bool isDragging;
@@ -40,13 +46,14 @@ public class Hero : Entity
 
     public void Update()
     {
-        currentAttackCooldown -= Time.deltaTime * Mathf.Max((100+haste) / 100, 0);
+        currentAttackCooldown -= Time.deltaTime * Mathf.Max((100 + bonusAttackSpeed) / 100, 0);
         if (CanAttack())
         {
             currentTarget = definition.attackTargetSelector.GetTargets(selfContext)[0];
             Attack(currentTarget);
         }
-        currentAbilityCooldown -= Time.deltaTime * Mathf.Max((100+haste) / 100, 0);
+
+        currentAbilityCooldown -= Time.deltaTime * Mathf.Max((100 + GetCarac(Carac.abilityHaste)) / 100, 0);
         if (Input.touchCount > 0)
         {
             if (isDragging)
@@ -68,10 +75,27 @@ public class Hero : Entity
             model.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
-    
-
+    #region DefinitionLoading
 
     public void LoadDefinition()
+    {
+        LoadGraphics();
+        ClearPassives();
+        
+        if (FightManager.instance != null)
+            currentTarget = FightManager.instance.boss;
+
+        LoadPassives();
+        ComputeStats();
+
+        selfContext = new Context
+        {
+            passiveHolder = this, source = this
+        };
+
+    }
+
+    public void LoadGraphics()
     {
         if (model != null)
             Destroy(model);
@@ -81,26 +105,17 @@ public class Hero : Entity
         isAlive = true;
         model.SetActive(true);
         healthBar.SetActive(true);
-        ClearPassives();
+    }
 
-        maxHp = definition.hp;
-        armor = definition.armor;
-        power = definition.power;
-        haste = 0;
-        percentPower = 0;
-        
-        threat = 0;
-        critChance = definition.critChance;
-        critPower = definition.critPower;
-        if(FightManager.instance != null)
-            currentTarget = FightManager.instance.boss;
-
+    public void LoadPassives()
+    {
         var passives = new List<PassiveDefinition>(definition.passives);
         passives.Add(definition.attackPassive);
         foreach (var passive in skill.passives)
         {
             passives.Add(passive);
         }
+
         foreach (var passive in ability.linkedPassives)
         {
             passives.Add(passive);
@@ -114,14 +129,25 @@ public class Hero : Entity
             pass.definition = passive;
             passiveObjects.Add(pass);
         }
+    }
 
-        if (item.definition != null)
+    public void ComputeStats()
+    {
+        threat = 0;
+
+        caracs[Carac.maxHp] = (definition.hp + bonusHp) * (100 + bonusHpPercent) / 100;
+        caracs[Carac.armor] = (definition.armor + bonusArmor) * (100 + bonusArmorPercent) / 100;
+        caracs[Carac.critChance] = definition.critChance + bonusCritChance;
+        caracs[Carac.critPower] = definition.critPower + bonusCritPower;
+        
+        
+        /*if (item.definition != null)
         {
             //Stats
-            maxHp += item.definition.hp + item.definition.hpPerLevel * item.level;
-            armor += item.definition.armor + item.definition.armorPerLevel * item.level;
-            haste += item.definition.haste + item.definition.hastePerLevel * item.level;
-            percentPower += item.definition.damageModifier + item.definition.damageModifierPerLevel * item.level;
+            maxHp += item.definition.hp + item.definition.hpPerLevel * item.qualityLevel;
+            armor += item.definition.armor + item.definition.armorPerLevel * item.qualityLevel;
+            haste += item.definition.haste + item.definition.hastePerLevel * item.qualityLevel;
+            percentPower += item.definition.damageModifier + item.definition.damageModifierPerLevel * item.qualityLevel;
             //Passives
             foreach (PassiveDefinition passive in item.definition.passives)
             {
@@ -129,19 +155,18 @@ public class Hero : Entity
                 Passive pass = newPassive.GetComponent<Passive>();
                 pass.holder = this;
                 pass.definition = passive;
-                pass.level = item.level;
+                pass.level = item.qualityLevel;
                 passiveObjects.Add(pass);
             }
-        }
-
-        selfContext = new Context
-        {
-            passiveHolder = this, source = this
-        };
-
+        }*/
+        
         currentAbilityCooldown = 0f;
-        currentHp = maxHp;
+        currentAttackCooldown = 0f;
+        caracs[Carac.currentHp] = GetCarac(Carac.maxHp);
     }
+    #endregion
+
+    #region Controls
 
     public void OnTap()
     {
@@ -216,6 +241,10 @@ public class Hero : Entity
         isDragging = false;
     }
 
+    #endregion
+
+    #region Casting&Attacks
+
     public bool CanCast()
     {
         bool canCast = currentAbilityCooldown <= 0;
@@ -226,6 +255,7 @@ public class Hero : Entity
 
         return canCast;
     }
+
     private bool CanAttack()
     {
         return currentAttackCooldown < 0 && RunManager.instance.fightStarted;
@@ -240,7 +270,7 @@ public class Hero : Entity
             source = this,
             target = target,
             passiveHolder = null,
-            isCritical = Random.Range(0, 100) <= critChance,
+            isCritical = Random.Range(0, 100) <= GetCarac(Carac.critChance),
         };
         TriggerManager.triggerMap[Trigger.OnAttack].Invoke(context);
     }
@@ -254,11 +284,15 @@ public class Hero : Entity
             source = this,
             target = target,
             passiveHolder = null,
-            isCritical = Random.Range(0, 100) <= critChance,
+            isCritical = Random.Range(0, 100) <= GetCarac(Carac.critChance),
         };
         TriggerManager.triggerMap[Trigger.OnUseAbility].Invoke(context);
         FightManager.instance.lastAbilityName = ability.abilityName;
     }
+
+    #endregion
+
+
     public override void Die()
     {
         base.Die();
@@ -266,9 +300,5 @@ public class Hero : Entity
         healthBar.SetActive(false);
         FightManager.instance.GetNewThreatHero();
         FightManager.instance.HeroDies();
-    }
-    
-    private void FindHealerTarget()
-    {
     }
 }

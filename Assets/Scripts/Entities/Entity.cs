@@ -12,26 +12,32 @@ public class Entity : MonoBehaviour
     public GameObject passivePrefab;
     public List<Passive> passiveObjects;
 
-    [Header("Stats")] public int maxHp;
-    public int currentHp;
-    public int armor;
-    public int haste;
-    public int percentPower;
-
+    [Header("Stats")] public Dictionary<Carac, int> caracs = new();
     [HideInInspector] public bool isAlive = true;
 
     #endregion
+
+    public int GetCarac(Carac carac)
+    {
+        if (caracs.TryGetValue(carac, out int value))
+        {
+            return value;
+        }
+
+        return 0;
+    }
 
     public void DealDamage(Context context)
     {
         if (isAlive)
         {
             int damageValue = 0;
+            var armor = GetCarac(Carac.armor);
             if (armor >= 0)
                 damageValue = Mathf.RoundToInt(context.value * (100.0f / (100 + armor)));
             else
                 damageValue = Mathf.RoundToInt(context.value * ((100.0f - armor) / 100));
-            currentHp -= damageValue;
+            caracs[Carac.currentHp] -= damageValue;
 
             if (damageValue > 0)
             {
@@ -44,10 +50,10 @@ public class Entity : MonoBehaviour
             {
                 source = context.source, target = this,
                 value = damageValue,
-                percentHpLost = Mathf.RoundToInt((float)damageValue / maxHp * 100)
+                percentHpLost = Mathf.RoundToInt((float)damageValue / GetCarac(Carac.maxHp) * 100)
             });
 
-            if (currentHp <= 0)
+            if (GetCarac(Carac.currentHp) <= 0)
             {
                 Die();
             }
@@ -58,8 +64,8 @@ public class Entity : MonoBehaviour
     {
         if (isAlive)
         {
-            int healingValue = Mathf.RoundToInt(Mathf.Min(maxHp - currentHp, value));
-            currentHp += healingValue;
+            int healingValue = Mathf.RoundToInt(Mathf.Min(GetCarac(Carac.maxHp) - GetCarac(Carac.currentHp), value));
+            caracs[Carac.currentHp] += healingValue;
 
             if (healingValue > 0)
             {
@@ -88,4 +94,16 @@ public class Entity : MonoBehaviour
 
         passiveObjects.Clear();
     }
+}
+
+public enum Carac : int
+{
+    maxHp,
+    currentHp,
+    armor,
+    attackCooldown,
+    critChance,
+    critPower,
+    abilityPower,
+    abilityHaste
 }

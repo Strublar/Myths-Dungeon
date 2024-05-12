@@ -28,7 +28,7 @@ public class HeroTooltipManager : MonoBehaviour
 
     public void InitHeroTooltip(Hero hero)
     {
-        var context = new Context
+        /*var context = new Context
         {
             source = hero,
         };
@@ -40,7 +40,7 @@ public class HeroTooltipManager : MonoBehaviour
                      "\nCritPow :\t" + hero.critPower + "%" +
                      "\nThreat :\tx" + hero.definition.threatRatio;
 
-        abilityName.text = hero.ability.abilityName + " (" + $"{hero.ability.cooldown / hero.haste * 100:0.#}" + "s)";
+        abilityName.text = hero.ability.abilityName + " (" + $"{hero.ability.cooldown / hero.abilityHaste * 100:0.#}" + "s)";
 
         var formatListAbility = new string[hero.ability.linkedPassives[0].values.Count];
         for (int i = 0; i < hero.ability.linkedPassives[0].values.Count; i++)
@@ -71,14 +71,12 @@ public class HeroTooltipManager : MonoBehaviour
 
         itemImage.sprite = hero.item.definition != null ? hero.item.definition.itemImage : null;
         itemDescription.text = hero.item.definition != null
-            ? hero.item.GetName() + "\n\n" + string.Format(hero.item.definition.description, formatListItem)
+            ? hero.item.definition.itemName + "\n\n" + string.Format(hero.item.definition.description, formatListItem)
             : "";
         rarityFrame.color = hero.item.definition != null
             ? ItemTooltipManager.instance.rarityMap[hero.item.definition.rarity]
             : ItemTooltipManager.instance.commonColor;
-        background.color = hero.item.definition != null
-            ? ItemTooltipManager.instance.qualityMap[hero.item.quality]
-            : ItemTooltipManager.instance.normalColor;
+        background.color = ItemTooltipManager.instance.normalColor;*/
     }
 
     public void ShowToolTip()

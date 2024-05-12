@@ -44,7 +44,7 @@ public class LootedItem : MonoBehaviour
     {
         itemPreview.sprite = item.definition.itemImage;
         rarityFrame.color = ItemTooltipManager.instance.rarityMap[item.definition.rarity];
-        itemBackground.color = ItemTooltipManager.instance.qualityMap[item.quality];
+        itemBackground.color = Color.grey;
     }
     public void OnDrag(GameObject target)
     {
@@ -54,8 +54,7 @@ public class LootedItem : MonoBehaviour
             Hero heroTarget = target.GetComponent<Hero>();
 
             heroTarget.item.definition = item.definition;
-            heroTarget.item.level = item.level;
-            heroTarget.item.quality = item.quality;
+            heroTarget.item.qualityLevel = item.qualityLevel;
             heroTarget.LoadDefinition();
 
             LootManager.instance.Choose(id);

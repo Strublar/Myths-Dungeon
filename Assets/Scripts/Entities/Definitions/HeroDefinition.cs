@@ -14,14 +14,15 @@ public class HeroDefinition : ScriptableObject
     [Header("Stats")] 
     public int hp;
     public int armor;
+    public int attack;
     public float attackCooldown;
-    public int power;
     public int critChance;
     public int critPower;
     public float threatRatio;
 
     [Header("Abilities and Passives")] public TargetSelector attackTargetSelector;
     public PassiveDefinition attackPassive;
+    public AbilityDefinition baseAbility;
     public List<PassiveDefinition> passives;
     public List<AbilityDefinition> availableAbilities;
     public List<SkillDefinition> availableSkills;
