@@ -101,9 +101,11 @@ public enum Carac : int
     maxHp,
     currentHp,
     armor,
-    attackCooldown,
+    attackSpeed,
     critChance,
     critPower,
     abilityPower,
-    abilityHaste
+    abilityHaste,
+    abilityCritChance,
+    abilityCritPower
 }

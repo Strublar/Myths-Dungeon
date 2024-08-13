@@ -27,8 +27,12 @@ public class Hero : Entity
     public int bonusHpPercent;
     public int bonusArmor;
     public int bonusArmorPercent;
+    public int bonusAbilityPower;
+    public int bonusAbilityHaste;
     public int bonusCritChance;
     public int bonusCritPower;
+    public int bonusAbilityCritChance;
+    public int bonusAbilityCritPower;
     
 
     [Header("Fight Stats")] public Entity currentTarget;
@@ -46,7 +50,7 @@ public class Hero : Entity
 
     public void Update()
     {
-        currentAttackCooldown -= Time.deltaTime * Mathf.Max((100 + bonusAttackSpeed) / 100, 0);
+        currentAttackCooldown -= Time.deltaTime * Mathf.Max((100 + GetCarac(Carac.attackSpeed)) / 100, 0);
         if (CanAttack())
         {
             currentTarget = definition.attackTargetSelector.GetTargets(selfContext)[0];

@@ -17,7 +17,9 @@ public class HeroDefinition : ScriptableObject
     public int attack;
     public float attackCooldown;
     public int critChance;
-    public int critPower;
+    public int critPower; 
+    public int skillCritChance;
+    public int skillCritPower;
     public float threatRatio;
 
     [Header("Abilities and Passives")] public TargetSelector attackTargetSelector;
