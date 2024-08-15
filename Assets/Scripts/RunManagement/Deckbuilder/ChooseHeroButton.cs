@@ -24,7 +24,7 @@ public class ChooseHeroButton : MonoBehaviour
             {
                 targetHero.definition = hero.definition;
                 targetHero.ability = hero.ability;
-                targetHero.skill = hero.skill;
+                //targetHero.skill = hero.skill;
                 targetHero.LoadDefinition();
                 TavernManager.instance.HeroChosen();
             }

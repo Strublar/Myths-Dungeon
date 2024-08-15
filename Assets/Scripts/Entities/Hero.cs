@@ -17,7 +17,7 @@ public class Hero : Entity
 
     [Header("Definition")] public HeroDefinition definition;
     public Item item;
-    public SkillDefinition skill;
+    //public SkillDefinition skill;
     public AbilityDefinition ability;
     
     [Header("Bonus Stats")] public int bonusAttack;
@@ -115,10 +115,10 @@ public class Hero : Entity
     {
         var passives = new List<PassiveDefinition>(definition.passives);
         passives.Add(definition.attackPassive);
-        foreach (var passive in skill.passives)
+        /*foreach (var passive in skill.passives)
         {
             passives.Add(passive);
-        }
+        }*/
 
         foreach (var passive in ability.linkedPassives)
         {
@@ -141,6 +141,7 @@ public class Hero : Entity
 
         caracs[Carac.maxHp] = (definition.hp + bonusHp) * (100 + bonusHpPercent) / 100;
         caracs[Carac.armor] = (definition.armor + bonusArmor) * (100 + bonusArmorPercent) / 100;
+        caracs[Carac.attack] = (definition.attack + bonusAttack) * (100 + bonusAttackPercent) / 100;
         caracs[Carac.critChance] = definition.critChance + bonusCritChance;
         caracs[Carac.critPower] = definition.critPower + bonusCritPower;
         

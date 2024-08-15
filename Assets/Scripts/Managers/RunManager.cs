@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using Random = System.Random;
 
 public class RunManager : MonoBehaviour
 {
@@ -29,7 +31,7 @@ public class RunManager : MonoBehaviour
         victoryText.gameObject.SetActive(false);
         SceneManager.LoadScene("FightScene", LoadSceneMode.Additive);
     }
-
+ 
     public void BossDefeated()
     {
         bossBeaten++;

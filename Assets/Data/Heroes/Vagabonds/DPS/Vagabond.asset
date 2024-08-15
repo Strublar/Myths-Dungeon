@@ -16,15 +16,17 @@ MonoBehaviour:
   heroImage: {fileID: 4068203885823228941, guid: 89bcbef0df82ec54c9a188f25ab0192f, type: 3}
   model: {fileID: 6659128185413003083, guid: ad816e09915606c448bb5458d1c1e6bc, type: 3}
   type: 2
+  isVagabond: 1
   hp: 80
   armor: 0
+  attack: 100
   attackCooldown: 2
-  power: 50
   critChance: 10
   critPower: 150
   threatRatio: 1
   attackTargetSelector: {fileID: 11400000, guid: 6c1bbbeac2d54884fa11c0e2048ef209, type: 2}
   attackPassive: {fileID: 11400000, guid: bcca2286cbcd3ff46b0a852493b1e246, type: 2}
+  baseAbility: {fileID: 11400000, guid: 8adb28e4fa84b904caff90d9efbf3871, type: 2}
   passives: []
   availableAbilities: []
   availableSkills: []

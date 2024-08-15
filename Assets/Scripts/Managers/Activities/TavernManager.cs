@@ -26,32 +26,34 @@ public class TavernManager : MonoBehaviour
 
     private void RollHeroes()
     {
-        var heroType = GetHeroType();
+        var heroType = GetHeroTypes();
         foreach (var heroButton in tavernSlots)
         {
             HeroDefinition definition;
             do
             {
                 definition = availableHeroes[Random.Range(0, availableHeroes.Count)];
-            } while (definition.type != heroType);
+            } while (!heroType.Contains(definition.type));
 
             heroButton.hero.definition = definition;
-            heroButton.hero.skill = definition.availableSkills[Random.Range(0, definition.availableSkills.Count)];
-            heroButton.hero.ability = definition.availableAbilities[Random.Range(0, definition.availableAbilities.Count)];
+            //heroButton.hero.skill = definition.availableSkills[Random.Range(0, definition.availableSkills.Count)];
+            heroButton.hero.ability = definition.baseAbility;
             heroButton.hero.LoadDefinition();
         }
-    }
+    } 
 
-    private HeroType GetHeroType()
+    private List<HeroType> GetHeroTypes()
     {
         switch(HubManager.chosenActivity)
         {
             case Activity.TavernTank:
-                return HeroType.Tank;
+                return new List<HeroType>() { HeroType.Tank };
             case Activity.TavernDPS:
-                return HeroType.DPS;
+                return new List<HeroType>() { HeroType.DPS };
             case Activity.TavernHeal:
-                return HeroType.Heal;
+                return new List<HeroType>() { HeroType.Heal };
+            case Activity.TavernEarly:
+                return HubManager.remainingVagabonds;
             default:
                 throw new ArgumentOutOfRangeException();
         }

@@ -10,7 +10,8 @@ public class HeroDefinition : ScriptableObject
     public Sprite heroImage;
     public GameObject model;
     public HeroType type;
-
+    public bool isVagabond;
+    
     [Header("Stats")] 
     public int hp;
     public int armor;

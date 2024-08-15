@@ -10,12 +10,14 @@ public enum Activity
     TavernTank = 0,
     TavernDPS = 1,
     TavernHeal = 2,
+    TavernEarly = 3,
 }
 
 public class HubManager : MonoBehaviour
 {
     public static Activity chosenActivity;
     public static HubManager instance;
+    public static List<HeroType> remainingVagabonds = new();
 
     public List<Activity> availableActivities;
     public List<Sprite> activitySprites;
@@ -30,10 +32,29 @@ public class HubManager : MonoBehaviour
 
     public void Start()
     {
-        var activitiesRolled = RollActivities();
-        for (int i = 0; i < activityButtons.Count;i++)
+        remainingVagabonds.Clear();
+        foreach (var hero in RunManager.instance.heroes)
         {
-            activityButtons[i].Init(activitiesRolled[i]);
+            if (hero.definition.isVagabond)
+            {
+                if (!remainingVagabonds.Contains(hero.definition.type))
+                {
+                    remainingVagabonds.Add(hero.definition.type);
+                }
+            }
+        }
+        
+        if(remainingVagabonds.Count > 0) //early taverns
+        {
+            ChooseActivity(Activity.TavernEarly);
+        }
+        else //other activities
+        {
+            var activitiesRolled = RollActivities();
+            for (int i = 0; i < activityButtons.Count;i++)
+            {
+                activityButtons[i].Init(activitiesRolled[i]);
+            }
         }
     }
 
@@ -82,6 +103,9 @@ public class HubManager : MonoBehaviour
                 SceneManager.LoadScene("TavernScene", LoadSceneMode.Additive);
                 break;
             case Activity.TavernHeal:
+                SceneManager.LoadScene("TavernScene", LoadSceneMode.Additive);
+                break;
+            case Activity.TavernEarly:
                 SceneManager.LoadScene("TavernScene", LoadSceneMode.Additive);
                 break;
             default:
