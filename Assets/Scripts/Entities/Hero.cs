@@ -17,7 +17,7 @@ public class Hero : Entity
 
     [Header("Definition")] public HeroDefinition definition;
     public Item item;
-    //public SkillDefinition skill;
+    public List<SkillDefinition> skills;
     public AbilityDefinition ability;
     
     [Header("Bonus Stats")] public int bonusAttack;
@@ -115,10 +115,13 @@ public class Hero : Entity
     {
         var passives = new List<PassiveDefinition>(definition.passives);
         passives.Add(definition.attackPassive);
-        /*foreach (var passive in skill.passives)
+        foreach (var skill in skills)
         {
-            passives.Add(passive);
-        }*/
+            foreach (var passive in skill.passives)
+            {
+                passives.Add(passive);
+            }
+        }
 
         foreach (var passive in ability.linkedPassives)
         {
