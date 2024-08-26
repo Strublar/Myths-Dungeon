@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,11 +10,14 @@ public class LootManager : MonoBehaviour
     public static LootManager instance;
     public List<ItemDefinition> lootTable;
     public List<LootedItem> lootedItems;
-    public List<ExperienceItem> experienceItems;
     public int commonProbability, rareProbability, epicProbability, legendaryProbability;
     public int normalProbability, enhancedProbability, masterworkProbability, legacyProbability;
-    public int lootChosen = 0;
-
+    public LootedItem selectedItem;
+    public TextMeshProUGUI itemNameText;
+    public TextMeshProUGUI itemDescriptionText;
+    
+    public Color selectedColor;
+    public Color unselectedColor;
     public void Awake()
     {
         instance = this;
@@ -23,9 +27,17 @@ public class LootManager : MonoBehaviour
         List<ItemDefinition> newList = new List<ItemDefinition>();
         for(int i=0;i<3;i++)
         {
-            ItemRarity rarity = GetRarity();
-            List<ItemDefinition> itemList = (from item in lootTable where item.rarity == rarity select item).ToList();
-            newList.Add(itemList[Random.Range(0, itemList.Count)]);
+            newList.Add(lootTable[Random.Range(0, lootTable.Count)]);
+        }
+        return newList;
+    }
+
+    public List<ItemRarity> GetRarities()
+    {
+        List<ItemRarity> newList = new();
+        for(int i=0;i<3;i++)
+        {
+            newList.Add(GetRarity());
         }
         return newList;
     }
@@ -50,19 +62,18 @@ public class LootManager : MonoBehaviour
 
     public void Start()
     {
-        lootChosen = 0;
+        selectedItem = lootedItems[0];
         List<ItemDefinition> loots = GetLoots();
-
-        //level
-        lootedItems[0].item.qualityLevel = RunManager.instance.bossBeaten;
-        lootedItems[1].item.qualityLevel = RunManager.instance.bossBeaten;
-        lootedItems[2].item.qualityLevel = RunManager.instance.bossBeaten;
-
+        List<ItemRarity> rarities = GetRarities();
+        
         //item
         lootedItems[0].item.definition = loots[0];
         lootedItems[1].item.definition = loots[1];
         lootedItems[2].item.definition = loots[2];
         
+        lootedItems[0].item.rarity = rarities[0];
+        lootedItems[1].item.rarity = rarities[1];
+        lootedItems[2].item.rarity = rarities[2];
 
 
         lootedItems[0].Init();
@@ -73,24 +84,61 @@ public class LootManager : MonoBehaviour
         lootedItems[1].gameObject.SetActive(true);
         lootedItems[2].gameObject.SetActive(true);
 
-
-        experienceItems[0].gameObject.SetActive(true);
-        experienceItems[1].gameObject.SetActive(true);
-        experienceItems[2].gameObject.SetActive(true);
+        itemNameText.text = selectedItem.item.definition.itemName;
+        itemDescriptionText.text = selectedItem.item.definition.description;
     }
 
-    public void Choose(int id)
+    public void SelectItem(LootedItem newSelectedItem)
     {
-        lootChosen++;
-
-        lootedItems[id].gameObject.SetActive(false);
-        experienceItems[id].gameObject.SetActive(false);
-        if(lootChosen == lootedItems.Count)
+        selectedItem = newSelectedItem;
+        foreach (var lootedItem in lootedItems)
         {
-            SceneManager.LoadScene("HubScene", LoadSceneMode.Additive);
-            SceneManager.UnloadSceneAsync("LootScene");
+            if (lootedItem == newSelectedItem)
+            {
+                lootedItem.selectionFrame.color = selectedColor;
+            }
+            else
+            {
+                lootedItem.selectionFrame.color = unselectedColor;
+            }
         }
     }
 
+    public void Choose(LootedItem chosenLootedItem, Hero hero)
+    {
+        if(hero.item.definition != null)
+        {
+            var chosenItemDefinition = chosenLootedItem.item.definition;
+            var chosenItemRarity = chosenLootedItem.item.rarity;
+            chosenLootedItem.item.definition = hero.item.definition;
+            chosenLootedItem.item.rarity = hero.item.rarity;
+            hero.item.definition = chosenItemDefinition;
+            hero.item.rarity = chosenItemRarity;
 
+            chosenLootedItem.Init();
+            hero.LoadDefinition();
+        }
+        else
+        {
+            hero.item.definition = chosenLootedItem.item.definition;
+            hero.item.rarity = chosenLootedItem.item.rarity;
+
+            chosenLootedItem.gameObject.SetActive(false);
+
+        }
+        
+        
+        /*if(lootChosen == lootedItems.Count)
+        {
+            SceneManager.LoadScene("HubScene", LoadSceneMode.Additive);
+            SceneManager.UnloadSceneAsync("LootScene");
+        }*/
+    }
+
+    public void Continue()
+    {
+        //TODO Sell items
+        SceneManager.LoadScene("HubScene", LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync("LootScene");
+    }
 }

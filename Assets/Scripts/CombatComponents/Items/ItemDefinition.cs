@@ -6,7 +6,6 @@ using UnityEngine;
 public class ItemDefinition : ScriptableObject
 {
     public string itemName;
-    public ItemRarity rarity;
     public string description;
     public Sprite itemImage;
     [Header("Stats")]

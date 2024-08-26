@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class LootedItem : MonoBehaviour
 {
-    public int id;
     public Item item;
     public SpriteRenderer itemPreview;
-    public SpriteRenderer rarityFrame;
+    public SpriteRenderer selectionFrame;
     public SpriteRenderer itemBackground;
     public GameObject model;
     private bool isDragging;
@@ -43,34 +42,22 @@ public class LootedItem : MonoBehaviour
     public void Init()
     {
         itemPreview.sprite = item.definition.itemImage;
-        rarityFrame.color = ItemTooltipManager.instance.rarityMap[item.definition.rarity];
-        itemBackground.color = Color.grey;
+        itemBackground.color = ItemTooltipManager.instance.rarityMap[item.rarity];
     }
     public void OnDrag(GameObject target)
     {
         if (target.CompareTag("Hero"))
         {
-            
             Hero heroTarget = target.GetComponent<Hero>();
-
-            heroTarget.item.definition = item.definition;
-            heroTarget.item.qualityLevel = item.qualityLevel;
-            heroTarget.LoadDefinition();
-
-            LootManager.instance.Choose(id);
+            
+            LootManager.instance.Choose(this, heroTarget);
         }
         isDragging = false;
     }
 
-    public void OnStayedHovered()
-    {
-        ItemTooltipManager.instance.InitItemTooltip(item);
-        ItemTooltipManager.instance.ShowToolTip();
-    }
 
     public void OnTap()
     {
-        ItemTooltipManager.instance.InitItemTooltip(item);
-        ItemTooltipManager.instance.ShowToolTip();
+        LootManager.instance.SelectItem(this);
     }
 }
