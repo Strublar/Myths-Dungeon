@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : Entity
 {
@@ -9,7 +10,7 @@ public class Enemy : Entity
     public EnemyDefinition definition;
     [CanBeNull] public TextMeshPro enemyNameMesh;
     
-    public SpriteRenderer model;
+    public Image model;
     public Animator animator;
     
     public PassiveDefinition bossFrenzy;

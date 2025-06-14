@@ -17,7 +17,6 @@ public class HubManager : MonoBehaviour
 {
     public static Activity chosenActivity;
     public static HubManager instance;
-    public static List<HeroType> remainingVagabonds = new();
 
     public List<Activity> availableActivities;
     public List<Sprite> activitySprites;
@@ -32,19 +31,9 @@ public class HubManager : MonoBehaviour
 
     public void Start()
     {
-        remainingVagabonds.Clear();
-        foreach (var hero in RunManager.instance.heroes)
-        {
-            if (hero.definition.isVagabond)
-            {
-                if (!remainingVagabonds.Contains(hero.definition.type))
-                {
-                    remainingVagabonds.Add(hero.definition.type);
-                }
-            }
-        }
         
-        if(remainingVagabonds.Count > 0) //early taverns
+        
+        if(RunManager.instance.RemainingVagabonds.Count > 0) //early taverns
         {
             ChooseActivity(Activity.TavernEarly);
         }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 using Vector3 = UnityEngine.Vector3;
 
 public class Projectile : MonoBehaviour
@@ -12,7 +14,7 @@ public class Projectile : MonoBehaviour
     public float targetDuration = 1f;
     public List<Effect> effects;
     public Context context;
-    public SpriteRenderer sprite;
+    public Image image;
 
     public void Init(Context context, List<Effect> effects, Sprite sprite, float targetDuration)
     {
@@ -20,7 +22,7 @@ public class Projectile : MonoBehaviour
         this.effects = effects;
         origin = context.source.transform;
         target = context.target.transform;
-        this.sprite.sprite = sprite;
+        this.image.sprite = sprite;
         this.targetDuration = targetDuration;
         
         transform.position = origin.position;

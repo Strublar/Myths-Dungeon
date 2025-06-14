@@ -53,7 +53,7 @@ public class TavernManager : MonoBehaviour
             case Activity.TavernHeal:
                 return new List<HeroType>() { HeroType.Heal };
             case Activity.TavernEarly:
-                return HubManager.remainingVagabonds;
+                return RunManager.instance.RemainingVagabonds;
             default:
                 throw new ArgumentOutOfRangeException();
         }

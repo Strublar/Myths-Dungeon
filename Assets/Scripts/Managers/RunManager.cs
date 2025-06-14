@@ -14,13 +14,35 @@ public class RunManager : MonoBehaviour
     public bool fightStarted;
     public int bossBeaten = 0;
     public EnemyDefinition lastBoss;
-    [Header("Components")]
-    public GameObject loseScreen;
+    [Header("Components")] public GameObject loseScreen;
     public TextMeshPro victoryText;
+
+    public List<HeroType> RemainingVagabonds
+    {
+        get
+        {
+            var remainingVagabonds = new List<HeroType>();
+            foreach (var hero in instance.heroes)
+            {
+                if (hero.definition.isVagabond)
+                {
+                    if (!remainingVagabonds.Contains(hero.definition.type))
+                    {
+                        remainingVagabonds.Add(hero.definition.type);
+                    }
+                }
+            }
+
+            return remainingVagabonds;
+        }
+    }
+
+
     public void Awake()
     {
         instance = this;
     }
+
     public void Start()
     {
         StartNewRun();
@@ -31,7 +53,7 @@ public class RunManager : MonoBehaviour
         victoryText.gameObject.SetActive(false);
         SceneManager.LoadScene("FightScene", LoadSceneMode.Additive);
     }
- 
+
     public void BossDefeated()
     {
         bossBeaten++;
@@ -41,14 +63,13 @@ public class RunManager : MonoBehaviour
         victoryText.text = "Victory!!!\nTime : " + string.Format("{0:0.#}",killTime) +"s";
         victoryText.gameObject.SetActive(true);
         fightStarted = false;
-        
+
         foreach (Hero hero in heroes)
         {
             hero.LoadDefinition();
         }
     }
 
-    
 
     public void StartNewRun()
     {
@@ -58,6 +79,7 @@ public class RunManager : MonoBehaviour
         {
             hero.item.definition = null;
         }
+
         ReloadHeroes();
         StartNewBoss();
     }
@@ -68,7 +90,6 @@ public class RunManager : MonoBehaviour
         GameManager.instance.LoadMenu();
     }
 
-    
 
     public void ReloadHeroes()
     {

@@ -15,7 +15,7 @@ public class FightManager : MonoBehaviour
     public Hero mostThreatHero = null;
     public int deadHeroes;
     public float bossTimer = 0f;
-    public TextMeshPro currentLevel;
+    public TextMeshProUGUI currentLevel;
     public string lastAbilityName = "";
 
     public void Awake()

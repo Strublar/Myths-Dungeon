@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public enum HeroType
 {
@@ -11,7 +14,7 @@ public enum HeroType
     none
 }
 
-public class Hero : Entity
+public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     #region Stats
 
@@ -19,7 +22,7 @@ public class Hero : Entity
     public Item item;
     public List<SkillDefinition> skills;
     public AbilityDefinition ability;
-    
+
     [Header("Bonus Stats")] public int bonusAttack;
     public int bonusAttackPercent;
     public int bonusAttackSpeed;
@@ -33,7 +36,7 @@ public class Hero : Entity
     public int bonusCritPower;
     public int bonusAbilityCritChance;
     public int bonusAbilityCritPower;
-    
+
 
     [Header("Fight Stats")] public Entity currentTarget;
     public float threat;
@@ -62,8 +65,7 @@ public class Hero : Entity
         {
             if (isDragging)
             {
-                Vector3 newPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-                newPos.z = 0;
+                Vector2 newPos = Input.GetTouch(0).position;
                 model.transform.position = newPos;
             }
         }
@@ -74,9 +76,9 @@ public class Hero : Entity
         }
 
         if (!CanCast() && RunManager.instance.fightStarted)
-            model.GetComponent<SpriteRenderer>().color = Color.gray;
+            model.GetComponent<Image>().color = Color.gray;
         else
-            model.GetComponent<SpriteRenderer>().color = Color.white;
+            model.GetComponent<Image>().color = Color.white;
     }
 
     #region DefinitionLoading
@@ -85,7 +87,7 @@ public class Hero : Entity
     {
         LoadGraphics();
         ClearPassives();
-        
+
         if (FightManager.instance != null)
             currentTarget = FightManager.instance.boss;
 
@@ -96,7 +98,6 @@ public class Hero : Entity
         {
             passiveHolder = this, source = this
         };
-
     }
 
     public void LoadGraphics()
@@ -147,8 +148,8 @@ public class Hero : Entity
         caracs[Carac.attack] = (definition.attack + bonusAttack) * (100 + bonusAttackPercent) / 100;
         caracs[Carac.critChance] = definition.critChance + bonusCritChance;
         caracs[Carac.critPower] = definition.critPower + bonusCritPower;
-        
-        
+
+
         /*if (item.definition != null)
         {
             //Stats
@@ -167,11 +168,12 @@ public class Hero : Entity
                 passiveObjects.Add(pass);
             }
         }*/
-        
+
         currentAbilityCooldown = 0f;
         currentAttackCooldown = 0f;
         caracs[Carac.currentHp] = GetCarac(Carac.maxHp);
     }
+
     #endregion
 
     #region Controls
@@ -309,4 +311,61 @@ public class Hero : Entity
         FightManager.instance.GetNewThreatHero();
         FightManager.instance.HeroDies();
     }
+
+    #region DragHandler
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        if (CanCast())
+            isDragging = true;
+    }
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        isDragging = false;
+
+        if (!isAlive || !CanCast()) return;
+        
+        var raycastResults = new List<RaycastResult>();
+
+        EventSystem.current.RaycastAll(eventData, raycastResults);
+
+        Entity target = raycastResults.Select(r => r.gameObject.GetComponent<Entity>()).FirstOrDefault(resultEntity => resultEntity != null);
+
+        if (target == null) return;
+        
+        if (!definition.IsSupport)
+        {
+            if (target is Enemy)
+            {
+                CastAbility(target.GetComponent<Entity>());
+            }
+        }
+        else
+        {
+            if (target is Hero && RunManager.instance.fightStarted)
+            {
+                CastAbility(target.GetComponent<Entity>());
+            }
+        }
+
+        if (FightManager.instance.mostThreatHero == null)
+        {
+            FightManager.instance.mostThreatHero = this;
+        }
+
+        if (threat >= FightManager.instance.mostThreatHero.threat)
+        {
+            FightManager.instance.mostThreatHero = this;
+        }
+        
+    }
+    
+    public void OnDrag(PointerEventData eventData)
+    {
+        //throw new System.NotImplementedException();
+    }
+
+    #endregion
+
+ 
 }

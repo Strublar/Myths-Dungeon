@@ -1,26 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class LootedItem : MonoBehaviour
+public class LootedItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Item item;
-    public SpriteRenderer itemPreview;
-    public SpriteRenderer selectionFrame;
-    public SpriteRenderer itemBackground;
+    public Image itemPreview;
+    public Image selectionFrame;
+    public Image itemBackground;
     public GameObject model;
-    private bool isDragging;
-    private Vector3 modelInitialPos;
+    private bool _isDragging;
+    private Vector3 _modelInitialPos;
 
     public void Start()
     {
-        modelInitialPos = model.transform.localPosition;
+        _modelInitialPos = model.transform.localPosition;
     }
     public void Update()
     {
         if (Input.touchCount > 0)
         {
-            if (isDragging)
+            if (_isDragging)
             {
                 Vector3 newPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
                 newPos.z = 0;
@@ -29,14 +31,14 @@ public class LootedItem : MonoBehaviour
         }
         else
         {
-            isDragging = false;
-            model.transform.localPosition = modelInitialPos;
+            _isDragging = false;
+            model.transform.localPosition = _modelInitialPos;
         }
 
     }
     public void OnStartDragging()
     {
-        isDragging = true;
+        _isDragging = true;
     }
 
     public void Init()
@@ -52,12 +54,31 @@ public class LootedItem : MonoBehaviour
             
             LootManager.instance.Choose(this, heroTarget);
         }
-        isDragging = false;
+        _isDragging = false;
     }
-
-
     public void OnTap()
     {
         LootManager.instance.SelectItem(this);
     }
+    
+
+    #region DragHandler
+    
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        _isDragging = true;
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        model.transform.position = new Vector3(eventData.position.x, eventData.position.y, 0);
+        //rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        model.transform.localPosition = _modelInitialPos;
+    }
+
+    #endregion
 }
