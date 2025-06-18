@@ -4,12 +4,13 @@ using System.Numerics;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
 public class Projectile : MonoBehaviour
 {
     public Transform origin;
-    public Transform target;
+    public Vector3 targetPosition;
     public float lifeTime = 0f;
     public float targetDuration = 1f;
     public List<Effect> effects;
@@ -21,17 +22,19 @@ public class Projectile : MonoBehaviour
         this.context = context;
         this.effects = effects;
         origin = context.source.transform;
-        target = context.target.transform;
+        var targetTransform = context.target.transform;
+        targetPosition = targetTransform.position+new Vector3(Random.Range(-200,200),Random.Range(-50,50));
         this.image.sprite = sprite;
         this.targetDuration = targetDuration;
-        
-        transform.position = origin.position;
-        transform.up = target.position - transform.position;
+
+        var thisTransform = transform;
+        thisTransform.position = origin.position;
+        thisTransform.up = targetPosition - thisTransform.position;
     }
     public void Update()
     {
         lifeTime += Time.deltaTime;
-        transform.position = Vector3.Lerp(origin.position,target.position,lifeTime/targetDuration);
+        transform.position = Vector3.Lerp(origin.position,targetPosition,lifeTime/targetDuration);
         if (lifeTime >= targetDuration)
         {
             foreach (var effect in effects)
