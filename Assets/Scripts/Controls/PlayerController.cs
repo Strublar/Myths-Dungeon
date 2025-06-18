@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,12 +19,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float hoverTimer;
     private float currentHoverTimer;
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if(Input.touchCount > 0)
         {
             touch = Input.GetTouch(0);
-            raycast = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), Camera.main.transform.forward);
+            
+            raycast = Physics2D.Raycast(touch.position, Camera.main.transform.forward);
             objectHit = raycast.collider ? raycast.collider.gameObject : null ;
             if(objectHit == null)
             {
@@ -70,6 +73,16 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-           
-    }
+    }*/
+
+    public static T GetTarget<T>(PointerEventData eventData)
+    {
+        var raycastResults = new List<RaycastResult>();
+
+        EventSystem.current.RaycastAll(eventData, raycastResults);
+
+        T target = raycastResults.Select(r => r.gameObject.GetComponent<T>()).FirstOrDefault(resultEntity => resultEntity != null);
+        
+        return target;
+    } 
 }

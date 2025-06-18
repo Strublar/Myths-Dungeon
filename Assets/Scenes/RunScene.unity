@@ -983,13 +983,10 @@ MonoBehaviour:
   background: {fileID: 0}
   itemDescription: {fileID: 0}
   commonColor: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
+  uncommonColor: {r: 0.43867922, g: 1, b: 0.46460676, a: 1}
   rareColor: {r: 0.48584908, g: 0.8104698, b: 1, a: 1}
   epicColor: {r: 0.6874213, g: 0.43867922, b: 1, a: 1}
   legendaryColor: {r: 1, g: 0.7270889, b: 0.36320752, a: 1}
-  normalColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
-  enhancedColor: {r: 0.5148705, g: 0.8396226, b: 0.43961373, a: 1}
-  masterworkColor: {r: 0.9888954, g: 1, b: 0.4669811, a: 1}
-  legacyColor: {r: 1, g: 0.4481132, b: 0.4481132, a: 1}
 --- !u!1 &291403967
 GameObject:
   m_ObjectHideFlags: 0

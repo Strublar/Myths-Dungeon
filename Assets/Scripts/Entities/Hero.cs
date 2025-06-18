@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Misc;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
@@ -19,10 +20,10 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
     #region Stats
 
     [Header("Definition")] public HeroDefinition definition;
-    public Item item;
+    public ItemDefinition item;
     public List<SkillDefinition> skills;
     public AbilityDefinition ability;
-
+    public Dictionary<SkillTag, int> skillTags;
     [Header("Bonus Stats")] public int bonusAttack;
     public int bonusAttackPercent;
     public int bonusAttackSpeed;
@@ -36,7 +37,6 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
     public int bonusCritPower;
     public int bonusAbilityCritChance;
     public int bonusAbilityCritPower;
-
 
     [Header("Fight Stats")] public Entity currentTarget;
     public float threat;
@@ -93,6 +93,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
 
         LoadPassives();
         ComputeStats();
+        RefreshSkillTags();
 
         selfContext = new Context
         {
@@ -319,20 +320,18 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
         if (CanCast())
             isDragging = true;
     }
+
     public void OnEndDrag(PointerEventData eventData)
     {
         isDragging = false;
 
         if (!isAlive || !CanCast()) return;
-        
-        var raycastResults = new List<RaycastResult>();
 
-        EventSystem.current.RaycastAll(eventData, raycastResults);
 
-        Entity target = raycastResults.Select(r => r.gameObject.GetComponent<Entity>()).FirstOrDefault(resultEntity => resultEntity != null);
+        Entity target = PlayerController.GetTarget<Entity>(eventData);
 
         if (target == null) return;
-        
+
         if (!definition.IsSupport)
         {
             if (target is Enemy)
@@ -357,15 +356,53 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
         {
             FightManager.instance.mostThreatHero = this;
         }
-        
     }
-    
+
     public void OnDrag(PointerEventData eventData)
     {
-        //throw new System.NotImplementedException();
     }
 
     #endregion
 
- 
+
+    public void RefreshSkillTags()
+    {
+        skillTags = new();
+        skillTags.Add(definition.skillTag, 1);
+        
+        foreach (var skillDefinition in skills)
+        {
+            foreach (var tagData in skillDefinition.tags)
+            {
+                if (skillTags.ContainsKey(tagData.tag))
+                {
+                    skillTags[tagData.tag] += tagData.weight;
+                }
+                else
+                {
+                    skillTags[tagData.tag] = tagData.weight;
+                }
+            }
+        }
+    }
+
+    public bool CanEquipSkill(SkillDefinition skillDefinition)
+    {
+        return skillDefinition.holderRequiredTags.All(skillTag => skillTags.ContainsKey(skillTag));
+    }
+    public void AddSkill(SkillDefinition skillDefinition)
+    {
+        foreach (var kvp in skillDefinition.caracs)
+        {
+            if (caracs.TryGetValue(kvp.Key, out int value))
+            {
+                caracs[kvp.Key] = value + kvp.Value;
+            }
+            else
+            {
+                caracs[kvp.Key] = kvp.Value;
+            }
+        }
+        skills.Add(skillDefinition);
+    }
 }

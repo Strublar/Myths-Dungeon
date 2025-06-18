@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Misc;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LootManager : MonoBehaviour
 {
-    public static LootManager instance;
+    public static LootManager Instance;
     public List<ItemDefinition> lootTable;
     public List<LootedItem> lootedItems;
     public int commonProbability, rareProbability, epicProbability, legendaryProbability;
-    public int normalProbability, enhancedProbability, masterworkProbability, legacyProbability;
     public LootedItem selectedItem;
     public TextMeshProUGUI itemNameText;
     public TextMeshProUGUI itemDescriptionText;
@@ -20,7 +20,7 @@ public class LootManager : MonoBehaviour
     public Color unselectedColor;
     public void Awake()
     {
-        instance = this;
+        Instance = this;
     }
     public List<ItemDefinition> GetLoots()
     {
@@ -32,9 +32,9 @@ public class LootManager : MonoBehaviour
         return newList;
     }
 
-    public List<ItemRarity> GetRarities()
+    public List<Rarity> GetRarities()
     {
-        List<ItemRarity> newList = new();
+        List<Rarity> newList = new();
         for(int i=0;i<3;i++)
         {
             newList.Add(GetRarity());
@@ -42,20 +42,20 @@ public class LootManager : MonoBehaviour
         return newList;
     }
 
-    public ItemRarity GetRarity()
+    public Rarity GetRarity()
     {
         int randInt = Random.Range(0, (commonProbability + rareProbability + epicProbability + legendaryProbability));
 
 
-        ItemRarity rarity;
+        Rarity rarity;
         if (randInt < commonProbability)
-            rarity = ItemRarity.common;
+            rarity = Rarity.common;
         else if (randInt < commonProbability + rareProbability)
-            rarity = ItemRarity.rare;
+            rarity = Rarity.rare;
         else if (randInt < commonProbability + rareProbability + epicProbability)
-            rarity = ItemRarity.epic;
+            rarity = Rarity.epic;
         else
-            rarity = ItemRarity.legendary;
+            rarity = Rarity.legendary;
 
         return rarity;
     }
@@ -64,12 +64,12 @@ public class LootManager : MonoBehaviour
     {
         selectedItem = lootedItems[0];
         List<ItemDefinition> loots = GetLoots();
-        List<ItemRarity> rarities = GetRarities();
+        List<Rarity> rarities = GetRarities();
         
         //item
-        lootedItems[0].item.definition = loots[0];
-        lootedItems[1].item.definition = loots[1];
-        lootedItems[2].item.definition = loots[2];
+        lootedItems[0].item = loots[0];
+        lootedItems[1].item = loots[1];
+        lootedItems[2].item = loots[2];
         
         lootedItems[0].item.rarity = rarities[0];
         lootedItems[1].item.rarity = rarities[1];
@@ -84,8 +84,8 @@ public class LootManager : MonoBehaviour
         lootedItems[1].gameObject.SetActive(true);
         lootedItems[2].gameObject.SetActive(true);
 
-        itemNameText.text = selectedItem.item.definition.itemName;
-        itemDescriptionText.text = selectedItem.item.definition.description;
+        itemNameText.text = selectedItem.item.itemName;
+        itemDescriptionText.text = selectedItem.item.description;
     }
 
     public void SelectItem(LootedItem newSelectedItem)
@@ -106,13 +106,13 @@ public class LootManager : MonoBehaviour
 
     public void Choose(LootedItem chosenLootedItem, Hero hero)
     {
-        if(hero.item.definition != null)
+        if(hero.item != null)
         {
-            var chosenItemDefinition = chosenLootedItem.item.definition;
+            var chosenItemDefinition = chosenLootedItem.item;
             var chosenItemRarity = chosenLootedItem.item.rarity;
-            chosenLootedItem.item.definition = hero.item.definition;
+            chosenLootedItem.item = hero.item;
             chosenLootedItem.item.rarity = hero.item.rarity;
-            hero.item.definition = chosenItemDefinition;
+            hero.item = chosenItemDefinition;
             hero.item.rarity = chosenItemRarity;
 
             chosenLootedItem.Init();
@@ -120,7 +120,7 @@ public class LootManager : MonoBehaviour
         }
         else
         {
-            hero.item.definition = chosenLootedItem.item.definition;
+            hero.item = chosenLootedItem.item;
             hero.item.rarity = chosenLootedItem.item.rarity;
 
             chosenLootedItem.gameObject.SetActive(false);

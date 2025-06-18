@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9106702019863737948}
   - component: {fileID: 7869236679826074985}
-  - component: {fileID: 5232025414695944637}
   - component: {fileID: 931783515656589792}
   - component: {fileID: 4260110775467557135}
   - component: {fileID: 579944979211273930}
@@ -62,7 +61,7 @@ MonoBehaviour:
   passiveObjects: []
   isAlive: 1
   definition: {fileID: 11400000, guid: e6352d7fb43108c4db5ccd216110ee5a, type: 2}
-  item: {fileID: 5232025414695944637}
+  item: {fileID: 0}
   skills: []
   ability: {fileID: 11400000, guid: 136546d39f598f74480da9a82d9f08bd, type: 2}
   bonusAttack: 0
@@ -84,20 +83,6 @@ MonoBehaviour:
   currentAbilityCooldown: 0
   model: {fileID: 0}
   healthBar: {fileID: 4833275854603085159}
---- !u!114 &5232025414695944637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6700536432115644008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dea294aaaea0a7f4e990f38634b8964b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rarity: 0
-  definition: {fileID: 0}
 --- !u!95 &931783515656589792
 Animator:
   serializedVersion: 5
@@ -140,14 +125,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2610885559265285415, guid: 50f11913766cf9d439e9d6cf600d6b44, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

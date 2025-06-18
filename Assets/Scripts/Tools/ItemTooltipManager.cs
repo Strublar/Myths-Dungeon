@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Misc;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,25 +15,24 @@ public class ItemTooltipManager : MonoBehaviour
     public Image background;
     public TMP_Text itemDescription;
     [Header("Colors")] public Color commonColor;
+    public Color uncommonColor;
     public Color rareColor;
     public Color epicColor;
     public Color legendaryColor;
-    public Color normalColor;
-    public Color enhancedColor;
-    public Color masterworkColor;
-    public Color legacyColor;
-    public Dictionary<ItemRarity, Color> rarityMap;
+
+    public Dictionary<Rarity, Color> rarityMap;
 
     public void Awake()
     {
         instance = this;
 
-        rarityMap = new Dictionary<ItemRarity, Color>
+        rarityMap = new Dictionary<Rarity, Color>
         {
-            {ItemRarity.common, commonColor},
-            {ItemRarity.rare, rareColor},
-            {ItemRarity.epic, epicColor},
-            {ItemRarity.legendary, legendaryColor}
+            {Rarity.common, commonColor},
+            {Rarity.uncommon, uncommonColor},
+            {Rarity.rare, rareColor},
+            {Rarity.epic, epicColor},
+            {Rarity.legendary, legendaryColor}
         };
     }
 
@@ -55,18 +55,18 @@ public class ItemTooltipManager : MonoBehaviour
         background.color = instance.normalColor;
     }*/
 
-    public string LootedItemDescription(LootedItem item)
+    public string LootedItemDescription(LootedItem lootedItem)
     {
         var context = new Context
         {
         };
-        string[] formatListItem = new string[item.item.definition.values.Count];
-        for (int i = 0; i < item.item.definition.values.Count; i++)
+        string[] formatListItem = new string[lootedItem.item.values.Count];
+        for (int i = 0; i < lootedItem.item.values.Count; i++)
         {
-            formatListItem[i] = item.item.definition.values[i].computeValue(context).ToString();
+            formatListItem[i] = lootedItem.item.values[i].computeValue(context).ToString();
         }
 
-        return string.Format(item.item.definition.description, formatListItem);
+        return string.Format(lootedItem.item.description, formatListItem);
     }
 
     public void ShowToolTip()

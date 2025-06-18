@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Misc;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -29,7 +30,8 @@ public class HeroDefinition : ScriptableObject
     public List<PassiveDefinition> passives;
     public List<AbilityDefinition> availableAbilities;
     public List<SkillDefinition> availableSkills;
-    
+
+    public SkillTag skillTag;
     public Color cooldownBarColor;
     public bool IsSupport => type == HeroType.Heal;
 }

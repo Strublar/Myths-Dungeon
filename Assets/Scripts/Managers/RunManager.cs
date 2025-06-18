@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Misc;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -59,8 +60,8 @@ public class RunManager : MonoBehaviour
         bossBeaten++;
         float killTime = Time.time - FightManager.instance.bossTimer;
         SceneManager.UnloadSceneAsync("FightScene");
-        SceneManager.LoadScene("LootScene", LoadSceneMode.Additive);
-        victoryText.text = "Victory!!!\nTime : " + string.Format("{0:0.#}",killTime) +"s";
+        SceneManager.LoadScene("SkillScene", LoadSceneMode.Additive);
+        victoryText.text = "Victory!!!\nTime : " + string.Format("{0:0.#}", killTime) + "s";
         victoryText.gameObject.SetActive(true);
         fightStarted = false;
 
@@ -77,7 +78,7 @@ public class RunManager : MonoBehaviour
         bossBeaten = 0;
         foreach (Hero hero in heroes)
         {
-            hero.item.definition = null;
+            hero.item = null;
         }
 
         ReloadHeroes();
@@ -97,5 +98,27 @@ public class RunManager : MonoBehaviour
         {
             hero.LoadDefinition();
         }
+    }
+
+    public Dictionary<SkillTag,int> GetAllSkillTags()
+    {
+        Dictionary<SkillTag,int> tags = new();
+
+        foreach (var hero in heroes)
+        {
+            foreach (var skillTagPair in hero.skillTags)
+            {
+                if (tags.ContainsKey(skillTagPair.Key))
+                {
+                    tags[skillTagPair.Key] += skillTagPair.Value;
+                }
+                else
+                {
+                    tags[skillTagPair.Key] = skillTagPair.Value;
+                }
+            }
+        }
+
+        return tags;
     }
 }

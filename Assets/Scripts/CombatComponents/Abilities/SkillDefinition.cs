@@ -1,13 +1,21 @@
 
 using System.Collections.Generic;
+using Misc;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewSkill", menuName = "Skill")] 
 public class SkillDefinition : ScriptableObject
 {
+    public string skillName;
     public string description;
+    public Sprite skillImage;
+    public Rarity rarity;
     public List<PassiveDefinition> passives;
-    
+    public List<SkillTagData> tags;
+    public List<SkillTag> requiredTags;
+    public List<SkillTag> holderRequiredTags;
+    [Header("Stats")] public Dictionary<Carac, int> caracs = new();
+
     [Header("Serialization")]
     public List<DynamicValue> values;
 }

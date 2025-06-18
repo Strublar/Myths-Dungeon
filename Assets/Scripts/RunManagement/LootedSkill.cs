@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class LootedItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
+public class LootedSkill : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
-    public ItemDefinition item;
-    public Image itemPreview;
+    public SkillDefinition definition;
+    public Image skillPreview;
     public Image selectionFrame;
-    public Image itemBackground;
+    public Image skillBackground;
+    
     public GameObject model;
     private bool _isDragging;
     private Vector3 _modelInitialPos;
@@ -36,15 +36,15 @@ public class LootedItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             model.transform.localPosition = _modelInitialPos;
         }
     }
-
+    
     public void Init()
     {
-        itemPreview.sprite = item.itemImage;
-        itemBackground.color = ItemTooltipManager.instance.rarityMap[item.rarity];
+        skillPreview.sprite = definition.skillImage;
+        skillBackground.color = ItemTooltipManager.instance.rarityMap[definition.rarity];
     }
     
-    #region DragHandler
-
+    #region Input Handler
+    
     public void OnBeginDrag(PointerEventData eventData)
     {
         _isDragging = true;
@@ -52,6 +52,7 @@ public class LootedItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnDrag(PointerEventData eventData)
     {
+        
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -63,12 +64,11 @@ public class LootedItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         if (target == null)
             return;
         
-        LootManager.Instance.Choose(this, target);
-    }
+        SkillLootManager.Instance.Choose(this, target);    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        LootManager.Instance.SelectItem(this);
+        SkillLootManager.Instance.SelectSkill(this);
     }
 
     #endregion
