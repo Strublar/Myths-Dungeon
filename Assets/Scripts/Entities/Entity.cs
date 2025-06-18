@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Misc;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -94,19 +95,4 @@ public class Entity : MonoBehaviour
 
         passiveObjects.Clear();
     }
-}
-
-public enum Carac : int
-{
-    maxHp,
-    currentHp,
-    armor,
-    attack,
-    attackSpeed,
-    critChance,
-    critPower,
-    abilityPower,
-    abilityHaste,
-    abilityCritChance,
-    abilityCritPower
 }

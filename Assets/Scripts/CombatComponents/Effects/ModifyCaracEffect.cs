@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Misc;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CaracEffect", menuName = "Effects/ModifyCaracEffect")]

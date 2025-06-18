@@ -12,17 +12,9 @@ public class HeroDefinition : ScriptableObject
     public GameObject model;
     public HeroType type;
     public bool isVagabond;
-    
-    [Header("Stats")] 
-    public int hp;
-    public int armor;
-    public int attack;
-    public float attackCooldown;
-    public int critChance;
-    public int critPower; 
-    public int skillCritChance;
-    public int skillCritPower;
-    public float threatRatio;
+
+    [Header("Stats")] public float attackCooldown;
+    public List<CaracData> caracs;
 
     [Header("Abilities and Passives")] public TargetSelector attackTargetSelector;
     public PassiveDefinition attackPassive;
@@ -34,4 +26,5 @@ public class HeroDefinition : ScriptableObject
     public SkillTag skillTag;
     public Color cooldownBarColor;
     public bool IsSupport => type == HeroType.Heal;
+    public float ThreatRatio => type == HeroType.Tank ? 5 : 1;
 }

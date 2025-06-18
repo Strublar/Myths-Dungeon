@@ -1,3 +1,4 @@
+using Misc;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ReviveEffect", menuName = "Effects/PreventDeath")]

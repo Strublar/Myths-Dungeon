@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Misc;
 using UnityEngine;
 
 public enum DamageType
@@ -22,14 +23,13 @@ public class DealDamageEffect : Effect
         float critModifier = canCrit && context.isCritical && context.source is Hero heroSource
             ? heroSource.GetCarac(Carac.critPower)
             : 100;
-        float abilityBuff = fromAbility ? (float)(100 + context.source.GetCarac(Carac.abilityPower)) / 100 : 1;
-        int damageValue = Mathf.RoundToInt(value.computeValue(context) * abilityBuff * critModifier / 100f);
+        int damageValue = Mathf.RoundToInt(value.computeValue(context) *  critModifier / 100f);
         context.value = damageValue;
         context.damageType = damageType;
         context.target.DealDamage(context);
         if (context.source is Hero hero)
         {
-            hero.threat += damageValue * hero.definition.threatRatio;
+            hero.threat += damageValue * hero.definition.ThreatRatio;
             FightManager.instance.UpdateMostThreatHero(hero);
         }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public enum HeroType
 {
@@ -24,19 +26,9 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
     public List<SkillDefinition> skills;
     public AbilityDefinition ability;
     public Dictionary<SkillTag, int> skillTags;
-    [Header("Bonus Stats")] public int bonusAttack;
-    public int bonusAttackPercent;
-    public int bonusAttackSpeed;
-    public int bonusHp;
-    public int bonusHpPercent;
-    public int bonusArmor;
-    public int bonusArmorPercent;
-    public int bonusAbilityPower;
-    public int bonusAbilityHaste;
-    public int bonusCritChance;
-    public int bonusCritPower;
-    public int bonusAbilityCritChance;
-    public int bonusAbilityCritPower;
+    [Header("Bonus Stats")] 
+    public Dictionary<Carac, int> baseCaracs;
+    public Dictionary<Carac, int> caracBonus;
 
     [Header("Fight Stats")] public Entity currentTarget;
     public float threat;
@@ -92,16 +84,17 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
             currentTarget = FightManager.instance.boss;
 
         LoadPassives();
+        LoadCaracs();
         ComputeStats();
         RefreshSkillTags();
-
+        
         selfContext = new Context
         {
             passiveHolder = this, source = this
         };
     }
 
-    public void LoadGraphics()
+    private void LoadGraphics()
     {
         if (model != null)
             Destroy(model);
@@ -113,7 +106,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
         healthBar.SetActive(true);
     }
 
-    public void LoadPassives()
+    private void LoadPassives()
     {
         var passives = new List<PassiveDefinition>(definition.passives);
         passives.Add(definition.attackPassive);
@@ -140,15 +133,40 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
         }
     }
 
-    public void ComputeStats()
+    public void LoadCaracs()
     {
+        baseCaracs = new();
+        foreach (var caracData in definition.caracs)
+        {
+            baseCaracs.Add(caracData.carac,caracData.value);
+        }
+
+        caracBonus = new(); 
+    }
+
+    private void ComputeStats()
+    {
+        
         threat = 0;
 
-        caracs[Carac.maxHp] = (definition.hp + bonusHp) * (100 + bonusHpPercent) / 100;
-        caracs[Carac.armor] = (definition.armor + bonusArmor) * (100 + bonusArmorPercent) / 100;
-        caracs[Carac.attack] = (definition.attack + bonusAttack) * (100 + bonusAttackPercent) / 100;
-        caracs[Carac.critChance] = definition.critChance + bonusCritChance;
-        caracs[Carac.critPower] = definition.critPower + bonusCritPower;
+        foreach (Carac carac in Enum.GetValues(typeof(Carac)))
+        {
+            caracs[carac] = 0;
+            if (baseCaracs.TryGetValue(carac, out int baseValue))
+            {
+                caracs[carac] = baseValue;
+            }
+            if (caracBonus.TryGetValue(carac, out int bonusValue))
+            {
+                caracs[carac]*= (100 + bonusValue) / 100;
+            }
+        }
+        
+        /*caracs[Carac.maxHp] = baseCaracs[Carac.maxHp] * (100 + caracBonus[Carac.maxHp]) / 100;
+        caracs[Carac.armor] = baseCaracs[Carac.armor] * (100 + caracBonus[Carac.armor]) / 100;
+        caracs[Carac.attack] = baseCaracs[Carac.attack] * (100 + caracBonus[Carac.attack]) / 100;
+        caracs[Carac.critChance] = baseCaracs[Carac.critChance] * (100 + caracBonus[Carac.critChance]) / 100;
+        caracs[Carac.critPower] = baseCaracs[Carac.critPower] * (100 + caracBonus[Carac.critPower]) / 100;*/
 
 
         /*if (item.definition != null)

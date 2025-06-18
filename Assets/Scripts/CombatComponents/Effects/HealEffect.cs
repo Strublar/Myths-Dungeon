@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Misc;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "HealEffect", menuName = "Effects/Heal")]
@@ -13,13 +14,13 @@ public class HealEffect : Effect
     {
         float critModifier = canCrit && context.isCritical && context.source is Hero heroSource
             ? heroSource.GetCarac(Carac.critPower)
-            : 100;        float abilityBuff = fromAbility ? (float)(100 + context.source.GetCarac(Carac.abilityPower)) / 100 : 1;
-        int healValue = Mathf.RoundToInt(value.computeValue(context) * abilityBuff * critModifier/100f);
+            : 100;        
+        int healValue = Mathf.RoundToInt(value.computeValue(context) * critModifier/100f);
         context.target.Heal(healValue,context.isCritical);
 
         if (context.source is Hero hero)
         {
-            hero.threat += healValue * hero.definition.threatRatio;
+            hero.threat += healValue * hero.definition.ThreatRatio;
             FightManager.instance.UpdateMostThreatHero(hero);
         }
 
