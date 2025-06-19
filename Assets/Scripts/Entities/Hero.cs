@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using Misc;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -108,6 +109,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
 
     private void LoadPassives()
     {
+        
         var passives = new List<PassiveDefinition>(definition.passives);
         passives.Add(definition.attackPassive);
         foreach (var skill in skills)

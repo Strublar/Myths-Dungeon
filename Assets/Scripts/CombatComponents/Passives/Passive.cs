@@ -10,6 +10,7 @@ public class Passive : MonoBehaviour
     public int triggerCount = 0;
     public int endTriggerCount = 0;
     public float currentCooldown = 0;
+    public GameObject model;
 
     public float clock = 0.1f;
     public float clockEnd = 0.1f;
@@ -18,6 +19,10 @@ public class Passive : MonoBehaviour
     {
         TriggerManager.triggerMap[definition.trigger].AddListener(Execute);
         TriggerManager.triggerMap[definition.endTrigger].AddListener(OnEndTrigger);
+        if (definition.model != null)
+        {
+            model = Instantiate(definition.model,transform);
+        }
     }
 
 
@@ -60,7 +65,8 @@ public class Passive : MonoBehaviour
     public void Execute(Context context)
     {
         triggerCount++;
-        if (triggerCount >= definition.triggerCount && definition.triggerCount != 0 && currentCooldown <= definition.internalCooldown)
+        if (triggerCount >= definition.triggerCount && definition.triggerCount != 0 &&
+            currentCooldown <= definition.internalCooldown)
         {
             context.passiveHolder = holder;
             bool shouldTrigger = true;

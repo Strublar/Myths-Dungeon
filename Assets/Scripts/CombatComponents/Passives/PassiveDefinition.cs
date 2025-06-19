@@ -15,6 +15,7 @@ public class PassiveDefinition : ScriptableObject
     public List<Condition> conditions;
     public List<Effect> effects;
     public float internalCooldown;
+    public GameObject model;
     [Header("Serialization")]
     public List<DynamicValue> values;
 }
