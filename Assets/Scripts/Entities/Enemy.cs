@@ -89,6 +89,7 @@ public class Enemy : Entity
         {
             if(ent != null)
             {
+                context.target = ent;
                 foreach (Effect eff in spell.effects)
                 {
                     eff.Apply(context);

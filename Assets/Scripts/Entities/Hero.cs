@@ -296,6 +296,8 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
     private void Attack(Entity target)
     {
         currentAttackCooldown = definition.attackCooldown;
+        PlayPunch();
+        
         Context context = new Context
         {
             source = this,
@@ -304,6 +306,15 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
             isCritical = Random.Range(0, 100) <= GetCarac(Carac.critChance),
         };
         TriggerManager.triggerMap[Trigger.OnAttack].Invoke(context);
+    }
+    
+    public void PlayPunch()
+    {
+        model.transform.DOKill(); // Stoppe les tweens en cours pour éviter le spam
+        model.transform.localScale = Vector3.one;
+        model.transform.DOScale(Vector3.one * 1.05f, .05f)
+            .SetEase(Ease.OutBack)
+            .OnComplete(() => model.transform.DOScale(Vector3.one, .05f).SetEase(Ease.InOutQuad));
     }
 
     private void CastAbility(Entity target)
@@ -319,6 +330,12 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
         };
         TriggerManager.triggerMap[Trigger.OnUseAbility].Invoke(context);
         FightManager.instance.lastAbilityName = ability.abilityName;
+    }
+
+    public override void DealDamage(Context context)
+    {
+        PlayWobble();
+        base.DealDamage(context);
     }
 
     #endregion
@@ -425,4 +442,20 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
         }
         skills.Add(skillDefinition);
     }
+
+    #region Feedbacks
+
+    
+    public void PlayWobble()
+    {
+        model.transform.DOKill();
+        model.transform.rotation = Quaternion.identity;
+
+        model.transform.DORotate(new Vector3(0, 0, 15), .01f)
+            .SetEase(Ease.InOutSine)
+            .SetLoops(8, LoopType.Yoyo)
+            .OnComplete(() => transform.rotation = Quaternion.identity);
+    }
+
+    #endregion
 }
