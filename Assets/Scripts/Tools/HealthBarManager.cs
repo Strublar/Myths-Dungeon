@@ -7,6 +7,7 @@ public class HealthBarManager : MonoBehaviour
 {
     public Entity linkedEntity;
     public GameObject bar;
+    public GameObject shieldBar;
 
     public void Update()
     {
@@ -14,6 +15,18 @@ public class HealthBarManager : MonoBehaviour
         {
             float size = Mathf.Clamp01((float)linkedEntity.GetCarac(Carac.currentHp) / linkedEntity.GetCarac(Carac.maxHp));
             bar.transform.localScale = new Vector3(size, 1, 1);
+        }
+
+        var shieldValue = linkedEntity.ComputeShieldValue();
+        if(shieldValue > 0)
+        {
+            shieldBar.SetActive(true);
+            float size = Mathf.Clamp01((float)shieldValue / linkedEntity.GetCarac(Carac.maxHp));
+            bar.transform.localScale = new Vector3(size, 1, 1);
+        }
+        else
+        {
+            shieldBar.SetActive(false);
         }
         
     }
