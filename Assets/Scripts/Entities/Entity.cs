@@ -19,7 +19,7 @@ public class Entity : MonoBehaviour
     [Header("Stats")] public Dictionary<Carac, int> caracs = new();
     [HideInInspector] public bool isAlive = true;
 
-    public List<ShieldData> ShieldValues;
+    public List<ShieldData> ShieldValues = new();
     private readonly List<ShieldData> _shieldsToRemove = new();
 
     #endregion

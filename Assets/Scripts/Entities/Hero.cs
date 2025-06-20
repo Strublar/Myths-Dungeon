@@ -26,21 +26,22 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
     public ItemDefinition item;
     public List<SkillDefinition> skills;
     public AbilityDefinition ability;
-    public Dictionary<SkillTag, int> skillTags;
-    [Header("Bonus Stats")] 
-    public Dictionary<Carac, int> baseCaracs;
-    public Dictionary<Carac, int> caracBonus;
+    public Dictionary<SkillTag, int> SkillTags;
+    private Dictionary<Carac, int> BaseCaracs;
+    private Dictionary<Carac, int> CaracBonus;
 
     [Header("Fight Stats")] public Entity currentTarget;
     public float threat;
     [HideInInspector] public float currentAttackCooldown = 0f;
     [HideInInspector] public float currentAbilityCooldown = 0f;
+    
     [Header("Component objects")] public GameObject model;
     public GameObject healthBar;
-    private bool isDragging;
-    private Vector3 modelInitialPos;
-
-    private Context selfContext;
+    private bool _isDragging;
+    private Vector3 _modelInitialPos;
+    public OrbitSpawner orbitSpawner;
+    
+    private Context _selfContext;
 
     #endregion
 
@@ -49,14 +50,14 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
         currentAttackCooldown -= Time.deltaTime * Mathf.Max((100 + GetCarac(Carac.attackSpeed)) / 100, 0);
         if (CanAttack())
         {
-            currentTarget = definition.attackTargetSelector.GetTargets(selfContext)[0];
+            currentTarget = definition.attackTargetSelector.GetTargets(_selfContext)[0];
             Attack(currentTarget);
         }
 
         currentAbilityCooldown -= Time.deltaTime * Mathf.Max((100 + GetCarac(Carac.abilityHaste)) / 100, 0);
         if (Input.touchCount > 0)
         {
-            if (isDragging)
+            if (_isDragging)
             {
                 Vector2 newPos = Input.GetTouch(0).position;
                 model.transform.position = newPos;
@@ -64,8 +65,8 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
         }
         else
         {
-            isDragging = false;
-            model.transform.localPosition = modelInitialPos;
+            _isDragging = false;
+            model.transform.localPosition = _modelInitialPos;
         }
 
         if (!CanCast() && RunManager.instance.fightStarted)
@@ -89,7 +90,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
         ComputeStats();
         RefreshSkillTags();
         
-        selfContext = new Context
+        _selfContext = new Context
         {
             passiveHolder = this, source = this
         };
@@ -101,7 +102,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
             Destroy(model);
         model = Instantiate(definition.model, transform);
         model.transform.localPosition = new Vector3(.15f, -.5f);
-        modelInitialPos = model.transform.localPosition;
+        _modelInitialPos = model.transform.localPosition;
         isAlive = true;
         model.SetActive(true);
         healthBar.SetActive(true);
@@ -137,13 +138,13 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
 
     public void LoadCaracs()
     {
-        baseCaracs = new();
+        BaseCaracs = new();
         foreach (var caracData in definition.caracs)
         {
-            baseCaracs.Add(caracData.carac,caracData.value);
+            BaseCaracs.Add(caracData.carac,caracData.value);
         }
 
-        caracBonus = new(); 
+        CaracBonus = new(); 
     }
 
     private void ComputeStats()
@@ -154,11 +155,11 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
         foreach (Carac carac in Enum.GetValues(typeof(Carac)))
         {
             caracs[carac] = 0;
-            if (baseCaracs.TryGetValue(carac, out int baseValue))
+            if (BaseCaracs.TryGetValue(carac, out int baseValue))
             {
                 caracs[carac] = baseValue;
             }
-            if (caracBonus.TryGetValue(carac, out int bonusValue))
+            if (CaracBonus.TryGetValue(carac, out int bonusValue))
             {
                 caracs[carac]*= (100 + bonusValue) / 100;
             }
@@ -201,7 +202,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
 
     public void OnTap()
     {
-        isDragging = false;
+        _isDragging = false;
         if (!RunManager.instance.fightStarted)
         {
             HeroTooltipManager.instance.InitHeroTooltip(this);
@@ -239,7 +240,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
             }
         }
 
-        isDragging = false;
+        _isDragging = false;
     }
 
     public void Pull(Entity target)
@@ -262,14 +263,14 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
     public void OnStartDragging()
     {
         if (CanCast())
-            isDragging = true;
+            _isDragging = true;
     }
 
     public void OnStayedHovered()
     {
         HeroTooltipManager.instance.InitHeroTooltip(this);
         HeroTooltipManager.instance.ShowToolTip();
-        isDragging = false;
+        _isDragging = false;
     }
 
     #endregion
@@ -281,7 +282,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
         bool canCast = currentAbilityCooldown <= 0;
         foreach (var condition in ability.castConditions)
         {
-            canCast &= condition.ShouldTrigger(selfContext);
+            canCast &= condition.ShouldTrigger(_selfContext);
         }
 
         return canCast;
@@ -355,12 +356,12 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (CanCast())
-            isDragging = true;
+            _isDragging = true;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        isDragging = false;
+        _isDragging = false;
 
         if (!isAlive || !CanCast()) return;
 
@@ -404,20 +405,20 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
 
     public void RefreshSkillTags()
     {
-        skillTags = new();
-        skillTags.Add(definition.skillTag, 1);
+        SkillTags = new();
+        SkillTags.Add(definition.skillTag, 1);
         
         foreach (var skillDefinition in skills)
         {
             foreach (var tagData in skillDefinition.tags)
             {
-                if (skillTags.ContainsKey(tagData.tag))
+                if (SkillTags.ContainsKey(tagData.tag))
                 {
-                    skillTags[tagData.tag] += tagData.weight;
+                    SkillTags[tagData.tag] += tagData.weight;
                 }
                 else
                 {
-                    skillTags[tagData.tag] = tagData.weight;
+                    SkillTags[tagData.tag] = tagData.weight;
                 }
             }
         }
@@ -425,7 +426,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
 
     public bool CanEquipSkill(SkillDefinition skillDefinition)
     {
-        return skillDefinition.holderRequiredTags.All(skillTag => skillTags.ContainsKey(skillTag));
+        return skillDefinition.holderRequiredTags.All(skillTag => SkillTags.ContainsKey(skillTag));
     }
     public void AddSkill(SkillDefinition skillDefinition)
     {

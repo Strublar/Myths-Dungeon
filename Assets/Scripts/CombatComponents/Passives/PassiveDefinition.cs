@@ -16,6 +16,7 @@ public class PassiveDefinition : ScriptableObject
     public List<Effect> effects;
     public float internalCooldown;
     public GameObject model;
+    public GameObject orbitalObjectModel;
     [Header("Serialization")]
     public List<DynamicValue> values;
 }

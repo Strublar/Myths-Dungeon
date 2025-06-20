@@ -23,6 +23,11 @@ public class Passive : MonoBehaviour
         {
             model = Instantiate(definition.model,transform);
         }
+
+        if (definition.orbitalObjectModel != null && holder is Hero hero)
+        {
+            hero.orbitSpawner.AddOrbitalObject(this);
+        }
     }
 
 
@@ -111,7 +116,11 @@ public class Passive : MonoBehaviour
         TriggerManager.triggerMap[definition.trigger].RemoveListener(Execute);
         TriggerManager.triggerMap[definition.endTrigger].RemoveListener(OnEndTrigger);
         Destroy(gameObject);
-
+        if (definition.orbitalObjectModel != null && holder is Hero hero)
+        {
+            hero.orbitSpawner.RemoveOrbitalObject(this);
+        }
+        
         if (context.passiveHolder != null)
             holder.passiveObjects.Remove(this);
     }
