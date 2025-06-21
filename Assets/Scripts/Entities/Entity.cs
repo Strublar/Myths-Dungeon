@@ -14,7 +14,7 @@ public class Entity : MonoBehaviour
     public BubbleBehaviour healingBubble;
     public BubbleBehaviour armorBubble;
     public GameObject passivePrefab;
-    public List<Passive> passiveObjects;
+    [FormerlySerializedAs("passiveObjects")] public List<Passive> passives;
 
     [Header("Stats")] public Dictionary<Carac, int> caracs = new();
     [HideInInspector] public bool isAlive = true;
@@ -152,7 +152,7 @@ public class Entity : MonoBehaviour
 
     public void ClearPassives()
     {
-        foreach (Passive passive in passiveObjects)
+        foreach (Passive passive in passives)
         {
             if (passive != null)
             {
@@ -160,7 +160,7 @@ public class Entity : MonoBehaviour
             }
         }
 
-        passiveObjects.Clear();
+        passives.Clear();
     }
 
     public void ClearShields()

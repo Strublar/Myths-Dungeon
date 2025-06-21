@@ -28,6 +28,8 @@ public struct Context
     public bool isCritical;
     public DamageType damageType;
     public SpecificEvent specificEvent;
+    public AbilityDefinition abilityCast;
+    public Passive underlyingPassive;
 }
 
 public class TriggerManager : MonoBehaviour

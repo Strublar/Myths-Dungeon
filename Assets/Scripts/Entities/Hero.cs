@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using Misc;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
@@ -14,8 +15,7 @@ public enum HeroType
 {
     Tank,
     Heal,
-    DPS,
-    none
+    DPS
 }
 
 public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
@@ -34,13 +34,13 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
     public float threat;
     [HideInInspector] public float currentAttackCooldown = 0f;
     [HideInInspector] public float currentAbilityCooldown = 0f;
-    
+
     [Header("Component objects")] public GameObject model;
     public GameObject healthBar;
     private bool _isDragging;
     private Vector3 _modelInitialPos;
     public OrbitSpawner orbitSpawner;
-    
+
     private Context _selfContext;
 
     #endregion
@@ -89,7 +89,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
         LoadCaracs();
         ComputeStats();
         RefreshSkillTags();
-        
+
         _selfContext = new Context
         {
             passiveHolder = this, source = this
@@ -110,7 +110,6 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
 
     private void LoadPassives()
     {
-        
         var passives = new List<PassiveDefinition>(definition.passives);
         passives.Add(definition.attackPassive);
         foreach (var skill in skills)
@@ -132,7 +131,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
             Passive pass = newPassive.GetComponent<Passive>();
             pass.holder = this;
             pass.definition = passive;
-            passiveObjects.Add(pass);
+            base.passives.Add(pass);
         }
     }
 
@@ -141,15 +140,14 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
         BaseCaracs = new();
         foreach (var caracData in definition.caracs)
         {
-            BaseCaracs.Add(caracData.carac,caracData.value);
+            BaseCaracs.Add(caracData.carac, caracData.value);
         }
 
-        CaracBonus = new(); 
+        CaracBonus = new();
     }
 
     private void ComputeStats()
     {
-        
         threat = 0;
 
         foreach (Carac carac in Enum.GetValues(typeof(Carac)))
@@ -159,12 +157,13 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
             {
                 caracs[carac] = baseValue;
             }
+
             if (CaracBonus.TryGetValue(carac, out int bonusValue))
             {
-                caracs[carac]*= (100 + bonusValue) / 100;
+                caracs[carac] *= (100 + bonusValue) / 100;
             }
         }
-        
+
         /*caracs[Carac.maxHp] = baseCaracs[Carac.maxHp] * (100 + caracBonus[Carac.maxHp]) / 100;
         caracs[Carac.armor] = baseCaracs[Carac.armor] * (100 + caracBonus[Carac.armor]) / 100;
         caracs[Carac.attack] = baseCaracs[Carac.attack] * (100 + caracBonus[Carac.attack]) / 100;
@@ -285,6 +284,19 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
             canCast &= condition.ShouldTrigger(_selfContext);
         }
 
+        foreach (var passive in passives)
+        {
+            if (passive.definition.replacementAbility == null) continue;
+
+            var castable = true;
+            foreach (var condition in passive.definition.replacementAbility.castConditions)
+            {
+                castable &= condition.ShouldTrigger(_selfContext);
+            }
+
+            canCast |= castable;
+        }
+
         return canCast;
     }
 
@@ -298,7 +310,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         currentAttackCooldown = definition.attackCooldown;
         PlayPunch();
-        
+
         Context context = new Context
         {
             source = this,
@@ -308,7 +320,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
         };
         TriggerManager.triggerMap[Trigger.OnAttack].Invoke(context);
     }
-    
+
     public void PlayPunch()
     {
         model.transform.DOKill(); // Stoppe les tweens en cours pour éviter le spam
@@ -320,17 +332,41 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
 
     private void CastAbility(Entity target)
     {
-        currentAbilityCooldown = ability.cooldown;
+        AbilityDefinition abilityToCast = null;
+        Passive underlyingPassive = null;
+        if (currentAbilityCooldown <= 0)
+        {
+            abilityToCast = ability;
+            currentAbilityCooldown = abilityToCast.cooldown;
+        }
+        else
+        {
+            foreach (var passive in passives)
+            {
+                if (passive.definition.replacementAbility != null)
+                {
+                    abilityToCast = passive.definition.replacementAbility;
+                    underlyingPassive = passive;
+                    break;
+                }
+            }
+        }
+
+        if (abilityToCast == null) return;
+        
         Pull(target);
+        
         Context context = new Context
         {
             source = this,
             target = target,
             passiveHolder = null,
             isCritical = Random.Range(0, 100) <= GetCarac(Carac.critChance),
+            abilityCast = abilityToCast,
+            underlyingPassive = underlyingPassive
         };
         TriggerManager.triggerMap[Trigger.OnUseAbility].Invoke(context);
-        FightManager.instance.lastAbilityName = ability.abilityName;
+        FightManager.instance.lastAbilityName = abilityToCast.abilityName;
     }
 
     public override void DealDamage(Context context)
@@ -407,7 +443,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         SkillTags = new();
         SkillTags.Add(definition.skillTag, 1);
-        
+
         foreach (var skillDefinition in skills)
         {
             foreach (var tagData in skillDefinition.tags)
@@ -428,6 +464,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         return skillDefinition.holderRequiredTags.All(skillTag => SkillTags.ContainsKey(skillTag));
     }
+
     public void AddSkill(SkillDefinition skillDefinition)
     {
         foreach (var kvp in skillDefinition.caracs)
@@ -441,12 +478,12 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
                 caracs[kvp.Key] = kvp.Value;
             }
         }
+
         skills.Add(skillDefinition);
     }
 
     #region Feedbacks
 
-    
     public void PlayWobble()
     {
         model.transform.DOKill();

@@ -39,7 +39,7 @@ public class Enemy : Entity
             pass.holder = this;
             pass.definition = passive;
             pass.level = level;
-            passiveObjects.Add(pass);
+            passives.Add(pass);
         }
         if(level>=10)//creep //TODO Cible, casting bar
         {
@@ -49,7 +49,7 @@ public class Enemy : Entity
             pass.holder = this;
             pass.definition = bossFrenzy;
             pass.level = level;
-            passiveObjects.Add(pass);
+            passives.Add(pass);
         }
         caracs[Carac.currentHp] = GetCarac(Carac.maxHp);
 

@@ -28,7 +28,7 @@ public class HealEffect : Effect
         {
             GameObject newPassive = Instantiate(context.target.passivePrefab, context.target.transform);
             Passive passiveComponent = newPassive.GetComponent<Passive>();
-            context.target.passiveObjects.Add(passiveComponent);
+            context.target.passives.Add(passiveComponent);
             passiveComponent.level = context.level;
             passiveComponent.holder = context.target;
             passiveComponent.definition = CreateInstance<PassiveDefinition>();

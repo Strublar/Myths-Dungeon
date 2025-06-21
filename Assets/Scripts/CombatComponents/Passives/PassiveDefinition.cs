@@ -14,6 +14,7 @@ public class PassiveDefinition : ScriptableObject
     public TargetSelector targets;
     public List<Condition> conditions;
     public List<Effect> effects;
+    public AbilityDefinition replacementAbility;
     public float internalCooldown;
     public GameObject model;
     public GameObject orbitalObjectModel;

@@ -24,7 +24,7 @@ public class ModifyCaracEffect : Effect
         {
             GameObject newPassive = Instantiate(context.target.passivePrefab, context.target.transform);
             Passive passiveComponent = newPassive.GetComponent<Passive>();
-            context.target.passiveObjects.Add(passiveComponent);
+            context.target.passives.Add(passiveComponent);
             passiveComponent.holder = context.target;
             passiveComponent.definition = CreateInstance<PassiveDefinition>();
             passiveComponent.definition.trigger = Trigger.EveryPersonalTick;

@@ -122,6 +122,6 @@ public class Passive : MonoBehaviour
         }
         
         if (context.passiveHolder != null)
-            holder.passiveObjects.Remove(this);
+            holder.passives.Remove(this);
     }
 }
