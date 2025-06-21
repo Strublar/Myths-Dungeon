@@ -36,6 +36,8 @@ MonoBehaviour:
   baseAbility: {fileID: 11400000, guid: 136546d39f598f74480da9a82d9f08bd, type: 2}
   passives:
   - {fileID: 11400000, guid: 54cf0766a2d07e149a2cc9390ac1a27f, type: 2}
+  - {fileID: 11400000, guid: 54cf0766a2d07e149a2cc9390ac1a27f, type: 2}
+  - {fileID: 11400000, guid: 54cf0766a2d07e149a2cc9390ac1a27f, type: 2}
   availableAbilities: []
   availableSkills: []
   skillTag: 0

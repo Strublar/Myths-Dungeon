@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Misc;
@@ -6,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class SkillLootManager : MonoBehaviour
 {
@@ -69,9 +71,9 @@ public class SkillLootManager : MonoBehaviour
             rarity = Rarity.common;
         else if (randInt < commonProbability + uncommonProbability)
             rarity = Rarity.uncommon;
-        else if (randInt < commonProbability + uncommonProbability+ rareProbability)
+        else if (randInt < commonProbability + uncommonProbability + rareProbability)
             rarity = Rarity.rare;
-        else if (randInt < commonProbability + uncommonProbability+ rareProbability + epicProbability)
+        else if (randInt < commonProbability + uncommonProbability + rareProbability + epicProbability)
             rarity = Rarity.epic;
         else
             rarity = Rarity.legendary;
@@ -88,6 +90,30 @@ public class SkillLootManager : MonoBehaviour
                          skill.rarity == rarity &&
                          SkillCanBeEquipped(skill)
             ).ToList();
+
+        int totalWeight = 0;
+        foreach (var entry in skillTags)
+        {
+            totalWeight += entry.Value;
+        }
+
+        int selector = Random.Range(0, totalWeight);
+
+
+        foreach (var entry in skillTags)
+        {
+            selector -= entry.Value;
+            if (selector < 0)
+            {
+                filteredSkills = filteredSkills
+                    .Where(
+                        skill => skill.tags.Exists(tagData => tagData.tag == entry.Key)
+                    ).ToList();
+                break;
+            }
+        }
+
+
         return filteredSkills[Random.Range(0, filteredSkills.Count())];
     }
 
