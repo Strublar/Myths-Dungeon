@@ -14,7 +14,7 @@ public enum Trigger
     EveryPersonalTick,
     FightEnd,
     OnDamageReceived,
-    OnSpecificEvent,
+    OnSpecificEvent
 }
 
 public struct Context

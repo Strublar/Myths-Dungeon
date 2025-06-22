@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4215956715923417842}
   - component: {fileID: 7167006432311688337}
   m_Layer: 0
-  m_Name: TestOrbitalObject
+  m_Name: OrbitalObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

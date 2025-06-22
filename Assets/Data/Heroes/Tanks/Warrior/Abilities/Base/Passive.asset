@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 117da2f1d5dd34e4eb06ec66ad9b2194, type: 3}
-  m_Name: AttackPassive
+  m_Name: Passive
   m_EditorClassIdentifier: 
-  description: 
-  trigger: 2
+  description: Taunt and deal {0} damage
+  trigger: 3
   triggerCount: 1
   endTrigger: 0
   endTriggerCount: 0
@@ -21,9 +21,11 @@ MonoBehaviour:
   conditions:
   - {fileID: 11400000, guid: 1895fe8def357404c8eb761235bcdd18, type: 2}
   effects:
-  - {fileID: 11400000, guid: ea19845104d026342adb6fc0746b8a14, type: 2}
+  - {fileID: 11400000, guid: 84dcd3d328418e74e9487c1255f5499e, type: 2}
+  - {fileID: 11400000, guid: 84dcd3d328418e74e9487c1255f5499e, type: 2}
   replacementAbility: {fileID: 0}
   internalCooldown: 0
   model: {fileID: 0}
   orbitalObjectModel: {fileID: 0}
-  values: []
+  values:
+  - {fileID: 11400000, guid: 299dc288161bae443bb99ea99da9401c, type: 2}

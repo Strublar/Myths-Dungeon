@@ -22,5 +22,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1895fe8def357404c8eb761235bcdd18, type: 2}
   effects:
   - {fileID: 0}
+  replacementAbility: {fileID: 0}
   internalCooldown: 0
+  model: {fileID: 0}
+  orbitalObjectModel: {fileID: 0}
   values: []

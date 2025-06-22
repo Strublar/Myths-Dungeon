@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45f4d6be441f478780aadde3c926d9b4, type: 3}
-  m_Name: AttackProjectile
+  m_Script: {fileID: 11500000, guid: f7d567c8c877426e968b234ff6121787, type: 3}
+  m_Name: ContextValue
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 5e26dd5f4c4753b4f89d92db368ab4fe, type: 3}
-  travelTime: 0.5
-  effects:
-  - {fileID: 11400000, guid: e372f2178e5e23a49938b73dfa7cc8c3, type: 2}

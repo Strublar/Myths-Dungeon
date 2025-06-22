@@ -22,7 +22,7 @@ public class HealthBarManager : MonoBehaviour
         {
             shieldBar.SetActive(true);
             float size = Mathf.Clamp01((float)shieldValue / linkedEntity.GetCarac(Carac.maxHp));
-            bar.transform.localScale = new Vector3(size, 1, 1);
+            shieldBar.transform.localScale = new Vector3(size, 1, 1);
         }
         else
         {
