@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 52561736}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Stat Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1460,7 +1460,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48da91025078a1f4abfb87e6fde70f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tmCollider: {fileID: 726892782}
   heroToolTip: {fileID: 1952650498}
   heroName: {fileID: 373952961}
   heroImage: {fileID: 309895060}
@@ -2387,7 +2386,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1004356270
 RectTransform:
@@ -2401,8 +2400,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1952650499}
   - {fileID: 2138987723}
+  - {fileID: 1952650499}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2677,7 +2676,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1077510181}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Separators
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4101,7 +4100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1619719302}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Hero Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5164,7 +5163,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1952650499}
-  m_Layer: 0
+  - component: {fileID: 1952650500}
+  m_Layer: 5
   m_Name: Hero Tooltip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5189,13 +5189,25 @@ RectTransform:
   - {fileID: 52561736}
   - {fileID: 1053128197}
   m_Father: {fileID: 1004356270}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1952650500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952650498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 108240184bef4bd4ca6c8c68cc1c96d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1958358927
 GameObject:
   m_ObjectHideFlags: 0
@@ -6042,7 +6054,7 @@ RectTransform:
   - {fileID: 1008003164}
   - {fileID: 1041806960}
   m_Father: {fileID: 1004356270}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

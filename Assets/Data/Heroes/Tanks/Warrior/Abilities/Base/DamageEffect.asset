@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0573bedb5e8393849adc974d719ae0df, type: 3}
   m_Name: DamageEffect
   m_EditorClassIdentifier: 
-  value: {fileID: 0}
+  value: {fileID: 11400000, guid: 4003c0df3b78a48448e4fe9dea8f7600, type: 2}
   duration: 0
   fromAbility: 0
   canCrit: 1

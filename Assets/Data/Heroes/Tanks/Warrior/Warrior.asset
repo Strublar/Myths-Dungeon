@@ -37,7 +37,7 @@ MonoBehaviour:
     value: 100
   attackTargetSelector: {fileID: 11400000, guid: 6c1bbbeac2d54884fa11c0e2048ef209, type: 2}
   attackPassive: {fileID: 11400000, guid: faae1dfe8dba5954394ddb52dfce7223, type: 2}
-  baseAbility: {fileID: 11400000, guid: 136546d39f598f74480da9a82d9f08bd, type: 2}
+  baseAbility: {fileID: 11400000, guid: 6b43e669c134e6a4b9fdd291d7e3ab4c, type: 2}
   passives:
   - {fileID: 11400000, guid: 2ec5bcc42228bac488689f078be2671a, type: 2}
   availableAbilities: []

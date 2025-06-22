@@ -5,15 +5,6 @@ using UnityEngine;
 public class ChooseHeroButton : MonoBehaviour
 {
     public Hero hero;
-    public void OnTap()
-    {
-
-    }
-
-    public void OnStayedHovered()
-    {
-        hero.OnStayedHovered();
-    }
 
     public void OnDrag(GameObject target)
     {

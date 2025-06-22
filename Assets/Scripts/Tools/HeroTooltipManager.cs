@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class HeroTooltipManager : MonoBehaviour
 {
     public static HeroTooltipManager instance;
-    public Collider2D tmCollider;
     public GameObject heroToolTip;
     [Header("HeroTooltip")] public TMP_Text heroName;
     public Image heroImage;
@@ -26,15 +25,16 @@ public class HeroTooltipManager : MonoBehaviour
         instance = this;
     }
 
-    public void InitHeroTooltip(Hero hero)
+    private void InitHeroTooltip(Hero hero)
     {
-        /*var context = new Context
+        var context = new Context
         {
             source = hero,
         };
+        
         heroName.text = hero.definition.heroName;
         heroImage.sprite = hero.definition.heroImage;
-        stats.text = "\nHp :\t" + hero.maxHp +
+        /*stats.text = "\nHp :\t" + hero.maxHp +
                      "\nArmor :\t" + hero.armor +
                      "\nCrit% :\t" + hero.critChance + "%" +
                      "\nCritPow :\t" + hero.critPower + "%" +
@@ -79,16 +79,15 @@ public class HeroTooltipManager : MonoBehaviour
         background.color = ItemTooltipManager.instance.normalColor;*/
     }
 
-    public void ShowToolTip()
+    public void ShowToolTip(Hero hero)
     {
+        InitHeroTooltip(hero);
         heroToolTip.SetActive(true);
-        tmCollider.enabled = true;
     }
 
     public void HideToolTip()
     {
         heroToolTip.SetActive(false);
-        tmCollider.enabled = false;
     }
 
     public void OnTap()

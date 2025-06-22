@@ -18,7 +18,7 @@ public enum HeroType
     DPS
 }
 
-public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerClickHandler
 {
     #region Stats
 
@@ -196,84 +196,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
     }
 
     #endregion
-
-    #region Controls
-
-    public void OnTap()
-    {
-        _isDragging = false;
-        if (!RunManager.instance.fightStarted)
-        {
-            HeroTooltipManager.instance.InitHeroTooltip(this);
-            HeroTooltipManager.instance.ShowToolTip();
-        }
-    }
-
-    public void OnDrag(GameObject target)
-    {
-        if (isAlive && CanCast())
-        {
-            if (!definition.IsSupport)
-            {
-                if (target.CompareTag("Boss"))
-                {
-                    CastAbility(target.GetComponent<Entity>());
-                }
-            }
-            else
-            {
-                if (target.CompareTag("Hero") && RunManager.instance.fightStarted)
-                {
-                    CastAbility(target.GetComponent<Entity>());
-                }
-            }
-
-            if (FightManager.instance.mostThreatHero == null)
-            {
-                FightManager.instance.mostThreatHero = this;
-            }
-
-            if (threat >= FightManager.instance.mostThreatHero.threat)
-            {
-                FightManager.instance.mostThreatHero = this;
-            }
-        }
-
-        _isDragging = false;
-    }
-
-    public void Pull(Entity target)
-    {
-        if (!RunManager.instance.fightStarted)
-        {
-            FightManager.instance.mostThreatHero = this;
-            RunManager.instance.fightStarted = true;
-            FightManager.instance.bossTimer = Time.time;
-            Context context = new Context
-            {
-                source = this,
-                target = target,
-                passiveHolder = null
-            };
-            TriggerManager.triggerMap[Trigger.OnPull].Invoke(context);
-        }
-    }
-
-    public void OnStartDragging()
-    {
-        if (CanCast())
-            _isDragging = true;
-    }
-
-    public void OnStayedHovered()
-    {
-        HeroTooltipManager.instance.InitHeroTooltip(this);
-        HeroTooltipManager.instance.ShowToolTip();
-        _isDragging = false;
-    }
-
-    #endregion
-
+    
     #region Casting&Attacks
 
     public bool CanCast()
@@ -374,6 +297,23 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
         PlayWobble();
         base.DealDamage(context);
     }
+    
+    public void Pull(Entity target)
+    {
+        if (!RunManager.instance.fightStarted)
+        {
+            FightManager.instance.mostThreatHero = this;
+            RunManager.instance.fightStarted = true;
+            FightManager.instance.bossTimer = Time.time;
+            Context context = new Context
+            {
+                source = this,
+                target = target,
+                passiveHolder = null
+            };
+            TriggerManager.triggerMap[Trigger.OnPull].Invoke(context);
+        }
+    }
 
     #endregion
 
@@ -434,6 +374,15 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        _isDragging = false;
+        if (!RunManager.instance.fightStarted)
+        {
+            HeroTooltipManager.instance.ShowToolTip(this);
+        }
     }
 
     #endregion
