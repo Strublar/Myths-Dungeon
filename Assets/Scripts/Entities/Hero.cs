@@ -380,8 +380,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        _isDragging = false;
-        if (!RunManager.instance.fightStarted)
+        if (!_isDragging && !RunManager.instance.fightStarted)
         {
             HeroTooltipManager.instance.ShowToolTip(this);
         }
