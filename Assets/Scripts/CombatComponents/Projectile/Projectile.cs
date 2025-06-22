@@ -9,7 +9,7 @@ using Vector3 = UnityEngine.Vector3;
 
 public class Projectile : MonoBehaviour
 {
-    public Transform origin;
+    public Vector3 originPosition;
     public Vector3 targetPosition;
     public float lifeTime = 0f;
     public float targetDuration = 1f;
@@ -20,21 +20,32 @@ public class Projectile : MonoBehaviour
     public void Init(Context context, List<Effect> effects, Sprite sprite, float targetDuration)
     {
         this.context = context;
+        this.effects = effects;        
+        image.sprite = sprite;
+
+        var uiCamera = GameManager.instance.mainCamera;
+        Vector3 screenOrigin = RectTransformUtility.WorldToScreenPoint(uiCamera, context.source.transform.position);
+        Vector3 screenTarget = RectTransformUtility.WorldToScreenPoint(uiCamera, context.target.transform.position);
+
+        Vector3 worldOrigin = uiCamera.ScreenToWorldPoint(new Vector3(screenOrigin.x, screenOrigin.y, 1f));
+        Vector3 worldTarget = uiCamera.ScreenToWorldPoint(new Vector3(screenTarget.x, screenTarget.y, 1f));
+
+        worldTarget += new Vector3(Random.Range(-1f, 1f), Random.Range(-.7f, 0.7f), 0f);
+
+        this.context = context;
         this.effects = effects;
-        origin = context.source.transform;
-        var targetTransform = context.target.transform;
-        targetPosition = targetTransform.position+new Vector3(Random.Range(-200,200),Random.Range(-50,50));
-        this.image.sprite = sprite;
         this.targetDuration = targetDuration;
 
-        var thisTransform = transform;
-        thisTransform.position = origin.position;
-        thisTransform.up = targetPosition - thisTransform.position;
+        transform.position = worldOrigin;
+        originPosition = worldOrigin;
+        targetPosition = worldTarget;
+        transform.up = (targetPosition - transform.position).normalized;
+
     }
     public void Update()
     {
         lifeTime += Time.deltaTime;
-        transform.position = Vector3.Lerp(origin.position,targetPosition,lifeTime/targetDuration);
+        transform.position = Vector3.Lerp(originPosition,targetPosition,lifeTime/targetDuration);
         if (lifeTime >= targetDuration)
         {
             foreach (var effect in effects)

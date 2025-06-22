@@ -59,7 +59,9 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         {
             if (_isDragging)
             {
-                Vector2 newPos = Input.GetTouch(0).position;
+                var uiCamera = GameManager.instance.mainCamera;
+
+                Vector3 newPos = uiCamera.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y, 1f));
                 model.transform.position = newPos;
             }
         }
