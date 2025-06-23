@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117da2f1d5dd34e4eb06ec66ad9b2194, type: 3}
   m_Name: Passive
   m_EditorClassIdentifier: 
-  description: Taunt and heal {0} hp per second for 5 seconds
+  description: Taunt and heal <b><color=#CC6600>{0}</color></b> hp per second for
+    5 seconds
   trigger: 3
   triggerCount: 1
   endTrigger: 0

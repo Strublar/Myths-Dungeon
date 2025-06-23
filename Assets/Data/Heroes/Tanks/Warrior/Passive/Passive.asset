@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117da2f1d5dd34e4eb06ec66ad9b2194, type: 3}
   m_Name: Passive
   m_EditorClassIdentifier: 
-  description: Gain {0}% of the damage you deal as shield
+  description: Gain <b><color=#660066>{0}%</color></b> of the damage you deal as
+    shield
   trigger: 8
   triggerCount: 1
   endTrigger: 0

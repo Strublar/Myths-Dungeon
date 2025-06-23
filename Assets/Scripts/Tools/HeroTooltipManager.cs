@@ -43,11 +43,11 @@ public class HeroTooltipManager : MonoBehaviour
         heroName.text = hero.definition.heroName;
         heroImage.sprite = hero.definition.heroImage;
         attack.text = "<b><color=#CC6600>Attack\n\n" + hero.GetCarac(Carac.attack) + "</color></b>";
-        attackCooldown.text = "<b><color=#008B8B>At.CD\n\n" + hero.GetCarac(Carac.attack) + "</color></b>";
-        health.text = "<b><color=#006600>Health\n\n" + hero.GetCarac(Carac.attack) + "</color></b>";
-        armor.text = "<b><color=#333333>Armor\n\n" + hero.GetCarac(Carac.attack) + "</color></b>";
-        critChance.text = "<b><color=#990000>Crit%\n\n" + hero.GetCarac(Carac.attack) + "</color></b>";
-        mastery.text = "<b><color=#660066>Mast.\n\n" + hero.GetCarac(Carac.attack) + "</color></b>";
+        attackCooldown.text = "<b><color=#008B8B>At.CD\n\n" + hero.definition.attackCooldown*100/hero.GetCarac(Carac.attackSpeed) + "s</color></b>";
+        health.text = "<b><color=#006600>Health\n\n" + hero.GetCarac(Carac.maxHp) + "</color></b>";
+        armor.text = "<b><color=#333333>Armor\n\n" + hero.GetCarac(Carac.armor) + "</color></b>";
+        critChance.text = "<b><color=#990000>Crit%\n\n" + hero.GetCarac(Carac.critChance) + "</color></b>";
+        mastery.text = "<b><color=#660066>Mast.\n\n" + hero.GetCarac(Carac.mastery) + "</color></b>";
         
         var formatListAbility = new string[hero.ability.linkedPassives[0].values.Count];
         for (int i = 0; i < hero.ability.linkedPassives[0].values.Count; i++)

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117da2f1d5dd34e4eb06ec66ad9b2194, type: 3}
   m_Name: Passive
   m_EditorClassIdentifier: 
-  description: Taunt and deal {0} damage
+  description: Taunt and deal <b><color=#CC6600>{0} </color></b>damage
   trigger: 3
   triggerCount: 1
   endTrigger: 0
