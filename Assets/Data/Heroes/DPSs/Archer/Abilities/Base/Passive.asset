@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117da2f1d5dd34e4eb06ec66ad9b2194, type: 3}
+  m_Name: Passive
+  m_EditorClassIdentifier: 
+  description: Deal <b><color=#CC6600>{0}</color></b> damage and gain 1 <b>Arrow</b>
+  trigger: 3
+  triggerCount: 1
+  endTrigger: 0
+  endTriggerCount: 0
+  targets: {fileID: 11400000, guid: 30d59bf8cef47174d9ce202dc94a40a4, type: 2}
+  conditions:
+  - {fileID: 11400000, guid: 1895fe8def357404c8eb761235bcdd18, type: 2}
+  - {fileID: 11400000, guid: 9497598bb401815428af8a522d4f35bd, type: 2}
+  endTriggerConditions: []
+  effects:
+  - {fileID: 11400000, guid: c9f2e9a3d71a95b4892ce0a2500d92b3, type: 2}
+  - {fileID: 11400000, guid: b9fb8cf80b457bd4a9bfcfb5e4155d8c, type: 2}
+  replacementAbility: {fileID: 0}
+  internalCooldown: 0
+  model: {fileID: 0}
+  orbitalObjectModel: {fileID: 0}
+  values:
+  - {fileID: 11400000, guid: db608674c8cc6f049a5aad53a5634c48, type: 2}

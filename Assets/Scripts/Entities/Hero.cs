@@ -130,11 +130,10 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
         foreach (PassiveDefinition passive in passives)
         {
-            GameObject newPassive = Instantiate(passivePrefab, this.transform);
-            Passive pass = newPassive.GetComponent<Passive>();
-            pass.holder = this;
-            pass.definition = passive;
-            base.passives.Add(pass);
+            Passive newPassive = Instantiate(passivePrefab, this.transform);
+            newPassive.holder = this;
+            newPassive.definition = passive;
+            base.passives.Add(newPassive);
         }
     }
 
@@ -292,7 +291,6 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
             underlyingPassive = underlyingPassive
         };
         TriggerManager.triggerMap[Trigger.OnUseAbility].Invoke(context);
-        FightManager.instance.lastAbilityName = abilityToCast.abilityName;
     }
 
     public override void DealDamage(Context context)

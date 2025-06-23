@@ -6,7 +6,7 @@ using UnityEngine;
 public class ProjectileEffect : Effect
 {
     public Sprite sprite;
-    public float travelTime = 0.5f;
+    public float travelTime = 0.3f;
     public List<Effect> effects;
     public override void Apply(Context context)
     {

@@ -107,7 +107,20 @@ public class Passive : MonoBehaviour
         endTriggerCount++;
         if (endTriggerCount >= definition.endTriggerCount && definition.endTriggerCount != 0)
         {
-            Delete(context);
+            context.passiveHolder = holder;
+            bool shouldTrigger = true;
+            foreach (Condition condition in definition.endTriggerConditions)
+            {
+                if (!condition.ShouldTrigger(context))
+                {
+                    shouldTrigger = false;
+                    break;
+                }
+            }
+            if (shouldTrigger)
+            {
+                Delete(context);
+            }
         }
     }
 

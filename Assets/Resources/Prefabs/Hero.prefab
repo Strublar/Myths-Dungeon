@@ -108,9 +108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageBubble: {fileID: 1904282042216898216, guid: ef16a162897a83349a0b309821db9235, type: 3}
   healingBubble: {fileID: 7615538915002155816, guid: e72d2ef4f3bf7c04b945c1124c4c98a5, type: 3}
-  armorBubble: {fileID: 7357081350883410598, guid: e987aced3c7075041b29307dfaafc320, type: 3}
-  passivePrefab: {fileID: 6010278707440170961, guid: ba820befb37e48c40b4d9a4425dc6e3c, type: 3}
-  passiveObjects: []
+  passivePrefab: {fileID: 5395655837982437591, guid: ba820befb37e48c40b4d9a4425dc6e3c, type: 3}
+  passives: []
   isAlive: 1
   definition: {fileID: 11400000, guid: e6352d7fb43108c4db5ccd216110ee5a, type: 2}
   item: {fileID: 0}

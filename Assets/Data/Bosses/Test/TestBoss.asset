@@ -16,7 +16,7 @@ MonoBehaviour:
   sprite: {fileID: -9128590032158951111, guid: fd573fef1b14977408c2657271b176fa, type: 3}
   animatorController: {fileID: 9100000, guid: 6a9205318b884384e8261ea6e17a008b, type: 2}
   isBoss: 1
-  hp: 2000
+  hp: 20000
   hpPerLevel: 0
   armor: 0
   armorPerLevel: 0

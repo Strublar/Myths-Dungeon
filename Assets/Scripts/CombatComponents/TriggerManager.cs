@@ -14,7 +14,8 @@ public enum Trigger
     EveryPersonalTick,
     FightEnd,
     OnDamageReceived,
-    OnSpecificEvent
+    OnSpecificEvent,
+    OnPassiveGained
 }
 
 public struct Context
@@ -30,6 +31,7 @@ public struct Context
     public SpecificEvent specificEvent;
     public AbilityDefinition abilityCast;
     public Passive underlyingPassive;
+    public PassiveDefinition passiveGained;
 }
 
 public class TriggerManager : MonoBehaviour
@@ -45,6 +47,7 @@ public class TriggerManager : MonoBehaviour
     public static UnityEvent<Context> FightEnd = new UnityEvent<Context>();
     public static UnityEvent<Context> OnDamageReceived = new UnityEvent<Context>();
     public static UnityEvent<Context> OnSpecificEvent = new UnityEvent<Context>();
+    public static UnityEvent<Context> OnPassiveGained = new UnityEvent<Context>();
 
     public static Dictionary<Trigger, UnityEvent<Context>> triggerMap = new Dictionary<Trigger, UnityEvent<Context>>
     {
@@ -58,6 +61,7 @@ public class TriggerManager : MonoBehaviour
         { Trigger.FightEnd,FightEnd},
         { Trigger.OnDamageReceived,OnDamageReceived},
         { Trigger.OnSpecificEvent,OnSpecificEvent},
+        { Trigger.OnPassiveGained,OnPassiveGained},
         
     };
 

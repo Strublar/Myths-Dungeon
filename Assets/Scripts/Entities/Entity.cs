@@ -12,7 +12,7 @@ public class Entity : MonoBehaviour
 
     public BubbleBehaviour damageBubble;
     public BubbleBehaviour healingBubble;
-    public GameObject passivePrefab;
+    public Passive passivePrefab;
     [FormerlySerializedAs("passiveObjects")] public List<Passive> passives;
 
     [Header("Stats")] public Dictionary<Carac, int> caracs = new();

@@ -35,24 +35,24 @@ public class DealDamageEffect : Effect
 
         if (duration != 0)
         {
-            GameObject newPassive = Instantiate(context.target.passivePrefab, context.target.transform);
-            Passive passiveComponent = newPassive.GetComponent<Passive>();
-            context.target.passives.Add(passiveComponent);
-            passiveComponent.holder = context.target;
-            passiveComponent.definition = CreateInstance<PassiveDefinition>();
-            passiveComponent.definition.trigger = Trigger.EveryPersonalTick;
-            passiveComponent.definition.triggerCount = 10;
-            passiveComponent.definition.endTrigger = Trigger.EveryPersonalTick;
-            passiveComponent.definition.endTriggerCount = duration;
-            passiveComponent.definition.targets = CreateInstance<PassiveHolderTargetSelector>();
-            passiveComponent.definition.conditions = new List<Condition>();
-            passiveComponent.definition.effects = new List<Effect>
+            Passive newPassive = Instantiate(context.target.passivePrefab, context.target.transform);
+            context.target.passives.Add(newPassive);
+            newPassive.holder = context.target;
+            newPassive.definition = CreateInstance<PassiveDefinition>();
+            newPassive.definition.trigger = Trigger.EveryPersonalTick;
+            newPassive.definition.triggerCount = 10;
+            newPassive.definition.endTrigger = Trigger.EveryPersonalTick;
+            newPassive.definition.endTriggerCount = duration;
+            newPassive.definition.targets = CreateInstance<PassiveHolderTargetSelector>();
+            newPassive.definition.conditions = new List<Condition>();
+            newPassive.definition.endTriggerConditions = new List<Condition>();
+            newPassive.definition.effects = new List<Effect>
             {
                 CreateInstance<DealDamageEffect>()
             };
-            ((DealDamageEffect)passiveComponent.definition.effects[0]).value = value;
-            ((DealDamageEffect)passiveComponent.definition.effects[0]).duration = 0;
-            ((DealDamageEffect)passiveComponent.definition.effects[0]).damageType = damageType;
+            ((DealDamageEffect)newPassive.definition.effects[0]).value = value;
+            ((DealDamageEffect)newPassive.definition.effects[0]).duration = 0;
+            ((DealDamageEffect)newPassive.definition.effects[0]).damageType = damageType;
         }
     }
 }

@@ -34,22 +34,20 @@ public class Enemy : Entity
         
         foreach (PassiveDefinition passive in definition.passives)
         {
-            GameObject newPassive = Instantiate(passivePrefab, this.transform);
-            Passive pass = newPassive.GetComponent<Passive>();
-            pass.holder = this;
-            pass.definition = passive;
-            pass.level = level;
-            passives.Add(pass);
+            Passive newPassive = Instantiate(passivePrefab, this.transform);
+            newPassive.holder = this;
+            newPassive.definition = passive;
+            newPassive.level = level;
+            passives.Add(newPassive);
         }
         if(level>=10)//creep //TODO Cible, casting bar
         {
             caracs[Carac.maxHp] *= Mathf.RoundToInt(Mathf.Pow(1.1f, level - 10));
-            GameObject newPassive = Instantiate(passivePrefab, this.transform);
-            Passive pass = newPassive.GetComponent<Passive>();
-            pass.holder = this;
-            pass.definition = bossFrenzy;
-            pass.level = level;
-            passives.Add(pass);
+            Passive newPassive = Instantiate(passivePrefab, this.transform);
+            newPassive.holder = this;
+            newPassive.definition = bossFrenzy;
+            newPassive.level = level;
+            passives.Add(newPassive);
         }
         caracs[Carac.currentHp] = GetCarac(Carac.maxHp);
 

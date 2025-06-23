@@ -22,24 +22,24 @@ public class ModifyCaracEffect : Effect
 
         if (duration != 0)
         {
-            GameObject newPassive = Instantiate(context.target.passivePrefab, context.target.transform);
-            Passive passiveComponent = newPassive.GetComponent<Passive>();
-            context.target.passives.Add(passiveComponent);
-            passiveComponent.holder = context.target;
-            passiveComponent.definition = CreateInstance<PassiveDefinition>();
-            passiveComponent.definition.trigger = Trigger.EveryPersonalTick;
-            passiveComponent.definition.triggerCount = duration;
-            passiveComponent.definition.endTrigger = Trigger.EveryPersonalTick;
-            passiveComponent.definition.endTriggerCount = duration;
-            passiveComponent.definition.targets = CreateInstance<PassiveHolderTargetSelector>();
-            passiveComponent.definition.conditions = new List<Condition>();
-            passiveComponent.definition.effects = new List<Effect>
+            Passive newPassive = Instantiate(context.target.passivePrefab, context.target.transform);
+            context.target.passives.Add(newPassive);
+            newPassive.holder = context.target;
+            newPassive.definition = CreateInstance<PassiveDefinition>();
+            newPassive.definition.trigger = Trigger.EveryPersonalTick;
+            newPassive.definition.triggerCount = duration;
+            newPassive.definition.endTrigger = Trigger.EveryPersonalTick;
+            newPassive.definition.endTriggerCount = duration;
+            newPassive.definition.targets = CreateInstance<PassiveHolderTargetSelector>();
+            newPassive.definition.conditions = new List<Condition>();
+            newPassive.definition.endTriggerConditions = new List<Condition>();
+            newPassive.definition.effects = new List<Effect>
             {
                 CreateInstance<ModifyCaracEffect>()
             };
-            ((ModifyCaracEffect)passiveComponent.definition.effects[0]).carac = carac;
-            ((ModifyCaracEffect)passiveComponent.definition.effects[0]).value = NegativeDynamicValue.CreateFrom(value);
-            ((ModifyCaracEffect)passiveComponent.definition.effects[0]).duration = 0;
+            ((ModifyCaracEffect)newPassive.definition.effects[0]).carac = carac;
+            ((ModifyCaracEffect)newPassive.definition.effects[0]).value = NegativeDynamicValue.CreateFrom(value);
+            ((ModifyCaracEffect)newPassive.definition.effects[0]).duration = 0;
 
         }
     }

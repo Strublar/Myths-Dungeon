@@ -14,23 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroName: Archer
   heroImage: {fileID: 5420657165879536120, guid: f2bf1e3009250f64894887044a1ae2ae, type: 3}
-  model: {fileID: 6410435743571936100, guid: 094400ff52db9cb48bdaa2ef6b555a6c, type: 3}
+  model: {fileID: 8461778819654013387, guid: 5c09806d66abf8d40b940fbc19a954fc, type: 3}
   type: 2
-  hp: 100
-  hpPerLevel: 10
-  armor: 10
-  armorPerLevel: 1
-  threatRatio: 1
-  critChance: 0
-  critChancePerLevel: 0
-  critPower: 0
-  critPowerPerLevel: 0
-  passives: []
-  availableAbilities: []
-  availableSkills: []
-  resourceBarColor: {r: 0.5754717, g: 0.3100715, b: 0, a: 1}
-  startResources: 100
-  maxResources: 100
-  resourceRegeneration: 1
-  resourceRegenerationTickDelay: 1
-  canResourceOverflow: 0
+  isVagabond: 0
+  attackCooldown: 2
+  caracs:
+  - carac: 0
+    value: 90
+  - carac: 2
+    value: 10
+  - carac: 3
+    value: 80
+  - carac: 4
+    value: 100
+  - carac: 5
+    value: 20
+  - carac: 6
+    value: 200
+  - carac: 7
+    value: 100
+  - carac: 8
+    value: 100
+  attackTargetSelector: {fileID: 11400000, guid: 6c1bbbeac2d54884fa11c0e2048ef209, type: 2}
+  attackPassive: {fileID: 11400000, guid: 57cd02c0604c87741948c340d719eb6c, type: 2}
+  baseAbility: {fileID: 11400000, guid: c475c1298c58b034095c161f997045bf, type: 2}
+  passives:
+  - {fileID: 11400000, guid: c4360f837e86b78449da6c5ac4bbf8d6, type: 2}
+  skillTag: 3
+  cooldownBarColor: {r: 0, g: 0, b: 0, a: 0}
