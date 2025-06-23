@@ -14,27 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroName: Mage
   heroImage: {fileID: 7145629810653026102, guid: 1d06040d2d3fd04449662851d6119f22, type: 3}
-  model: {fileID: 1350831365295414573, guid: ec4c456ca052bf3409730eab4cb6a666, type: 3}
+  model: {fileID: 8461778819654013387, guid: 89fa8ff60a3fed84a9a54643648aea38, type: 3}
   type: 2
-  hp: 80
-  hpPerLevel: 8
-  armor: 0
-  armorPerLevel: 0
-  threatRatio: 1
-  critChance: 50
-  critChancePerLevel: 0
-  critPower: 200
-  critPowerPerLevel: 0
-  passives: []
-  availableAbilities:
-  - {fileID: 11400000, guid: 8adb28e4fa84b904caff90d9efbf3871, type: 2}
-  - {fileID: 11400000, guid: 136546d39f598f74480da9a82d9f08bd, type: 2}
-  availableSkills:
-  - {fileID: 11400000, guid: b47cc470af23cf147837a95b1e815325, type: 2}
-  - {fileID: 11400000, guid: 306fdb14a2937ba43b8983afbcb5445a, type: 2}
-  resourceBarColor: {r: 0, g: 0.77702427, b: 1, a: 1}
-  startResources: 100
-  maxResources: 100
-  resourceRegeneration: 1
-  resourceRegenerationTickDelay: 1
-  canResourceOverflow: 0
+  isVagabond: 0
+  attackCooldown: 3.5
+  caracs:
+  - carac: 0
+    value: 90
+  - carac: 2
+    value: 10
+  - carac: 3
+    value: 105
+  - carac: 4
+    value: 100
+  - carac: 5
+    value: 30
+  - carac: 6
+    value: 200
+  - carac: 7
+    value: 100
+  - carac: 8
+    value: 100
+  attackTargetSelector: {fileID: 11400000, guid: 6c1bbbeac2d54884fa11c0e2048ef209, type: 2}
+  attackPassive: {fileID: 11400000, guid: 01145e683605a884da5cf2fa0655f242, type: 2}
+  baseAbility: {fileID: 11400000, guid: 83b0e961a1de81a42a5dd26103c5a65a, type: 2}
+  passives:
+  - {fileID: 11400000, guid: fb7a3c61bb4540942963aaf1a34da64d, type: 2}
+  skillTag: 0
+  cooldownBarColor: {r: 0, g: 0, b: 0, a: 0}

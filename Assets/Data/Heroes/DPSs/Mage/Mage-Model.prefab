@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -4617028842953847717}
   - component: {fileID: -3415832699233332315}
   m_Layer: 0
-  m_Name: Archer-Model
+  m_Name: Mage-Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,7 @@ Animator:
   m_GameObject: {fileID: 8461778819654013387}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 38ac762d5b9b25c48b066a3889bae74f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 39470666bc678cf4f8e955380961a3f4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5420657165879536120, guid: f2bf1e3009250f64894887044a1ae2ae, type: 3}
+  m_Sprite: {fileID: 7145629810653026102, guid: 1d06040d2d3fd04449662851d6119f22, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

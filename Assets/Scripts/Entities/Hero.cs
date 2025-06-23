@@ -244,6 +244,10 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
             isCritical = Random.Range(0, 100) <= GetCarac(Carac.critChance),
         };
         TriggerManager.triggerMap[Trigger.OnAttack].Invoke(context);
+        if(context.isCritical)
+            TriggerManager.triggerMap[Trigger.OnCrit].Invoke(context);
+
+
     }
 
     public void PlayPunch()
@@ -291,6 +295,8 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
             underlyingPassive = underlyingPassive
         };
         TriggerManager.triggerMap[Trigger.OnUseAbility].Invoke(context);
+        if(context.isCritical)
+            TriggerManager.triggerMap[Trigger.OnCrit].Invoke(context);
     }
 
     public override void DealDamage(Context context)

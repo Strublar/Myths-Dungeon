@@ -11,7 +11,7 @@ public class ForceCritEffect : Effect
         if (!context.isCritical)
         {
             context.isCritical = true;
-            //TODO Crit event
+            TriggerManager.triggerMap[Trigger.OnCrit].Invoke(context);
         }
 
         foreach (var effect in childEffects)
