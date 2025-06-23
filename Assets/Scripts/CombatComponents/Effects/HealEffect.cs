@@ -39,6 +39,7 @@ public class HealEffect : Effect
             passiveComponent.definition.endTriggerCount = duration;
             passiveComponent.definition.targets = CreateInstance<PassiveHolderTargetSelector>();
             passiveComponent.definition.conditions = new List<Condition>();
+            passiveComponent.definition.model = FXManager.instance.healingParticlesPrefab;
             passiveComponent.definition.effects = new List<Effect>
             {
                 CreateInstance<HealEffect>()

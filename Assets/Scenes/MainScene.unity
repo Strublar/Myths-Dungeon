@@ -429,6 +429,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1596555419}
   - component: {fileID: 1596555418}
+  - component: {fileID: 1596555420}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -464,3 +465,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1596555420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596555417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a16b58a5c958cc4a90ccf02b1f561aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healingParticlesPrefab: {fileID: 7788392958905796533, guid: f4b32d5e4d9f2f84fa69d11f9968ed51, type: 3}

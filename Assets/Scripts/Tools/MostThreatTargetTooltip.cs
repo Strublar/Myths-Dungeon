@@ -14,7 +14,7 @@ public class MostThreatTargetTooltip : MonoBehaviour
             if(FightManager.instance.mostThreatHero != null)
             {
                 model.SetActive(true);
-                transform.parent = FightManager.instance.mostThreatHero.transform;
+                transform.SetParent(FightManager.instance.mostThreatHero.transform);
                 transform.localPosition = Vector3.zero;
             }
         }
@@ -26,6 +26,4 @@ public class MostThreatTargetTooltip : MonoBehaviour
     {
         model.SetActive(false);
     }
-
-
 }
