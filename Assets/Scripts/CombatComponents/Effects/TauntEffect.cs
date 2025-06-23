@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Misc;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "TauntEffect", menuName = "Effects/Taunt")]
 
@@ -9,7 +10,7 @@ public class TauntEffect : Effect
         FightManager.instance.ResetThreat();
         if (context.source is Hero hero)
         {
-            hero.threat += 100f;
+            hero.threat += hero.GetCarac(Carac.attack) * 10;
             FightManager.instance.UpdateMostThreatHero(hero);
         }
     }

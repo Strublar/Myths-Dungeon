@@ -111,18 +111,19 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public void Heal(int value, bool isCritical)
+    public void Heal(Context context)
     {
         if (isAlive)
         {
-            int healingValue = Mathf.RoundToInt(Mathf.Min(GetCarac(Carac.maxHp) - GetCarac(Carac.currentHp), value));
+            int healingValue = Mathf.RoundToInt(Mathf.Min(GetCarac(Carac.maxHp) - GetCarac(Carac.currentHp), context.value));
             caracs[Carac.currentHp] += healingValue;
 
+            TriggerManager.triggerMap[Trigger.OnHeal].Invoke(context);
             if (healingValue > 0)
             {
                 BubbleBehaviour bubble = Instantiate(healingBubble, transform);
                 bubble.transform.localPosition = new Vector3(Random.Range(-.6f, .6f), Random.Range(-1.5f, -0.5f), 0);
-                bubble.text.text = "+" + Mathf.RoundToInt(healingValue) + (isCritical ? "!!!" : "");
+                bubble.text.text = "+" + Mathf.RoundToInt(healingValue) + (context.isCritical ? "!!!" : "");
             }
         }
     }

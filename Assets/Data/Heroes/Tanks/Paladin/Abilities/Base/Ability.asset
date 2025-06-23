@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45f4d6be441f478780aadde3c926d9b4, type: 3}
-  m_Name: AttackProjectile
+  m_Script: {fileID: 11500000, guid: ca61f0287dde43ad8afc6f35b38edf83, type: 3}
+  m_Name: Ability
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 5e26dd5f4c4753b4f89d92db368ab4fe, type: 3}
-  travelTime: 0.3
-  effects:
-  - {fileID: 11400000, guid: e372f2178e5e23a49938b73dfa7cc8c3, type: 2}
+  abilityName: 
+  castConditions: []
+  cooldown: 7
+  linkedPassives:
+  - {fileID: 11400000, guid: a7d49b1fa9aa9cd4f97c27e24371af2c, type: 2}

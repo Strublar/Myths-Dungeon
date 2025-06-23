@@ -12,20 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117da2f1d5dd34e4eb06ec66ad9b2194, type: 3}
   m_Name: Passive
   m_EditorClassIdentifier: 
-  description: Taunt and deal {0} damage
-  trigger: 3
+  description: Heal {0}% of healing received to the other lowest health hero
+  trigger: 4
   triggerCount: 1
   endTrigger: 0
   endTriggerCount: 0
-  targets: {fileID: 11400000, guid: 30d59bf8cef47174d9ce202dc94a40a4, type: 2}
+  targets: {fileID: 11400000, guid: 0dfc6c264b5582a4fa18dc27b5538854, type: 2}
   conditions:
-  - {fileID: 11400000, guid: 1895fe8def357404c8eb761235bcdd18, type: 2}
+  - {fileID: 11400000, guid: dc187a930ec555e4a8566c3fe632d2f3, type: 2}
   effects:
-  - {fileID: 11400000, guid: 84dcd3d328418e74e9487c1255f5499e, type: 2}
-  - {fileID: 11400000, guid: 56fd90767d313cb46a34bf5636e3cdfd, type: 2}
+  - {fileID: 11400000, guid: 8827c2bbd41097a47883e2c53221096f, type: 2}
   replacementAbility: {fileID: 0}
   internalCooldown: 0
   model: {fileID: 0}
   orbitalObjectModel: {fileID: 0}
   values:
-  - {fileID: 11400000, guid: 4003c0df3b78a48448e4fe9dea8f7600, type: 2}
+  - {fileID: 11400000, guid: a8fbab8ef5d11324995266cdd1d7a2fc, type: 2}

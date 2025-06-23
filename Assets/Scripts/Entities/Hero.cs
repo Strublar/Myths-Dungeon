@@ -112,6 +112,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
     private void LoadPassives()
     {
+        ability = definition.baseAbility;
         var passives = new List<PassiveDefinition>(definition.passives);
         passives.Add(definition.attackPassive);
         foreach (var skill in skills)

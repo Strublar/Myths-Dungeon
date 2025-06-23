@@ -20,8 +20,6 @@ public class HeroDefinition : ScriptableObject
     public PassiveDefinition attackPassive;
     public AbilityDefinition baseAbility;
     public List<PassiveDefinition> passives;
-    public List<AbilityDefinition> availableAbilities;
-    public List<SkillDefinition> availableSkills;
 
     public SkillTag skillTag;
     public Color cooldownBarColor;
