@@ -12,7 +12,6 @@ public class Entity : MonoBehaviour
 
     public BubbleBehaviour damageBubble;
     public BubbleBehaviour healingBubble;
-    public BubbleBehaviour armorBubble;
     public GameObject passivePrefab;
     [FormerlySerializedAs("passiveObjects")] public List<Passive> passives;
 
@@ -93,7 +92,7 @@ public class Entity : MonoBehaviour
             if (damageValue > 0)
             {
                 BubbleBehaviour bubble = Instantiate(damageBubble, transform);
-                bubble.transform.localPosition = new Vector3(Random.Range(-1f, 1f), Random.Range(-1.5f, -0.5f), 0);
+                bubble.transform.localPosition = new Vector3(Random.Range(-100f, 100f), Random.Range(-100f, -50f), 0);
                 bubble.text.text = "-" + Mathf.RoundToInt(damageValue) + (context.isCritical ? "!!!" : "");
 
                 TriggerManager.OnDamageReceived.Invoke(new Context()
@@ -122,9 +121,9 @@ public class Entity : MonoBehaviour
             if (healingValue > 0)
             {
                 BubbleBehaviour bubble = Instantiate(healingBubble, transform);
-                bubble.transform.localPosition = new Vector3(Random.Range(-.6f, .6f), Random.Range(-1.5f, -0.5f), 0);
+                bubble.transform.localPosition = new Vector3(Random.Range(-100f, 100f), Random.Range(-100f, -50f), 0);
                 bubble.text.text = "+" + Mathf.RoundToInt(healingValue) + (context.isCritical ? "!!!" : "");
-            }
+            } 
         }
     }
 

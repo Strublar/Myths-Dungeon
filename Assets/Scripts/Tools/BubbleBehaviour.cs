@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BubbleBehaviour : MonoBehaviour
 {
-    public TextMeshPro text;
+    public TextMeshProUGUI text;
     public float speed;
     public float duration;
 
