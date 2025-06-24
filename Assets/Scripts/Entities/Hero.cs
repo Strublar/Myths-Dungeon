@@ -259,7 +259,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
             .OnComplete(() => model.transform.DOScale(Vector3.one, .05f).SetEase(Ease.InOutQuad));
     }
 
-    private void CastAbility(Entity target)
+    private void TryCastAbility(Entity target)
     {
         AbilityDefinition abilityToCast = null;
         Passive underlyingPassive = null;
@@ -282,8 +282,29 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         }
 
         if (abilityToCast == null) return;
-        
-        Pull(target);
+
+        bool validTarget;
+        switch (abilityToCast.abilityTarget)
+        {
+            case AbilityTarget.Any:
+                validTarget = true;
+                break;
+            case AbilityTarget.Hero:
+                validTarget = target is Hero;
+                break;
+            case AbilityTarget.Self:
+                validTarget = target == this;
+                break;
+            case AbilityTarget.Enemy:
+                validTarget = target is Enemy;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+
+        if (!validTarget) return;
+
+            Pull(target);
         
         Context context = new Context
         {
@@ -353,21 +374,8 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         Entity target = PlayerController.GetTarget<Entity>(eventData);
 
         if (target == null) return;
-
-        if (!definition.IsSupport)
-        {
-            if (target is Enemy)
-            {
-                CastAbility(target.GetComponent<Entity>());
-            }
-        }
-        else
-        {
-            if (target is Hero && RunManager.instance.fightStarted)
-            {
-                CastAbility(target.GetComponent<Entity>());
-            }
-        }
+        
+        TryCastAbility(target);
 
         if (FightManager.instance.mostThreatHero == null)
         {
@@ -386,9 +394,17 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!_isDragging && !RunManager.instance.fightStarted)
+        if (_isDragging)
+            return;
+        
+        if (!RunManager.instance.fightStarted)
         {
             HeroTooltipManager.instance.ShowToolTip(this);
+        }
+        else
+        {
+            if (!isAlive || !CanCast()) return;
+            TryCastAbility(this);
         }
     }
 
