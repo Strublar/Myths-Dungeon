@@ -17,13 +17,15 @@ MonoBehaviour:
   triggerCount: 1
   endTrigger: 0
   endTriggerCount: 0
-  targets: {fileID: 11400000, guid: 30d59bf8cef47174d9ce202dc94a40a4, type: 2}
+  targets: {fileID: 11400000, guid: 6c1bbbeac2d54884fa11c0e2048ef209, type: 2}
   conditions:
   - {fileID: 11400000, guid: 1895fe8def357404c8eb761235bcdd18, type: 2}
+  endTriggerConditions: []
   effects:
   - {fileID: 11400000, guid: 73d7e0ab0e602684899cc310362e33f4, type: 2}
   replacementAbility: {fileID: 0}
   internalCooldown: 0
   model: {fileID: 0}
   orbitalObjectModel: {fileID: 0}
+  passiveTypes: 
   values: []

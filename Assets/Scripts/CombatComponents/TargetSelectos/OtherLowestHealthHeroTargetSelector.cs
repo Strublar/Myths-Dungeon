@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Misc;
@@ -8,13 +9,22 @@ public class OtherLowestHealthHeroTargetSelector : TargetSelector
 {
     public override List<Entity> GetTargets(Context context)
     {
-        List<Entity> newTargets = new List<Entity>();
-        var aliveHeroes = (from hero in RunManager.instance.heroes where hero.isAlive && hero != context.passiveHolder select hero).ToList();
-        int lowestHp = aliveHeroes.Max(r => r.GetCarac(Carac.currentHp));
-        var lowestHealth = from hero in aliveHeroes
-            where hero.GetCarac(Carac.currentHp) == lowestHp
-            select hero;
-        newTargets.Add(lowestHealth.First());
-        return newTargets;
+        double min = Double.MaxValue;
+        Hero target = null;
+        foreach (var hero in RunManager.instance.heroes)
+        {
+            if (!hero.isAlive || hero == context.passiveHolder) continue;
+            double hp = (double)hero.GetCarac(Carac.currentHp) / hero.GetCarac(Carac.maxHp);
+            if ( hp < min)
+            {
+                target = hero;
+                min = hp;
+            }
+        }
+
+        if (target == null) return new List<Entity>();
+        
+        
+        return new List<Entity>(){target};
     }
 }

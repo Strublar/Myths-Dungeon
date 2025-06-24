@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 639c2a09b9f658c4ca6617bc5f7b5126, type: 3}
-  m_Name: Terrestran Trunk
+  m_Name: Terrestran Root
   m_EditorClassIdentifier: 
-  minLevel: 5
+  minLevel: 0
   effects:
-  - {fileID: 11400000, guid: ed5a7d6770d976644919f7c92c3b3780, type: 2}
-  - {fileID: 11400000, guid: 0b04aca52575a8249834368a1522559e, type: 2}
+  - {fileID: 11400000, guid: 0cd69d73035a17442ae0c17ebe81e2e4, type: 2}
   coolDown: 3
-  currentCooldown: 0
-  targets: {fileID: 11400000, guid: bf094b9c86646d043a5f2753121c481f, type: 2}
+  currentCooldown: 11.742149
+  targets: {fileID: 11400000, guid: c8de416a8f9d4834da61b2af94bb82e6, type: 2}

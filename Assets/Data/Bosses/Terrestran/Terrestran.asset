@@ -12,14 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b904a86b408cbf2419158446c76790e1, type: 3}
   m_Name: Terrestran
   m_EditorClassIdentifier: 
-  enemyName: 
-  sprite: {fileID: -9128590032158951111, guid: fd573fef1b14977408c2657271b176fa, type: 3}
-  animatorController: {fileID: 9100000, guid: 6a9205318b884384e8261ea6e17a008b, type: 2}
+  enemyName: Terrestran
+  model: {fileID: 3107569203585386695, guid: 58466a7842581a240a0769d0e50d99a8, type: 3}
   isBoss: 1
-  hp: 800
-  hpPerLevel: 300
-  armor: 50
-  armorPerLevel: 15
+  hp: 4000
+  hpPerLevel: 800
   spells:
   - {fileID: 11400000, guid: 333ca02d519186841a7ea7487af701a7, type: 2}
   - {fileID: 11400000, guid: a7b4481afe15e9a4aa530a55a8474753, type: 2}

@@ -234,8 +234,7 @@ MonoBehaviour:
   level: 0
   definition: {fileID: 11400000, guid: 9d804e14b344297499b1a64f8dfb93fa, type: 2}
   enemyNameMesh: {fileID: 5254914004998987891}
-  model: {fileID: 2369380804439749909}
-  animator: {fileID: 2258229707385521420}
+  model: {fileID: 0}
   bossFrenzy: {fileID: 11400000, guid: 0177e5b4e0d8f7b41b1e748a54bf4da3, type: 2}
 --- !u!95 &2258229707385521420
 Animator:
@@ -279,14 +278,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1186098299047624040, guid: 678446ae4b1c1eb45bb95dbeb949a1a6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

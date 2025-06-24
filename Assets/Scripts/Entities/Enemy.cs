@@ -11,7 +11,7 @@ public class Enemy : Entity
     public EnemyDefinition definition;
     [CanBeNull] public TextMeshPro enemyNameMesh;
     
-    public Image model;
+    public GameObject model;
     
     public PassiveDefinition bossFrenzy;
     
@@ -27,8 +27,7 @@ public class Enemy : Entity
             spell.currentCooldown = spell.coolDown;
         }
 
-        model.gameObject.SetActive(true);
-        model.sprite = definition.sprite;
+        model = Instantiate(definition.model, transform);
         
         foreach (PassiveDefinition passive in definition.passives)
         {
@@ -98,6 +97,8 @@ public class Enemy : Entity
     public override void Die()
     {
         base.Die();
+        Destroy(model);
+        model = null;
         gameObject.SetActive(false);
         if(definition.isBoss)
             RunManager.instance.BossDefeated();

@@ -6,13 +6,11 @@ using UnityEngine.Serialization;
 public class EnemyDefinition : ScriptableObject
 {
     public string enemyName;
-    public Sprite sprite;
+    public GameObject model;
     public bool isBoss;
     [Header("Stats")]
     public int hp;
     public int hpPerLevel;
-    public int armor;
-    public int armorPerLevel;
     public List<EnemySpellDefinition> spells;
     public List<PassiveDefinition> passives;
 }

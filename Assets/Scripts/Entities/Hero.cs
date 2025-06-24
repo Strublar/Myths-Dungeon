@@ -236,7 +236,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
     private void Attack(Entity target)
     {
         currentAttackCooldown = definition.attackCooldown;
-        PlayPunch();
+        //PlayPunch();
 
         Context context = new Context
         {
@@ -325,7 +325,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
     public override void DealDamage(Context context)
     {
-        PlayWobble();
+        //PlayWobble();
         base.DealDamage(context);
     }
     

@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossPool:
-  - {fileID: 11400000, guid: 13184284f32a4904cb3c01804e01b9c1, type: 2}
+  - {fileID: 11400000, guid: 449805c388d6f1849b473f3a7bc5c4b5, type: 2}
   boss: {fileID: 1344515080}
   mostThreatHero: {fileID: 0}
   deadHeroes: 0
@@ -814,7 +814,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageBubble: {fileID: 1904282042216898216, guid: ef16a162897a83349a0b309821db9235, type: 3}
   healingBubble: {fileID: 7615538915002155816, guid: e72d2ef4f3bf7c04b945c1124c4c98a5, type: 3}
-  armorBubble: {fileID: 7357081350883410598, guid: e987aced3c7075041b29307dfaafc320, type: 3}
   passivePrefab: {fileID: 6010278707440170961, guid: ba820befb37e48c40b4d9a4425dc6e3c, type: 3}
   passives: []
   isAlive: 1
@@ -822,7 +821,6 @@ MonoBehaviour:
   definition: {fileID: 0}
   enemyNameMesh: {fileID: 0}
   model: {fileID: 0}
-  animator: {fileID: 0}
   bossFrenzy: {fileID: 11400000, guid: 0177e5b4e0d8f7b41b1e748a54bf4da3, type: 2}
 --- !u!61 &1889643034
 BoxCollider2D:
