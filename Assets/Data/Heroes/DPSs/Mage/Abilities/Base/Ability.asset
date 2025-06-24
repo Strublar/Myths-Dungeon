@@ -17,3 +17,4 @@ MonoBehaviour:
   cooldown: 10
   linkedPassives:
   - {fileID: 11400000, guid: c4d7634120556274886934c0f8b6abf0, type: 2}
+  abilityTarget: 3

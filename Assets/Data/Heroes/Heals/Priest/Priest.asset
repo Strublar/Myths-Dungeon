@@ -14,19 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroName: Priest
   heroImage: {fileID: -5137005131209321331, guid: a76b1dfc72231354e95bd8835ba2d798, type: 3}
-  model: {fileID: 6875471624582525405, guid: 4020b73d7b041834698387a37c849398, type: 3}
+  model: {fileID: 8461778819654013387, guid: 49dfeb9e07ef421428c546a8a16bf3b6, type: 3}
   type: 1
-  hp: 80
-  armor: 0
-  attack: 50
-  attackCooldown: 3
-  critChance: 10
-  critPower: 200
-  threatRatio: 1
+  isVagabond: 0
+  attackCooldown: 2
+  caracs:
+  - carac: 0
+    value: 80
+  - carac: 2
+    value: 0
+  - carac: 3
+    value: 20
+  - carac: 4
+    value: 100
+  - carac: 5
+    value: 20
+  - carac: 6
+    value: 200
+  - carac: 7
+    value: 100
+  - carac: 8
+    value: 100
   attackTargetSelector: {fileID: 11400000, guid: 22e1fb1e963cd6d4eb108dd1b2cc4ca5, type: 2}
   attackPassive: {fileID: 11400000, guid: 17b6e143d6b6b944981002bcc703774c, type: 2}
-  baseAbility: {fileID: 11400000, guid: 18f5fb5d830051442aee24eaa988cc5c, type: 2}
-  passives: []
-  availableAbilities: []
-  availableSkills: []
+  baseAbility: {fileID: 11400000, guid: 37250086464f2834fb535450d34686de, type: 2}
+  passives:
+  - {fileID: 11400000, guid: 93e28f127ca19d74685d2641a77cfb38, type: 2}
+  skillTag: 5
   cooldownBarColor: {r: 0, g: 0, b: 0, a: 0}

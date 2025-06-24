@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca61f0287dde43ad8afc6f35b38edf83, type: 3}
-  m_Name: Ability
+  m_Script: {fileID: 11500000, guid: 9662abbd70804885b16129ce1191eb80, type: 3}
+  m_Name: PassiveCountCondition
   m_EditorClassIdentifier: 
-  abilityName: 
-  castConditions: []
-  cooldown: 7
-  linkedPassives:
-  - {fileID: 11400000, guid: 83eb54df8d2da9d40aa87b1d3d383982, type: 2}
-  abilityTarget: 3
+  count: 7
+  passive: {fileID: 11400000, guid: 9014b15a80e07944db7c78117bc2b510, type: 2}
+  holder: {fileID: 11400000, guid: 6d4c675a7773b3348a19abd85e699b56, type: 2}

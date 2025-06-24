@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: 
   castConditions: []
-  cooldown: 6
+  cooldown: 8
   linkedPassives:
   - {fileID: 11400000, guid: 79b89be532f882847927f1cdd4550137, type: 2}
+  abilityTarget: 3

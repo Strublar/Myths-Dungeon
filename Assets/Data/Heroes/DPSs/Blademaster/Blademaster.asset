@@ -17,14 +17,14 @@ MonoBehaviour:
   model: {fileID: 8461778819654013387, guid: 106d5137f02664449a83590fc10540ff, type: 3}
   type: 2
   isVagabond: 0
-  attackCooldown: 2
+  attackCooldown: 3
   caracs:
   - carac: 0
     value: 100
   - carac: 2
     value: 20
   - carac: 3
-    value: 80
+    value: 120
   - carac: 4
     value: 100
   - carac: 5

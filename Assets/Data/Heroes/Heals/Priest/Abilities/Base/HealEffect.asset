@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca61f0287dde43ad8afc6f35b38edf83, type: 3}
-  m_Name: Ability
+  m_Script: {fileID: 11500000, guid: 99b35eb19aa044a40a24cd7362f00cf3, type: 3}
+  m_Name: HealEffect
   m_EditorClassIdentifier: 
-  abilityName: 
-  castConditions: []
-  cooldown: 7
-  linkedPassives:
-  - {fileID: 11400000, guid: 83eb54df8d2da9d40aa87b1d3d383982, type: 2}
-  abilityTarget: 3
+  value: {fileID: 11400000, guid: aa2c2f14320657a42b506bb5c09c8c2a, type: 2}
+  duration: 0
+  fromAbility: 1
+  canCrit: 1

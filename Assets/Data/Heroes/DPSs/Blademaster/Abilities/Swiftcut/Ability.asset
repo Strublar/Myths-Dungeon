@@ -16,3 +16,4 @@ MonoBehaviour:
   castConditions: []
   cooldown: 0
   linkedPassives: []
+  abilityTarget: 3

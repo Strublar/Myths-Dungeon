@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
         Vector3 worldOrigin = uiCamera.ScreenToWorldPoint(new Vector3(screenOrigin.x, screenOrigin.y, 1f));
         Vector3 worldTarget = uiCamera.ScreenToWorldPoint(new Vector3(screenTarget.x, screenTarget.y, 1f));
 
-        worldTarget += new Vector3(Random.Range(-1f, 1f), Random.Range(-.7f, 0.7f), 0f);
+        if(context.target is Enemy) worldTarget += new Vector3(Random.Range(-1f, 1f), Random.Range(-.7f, 0.7f), 0f);
 
         this.context = context;
         this.effects = effects;

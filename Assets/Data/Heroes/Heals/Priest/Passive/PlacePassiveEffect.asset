@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca61f0287dde43ad8afc6f35b38edf83, type: 3}
-  m_Name: Ability
+  m_Script: {fileID: 11500000, guid: b56092c9c36498b4bb70c9ac6a3638cf, type: 3}
+  m_Name: PlacePassiveEffect
   m_EditorClassIdentifier: 
-  abilityName: 
-  castConditions: []
-  cooldown: 7
-  linkedPassives:
-  - {fileID: 11400000, guid: 83eb54df8d2da9d40aa87b1d3d383982, type: 2}
-  abilityTarget: 3
+  passive: {fileID: 11400000, guid: 40451f67191417b45ad00ac49025436c, type: 2}
