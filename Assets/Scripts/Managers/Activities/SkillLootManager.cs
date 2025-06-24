@@ -90,7 +90,8 @@ public class SkillLootManager : MonoBehaviour
                          skill.rarity == rarity &&
                          SkillCanBeEquipped(skill)
             ).ToList();
-        var updatedFilteredSkills = new List(filteredSkills)//Faire une copie
+        
+        var updatedFilteredSkills = new List<SkillDefinition>(filteredSkills);
         int totalWeight = 0;
         foreach (var entry in skillTags)
         {
