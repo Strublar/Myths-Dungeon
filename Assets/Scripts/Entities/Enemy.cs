@@ -12,7 +12,6 @@ public class Enemy : Entity
     [CanBeNull] public TextMeshPro enemyNameMesh;
     
     public Image model;
-    public Animator animator;
     
     public PassiveDefinition bossFrenzy;
     
@@ -30,7 +29,6 @@ public class Enemy : Entity
 
         model.gameObject.SetActive(true);
         model.sprite = definition.sprite;
-        animator.runtimeAnimatorController = definition.animatorController;
         
         foreach (PassiveDefinition passive in definition.passives)
         {

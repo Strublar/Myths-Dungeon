@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -8,7 +7,6 @@ public class EnemyDefinition : ScriptableObject
 {
     public string enemyName;
     public Sprite sprite;
-    public AnimatorController animatorController;
     public bool isBoss;
     [Header("Stats")]
     public int hp;

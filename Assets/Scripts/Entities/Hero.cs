@@ -268,7 +268,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         if (currentAbilityCooldown <= 0)
         {
             abilityToCast = ability;
-            currentAbilityCooldown = abilityToCast.cooldown;
+           
         }
         else
         {
@@ -305,8 +305,8 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         }
 
         if (!validTarget) return;
-
-            Pull(target);
+        currentAbilityCooldown = abilityToCast.cooldown;
+        Pull(target);
         
         Context context = new Context
         {
