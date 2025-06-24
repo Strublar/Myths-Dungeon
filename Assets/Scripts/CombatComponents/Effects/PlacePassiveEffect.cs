@@ -11,11 +11,12 @@ public class PlacePassiveEffect : Effect
     public override void Apply(Context context)
     {
         context.passiveGained = passive;
-        Passive newPassive = Instantiate(context.target.passivePrefab, context.target.transform);
+        Passive newPassive = PassivePool.instance.GetObject(context.target.transform);
         newPassive.holder = context.target;
         newPassive.definition = passive;
         newPassive.level = context.level;
         context.target.passives.Add(newPassive);
+        newPassive.Init();
 
         TriggerManager.triggerMap[Trigger.OnPassiveGained].Invoke(context);
     }

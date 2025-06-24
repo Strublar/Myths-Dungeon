@@ -132,10 +132,11 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
         foreach (PassiveDefinition passive in passives)
         {
-            Passive newPassive = Instantiate(passivePrefab, this.transform);
+            Passive newPassive = PassivePool.instance.GetObject(transform);
             newPassive.holder = this;
             newPassive.definition = passive;
             base.passives.Add(newPassive);
+            newPassive.Init();
         }
     }
 

@@ -27,7 +27,7 @@ public class HealEffect : Effect
 
         if (duration != 0)
         {
-            Passive newPassive = Instantiate(context.target.passivePrefab, context.target.transform);
+            Passive newPassive = PassivePool.instance.GetObject(context.target.transform);
             context.target.passives.Add(newPassive);
             newPassive.level = context.level;
             newPassive.holder = context.target;
@@ -47,6 +47,7 @@ public class HealEffect : Effect
             };
             ((HealEffect)newPassive.definition.effects[0]).value = value;
             ((HealEffect)newPassive.definition.effects[0]).duration = 0;
+            newPassive.Init();
         }
     }
 }

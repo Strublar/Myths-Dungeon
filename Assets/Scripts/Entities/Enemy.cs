@@ -28,11 +28,12 @@ public class Enemy : Entity
         
         foreach (PassiveDefinition passive in definition.passives)
         {
-            Passive newPassive = Instantiate(passivePrefab, this.transform);
+            Passive newPassive = PassivePool.instance.GetObject(transform);
             newPassive.holder = this;
             newPassive.definition = passive;
             newPassive.level = level;
             passives.Add(newPassive);
+            newPassive.Init();
         }
 
         foreach (var spellDefinition in definition.spells)

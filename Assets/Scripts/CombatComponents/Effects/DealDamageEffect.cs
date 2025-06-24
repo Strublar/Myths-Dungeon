@@ -35,7 +35,7 @@ public class DealDamageEffect : Effect
 
         if (duration != 0)
         {
-            Passive newPassive = Instantiate(context.target.passivePrefab, context.target.transform);
+            Passive newPassive = PassivePool.instance.GetObject(context.target.transform);
             context.target.passives.Add(newPassive);
             newPassive.holder = context.target;
             newPassive.definition = CreateInstance<PassiveDefinition>();
@@ -53,6 +53,7 @@ public class DealDamageEffect : Effect
             ((DealDamageEffect)newPassive.definition.effects[0]).value = value;
             ((DealDamageEffect)newPassive.definition.effects[0]).duration = 0;
             ((DealDamageEffect)newPassive.definition.effects[0]).damageType = damageType;
+            newPassive.Init();
         }
     }
 }

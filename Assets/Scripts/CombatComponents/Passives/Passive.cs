@@ -15,7 +15,7 @@ public class Passive : MonoBehaviour
     public float clock = 0.1f;
     public float clockEnd = 0.1f;
 
-    public void Start()
+    public void Init()
     {
         TriggerManager.triggerMap[definition.trigger].AddListener(Execute);
         TriggerManager.triggerMap[definition.endTrigger].AddListener(OnEndTrigger);
@@ -130,13 +130,20 @@ public class Passive : MonoBehaviour
     {
         TriggerManager.triggerMap[definition.trigger].RemoveListener(Execute);
         TriggerManager.triggerMap[definition.endTrigger].RemoveListener(OnEndTrigger);
-        Destroy(gameObject);
         if (definition.orbitalObjectModel != null && holder is Hero hero)
         {
             hero.orbitSpawner.RemoveOrbitalObject(this);
         }
+
+        if (definition.model != null)
+        {
+            Destroy(model);
+            model = null;
+        }
         
         if (context.passiveHolder != null)
             holder.passives.Remove(this);
+        
+        PassivePool.instance.ReturnObject(this);
     }
 }
