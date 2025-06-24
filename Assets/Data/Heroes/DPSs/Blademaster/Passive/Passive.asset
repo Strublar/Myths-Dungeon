@@ -12,21 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117da2f1d5dd34e4eb06ec66ad9b2194, type: 3}
   m_Name: Passive
   m_EditorClassIdentifier: 
-  description: 
-  trigger: 3
+  description: 'On Attack : <b><color=#660066>{0}%</color></b> chance to unlock SwiftCut\n\nSwiftCut
+    : Deal <b><color=#CC6600>{1}</color></b> damage'
+  trigger: 2
   triggerCount: 1
-  endTrigger: 3
-  endTriggerCount: 1
+  endTrigger: 0
+  endTriggerCount: 0
   targets: {fileID: 11400000, guid: 6d4c675a7773b3348a19abd85e699b56, type: 2}
   conditions:
   - {fileID: 11400000, guid: 1895fe8def357404c8eb761235bcdd18, type: 2}
-  - {fileID: 11400000, guid: 92a46113a38b7c948a6c3ffd6fef1221, type: 2}
-  endTriggerConditions:
-  - {fileID: 11400000, guid: 1895fe8def357404c8eb761235bcdd18, type: 2}
-  - {fileID: 11400000, guid: 92a46113a38b7c948a6c3ffd6fef1221, type: 2}
-  effects: []
-  replacementAbility: {fileID: 11400000, guid: 73be46239efff27458c4b270e5082d76, type: 2}
+  endTriggerConditions: []
+  effects:
+  - {fileID: 11400000, guid: 35031d1b39bf0f5468b23f0595cf2b20, type: 2}
+  replacementAbility: {fileID: 0}
   internalCooldown: 0
-  model: {fileID: 3491571946111663575, guid: ccffbc0d140e21f4b9de7fe90e81494f, type: 3}
+  model: {fileID: 0}
   orbitalObjectModel: {fileID: 0}
-  values: []
+  values:
+  - {fileID: 11400000, guid: 7e63d34fcfcdc2f44bd39d3cf81a0905, type: 2}
+  - {fileID: 11400000, guid: 2309e39c8f2c362468432fcdfcd54078, type: 2}

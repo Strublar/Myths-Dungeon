@@ -20,6 +20,5 @@ MonoBehaviour:
   hpPerLevel: 0
   armor: 0
   armorPerLevel: 0
-  spells:
-  - {fileID: 11400000, guid: 333ca02d519186841a7ea7487af701a7, type: 2}
+  spells: []
   passives: []

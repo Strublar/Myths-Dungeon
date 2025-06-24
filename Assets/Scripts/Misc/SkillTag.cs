@@ -7,7 +7,7 @@ namespace Misc
         //Class tags
         Warrior,
         Paladin,
-        Swordsman,
+        Blademaster,
         Archer,
         Mage,
         Priest,

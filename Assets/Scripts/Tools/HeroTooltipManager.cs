@@ -55,7 +55,7 @@ public class HeroTooltipManager : MonoBehaviour
             formatListAbility[i] = hero.ability.linkedPassives[0].values[i].computeValue(context).ToString();
         }
 
-        ability.text = "Ability :\n\n"+string.Format(hero.ability.linkedPassives[0].description, formatListAbility);
+        ability.text = "Ability :\n\n"+string.Format(hero.ability.linkedPassives[0].description.Replace("\\n", "\n"), formatListAbility);
 
         var passiveDefinition = hero.definition.passives[0];
 
@@ -65,7 +65,7 @@ public class HeroTooltipManager : MonoBehaviour
             formatListPassive[i] = passiveDefinition.values[i].computeValue(context).ToString();
         }
 
-        passive.text = "Passive :\n\n"+string.Format(passiveDefinition.description, formatListPassive);
+        passive.text = "Passive :\n\n"+string.Format(passiveDefinition.description.Replace("\\n", "\n"), formatListPassive);
 
         /*string[] formatListItem = Array.Empty<string>();
         if (hero.item.definition != null)

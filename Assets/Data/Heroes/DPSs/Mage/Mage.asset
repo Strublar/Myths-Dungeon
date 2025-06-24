@@ -40,5 +40,5 @@ MonoBehaviour:
   baseAbility: {fileID: 11400000, guid: 83b0e961a1de81a42a5dd26103c5a65a, type: 2}
   passives:
   - {fileID: 11400000, guid: fb7a3c61bb4540942963aaf1a34da64d, type: 2}
-  skillTag: 0
+  skillTag: 4
   cooldownBarColor: {r: 0, g: 0, b: 0, a: 0}

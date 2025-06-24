@@ -292,7 +292,8 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
             passiveHolder = null,
             isCritical = Random.Range(0, 100) <= GetCarac(Carac.critChance),
             abilityCast = abilityToCast,
-            underlyingPassive = underlyingPassive
+            underlyingPassive = underlyingPassive,
+            replacementAbilityPassive = underlyingPassive
         };
         TriggerManager.triggerMap[Trigger.OnUseAbility].Invoke(context);
         if(context.isCritical)

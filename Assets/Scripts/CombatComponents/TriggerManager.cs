@@ -33,6 +33,7 @@ public struct Context
     public AbilityDefinition abilityCast;
     public Passive underlyingPassive;
     public PassiveDefinition passiveGained;
+    public Passive replacementAbilityPassive;
 }
 
 public class TriggerManager : MonoBehaviour

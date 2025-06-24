@@ -74,6 +74,7 @@ public class Passive : MonoBehaviour
             currentCooldown <= definition.internalCooldown)
         {
             context.passiveHolder = holder;
+            context.underlyingPassive = this;
             bool shouldTrigger = true;
             foreach (Condition condition in definition.conditions)
             {
@@ -108,6 +109,7 @@ public class Passive : MonoBehaviour
         if (endTriggerCount >= definition.endTriggerCount && definition.endTriggerCount != 0)
         {
             context.passiveHolder = holder;
+            context.underlyingPassive = this;
             bool shouldTrigger = true;
             foreach (Condition condition in definition.endTriggerConditions)
             {

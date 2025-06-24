@@ -10,17 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 117da2f1d5dd34e4eb06ec66ad9b2194, type: 3}
-  m_Name: AttackPassive
+  m_Name: Passive
   m_EditorClassIdentifier: 
-  description: 
-  trigger: 2
+  description: Deal <b><color=#CC6600>{0}</color></b> damage and unlock 2 SwiftCuts
+  trigger: 3
   triggerCount: 1
   endTrigger: 0
   endTriggerCount: 0
   targets: {fileID: 11400000, guid: 30d59bf8cef47174d9ce202dc94a40a4, type: 2}
   conditions:
   - {fileID: 11400000, guid: 1895fe8def357404c8eb761235bcdd18, type: 2}
+  - {fileID: 11400000, guid: b4f5a210408a92b47abebd92acc31779, type: 2}
+  endTriggerConditions: []
   effects:
-  - {fileID: 11400000, guid: 2ce805555e73f3846bdcf1fcf6664634, type: 2}
+  - {fileID: 11400000, guid: 41287210955d13547abd508cb604087d, type: 2}
+  - {fileID: 11400000, guid: 74ec7d2c7dc62f5439404b5d8c3c65c3, type: 2}
+  - {fileID: 11400000, guid: 74ec7d2c7dc62f5439404b5d8c3c65c3, type: 2}
+  replacementAbility: {fileID: 0}
   internalCooldown: 0
-  values: []
+  model: {fileID: 0}
+  orbitalObjectModel: {fileID: 0}
+  values:
+  - {fileID: 11400000, guid: e2019b522829d9b40b6d8332c481e677, type: 2}
