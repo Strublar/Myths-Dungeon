@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639c2a09b9f658c4ca6617bc5f7b5126, type: 3}
   m_Name: Terrestran Tremor
   m_EditorClassIdentifier: 
-  minLevel: 8
+  minLevel: 12
   effects:
   - {fileID: 11400000, guid: cc41024dfdc7eb945885573023b169e9, type: 2}
   coolDown: 20
-  currentCooldown: 23.724583
+  currentCooldown: 20
   targets: {fileID: 11400000, guid: 18722d6cfef476b408668eaa2c7d7e03, type: 2}

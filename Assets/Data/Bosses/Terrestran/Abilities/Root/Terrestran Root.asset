@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639c2a09b9f658c4ca6617bc5f7b5126, type: 3}
   m_Name: Terrestran Root
   m_EditorClassIdentifier: 
-  minLevel: 0
+  minLevel: 4
   effects:
   - {fileID: 11400000, guid: 0cd69d73035a17442ae0c17ebe81e2e4, type: 2}
   coolDown: 3
-  currentCooldown: 11.742149
+  currentCooldown: 2.4988532
   targets: {fileID: 11400000, guid: c8de416a8f9d4834da61b2af94bb82e6, type: 2}

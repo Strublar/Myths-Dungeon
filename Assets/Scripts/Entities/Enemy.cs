@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using Misc;
 using TMPro;
@@ -12,7 +13,7 @@ public class Enemy : Entity
     [CanBeNull] public TextMeshPro enemyNameMesh;
     
     public GameObject model;
-    
+    private Dictionary<EnemySpellDefinition, float> spellCooldowns = new();
     public PassiveDefinition bossFrenzy;
     
     public void LoadDefinition()
@@ -22,10 +23,6 @@ public class Enemy : Entity
         if(enemyNameMesh != null)
             enemyNameMesh.text = definition.enemyName;
         isAlive = true;
-        foreach(EnemySpellDefinition spell in definition.spells)
-        {
-            spell.currentCooldown = spell.coolDown;
-        }
 
         model = Instantiate(definition.model, transform);
         
@@ -37,6 +34,13 @@ public class Enemy : Entity
             newPassive.level = level;
             passives.Add(newPassive);
         }
+
+        foreach (var spellDefinition in definition.spells)
+        {
+            spellCooldowns.Add(spellDefinition,spellDefinition.coolDown);
+        }
+        
+        /*
         if(level>=10)//creep //TODO Cible, casting bar
         {
             caracs[Carac.maxHp] *= Mathf.RoundToInt(Mathf.Pow(1.1f, level - 10));
@@ -45,7 +49,7 @@ public class Enemy : Entity
             newPassive.definition = bossFrenzy;
             newPassive.level = level;
             passives.Add(newPassive);
-        }
+        }*/
         caracs[Carac.currentHp] = GetCarac(Carac.maxHp);
 
     }
@@ -55,20 +59,21 @@ public class Enemy : Entity
     {
         if (RunManager.instance.fightStarted && isAlive)
         {
-            foreach(EnemySpellDefinition spell in definition.spells)
+            var spells = spellCooldowns.Keys.ToList();
+            foreach(var spell in spells)
             {
+                var cooldown = spellCooldowns.GetValueOrDefault(spell);
                 if(spell.minLevel <= level)
                 {
-                    spell.currentCooldown -= Time.deltaTime;
-                    if (spell.currentCooldown < 0)
+                    cooldown -= Time.deltaTime;
+                    if (cooldown < 0)
                     {
                         Cast(spell);
-                        spell.currentCooldown = spell.coolDown;
+                        cooldown = spell.coolDown;
                     }
+                    spellCooldowns[spell] = cooldown;
                 }
-                
             }
-            
         }
     }
     public void Cast(EnemySpellDefinition spell)

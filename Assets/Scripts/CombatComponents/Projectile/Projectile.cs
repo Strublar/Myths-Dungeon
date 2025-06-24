@@ -19,6 +19,7 @@ public class Projectile : MonoBehaviour
 
     public void Init(Context context, List<Effect> effects, Sprite sprite, float targetDuration)
     {
+        lifeTime = 0;
         this.context = context;
         this.effects = effects;        
         image.sprite = sprite;
@@ -52,7 +53,7 @@ public class Projectile : MonoBehaviour
             {
                 effect.Apply(context);
             }
-            Destroy(gameObject);
+            ProjectileManager.instance.ReturnObject(this);
         }
         
     }

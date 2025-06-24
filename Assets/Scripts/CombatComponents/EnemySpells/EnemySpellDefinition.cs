@@ -12,8 +12,6 @@ public class EnemySpellDefinition : ScriptableObject
     public int minLevel;
     public List<Effect> effects;
     public float coolDown;
-    [HideInInspector]
-    public float currentCooldown;
     public TargetSelector targets;
     #endregion
 }

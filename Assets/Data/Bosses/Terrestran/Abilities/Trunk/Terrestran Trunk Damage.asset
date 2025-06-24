@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0573bedb5e8393849adc974d719ae0df, type: 3}
   m_Name: Terrestran Trunk Damage
   m_EditorClassIdentifier: 
-  damage: 10
-  damagePerLevel: 2
+  value: {fileID: 11400000, guid: 26941f47fb2152b49bd739be357c3299, type: 2}
   duration: 0
+  fromAbility: 0
+  canCrit: 1
+  damageType: 0

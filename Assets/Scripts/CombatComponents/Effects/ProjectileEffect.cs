@@ -19,8 +19,7 @@ public class ProjectileEffect : Effect
         }
         else
         {
-            Projectile projectile = Instantiate(ProjectileManager.instance.projectilePrefab,
-                ProjectileManager.instance.container);
+            Projectile projectile = ProjectileManager.instance.GetObject();
             projectile.Init(context, effects, sprite, travelTime);
         }
     }
