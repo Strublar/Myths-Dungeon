@@ -37,6 +37,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
     [Header("Component objects")] public GameObject model;
     public GameObject healthBar;
+    public GameObject cooldownBar;
     private bool _isDragging;
     private Vector3 _modelInitialPos;
     public OrbitSpawner orbitSpawner;
@@ -108,6 +109,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         isAlive = true;
         model.SetActive(true);
         healthBar.SetActive(true);
+        cooldownBar.SetActive(true);
     }
 
     private void LoadPassives()
@@ -352,6 +354,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         base.Die();
         model.SetActive(false);
         healthBar.SetActive(false);
+        cooldownBar.SetActive(false);
         FightManager.instance.GetNewThreatHero();
         FightManager.instance.HeroDies();
     }

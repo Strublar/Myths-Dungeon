@@ -121,6 +121,7 @@ MonoBehaviour:
   currentAbilityCooldown: 0
   model: {fileID: 0}
   healthBar: {fileID: 4833275854603085159}
+  cooldownBar: {fileID: 1076359679766705481}
   orbitSpawner: {fileID: 7938615820480836891}
 --- !u!95 &931783515656589792
 Animator:
@@ -393,6 +394,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6704b3fecf18a6d448dceb8b7cb2ebc7, type: 3}
+--- !u!1 &1076359679766705481 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8054542238875490016, guid: 6704b3fecf18a6d448dceb8b7cb2ebc7, type: 3}
+  m_PrefabInstance: {fileID: 7000990828684485545}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3474822900755899944 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5841600911934424449, guid: 6704b3fecf18a6d448dceb8b7cb2ebc7, type: 3}
