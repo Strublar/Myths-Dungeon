@@ -4016,6 +4016,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heal 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7869236679826074985, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
+      propertyPath: definition
+      value: 
+      objectReference: {fileID: 11400000, guid: 41490d30326ecbd4085a0bdefe9bea74, type: 2}
     - target: {fileID: 9106702019863737948, guid: 6f27922a4aa242840aeb7184665844c1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

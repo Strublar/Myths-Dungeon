@@ -40,6 +40,7 @@ public class HealEffect : Effect
             newPassive.definition.conditions = new List<Condition>();
             newPassive.definition.endTriggerConditions = new List<Condition>();
             newPassive.definition.model = FXManager.instance.healingParticlesPrefab;
+            newPassive.definition.passiveTypes = new List<PassiveType>{ PassiveType.HealingOverTime };
             newPassive.definition.effects = new List<Effect>
             {
                 CreateInstance<HealEffect>()

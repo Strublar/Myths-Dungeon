@@ -19,6 +19,12 @@ public class PassiveDefinition : ScriptableObject
     public float internalCooldown;
     public GameObject model;
     public GameObject orbitalObjectModel;
+    public List<PassiveType> passiveTypes = new();
     [Header("Serialization")]
     public List<DynamicValue> values;
+}
+
+public enum PassiveType
+{
+    HealingOverTime
 }

@@ -14,23 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroName: Druid
   heroImage: {fileID: 5633305341146991393, guid: 89c3c7bd37c88274f9421f3b5fc72a77, type: 3}
-  model: {fileID: 5097976584452167549, guid: 2bd5aec2922631142a7ea242872e1107, type: 3}
+  model: {fileID: 8461778819654013387, guid: fdbf818eed19a64488cbcb2f4d598c6a, type: 3}
   type: 1
-  hp: 80
-  hpPerLevel: 8
-  armor: 10
-  armorPerLevel: 1
-  threatRatio: 1
-  critChance: 0
-  critChancePerLevel: 0
-  critPower: 0
-  critPowerPerLevel: 0
+  isVagabond: 0
+  attackCooldown: 4
+  caracs:
+  - carac: 0
+    value: 80
+  - carac: 2
+    value: 10
+  - carac: 3
+    value: 20
+  - carac: 4
+    value: 100
+  - carac: 5
+    value: 20
+  - carac: 6
+    value: 200
+  - carac: 7
+    value: 100
+  - carac: 8
+    value: 100
+  attackTargetSelector: {fileID: 11400000, guid: 22e1fb1e963cd6d4eb108dd1b2cc4ca5, type: 2}
+  attackPassive: {fileID: 11400000, guid: 6b97e2dd7c7a4c54ea2e9e3a5533c5bb, type: 2}
+  baseAbility: {fileID: 11400000, guid: 0e748a6e39f48b04ba6d5adbeff41436, type: 2}
   passives: []
-  availableAbilities: []
-  availableSkills: []
-  resourceBarColor: {r: 0.10773015, g: 0.6792453, b: 0, a: 1}
-  startResources: 0
-  maxResources: 1
-  resourceRegeneration: 0
-  resourceRegenerationTickDelay: 0
-  canResourceOverflow: 0
+  skillTag: 6
+  cooldownBarColor: {r: 0, g: 0, b: 0, a: 0}

@@ -6,7 +6,8 @@ using UnityEngine;
 public class ConditionalEffects : Effect
 {
     public List<Condition> conditions;
-    public List<Effect> effects;
+    public List<Effect> effectsIfTrue;
+    public List<Effect> effectsIfFalse;
     
     public override void Apply(Context context)
     {
@@ -18,7 +19,14 @@ public class ConditionalEffects : Effect
 
         if (conditionsValid)
         {
-            foreach (var effect in effects)
+            foreach (var effect in effectsIfTrue)
+            {
+                effect.Apply(context);
+            }
+        }
+        else
+        {
+            foreach (var effect in effectsIfFalse)
             {
                 effect.Apply(context);
             }
