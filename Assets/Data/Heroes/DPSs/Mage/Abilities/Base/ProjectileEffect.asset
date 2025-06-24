@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f4d6be441f478780aadde3c926d9b4, type: 3}
   m_Name: ProjectileEffect
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 5e26dd5f4c4753b4f89d92db368ab4fe, type: 3}
+  sprite: {fileID: 21300000, guid: 473c42d2bec55164f9f58af3e13693f9, type: 3}
   travelTime: 0.3
   effects:
   - {fileID: 11400000, guid: fedb4c9407d05ab4ba0c8b2e72cc4d92, type: 2}

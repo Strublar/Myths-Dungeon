@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f4d6be441f478780aadde3c926d9b4, type: 3}
   m_Name: AttackProjectile
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 8c831387da2367c419ce81d3886dc7e0, type: 3}
   travelTime: 0.5
   effects:
   - {fileID: 11400000, guid: e372f2178e5e23a49938b73dfa7cc8c3, type: 2}
