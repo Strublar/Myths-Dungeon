@@ -90,7 +90,7 @@ public class SkillLootManager : MonoBehaviour
                          skill.rarity == rarity &&
                          SkillCanBeEquipped(skill)
             ).ToList();
-
+        var updatedFilteredSkills = new List(filteredSkills)//Faire une copie
         int totalWeight = 0;
         foreach (var entry in skillTags)
         {
@@ -105,16 +105,16 @@ public class SkillLootManager : MonoBehaviour
             selector -= entry.Value;
             if (selector < 0)
             {
-                filteredSkills = filteredSkills
+                updatedFilteredSkills = updatedFilteredSkills
                     .Where(
                         skill => skill.tags.Exists(tagData => tagData.tag == entry.Key)
                     ).ToList();
                 break;
             }
         }
+        
 
-
-        return filteredSkills[Random.Range(0, filteredSkills.Count())];
+        return updatedFilteredSkills.Count != 0 ? updatedFilteredSkills[Random.Range(0, updatedFilteredSkills.Count())] : filteredSkills[Random.Range(0, filteredSkills.Count())];
     }
 
     private bool SkillCanBeEquipped(SkillDefinition skillDefinition)
