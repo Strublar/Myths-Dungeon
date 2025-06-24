@@ -20,7 +20,7 @@ MonoBehaviour:
   targets: {fileID: 11400000, guid: 6d4c675a7773b3348a19abd85e699b56, type: 2}
   conditions:
   - {fileID: 11400000, guid: 1895fe8def357404c8eb761235bcdd18, type: 2}
-  - {fileID: 11400000, guid: 1895fe8def357404c8eb761235bcdd18, type: 2}
+  - {fileID: 11400000, guid: bd2cc22da75e8b24bbda6c11be32ae96, type: 2}
   endTriggerConditions: []
   effects: []
   replacementAbility: {fileID: 0}
