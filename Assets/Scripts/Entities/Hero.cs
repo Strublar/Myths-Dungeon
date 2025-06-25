@@ -48,14 +48,16 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
     public void Update()
     {
+        base.Update();
         currentAttackCooldown -= Time.deltaTime * Mathf.Max((GetCarac(Carac.attackSpeed)) / 100, 0);
-        if (CanAttack())
+        currentAbilityCooldown -= Time.deltaTime * Mathf.Max((GetCarac(Carac.abilityHaste)) / 100, 0);
+
+        if (CanAttack() && RunManager.instance.fightStarted)
         {
             currentTarget = definition.attackTargetSelector.GetTargets(_selfContext)[0];
             Attack(currentTarget);
         }
 
-        currentAbilityCooldown -= Time.deltaTime * Mathf.Max((GetCarac(Carac.abilityHaste)) / 100, 0);
         if (Input.touchCount > 0)
         {
             if (_isDragging)

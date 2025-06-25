@@ -29,5 +29,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RunScenes/Activities/TavernScene.unity
     guid: dde5739839c28d04db9412cee6d6f3a9
+  - enabled: 1
+    path: Assets/Scenes/RunScenes/Activities/SkillScene.unity
+    guid: 7a06ff268c14cf34ebd6e42b6ad6173d
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: ae4a186a41ffa7a4196f9a717ba078db, type: 2}

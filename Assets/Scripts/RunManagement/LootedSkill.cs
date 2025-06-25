@@ -25,8 +25,10 @@ public class LootedSkill : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         {
             if (_isDragging)
             {
-                Vector3 newPos = Input.GetTouch(0).position;
-                newPos.z = 0;
+                var uiCamera = GameManager.instance.mainCamera;
+
+                Vector3 newPos = uiCamera.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x,
+                    Input.GetTouch(0).position.y, 1f));
                 model.transform.position = newPos;
             }
         }

@@ -26,5 +26,6 @@ MonoBehaviour:
   replacementAbility: {fileID: 0}
   internalCooldown: 0
   model: {fileID: 0}
-  orbitalObjectModel: {fileID: 5377772450291379954, guid: 88d0301fdd2036540aca48bece2e35b1, type: 3}
+  orbitalObjectModel: {fileID: 5377772450291379954, guid: 6a07a0ef708993f4193528885745ab66, type: 3}
+  passiveTypes: 
   values: []

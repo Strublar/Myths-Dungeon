@@ -15,6 +15,5 @@ MonoBehaviour:
   minLevel: 4
   effects:
   - {fileID: 11400000, guid: 0cd69d73035a17442ae0c17ebe81e2e4, type: 2}
-  coolDown: 3
-  currentCooldown: 2.4988532
+  coolDown: 6
   targets: {fileID: 11400000, guid: c8de416a8f9d4834da61b2af94bb82e6, type: 2}

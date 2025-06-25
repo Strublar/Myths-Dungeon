@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -10,6 +11,7 @@ public class HaloPulse : MonoBehaviour
     public float minAlpha = 0.2f;
     public float maxAlpha = 1f;
 
+    private Sequence dotweenSequence;
     private void OnEnable()
     {
         StartPulse();
@@ -28,5 +30,12 @@ public class HaloPulse : MonoBehaviour
         seq.Append(haloImage.transform.DOScale(1f, pulseDuration / 2).SetEase(Ease.InQuad));
         seq.Join(haloImage.DOFade(minAlpha, pulseDuration / 2));
         seq.SetLoops(-1, LoopType.Restart);
+        dotweenSequence = seq;
+    }
+
+    public void OnDisable()
+    {
+        if (dotweenSequence != null && dotweenSequence.IsActive())
+            dotweenSequence.Kill();
     }
 }

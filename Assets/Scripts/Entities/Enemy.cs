@@ -58,6 +58,7 @@ public class Enemy : Entity
 
     public void Update()
     {
+        base.Update();
         if (RunManager.instance.fightStarted && isAlive)
         {
             var spells = spellCooldowns.Keys.ToList();
