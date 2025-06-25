@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 
 public class SkillLootManager : MonoBehaviour
 {
-    public static SkillLootManager Instance;
+    public static SkillLootManager instance;
 
     public List<SkillDefinition> availableSkills;
     public List<LootedSkill> lootedSkills;
@@ -26,7 +26,7 @@ public class SkillLootManager : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
+        instance = this;
     }
 
     public void SelectSkill(LootedSkill newSelectedSkill)
@@ -42,6 +42,12 @@ public class SkillLootManager : MonoBehaviour
             {
                 lootedItem.selectionFrame.color = unselectedColor;
             }
+        }
+
+        var requiredSkillTags = newSelectedSkill.definition.holderRequiredTags;
+        foreach (var hero in RunManager.instance.heroes)
+        {
+            hero.SetModelActive(hero.CanEquipSkill(newSelectedSkill.definition));
         }
 
         skillNameText.text = selectedSkill.definition.skillName;

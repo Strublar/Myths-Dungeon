@@ -9,7 +9,7 @@ public class LootedSkill : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public Image skillPreview;
     public Image selectionFrame;
     public Image skillBackground;
-    
+
     public GameObject model;
     private bool _isDragging;
     private Vector3 _modelInitialPos;
@@ -38,24 +38,23 @@ public class LootedSkill : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             model.transform.localPosition = _modelInitialPos;
         }
     }
-    
+
     public void Init()
     {
         skillPreview.sprite = definition.skillImage;
         skillBackground.color = ItemTooltipManager.instance.rarityMap[definition.rarity];
     }
-    
+
     #region Input Handler
-    
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         _isDragging = true;
-        SkillLootManager.Instance.SelectSkill(this);
+        SkillLootManager.instance.SelectSkill(this);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -66,12 +65,13 @@ public class LootedSkill : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
         if (target == null)
             return;
-        
-        SkillLootManager.Instance.Choose(this, target);    }
+
+        SkillLootManager.instance.Choose(this, target);
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        SkillLootManager.Instance.SelectSkill(this);
+        SkillLootManager.instance.SelectSkill(this);
     }
 
     #endregion

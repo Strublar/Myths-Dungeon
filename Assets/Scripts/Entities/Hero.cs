@@ -42,6 +42,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
     private Vector3 _modelInitialPos;
     public OrbitSpawner orbitSpawner;
 
+    private Image modelImage;
     private Context _selfContext;
 
     #endregion
@@ -75,10 +76,10 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
             model.transform.localPosition = _modelInitialPos;
         }
 
-        if (!CanCast() && RunManager.instance.fightStarted)
-            model.GetComponent<Image>().color = Color.gray;
-        else
-            model.GetComponent<Image>().color = Color.white;
+        if(RunManager.instance.fightStarted)
+        {
+            SetModelActive(CanCast());
+        }
     }
 
     #region DefinitionLoading
@@ -108,6 +109,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
             Destroy(model);
         model = Instantiate(definition.model, transform);
         model.transform.localPosition = new Vector3(.15f, -.5f);
+        modelImage = model.GetComponent<Image>();
         _modelInitialPos = model.transform.localPosition;
         isAlive = true;
         model.SetActive(true);
@@ -343,13 +345,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         if (context.isCritical)
             TriggerManager.triggerMap[Trigger.OnCrit].Invoke(context);
     }
-
-    public override void DealDamage(Context context)
-    {
-        //PlayWobble();
-        base.DealDamage(context);
-    }
-
+    
     public void Pull(Entity target)
     {
         if (!RunManager.instance.fightStarted)
@@ -481,4 +477,9 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
     }
 
     #endregion
+
+    public void SetModelActive(bool isActive)
+    {
+        modelImage.color = isActive ? Color.white : Color.grey;
+    }
 }

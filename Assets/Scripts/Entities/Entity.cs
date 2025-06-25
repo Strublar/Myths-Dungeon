@@ -17,15 +17,15 @@ public class Entity : MonoBehaviour
     [Header("Stats")] public Dictionary<Carac, int> caracs = new();
     [HideInInspector] public bool isAlive = true;
 
-    public List<ShieldData> ShieldValues = new();
-    private readonly List<ShieldData> _shieldsToRemove = new();
+    public List<ShieldData> shieldValues = new();
+    private readonly List<ShieldData> shieldsToRemove = new();
 
     #endregion
 
 
     public void Update()
     {
-        var enumerator = ShieldValues.GetEnumerator();
+        var enumerator = shieldValues.GetEnumerator();
         while (enumerator.MoveNext())
         {
             var shieldData = enumerator.Current;
@@ -37,7 +37,7 @@ public class Entity : MonoBehaviour
             }
             else
             {
-                _shieldsToRemove.Add(shieldData);
+                shieldsToRemove.Add(shieldData);
             }
         }
 
@@ -67,7 +67,7 @@ public class Entity : MonoBehaviour
                 damageValue = Mathf.RoundToInt(context.value * ((100.0f - armor) / 100));
 
             //Handle shields
-            var shieldEnumerator = ShieldValues.GetEnumerator();
+            var shieldEnumerator = shieldValues.GetEnumerator();
             while (shieldEnumerator.MoveNext())
             {
                 var shieldData = shieldEnumerator.Current;
@@ -78,7 +78,7 @@ public class Entity : MonoBehaviour
                 }
                 else
                 {
-                    _shieldsToRemove.Add(shieldData);
+                    shieldsToRemove.Add(shieldData);
                 }
             }
 
@@ -128,13 +128,13 @@ public class Entity : MonoBehaviour
 
     public void AddShield(int shieldValue, float duration)
     {
-        ShieldValues.Add(new ShieldData(shieldValue, duration));
+        shieldValues.Add(new ShieldData(shieldValue, duration));
     }
 
     public int ComputeShieldValue()
     {
         int shieldValue = 0;
-        foreach (var shieldData in ShieldValues)
+        foreach (var shieldData in shieldValues)
         {
             shieldValue += shieldData.remainingValue;
         }
@@ -159,16 +159,18 @@ public class Entity : MonoBehaviour
             }
         }
 
+        shieldsToRemove.AddRange(shieldValues);
+        ClearShields();
         passives.Clear();
     }
 
     public void ClearShields()
     {
-        foreach (var shieldData in _shieldsToRemove)
+        foreach (var shieldData in shieldsToRemove)
         {
-            ShieldValues.Remove(shieldData);
+            shieldValues.Remove(shieldData);
         }
 
-        _shieldsToRemove.Clear();
+        shieldsToRemove.Clear();
     }
 }
