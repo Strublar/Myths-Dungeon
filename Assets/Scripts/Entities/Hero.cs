@@ -62,7 +62,8 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
             {
                 var uiCamera = GameManager.instance.mainCamera;
 
-                Vector3 newPos = uiCamera.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y, 1f));
+                Vector3 newPos = uiCamera.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x,
+                    Input.GetTouch(0).position.y, 1f));
                 model.transform.position = newPos;
             }
         }
@@ -148,7 +149,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
             BaseCaracs.Add(caracData.carac, caracData.value);
         }
 
-        CaracBonus = new();
+        CaracBonus = RunManager.instance.GetSkillCaracBonus();
     }
 
     private void ComputeStats()
@@ -165,7 +166,27 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
             if (CaracBonus.TryGetValue(carac, out int bonusValue))
             {
-                caracs[carac] *= (100 + bonusValue) / 100;
+                switch(carac)
+                {
+                    //Percent
+                    case Carac.maxHp:
+                    case Carac.currentHp:
+                    case Carac.abilityHaste:
+                    case Carac.mastery:
+                    case Carac.attackSpeed:
+                    case Carac.attack:
+                        caracs[carac] *= (100 + bonusValue) / 100;
+                        break;
+                    //Flat
+                    case Carac.armor:
+                    case Carac.critPower:
+                    case Carac.critChance:
+                        caracs[carac] += bonusValue;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
             }
         }
 
@@ -201,7 +222,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
     }
 
     #endregion
-    
+
     #region Casting&Attacks
 
     public bool CanCast()
@@ -247,10 +268,8 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
             isCritical = Random.Range(0, 100) <= GetCarac(Carac.critChance),
         };
         TriggerManager.triggerMap[Trigger.OnAttack].Invoke(context);
-        if(context.isCritical)
+        if (context.isCritical)
             TriggerManager.triggerMap[Trigger.OnCrit].Invoke(context);
-
-
     }
 
     public void PlayPunch()
@@ -269,7 +288,6 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         if (currentAbilityCooldown <= 0)
         {
             abilityToCast = ability;
-           
         }
         else
         {
@@ -306,9 +324,9 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         }
 
         if (!validTarget) return;
-        if(abilityToCast == definition.baseAbility) currentAbilityCooldown = abilityToCast.cooldown;
+        if (abilityToCast == definition.baseAbility) currentAbilityCooldown = abilityToCast.cooldown;
         Pull(target);
-        
+
         Context context = new Context
         {
             source = this,
@@ -320,7 +338,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
             replacementAbilityPassive = underlyingPassive
         };
         TriggerManager.triggerMap[Trigger.OnUseAbility].Invoke(context);
-        if(context.isCritical)
+        if (context.isCritical)
             TriggerManager.triggerMap[Trigger.OnCrit].Invoke(context);
     }
 
@@ -329,7 +347,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         //PlayWobble();
         base.DealDamage(context);
     }
-    
+
     public void Pull(Entity target)
     {
         if (!RunManager.instance.fightStarted)
@@ -378,7 +396,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         Entity target = PlayerController.GetTarget<Entity>(eventData);
 
         if (target == null) return;
-        
+
         TryCastAbility(target);
 
         if (FightManager.instance.mostThreatHero == null)
@@ -400,7 +418,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
     {
         if (_isDragging)
             return;
-        
+
         if (!RunManager.instance.fightStarted)
         {
             HeroTooltipManager.instance.ShowToolTip(this);
@@ -456,6 +474,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         }
 
         skills.Add(skillDefinition);
+        LoadDefinition();
     }
 
     #region Feedbacks

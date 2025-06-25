@@ -121,4 +121,24 @@ public class RunManager : MonoBehaviour
 
         return tags;
     }
+
+    public Dictionary<Carac, int> GetSkillCaracBonus()
+    {
+        Dictionary<Carac, int> caracBonus = new();
+        foreach (var hero in heroes)
+        {
+            foreach (var skill in hero.skills)
+            {
+                foreach (var pair in skill.caracs)
+                {
+                    if (caracBonus.ContainsKey(pair.Key))
+                        caracBonus[pair.Key] += pair.Value;
+                    else
+                        caracBonus[pair.Key] = pair.Value;
+                }
+            }
+        }
+
+        return caracBonus;
+    }
 }
