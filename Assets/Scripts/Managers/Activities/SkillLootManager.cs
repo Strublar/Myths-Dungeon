@@ -44,14 +44,25 @@ public class SkillLootManager : MonoBehaviour
             }
         }
 
-        var requiredSkillTags = newSelectedSkill.definition.holderRequiredTags;
         foreach (var hero in RunManager.instance.heroes)
         {
             hero.SetModelActive(hero.CanEquipSkill(newSelectedSkill.definition));
         }
+        
+        var context = new Context
+        {
 
+        };
+        
+        string[] formatListSkill = new string[selectedSkill.definition.values.Count];
+        for (int i = 0; i < selectedSkill.definition.values.Count; i++)
+        {
+            formatListSkill[i] = selectedSkill.definition.values[i].computeValue(context).ToString();
+        }
+
+        skillDescriptionText.text = string.Format(selectedSkill.definition.description.Replace("\\n", "\n"), formatListSkill);
+        
         skillNameText.text = selectedSkill.definition.skillName;
-        skillDescriptionText.text = selectedSkill.definition.description;
     }
 
     public void Start()

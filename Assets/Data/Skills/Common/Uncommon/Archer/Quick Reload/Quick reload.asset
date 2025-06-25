@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06846dd2ac6e489f801127972533f3f1, type: 3}
+  m_Name: Quick reload
+  m_EditorClassIdentifier: 
+  skillName: Quick reload
+  description: 'Your attacks have <b><color=#660066>{0}% chance</color></b> to give
+    1 Arrow\n\n<b><color=#008B8B>Heroes : +10% attack speed</color></b>'
+  skillImage: {fileID: 21300000, guid: 0c21396a46119bf4e8a2b113f7e8fbd7, type: 3}
+  rarity: 1
+  passives:
+  - {fileID: 11400000, guid: 4187e1349695a2341bc3740ce9f13f3d, type: 2}
+  tags:
+  - tag: 3
+    weight: 1
+  requiredTags: 03000000
+  holderRequiredTags: 03000000
+  caracs:
+  - carac: 4
+    value: 10
+  values:
+  - {fileID: 11400000, guid: ce09a014f138eb1498e4ad6fbd76549b, type: 2}

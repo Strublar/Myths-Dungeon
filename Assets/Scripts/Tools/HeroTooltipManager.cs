@@ -62,7 +62,7 @@ public class HeroTooltipManager : MonoBehaviour
         var passiveDefinition = hero.definition.passives[0];
 
         string[] formatListPassive = new string[passiveDefinition.values.Count];
-        for (int i = 0; i < hero.definition.passives[0].values.Count; i++)
+        for (int i = 0; i < passiveDefinition.values.Count; i++)
         {
             formatListPassive[i] = passiveDefinition.values[i].computeValue(context).ToString();
         }

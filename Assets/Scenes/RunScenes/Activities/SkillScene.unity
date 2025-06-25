@@ -680,13 +680,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b55e6d4dee5bf1547aad11795c95b09c, type: 2}
   - {fileID: 11400000, guid: c09bd507536e99646b25c46a0551ce10, type: 2}
   - {fileID: 11400000, guid: cb7a22a7a59a41647bbe8cd98fe1c902, type: 2}
+  - {fileID: 11400000, guid: a99b42c437a92f44aa716cb52e46a230, type: 2}
+  - {fileID: 11400000, guid: e52b52608bd6ea44dba6df53cbcc4e3f, type: 2}
+  - {fileID: 11400000, guid: 72288636a644efa42a1f2d31c9c0bb18, type: 2}
+  - {fileID: 11400000, guid: e32e88cc2a700244eb7674e6f20a6c28, type: 2}
+  - {fileID: 11400000, guid: b780798ad4a4302448d8babcb51fe51f, type: 2}
+  - {fileID: 11400000, guid: 14204fdb4a21aba4a8f218d1ce1db3e3, type: 2}
+  - {fileID: 11400000, guid: 9cb5f5e52109b154db737df8821255dd, type: 2}
   lootedSkills:
   - {fileID: 752371697042637838}
   - {fileID: 1084076983}
   - {fileID: 341143700}
   selectedSkill: {fileID: 752371697042637838}
-  commonProbability: 100
-  uncommonProbability: 0
+  commonProbability: 60
+  uncommonProbability: 40
   rareProbability: 0
   epicProbability: 0
   legendaryProbability: 0
