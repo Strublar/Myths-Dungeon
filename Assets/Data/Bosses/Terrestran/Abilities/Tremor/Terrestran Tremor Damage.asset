@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0573bedb5e8393849adc974d719ae0df, type: 3}
   m_Name: Terrestran Tremor Damage
   m_EditorClassIdentifier: 
-  damage: -25
-  damagePerLevel: 6
+  value: {fileID: 11400000, guid: abab278268e812b47acac6009da6f3f6, type: 2}
   duration: 2
+  fromAbility: 0
+  canCrit: 1
+  damageType: 0

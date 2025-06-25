@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117da2f1d5dd34e4eb06ec66ad9b2194, type: 3}
   m_Name: Passive
   m_EditorClassIdentifier: 
-  description: 'At 7 Holy Power, unlock Prayer\n\nPrayer : Heal all allies by  <b><color=#660066>{0}</color></b>'
+  description: 'At 4 Holy Power, unlock Prayer\n\nPrayer : Heal all allies by  <b><color=#660066>{0}</color></b>'
   trigger: 10
   triggerCount: 1
   endTrigger: 0
@@ -29,5 +29,6 @@ MonoBehaviour:
   internalCooldown: 0
   model: {fileID: 0}
   orbitalObjectModel: {fileID: 0}
+  passiveTypes: 
   values:
   - {fileID: 11400000, guid: 3f84c498c67ca8f4f8ef765a9bfadb5b, type: 2}

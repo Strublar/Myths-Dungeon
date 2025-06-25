@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117da2f1d5dd34e4eb06ec66ad9b2194, type: 3}
   m_Name: Passive
   m_EditorClassIdentifier: 
-  description: 'At 5 <b>Arrows</b>, unlocks <b>Volley</b>\n\n<b>Volley</b> : Deal
+  description: 'At 3 <b>Arrows</b>, unlocks <b>Volley</b>\n\n<b>Volley</b> : Deal
     <b><color=#660066>{0}</color></b> damage per Arrow and consume them'
   trigger: 10
   triggerCount: 1
@@ -30,5 +30,6 @@ MonoBehaviour:
   internalCooldown: 0
   model: {fileID: 0}
   orbitalObjectModel: {fileID: 0}
+  passiveTypes: 
   values:
   - {fileID: 11400000, guid: 7fb0de5c9d114194b9c513d02ff3536d, type: 2}

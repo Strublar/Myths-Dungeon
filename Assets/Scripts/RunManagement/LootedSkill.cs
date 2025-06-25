@@ -50,6 +50,7 @@ public class LootedSkill : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void OnBeginDrag(PointerEventData eventData)
     {
         _isDragging = true;
+        SkillLootManager.Instance.SelectSkill(this);
     }
 
     public void OnDrag(PointerEventData eventData)
