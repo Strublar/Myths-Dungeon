@@ -129,12 +129,12 @@ public class RunManager : MonoBehaviour
         {
             foreach (var skill in hero.skills)
             {
-                foreach (var pair in skill.caracs)
+                foreach (var caracData in skill.caracs)
                 {
-                    if (caracBonus.ContainsKey(pair.Key))
-                        caracBonus[pair.Key] += pair.Value;
+                    if (caracBonus.ContainsKey(caracData.carac))
+                        caracBonus[caracData.carac] += caracData.value;
                     else
-                        caracBonus[pair.Key] = pair.Value;
+                        caracBonus[caracData.carac] = caracData.value;
                 }
             }
         }

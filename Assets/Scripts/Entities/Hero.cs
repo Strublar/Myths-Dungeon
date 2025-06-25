@@ -27,8 +27,8 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
     public List<SkillDefinition> skills;
     public AbilityDefinition ability;
     public Dictionary<SkillTag, int> SkillTags;
-    private Dictionary<Carac, int> BaseCaracs;
-    private Dictionary<Carac, int> CaracBonus;
+    private Dictionary<Carac, int> baseCaracs;
+    private Dictionary<Carac, int> caracBonus;
 
     [Header("Fight Stats")] public Entity currentTarget;
     public float threat;
@@ -102,7 +102,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
     private void LoadGraphics()
     {
-        if (model != null)
+        if (model != null && model != definition.model)
             Destroy(model);
         model = Instantiate(definition.model, transform);
         model.transform.localPosition = new Vector3(.15f, -.5f);
@@ -143,13 +143,13 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
     public void LoadCaracs()
     {
-        BaseCaracs = new();
+        baseCaracs = new();
         foreach (var caracData in definition.caracs)
         {
-            BaseCaracs.Add(caracData.carac, caracData.value);
+            baseCaracs.Add(caracData.carac, caracData.value);
         }
 
-        CaracBonus = RunManager.instance.GetSkillCaracBonus();
+        caracBonus = RunManager.instance.GetSkillCaracBonus();
     }
 
     private void ComputeStats()
@@ -159,12 +159,12 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         foreach (Carac carac in Enum.GetValues(typeof(Carac)))
         {
             caracs[carac] = 0;
-            if (BaseCaracs.TryGetValue(carac, out int baseValue))
+            if (baseCaracs.TryGetValue(carac, out int baseValue))
             {
                 caracs[carac] = baseValue;
             }
 
-            if (CaracBonus.TryGetValue(carac, out int bonusValue))
+            if (caracBonus.TryGetValue(carac, out int bonusValue))
             {
                 switch(carac)
                 {
@@ -175,7 +175,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
                     case Carac.mastery:
                     case Carac.attackSpeed:
                     case Carac.attack:
-                        caracs[carac] *= (100 + bonusValue) / 100;
+                        caracs[carac] = Mathf.RoundToInt(caracs[carac] * ((100f + bonusValue) / 100f));
                         break;
                     //Flat
                     case Carac.armor:
@@ -461,20 +461,8 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
     public void AddSkill(SkillDefinition skillDefinition)
     {
-        foreach (var kvp in skillDefinition.caracs)
-        {
-            if (caracs.TryGetValue(kvp.Key, out int value))
-            {
-                caracs[kvp.Key] = value + kvp.Value;
-            }
-            else
-            {
-                caracs[kvp.Key] = kvp.Value;
-            }
-        }
-
         skills.Add(skillDefinition);
-        LoadDefinition();
+        RunManager.instance.ReloadHeroes();
     }
 
     #region Feedbacks

@@ -43,7 +43,8 @@ public class HeroTooltipManager : MonoBehaviour
         heroName.text = hero.definition.heroName;
         heroImage.sprite = hero.definition.heroImage;
         attack.text = "<b><color=#CC6600>Attack\n\n" + hero.GetCarac(Carac.attack) + "</color></b>";
-        attackCooldown.text = "<b><color=#008B8B>At.CD\n\n" + hero.definition.attackCooldown*100/hero.GetCarac(Carac.attackSpeed) + "s</color></b>";
+        attackCooldown.text = "<b><color=#008B8B>At.CD\n\n" +
+                              (hero.definition.attackCooldown * 100 / hero.GetCarac(Carac.attackSpeed)).ToString("F2") + "s</color></b>";
         health.text = "<b><color=#006600>Health\n\n" + hero.GetCarac(Carac.maxHp) + "</color></b>";
         armor.text = "<b><color=#333333>Armor\n\n" + hero.GetCarac(Carac.armor) + "</color></b>";
         critChance.text = "<b><color=#990000>Crit%\n\n" + hero.GetCarac(Carac.critChance) + "</color></b>";
@@ -55,7 +56,8 @@ public class HeroTooltipManager : MonoBehaviour
             formatListAbility[i] = hero.ability.linkedPassives[0].values[i].computeValue(context).ToString();
         }
 
-        ability.text = "Ability :\n\n"+string.Format(hero.ability.linkedPassives[0].description.Replace("\\n", "\n"), formatListAbility);
+        ability.text = "Ability :\n\n"+string.Format(hero.ability.linkedPassives[0].description.Replace("\\n", "\n"), formatListAbility)+"\n\n"+
+                       (hero.ability.cooldown * 100 / hero.GetCarac(Carac.abilityHaste)).ToString("F2")+"s cooldown";
 
         var passiveDefinition = hero.definition.passives[0];
 

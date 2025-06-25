@@ -12,24 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117da2f1d5dd34e4eb06ec66ad9b2194, type: 3}
   m_Name: Passive
   m_EditorClassIdentifier: 
-  description: Heal target  for <b><color=#CC6600>{0}</color></b> hp and gains 1
-    Holy Power
-  trigger: 3
-  triggerCount: 1
+  description: When using basic heal, heal an additional <b><color=#660066>{0}</color></b>
+    health per second over 4 seconds
+  trigger: 0
+  triggerCount: 0
   endTrigger: 0
   endTriggerCount: 0
-  targets: {fileID: 11400000, guid: 30d59bf8cef47174d9ce202dc94a40a4, type: 2}
-  conditions:
-  - {fileID: 11400000, guid: 1895fe8def357404c8eb761235bcdd18, type: 2}
-  - {fileID: 11400000, guid: 771e43d1dde40e74b8b4db201aa15754, type: 2}
+  targets: {fileID: 11400000, guid: 6d4c675a7773b3348a19abd85e699b56, type: 2}
+  conditions: []
   endTriggerConditions: []
-  effects:
-  - {fileID: 11400000, guid: 71884aac3531e7247af1bd560b8aa0e9, type: 2}
-  - {fileID: 11400000, guid: 63c6b113a617ef64ca5787c463ad0ec9, type: 2}
+  effects: []
   replacementAbility: {fileID: 0}
   internalCooldown: 0
   model: {fileID: 0}
   orbitalObjectModel: {fileID: 0}
   passiveTypes: 
   values:
-  - {fileID: 11400000, guid: aa2c2f14320657a42b506bb5c09c8c2a, type: 2}
+  - {fileID: 11400000, guid: 10780910823fa6f42b4876394cae4296, type: 2}
