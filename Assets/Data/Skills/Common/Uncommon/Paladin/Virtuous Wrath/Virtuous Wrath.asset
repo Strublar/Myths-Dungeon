@@ -28,4 +28,4 @@ MonoBehaviour:
   - carac: 7
     value: 10
   values:
-  - {fileID: 11400000, guid: bf9429bf2b626864bb41baff23430b78, type: 2}
+  - {fileID: 11400000, guid: 86b0d239fcfeefd43aa627812e7ffc37, type: 2}

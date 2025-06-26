@@ -329,7 +329,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
         if (!validTarget) return;
         if (abilityToCast == definition.baseAbility) currentAbilityCooldown = abilityToCast.cooldown;
-        Pull(target);
+        if(target is Enemy) Pull(target);
 
         Context context = new Context
         {

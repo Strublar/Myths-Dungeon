@@ -44,15 +44,23 @@ public class SkillLootManager : MonoBehaviour
             }
         }
 
+        var heroesThatCanEquip = new List<Hero>();
         foreach (var hero in RunManager.instance.heroes)
         {
+            bool canEquip = hero.CanEquipSkill(newSelectedSkill.definition);
             hero.SetModelActive(hero.CanEquipSkill(newSelectedSkill.definition));
+            if(canEquip)
+                heroesThatCanEquip.Add(hero);
         }
         
         var context = new Context
         {
 
         };
+        if (heroesThatCanEquip.Count == 1)
+        {
+            context.passiveHolder = heroesThatCanEquip[0];
+        }
         
         string[] formatListSkill = new string[selectedSkill.definition.values.Count];
         for (int i = 0; i < selectedSkill.definition.values.Count; i++)

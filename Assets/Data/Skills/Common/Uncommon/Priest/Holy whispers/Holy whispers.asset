@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Holy whispers
   m_EditorClassIdentifier: 
   skillName: Holy whispers
-  description: 'Your base ability also heals lowest health hero for <b><color=#CC6600>{0}%
-    of your attack</color></b> health\n\n<b><color=#CC6600>Heroes : +10% attack</color></b>'
+  description: 'Your base ability also heals lowest health hero for <b><color=#CC6600>{0}</color></b>
+    health\n\n<b><color=#CC6600>Heroes : +10% attack</color></b>'
   skillImage: {fileID: 21300000, guid: 0c21396a46119bf4e8a2b113f7e8fbd7, type: 3}
   rarity: 1
   passives:
@@ -28,4 +28,4 @@ MonoBehaviour:
   - carac: 3
     value: 10
   values:
-  - {fileID: 11400000, guid: 9373aecc40a0b6847840d40e786af895, type: 2}
+  - {fileID: 11400000, guid: 8d6a7fb8b1ae83e42a0a154fdb01169c, type: 2}

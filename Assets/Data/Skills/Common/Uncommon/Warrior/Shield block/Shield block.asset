@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shield block
   m_EditorClassIdentifier: 
   skillName: Shield block
-  description: 'Gain <b><color=#333333>+{0}% armor</color></b> while shielded\n\n<color=#333333>Heroes
+  description: 'Gain <b><color=#333333>+{0} armor</color></b> while shielded\n\n<color=#333333>Heroes
     : +10 armor</color>'
   skillImage: {fileID: 21300000, guid: 0c21396a46119bf4e8a2b113f7e8fbd7, type: 3}
   rarity: 1
@@ -28,4 +28,4 @@ MonoBehaviour:
   - carac: 2
     value: 10
   values:
-  - {fileID: 11400000, guid: d79eb868e383ba3419204e356ef9622d, type: 2}
+  - {fileID: 11400000, guid: e41f98e880106874a974946ea0467885, type: 2}
