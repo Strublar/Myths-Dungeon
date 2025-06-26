@@ -28,6 +28,10 @@ public class Passive : MonoBehaviour
         {
             hero.orbitSpawner.AddOrbitalObject(this);
         }
+
+        triggerCount = 0;
+        endTriggerCount = 0;
+        currentCooldown = 0;
     }
 
 
