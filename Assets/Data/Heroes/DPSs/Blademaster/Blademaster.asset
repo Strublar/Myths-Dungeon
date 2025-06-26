@@ -20,9 +20,9 @@ MonoBehaviour:
   attackCooldown: 3
   caracs:
   - carac: 0
-    value: 100
+    value: 300
   - carac: 2
-    value: 20
+    value: 30
   - carac: 3
     value: 120
   - carac: 4
