@@ -23,6 +23,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1895fe8def357404c8eb761235bcdd18, type: 2}
   - {fileID: 11400000, guid: 44594dce8205e9247a23984838e5db80, type: 2}
   - {fileID: 11400000, guid: b576ef4ff5ab33a40825271e82d317f3, type: 2}
+  - {fileID: 11400000, guid: 97f04ab4dcd1c0d4ea6a0bea7fc54b55, type: 2}
   endTriggerConditions: []
   effects:
   - {fileID: 11400000, guid: ac210ddf1bd4673498af0eb41cd3246b, type: 2}

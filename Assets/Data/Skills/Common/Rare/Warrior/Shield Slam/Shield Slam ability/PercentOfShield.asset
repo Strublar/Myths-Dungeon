@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9662abbd70804885b16129ce1191eb80, type: 3}
-  m_Name: PassiveCountCondition
+  m_Script: {fileID: 11500000, guid: 86578ed64de64eae87dea9757ffd7715, type: 3}
+  m_Name: PercentOfShield
   m_EditorClassIdentifier: 
-  count: 1
-  passive: {fileID: 11400000, guid: 40451f67191417b45ad00ac49025436c, type: 2}
-  holder: {fileID: 11400000, guid: 6d4c675a7773b3348a19abd85e699b56, type: 2}
+  from: {fileID: 11400000, guid: 34b096f93b3710748b98fa808dfbe59d, type: 2}
+  percentage: {fileID: 11400000, guid: 165475a9755a75748adb7caf56e16592, type: 2}

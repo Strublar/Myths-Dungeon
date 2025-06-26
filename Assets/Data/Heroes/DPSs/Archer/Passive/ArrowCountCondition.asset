@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9662abbd70804885b16129ce1191eb80, type: 3}
-  m_Name: PassiveCountCondition
+  m_Name: ArrowCountCondition
   m_EditorClassIdentifier: 
-  count: 1
-  passive: {fileID: 11400000, guid: 40451f67191417b45ad00ac49025436c, type: 2}
+  count: 3
+  passive: {fileID: 11400000, guid: d3841b20bf1f33c439dd1c2eab004a8c, type: 2}
   holder: {fileID: 11400000, guid: 6d4c675a7773b3348a19abd85e699b56, type: 2}

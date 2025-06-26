@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7dd7b64106046b5a2433825aa35f1a8, type: 3}
-  m_Name: ArmorValue
+  m_Script: {fileID: 11500000, guid: d72e50b11603439aa37e34fb13676a86, type: 3}
+  m_Name: SourceShield
   m_EditorClassIdentifier: 
-  entities: {fileID: 11400000, guid: 6d4c675a7773b3348a19abd85e699b56, type: 2}
-  carac: 2
+  targetSelector: {fileID: 11400000, guid: 5138f4e51b5a18949bb25837370f205c, type: 2}

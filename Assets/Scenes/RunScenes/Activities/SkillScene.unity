@@ -465,8 +465,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -687,14 +687,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b780798ad4a4302448d8babcb51fe51f, type: 2}
   - {fileID: 11400000, guid: 14204fdb4a21aba4a8f218d1ce1db3e3, type: 2}
   - {fileID: 11400000, guid: 9cb5f5e52109b154db737df8821255dd, type: 2}
+  - {fileID: 11400000, guid: 693ac301f430184489b75641ade83fc4, type: 2}
   lootedSkills:
   - {fileID: 752371697042637838}
   - {fileID: 1084076983}
   - {fileID: 341143700}
   selectedSkill: {fileID: 752371697042637838}
-  commonProbability: 60
-  uncommonProbability: 40
-  rareProbability: 0
+  commonProbability: 0
+  uncommonProbability: 0
+  rareProbability: 100
   epicProbability: 0
   legendaryProbability: 0
   skillNameText: {fileID: 1009821166}
@@ -851,8 +852,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -66.189255}
-  m_SizeDelta: {x: -140, y: -207.6215}
+  m_AnchoredPosition: {x: 0, y: -33.47}
+  m_SizeDelta: {x: -40, y: -142.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1505519940
 MonoBehaviour:
@@ -907,8 +908,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

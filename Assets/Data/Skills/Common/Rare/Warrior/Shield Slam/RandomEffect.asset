@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9662abbd70804885b16129ce1191eb80, type: 3}
-  m_Name: PassiveCountCondition
+  m_Script: {fileID: 11500000, guid: dfee06a8a6ba47709c9f32b2c124020b, type: 3}
+  m_Name: RandomEffect
   m_EditorClassIdentifier: 
-  count: 1
-  passive: {fileID: 11400000, guid: 40451f67191417b45ad00ac49025436c, type: 2}
-  holder: {fileID: 11400000, guid: 6d4c675a7773b3348a19abd85e699b56, type: 2}
+  probability: {fileID: 11400000, guid: 3f65d6c9b60c9fc46a63a091004659ed, type: 2}
+  childEffects:
+  - {fileID: 11400000, guid: e797c997c65a37a40a38bce609eb173c, type: 2}

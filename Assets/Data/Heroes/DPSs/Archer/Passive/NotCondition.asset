@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9662abbd70804885b16129ce1191eb80, type: 3}
-  m_Name: PassiveCountCondition
+  m_Script: {fileID: 11500000, guid: 22801e20658746fe853c5e2940ec0019, type: 3}
+  m_Name: NotCondition
   m_EditorClassIdentifier: 
-  count: 1
-  passive: {fileID: 11400000, guid: 40451f67191417b45ad00ac49025436c, type: 2}
-  holder: {fileID: 11400000, guid: 6d4c675a7773b3348a19abd85e699b56, type: 2}
+  condition: {fileID: 11400000, guid: 5dcf5640266e87047a6c4112cc4aba28, type: 2}
