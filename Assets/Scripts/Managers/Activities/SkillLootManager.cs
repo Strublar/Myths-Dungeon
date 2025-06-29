@@ -156,6 +156,8 @@ public class SkillLootManager : MonoBehaviour
 
     public void Choose(LootedSkill lootedSkill, Hero target)
     {
+        if (!target.CanEquipSkill(lootedSkill.definition)) return;
+        
         target.AddSkill(lootedSkill.definition);
         RunManager.instance.StartNewBoss();
         SceneManager.UnloadSceneAsync("SkillScene");
