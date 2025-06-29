@@ -17,6 +17,7 @@ public class PassiveDefinition : ScriptableObject
     public List<Effect> effects;
     public AbilityDefinition replacementAbility;
     public float internalCooldown;
+    public bool applyOutOfFight = false;
     public GameObject model;
     public GameObject orbitalObjectModel;
     public List<PassiveType> passiveTypes = new();

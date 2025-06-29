@@ -8,17 +8,10 @@ public class ModifyCaracEffect : Effect
     public Carac carac;
     public DynamicValue value;
     public int duration;
-    // ReSharper disable Unity.PerformanceAnalysis
     public override void Apply(Context context)
     {
-        int armorModif = value.computeValue(context);
-        context.target.caracs[carac] += armorModif;
-        /*if (armorModif != 0)
-        {
-            BubbleBehaviour bubble = Instantiate(context.target.armorBubble, context.target.transform);
-            bubble.transform.localPosition = new Vector3(Random.Range(-.6f, .6f), -1, 0);
-            bubble.GetComponent<BubbleBehaviour>().text.text = (armorModif>0 ?"+":"") + Mathf.RoundToInt(armorModif);
-        }*/
+        int modif = value.computeValue(context);
+        context.target.caracs[carac] += modif;
 
         if (duration != 0)
         {
@@ -33,6 +26,7 @@ public class ModifyCaracEffect : Effect
             newPassive.definition.targets = CreateInstance<PassiveHolderTargetSelector>();
             newPassive.definition.conditions = new List<Condition>();
             newPassive.definition.endTriggerConditions = new List<Condition>();
+            newPassive.definition.applyOutOfFight = true;
             newPassive.definition.effects = new List<Effect>
             {
                 CreateInstance<ModifyCaracEffect>()

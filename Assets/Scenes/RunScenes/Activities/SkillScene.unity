@@ -693,11 +693,11 @@ MonoBehaviour:
   - {fileID: 1084076983}
   - {fileID: 341143700}
   selectedSkill: {fileID: 752371697042637838}
-  commonProbability: 60
-  uncommonProbability: 40
+  commonProbability: 0
+  uncommonProbability: 0
   rareProbability: 0
   epicProbability: 0
-  legendaryProbability: 0
+  legendaryProbability: 100
   skillNameText: {fileID: 1009821166}
   skillDescriptionText: {fileID: 1505519940}
   selectedColor: {r: 0.5647059, g: 0.32941177, b: 0.227451, a: 1}

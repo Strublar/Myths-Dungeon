@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carac: 6
   value: {fileID: 11400000, guid: 7e2eb172deee44442bc89394deaa891f, type: 2}
-  duration: 1
+  duration: 10

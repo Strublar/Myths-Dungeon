@@ -24,6 +24,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f1dd6d8dcbbcc714bb074ab5f92f7f94, type: 2}
   replacementAbility: {fileID: 0}
   internalCooldown: 0
+  applyOutOfFight: 1
   model: {fileID: 0}
   orbitalObjectModel: {fileID: 0}
   passiveTypes: 

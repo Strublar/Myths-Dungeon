@@ -37,7 +37,7 @@ public class Passive : MonoBehaviour
 
     public void Update()
     {
-        if (RunManager.instance.fightStarted)
+        if (RunManager.instance.fightStarted || definition.applyOutOfFight)
         {
             currentCooldown -= Time.deltaTime;
             if (definition.trigger == Trigger.EveryPersonalTick)

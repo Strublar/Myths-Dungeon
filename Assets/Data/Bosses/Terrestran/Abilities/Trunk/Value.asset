@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Value
   m_EditorClassIdentifier: 
   value: 300
-  valuePerLevel: 30
+  valuePerLevel: 60
