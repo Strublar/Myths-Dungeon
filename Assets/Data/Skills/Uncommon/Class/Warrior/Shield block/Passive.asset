@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: 
   trigger: 6
-  triggerCount: 10
+  triggerCount: 5
   endTrigger: 0
   endTriggerCount: 0
   targets: {fileID: 11400000, guid: 6d4c675a7773b3348a19abd85e699b56, type: 2}
@@ -25,6 +25,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c01609c7eeafd2744b933bf4d472cba1, type: 2}
   replacementAbility: {fileID: 0}
   internalCooldown: 0
+  applyOutOfFight: 0
   model: {fileID: 0}
   orbitalObjectModel: {fileID: 0}
   passiveTypes: 
