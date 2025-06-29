@@ -16,7 +16,7 @@ MonoBehaviour:
   description: 'Gain <b><color=#660066>+{0}%</color></b> attack speed\n\n<b><color=#660066>Heroes
     : +10 Mastery</color></b>'
   skillImage: {fileID: 21300000, guid: 0c21396a46119bf4e8a2b113f7e8fbd7, type: 3}
-  rarity: 4
+  rarity: 1
   passives:
   - {fileID: 11400000, guid: 81772640e99283245a6240ef85130890, type: 2}
   tags:

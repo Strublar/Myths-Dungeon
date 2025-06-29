@@ -80,6 +80,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         {
             SetModelActive(CanCast());
         }
+        if(definition.skillTag == SkillTag.Warrior)Debug.Log("Armor:"+GetCarac(Carac.armor));
     }
 
     #region DefinitionLoading
@@ -327,7 +328,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
                 throw new ArgumentOutOfRangeException();
         }
 
-        if (!validTarget) return;
+        if (!validTarget || !target.isAlive) return;
         if (abilityToCast == definition.baseAbility) currentAbilityCooldown = abilityToCast.cooldown;
         if(target is Enemy) Pull(target);
 

@@ -32,7 +32,7 @@ public class ModifyCaracEffect : Effect
                 CreateInstance<ModifyCaracEffect>()
             };
             ((ModifyCaracEffect)newPassive.definition.effects[0]).carac = carac;
-            ((ModifyCaracEffect)newPassive.definition.effects[0]).value = NegativeDynamicValue.CreateFrom(value);
+            ((ModifyCaracEffect)newPassive.definition.effects[0]).value = ConstantDynamicValue.Create(-1*modif);
             ((ModifyCaracEffect)newPassive.definition.effects[0]).duration = 0;
             newPassive.Init();
         }
