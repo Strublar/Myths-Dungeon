@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4046f825825d4e02b13c8c0d4cd354a8, type: 3}
   m_Name: Percent
   m_EditorClassIdentifier: 
-  value: 375
+  value: 225
   valuePerLevel: 0

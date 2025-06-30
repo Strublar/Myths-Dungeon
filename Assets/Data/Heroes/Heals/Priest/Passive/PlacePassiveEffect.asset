@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56092c9c36498b4bb70c9ac6a3638cf, type: 3}
   m_Name: PlacePassiveEffect
   m_EditorClassIdentifier: 
-  passive: {fileID: 11400000, guid: 40451f67191417b45ad00ac49025436c, type: 2}
+  passive: {fileID: 11400000, guid: 9014b15a80e07944db7c78117bc2b510, type: 2}

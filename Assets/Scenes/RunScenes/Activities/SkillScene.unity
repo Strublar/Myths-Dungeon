@@ -687,17 +687,26 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b780798ad4a4302448d8babcb51fe51f, type: 2}
   - {fileID: 11400000, guid: 14204fdb4a21aba4a8f218d1ce1db3e3, type: 2}
   - {fileID: 11400000, guid: 9cb5f5e52109b154db737df8821255dd, type: 2}
-  - {fileID: 11400000, guid: 693ac301f430184489b75641ade83fc4, type: 2}
+  - {fileID: 11400000, guid: 59d907c6c9cecc0459d13a7bc723a9d4, type: 2}
+  - {fileID: 11400000, guid: 8d80e15a5292bc042861a77596ab4831, type: 2}
+  - {fileID: 11400000, guid: 312f21f69fa66674f9b3b7c26e6f211c, type: 2}
+  - {fileID: 11400000, guid: 1a0ee6117fe0ea8488cc44983eb56d8d, type: 2}
+  - {fileID: 11400000, guid: d7d3cf4deac4a25489a8f1db2d15a734, type: 2}
+  - {fileID: 11400000, guid: a61dee7841ba58e4e9baeccc075419a9, type: 2}
+  - {fileID: 11400000, guid: 5216058f00539e6409e2a0c4e412ec7d, type: 2}
+  - {fileID: 11400000, guid: c1b97f0e7261a404b9b33c0e085783d8, type: 2}
+  - {fileID: 11400000, guid: 4b0c2e0de2c384643a4429219bd3212a, type: 2}
+  - {fileID: 11400000, guid: 06fb6888df0c9fa468f7355644f65c21, type: 2}
   lootedSkills:
   - {fileID: 752371697042637838}
   - {fileID: 1084076983}
   - {fileID: 341143700}
   selectedSkill: {fileID: 752371697042637838}
   commonProbability: 0
-  uncommonProbability: 0
+  uncommonProbability: 100
   rareProbability: 0
   epicProbability: 0
-  legendaryProbability: 100
+  legendaryProbability: 0
   skillNameText: {fileID: 1009821166}
   skillDescriptionText: {fileID: 1505519940}
   selectedColor: {r: 0.5647059, g: 0.32941177, b: 0.227451, a: 1}

@@ -18,16 +18,19 @@ MonoBehaviour:
   triggerCount: 1
   endTrigger: 0
   endTriggerCount: 0
-  targets: {fileID: 11400000, guid: 5138f4e51b5a18949bb25837370f205c, type: 2}
+  targets: {fileID: 11400000, guid: 30d59bf8cef47174d9ce202dc94a40a4, type: 2}
   conditions:
   - {fileID: 11400000, guid: 1895fe8def357404c8eb761235bcdd18, type: 2}
   - {fileID: 11400000, guid: b40536a29ec7f5548a91bbeff6336b9d, type: 2}
+  endTriggerConditions: []
   effects:
   - {fileID: 11400000, guid: 84dcd3d328418e74e9487c1255f5499e, type: 2}
   - {fileID: 11400000, guid: 599a4583908066b4a8a218eaffb26d5f, type: 2}
   replacementAbility: {fileID: 0}
   internalCooldown: 0
+  applyOutOfFight: 0
   model: {fileID: 0}
   orbitalObjectModel: {fileID: 0}
+  passiveTypes: 
   values:
   - {fileID: 11400000, guid: 723249213d5a6f343ab833fd0fb6c58e, type: 2}

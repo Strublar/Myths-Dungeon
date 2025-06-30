@@ -16,6 +16,7 @@ MonoBehaviour:
   heroImage: {fileID: -6843982610821632938, guid: 936d93555701e9e4c9edfa07dc906f90, type: 3}
   model: {fileID: 8461778819654013387, guid: 23e00506a4903c944af70043e69b86c2, type: 3}
   type: 0
+  heroClass: 1
   isVagabond: 0
   attackCooldown: 2.5
   caracs:

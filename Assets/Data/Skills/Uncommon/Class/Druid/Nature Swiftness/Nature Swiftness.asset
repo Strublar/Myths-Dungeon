@@ -24,6 +24,7 @@ MonoBehaviour:
     weight: 1
   requiredTags: 06000000
   holderRequiredTags: 06000000
+  holderRequiredClass: 05000000
   caracs:
   - carac: 7
     value: 10

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117da2f1d5dd34e4eb06ec66ad9b2194, type: 3}
   m_Name: Passive
   m_EditorClassIdentifier: 
-  description: Heal target  for <b><color=#CC6600>{0}</color></b> hp and gains 1
-    Holy Power
+  description: Heal target  for <b><color=#CC6600>{0}</color></b> hp. If cast on
+    yourself, consume all Holy powers to heal all allies <b><color=#660066>{1}</color></b>
+    health
   trigger: 3
   triggerCount: 1
   endTrigger: 0
@@ -25,11 +26,12 @@ MonoBehaviour:
   endTriggerConditions: []
   effects:
   - {fileID: 11400000, guid: 71884aac3531e7247af1bd560b8aa0e9, type: 2}
-  - {fileID: 11400000, guid: 63c6b113a617ef64ca5787c463ad0ec9, type: 2}
   replacementAbility: {fileID: 0}
   internalCooldown: 0
+  applyOutOfFight: 0
   model: {fileID: 0}
   orbitalObjectModel: {fileID: 0}
   passiveTypes: 
   values:
+  - {fileID: 11400000, guid: aa2c2f14320657a42b506bb5c09c8c2a, type: 2}
   - {fileID: 11400000, guid: aa2c2f14320657a42b506bb5c09c8c2a, type: 2}

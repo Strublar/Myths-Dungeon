@@ -17,6 +17,16 @@ public enum HeroType
     Heal,
     DPS
 }
+public enum HeroClass
+{
+    Warrior,
+    Paladin,
+    Archer,
+    BladeMaster,
+    Mage,
+    Druid,
+    Priest
+}
 
 public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerClickHandler
 {
@@ -80,7 +90,6 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         {
             SetModelActive(CanCast());
         }
-        if(definition.skillTag == SkillTag.Warrior)Debug.Log("Armor:"+GetCarac(Carac.armor));
     }
 
     #region DefinitionLoading
@@ -455,7 +464,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
     public bool CanEquipSkill(SkillDefinition skillDefinition)
     {
-        return skillDefinition.holderRequiredTags.All(skillTag => SkillTags.ContainsKey(skillTag));
+        return skillDefinition.holderRequiredClass.Contains(definition.heroClass) && skillDefinition.holderRequiredTags.All(skillTag => SkillTags.ContainsKey(skillTag));
     }
 
     public void AddSkill(SkillDefinition skillDefinition)

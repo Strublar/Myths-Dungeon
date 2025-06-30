@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 297c0df506b04baca3b96e9aec7d7397, type: 3}
+  m_Name: ShieldEffect
+  m_EditorClassIdentifier: 
+  value: {fileID: 11400000, guid: 52c3fc5db75184848918f804ea86193d, type: 2}
+  duration: {fileID: 11400000, guid: 372fe94a2c1607c41b0335a563218602, type: 2}
+  canCrit: 1

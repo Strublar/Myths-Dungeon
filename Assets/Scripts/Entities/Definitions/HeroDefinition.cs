@@ -11,6 +11,7 @@ public class HeroDefinition : ScriptableObject
     public Sprite heroImage;
     public GameObject model;
     public HeroType type;
+    public HeroClass heroClass;
     public bool isVagabond;
 
     [Header("Stats")] public float attackCooldown;

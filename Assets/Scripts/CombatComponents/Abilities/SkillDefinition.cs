@@ -14,6 +14,7 @@ public class SkillDefinition : ScriptableObject
     public List<SkillTagData> tags;
     public List<SkillTag> requiredTags;
     public List<SkillTag> holderRequiredTags;
+    public List<HeroClass> holderRequiredClass;
     [Header("Stats")] public List<CaracData> caracs = new();
 
     [Header("Serialization")]

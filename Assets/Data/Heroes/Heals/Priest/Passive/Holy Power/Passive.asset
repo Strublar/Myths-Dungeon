@@ -13,18 +13,24 @@ MonoBehaviour:
   m_Name: Passive
   m_EditorClassIdentifier: 
   description: 
-  trigger: 0
-  triggerCount: 0
+  trigger: 3
+  triggerCount: 1
   endTrigger: 3
   endTriggerCount: 1
-  targets: {fileID: 11400000, guid: 6d4c675a7773b3348a19abd85e699b56, type: 2}
-  conditions: []
+  targets: {fileID: 11400000, guid: 18722d6cfef476b408668eaa2c7d7e03, type: 2}
+  conditions:
+  - {fileID: 11400000, guid: 1895fe8def357404c8eb761235bcdd18, type: 2}
+  - {fileID: 11400000, guid: dc187a930ec555e4a8566c3fe632d2f3, type: 2}
+  - {fileID: 11400000, guid: 771e43d1dde40e74b8b4db201aa15754, type: 2}
   endTriggerConditions:
   - {fileID: 11400000, guid: 1895fe8def357404c8eb761235bcdd18, type: 2}
-  - {fileID: 11400000, guid: 0eb9cc853923b2b4484c2d76cf6ff274, type: 2}
-  effects: []
+  - {fileID: 11400000, guid: dc187a930ec555e4a8566c3fe632d2f3, type: 2}
+  - {fileID: 11400000, guid: 771e43d1dde40e74b8b4db201aa15754, type: 2}
+  effects:
+  - {fileID: 11400000, guid: bb2db5354ba94d34696f121da1fcbc7f, type: 2}
   replacementAbility: {fileID: 0}
   internalCooldown: 0
+  applyOutOfFight: 0
   model: {fileID: 0}
   orbitalObjectModel: {fileID: 5377772450291379954, guid: 6a07a0ef708993f4193528885745ab66, type: 3}
   passiveTypes: 
