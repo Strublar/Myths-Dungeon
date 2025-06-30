@@ -49,13 +49,13 @@ public class LootManager : MonoBehaviour
 
         Rarity rarity;
         if (randInt < commonProbability)
-            rarity = Rarity.common;
+            rarity = Rarity.Common;
         else if (randInt < commonProbability + rareProbability)
-            rarity = Rarity.rare;
+            rarity = Rarity.Rare;
         else if (randInt < commonProbability + rareProbability + epicProbability)
-            rarity = Rarity.epic;
+            rarity = Rarity.Epic;
         else
-            rarity = Rarity.legendary;
+            rarity = Rarity.Legendary;
 
         return rarity;
     }

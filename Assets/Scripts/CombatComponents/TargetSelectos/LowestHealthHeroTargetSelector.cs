@@ -14,7 +14,7 @@ public class LowestHealthHeroTargetSelector : TargetSelector
         foreach (var hero in RunManager.instance.heroes)
         {
             if (!hero.isAlive) continue;
-            double hp = (double)hero.GetCarac(Carac.currentHp) / hero.GetCarac(Carac.maxHp);
+            double hp = (double)hero.GetCarac(Carac.CurrentHp) / hero.GetCarac(Carac.MaxHp);
             if ( hp < min)
             {
                 target = hero;

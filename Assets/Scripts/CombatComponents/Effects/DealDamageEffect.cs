@@ -21,7 +21,7 @@ public class DealDamageEffect : Effect
     public override void Apply(Context context)
     {
         float critModifier = canCrit && context.isCritical && context.source is Hero heroSource
-            ? heroSource.GetCarac(Carac.critPower)
+            ? heroSource.GetCarac(Carac.CritPower)
             : 100;
         int damageValue = Mathf.RoundToInt(value.computeValue(context) *  critModifier / 100f);
         context.value = damageValue;

@@ -28,11 +28,11 @@ public class ItemTooltipManager : MonoBehaviour
 
         rarityMap = new Dictionary<Rarity, Color>
         {
-            {Rarity.common, commonColor},
-            {Rarity.uncommon, uncommonColor},
-            {Rarity.rare, rareColor},
-            {Rarity.epic, epicColor},
-            {Rarity.legendary, legendaryColor}
+            {Rarity.Common, commonColor},
+            {Rarity.Uncommon, uncommonColor},
+            {Rarity.Rare, rareColor},
+            {Rarity.Epic, epicColor},
+            {Rarity.Legendary, legendaryColor}
         };
     }
 

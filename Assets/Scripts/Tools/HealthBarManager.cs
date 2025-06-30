@@ -11,9 +11,9 @@ public class HealthBarManager : MonoBehaviour
 
     public void Update()
     {
-        if(linkedEntity.GetCarac(Carac.maxHp) != 0)
+        if(linkedEntity.GetCarac(Carac.MaxHp) != 0)
         {
-            float size = Mathf.Clamp01((float)linkedEntity.GetCarac(Carac.currentHp) / linkedEntity.GetCarac(Carac.maxHp));
+            float size = Mathf.Clamp01((float)linkedEntity.GetCarac(Carac.CurrentHp) / linkedEntity.GetCarac(Carac.MaxHp));
             bar.transform.localScale = new Vector3(size, 1, 1);
         }
 
@@ -21,7 +21,7 @@ public class HealthBarManager : MonoBehaviour
         if(shieldValue > 0)
         {
             shieldBar.SetActive(true);
-            float size = Mathf.Clamp01((float)shieldValue / linkedEntity.GetCarac(Carac.maxHp));
+            float size = Mathf.Clamp01((float)shieldValue / linkedEntity.GetCarac(Carac.MaxHp));
             shieldBar.transform.localScale = new Vector3(size, 1, 1);
         }
         else

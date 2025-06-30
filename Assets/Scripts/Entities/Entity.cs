@@ -59,7 +59,7 @@ public class Entity : MonoBehaviour
         if (isAlive)
         {
             int damageValue = 0;
-            var armor = GetCarac(Carac.armor);
+            var armor = GetCarac(Carac.Armor);
             if (armor >= 0)
                 damageValue = Mathf.RoundToInt(context.value * (100.0f / (100 + armor)));
             else
@@ -85,7 +85,7 @@ public class Entity : MonoBehaviour
             shieldEnumerator.Dispose();
 
             //Apply damage
-            caracs[Carac.currentHp] -= damageValue;
+            caracs[Carac.CurrentHp] -= damageValue;
 
             if (damageValue > 0)
             {
@@ -97,11 +97,11 @@ public class Entity : MonoBehaviour
                 {
                     source = context.source, target = this,
                     value = damageValue,
-                    percentHpLost = Mathf.RoundToInt((float)damageValue / GetCarac(Carac.maxHp) * 100)
+                    percentHpLost = Mathf.RoundToInt((float)damageValue / GetCarac(Carac.MaxHp) * 100)
                 });
             }
 
-            if (GetCarac(Carac.currentHp) <= 0)
+            if (GetCarac(Carac.CurrentHp) <= 0)
             {
                 Die();
             }
@@ -112,8 +112,8 @@ public class Entity : MonoBehaviour
     {
         if (isAlive)
         {
-            int healingValue = Mathf.RoundToInt(Mathf.Min(GetCarac(Carac.maxHp) - GetCarac(Carac.currentHp), context.value));
-            caracs[Carac.currentHp] += healingValue;
+            int healingValue = Mathf.RoundToInt(Mathf.Min(GetCarac(Carac.MaxHp) - GetCarac(Carac.CurrentHp), context.value));
+            caracs[Carac.CurrentHp] += healingValue;
 
             TriggerManager.triggerMap[Trigger.OnHeal].Invoke(context);
             if (healingValue > 0)
@@ -127,7 +127,15 @@ public class Entity : MonoBehaviour
 
     public void AddShield(int shieldValue, float duration)
     {
-        shieldValues.Add(new ShieldData(shieldValue, duration));
+        var currentShieldValue = ComputeShieldValue();
+        var currentMaxHealth = GetCarac(Carac.MaxHp);
+        if (currentShieldValue >= currentMaxHealth)
+            return;
+        
+        if(currentShieldValue + shieldValue >= currentMaxHealth )
+            shieldValues.Add(new ShieldData(currentMaxHealth-currentShieldValue, duration));
+        else
+            shieldValues.Add(new ShieldData(shieldValue, duration));
     }
 
     public int ComputeShieldValue()

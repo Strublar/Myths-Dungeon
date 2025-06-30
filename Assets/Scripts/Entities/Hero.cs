@@ -60,8 +60,8 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
     public void Update()
     {
         base.Update();
-        currentAttackCooldown -= Time.deltaTime * Mathf.Max((GetCarac(Carac.attackSpeed)) / 100, 0);
-        currentAbilityCooldown -= Time.deltaTime * Mathf.Max((GetCarac(Carac.abilityHaste)) / 100, 0);
+        currentAttackCooldown -= Time.deltaTime * Mathf.Max((GetCarac(Carac.AttackSpeed)) / 100, 0);
+        currentAbilityCooldown -= Time.deltaTime * Mathf.Max((GetCarac(Carac.AbilityHaste)) / 100, 0);
 
         if (CanAttack() && RunManager.instance.fightStarted)
         {
@@ -183,18 +183,18 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
                 switch(carac)
                 {
                     //Percent
-                    case Carac.maxHp:
-                    case Carac.currentHp:
-                    case Carac.abilityHaste:
-                    case Carac.mastery:
-                    case Carac.attackSpeed:
-                    case Carac.attack:
+                    case Carac.MaxHp:
+                    case Carac.CurrentHp:
+                    case Carac.AbilityHaste:
+                    case Carac.Mastery:
+                    case Carac.AttackSpeed:
+                    case Carac.Attack:
                         caracs[carac] = Mathf.RoundToInt(caracs[carac] * ((100f + bonusValue) / 100f));
                         break;
                     //Flat
-                    case Carac.armor:
-                    case Carac.critPower:
-                    case Carac.critChance:
+                    case Carac.Armor:
+                    case Carac.CritPower:
+                    case Carac.CritChance:
                         caracs[carac] += bonusValue;
                         break;
                     default:
@@ -232,7 +232,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
         currentAbilityCooldown = 0f;
         currentAttackCooldown = 0f;
-        caracs[Carac.currentHp] = GetCarac(Carac.maxHp);
+        caracs[Carac.CurrentHp] = GetCarac(Carac.MaxHp);
     }
 
     #endregion
@@ -279,7 +279,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
             source = this,
             target = target,
             passiveHolder = null,
-            isCritical = Random.Range(0, 100) <= GetCarac(Carac.critChance),
+            isCritical = Random.Range(0, 100) <= GetCarac(Carac.CritChance),
         };
         TriggerManager.triggerMap[Trigger.OnAttack].Invoke(context);
         if (context.isCritical)
@@ -346,7 +346,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
             source = this,
             target = target,
             passiveHolder = null,
-            isCritical = Random.Range(0, 100) <= GetCarac(Carac.critChance),
+            isCritical = Random.Range(0, 100) <= GetCarac(Carac.CritChance),
             abilityCast = abilityToCast,
             underlyingPassive = underlyingPassive,
             replacementAbilityPassive = underlyingPassive
@@ -464,7 +464,9 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
     public bool CanEquipSkill(SkillDefinition skillDefinition)
     {
-        return skillDefinition.holderRequiredClass.Contains(definition.heroClass) && skillDefinition.holderRequiredTags.All(skillTag => SkillTags.ContainsKey(skillTag));
+        return (!skills.Contains(skillDefinition) || skillDefinition.rarity == Rarity.Common) && 
+               skillDefinition.holderRequiredClass.Contains(definition.heroClass) && 
+               skillDefinition.holderRequiredTags.All(skillTag => SkillTags.ContainsKey(skillTag));
     }
 
     public void AddSkill(SkillDefinition skillDefinition)

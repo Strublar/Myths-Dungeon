@@ -49,27 +49,27 @@ public class SkillLootManager : MonoBehaviour
         {
             bool canEquip = hero.CanEquipSkill(newSelectedSkill.definition);
             hero.SetModelActive(hero.CanEquipSkill(newSelectedSkill.definition));
-            if(canEquip)
+            if (canEquip)
                 heroesThatCanEquip.Add(hero);
         }
-        
+
         var context = new Context
         {
-
         };
         if (heroesThatCanEquip.Count == 1)
         {
             context.passiveHolder = heroesThatCanEquip[0];
         }
-        
+
         string[] formatListSkill = new string[selectedSkill.definition.values.Count];
         for (int i = 0; i < selectedSkill.definition.values.Count; i++)
         {
             formatListSkill[i] = selectedSkill.definition.values[i].computeValue(context).ToString();
         }
 
-        skillDescriptionText.text = string.Format(selectedSkill.definition.description.Replace("\\n", "\n"), formatListSkill);
-        
+        skillDescriptionText.text =
+            string.Format(selectedSkill.definition.description.Replace("\\n", "\n"), formatListSkill);
+
         skillNameText.text = selectedSkill.definition.skillName;
     }
 
@@ -93,15 +93,15 @@ public class SkillLootManager : MonoBehaviour
 
         Rarity rarity;
         if (randInt < commonProbability)
-            rarity = Rarity.common;
+            rarity = Rarity.Common;
         else if (randInt < commonProbability + uncommonProbability)
-            rarity = Rarity.uncommon;
+            rarity = Rarity.Uncommon;
         else if (randInt < commonProbability + uncommonProbability + rareProbability)
-            rarity = Rarity.rare;
+            rarity = Rarity.Rare;
         else if (randInt < commonProbability + uncommonProbability + rareProbability + epicProbability)
-            rarity = Rarity.epic;
+            rarity = Rarity.Epic;
         else
-            rarity = Rarity.legendary;
+            rarity = Rarity.Legendary;
 
         return rarity;
     }
@@ -115,7 +115,17 @@ public class SkillLootManager : MonoBehaviour
                          skill.rarity == rarity &&
                          SkillCanBeEquipped(skill)
             ).ToList();
-        
+
+        if (filteredSkills.Count == 0)
+        {
+            filteredSkills = availableSkills
+                .Where(
+                    skill => skill.requiredTags.All(tagData => skillTags.ContainsKey(tagData)) &&
+                             skill.rarity == Rarity.Common &&
+                             SkillCanBeEquipped(skill)
+                ).ToList();
+        }
+
         var updatedFilteredSkills = new List<SkillDefinition>(filteredSkills);
         int totalWeight = 0;
         foreach (var entry in skillTags)
@@ -138,9 +148,11 @@ public class SkillLootManager : MonoBehaviour
                 break;
             }
         }
-        
 
-        return updatedFilteredSkills.Count != 0 ? updatedFilteredSkills[Random.Range(0, updatedFilteredSkills.Count())] : filteredSkills[Random.Range(0, filteredSkills.Count())];
+
+        return updatedFilteredSkills.Count != 0
+            ? updatedFilteredSkills[Random.Range(0, updatedFilteredSkills.Count())]
+            : filteredSkills[Random.Range(0, filteredSkills.Count())];
     }
 
     private bool SkillCanBeEquipped(SkillDefinition skillDefinition)
@@ -157,7 +169,7 @@ public class SkillLootManager : MonoBehaviour
     public void Choose(LootedSkill lootedSkill, Hero target)
     {
         if (!target.CanEquipSkill(lootedSkill.definition)) return;
-        
+
         target.AddSkill(lootedSkill.definition);
         RunManager.instance.StartNewBoss();
         SceneManager.UnloadSceneAsync("SkillScene");

@@ -16,6 +16,6 @@ public class PercentHpValue : DynamicValue
             throw new ArgumentException("target count is invalid, need 1, found " + targets.Count);
         }
 
-        return Mathf.RoundToInt((float)targets[0].GetCarac(Carac.currentHp)*100/targets[0].GetCarac(Carac.maxHp));
+        return Mathf.RoundToInt((float)targets[0].GetCarac(Carac.CurrentHp)*100/targets[0].GetCarac(Carac.MaxHp));
     }
 }

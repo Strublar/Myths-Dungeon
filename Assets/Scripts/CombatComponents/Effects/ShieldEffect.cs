@@ -12,7 +12,7 @@ public class ShieldEffect : Effect
     public override void Apply(Context context)
     {
         float critModifier = canCrit && context.isCritical && context.source is Hero heroSource
-            ? heroSource.GetCarac(Carac.critPower)
+            ? heroSource.GetCarac(Carac.CritPower)
             : 100;        
         int shieldValue = Mathf.RoundToInt(value.computeValue(context) * critModifier/100f);
         

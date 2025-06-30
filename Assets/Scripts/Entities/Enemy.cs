@@ -19,7 +19,7 @@ public class Enemy : Entity
     public void LoadDefinition()
     {
         ClearPassives();
-        caracs[Carac.maxHp] = definition.hp + definition.hpPerLevel*level;
+        caracs[Carac.MaxHp] = definition.hp + definition.hpPerLevel*level;
         if(enemyNameMesh != null)
             enemyNameMesh.text = definition.enemyName;
         isAlive = true;
@@ -51,7 +51,7 @@ public class Enemy : Entity
             newPassive.level = level;
             passives.Add(newPassive);
         }*/
-        caracs[Carac.currentHp] = GetCarac(Carac.maxHp);
+        caracs[Carac.CurrentHp] = GetCarac(Carac.MaxHp);
 
     }
 
