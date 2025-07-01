@@ -11,6 +11,7 @@ public class EnemyDefinition : ScriptableObject
     [Header("Stats")]
     public int hp;
     public int hpPerLevel;
+    public float hpLevelExponent;
     public List<EnemySpellDefinition> spells;
     public List<PassiveDefinition> passives;
 }

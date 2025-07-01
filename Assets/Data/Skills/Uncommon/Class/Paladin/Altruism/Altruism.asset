@@ -22,9 +22,7 @@ MonoBehaviour:
   tags:
   - tag: 1
     weight: 1
-  - tag: 6
-    weight: 1
-  requiredTags: 0100000006000000
+  requiredTags: 01000000
   holderRequiredTags: 01000000
   holderRequiredClass: 01000000
   caracs:

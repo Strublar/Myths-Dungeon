@@ -10,25 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06846dd2ac6e489f801127972533f3f1, type: 3}
-  m_Name: Cover shot
+  m_Name: Steel tempest
   m_EditorClassIdentifier: 
-  skillName: Cover shot
-  description: 'Volley gives Warrior <b><color=#008B8B>+{0}%</color></b> attack speed
-    for 5 seconds\n\nHeroes : +10 ablity haste'
+  skillName: Steel tempest
+  description: 'Deal <b><color=#660066>{0}%</color></b> of your shield as damage
+    every second to current target\n\n<b><color=#006600>Heroes : +20% health</color></b>'
   skillImage: {fileID: 21300000, guid: 0c21396a46119bf4e8a2b113f7e8fbd7, type: 3}
   rarity: 1
   passives:
-  - {fileID: 11400000, guid: 87f46ccf113f53a45bc64fd50ca07f87, type: 2}
+  - {fileID: 11400000, guid: 549d606236668b648b3ffa0f0df0c16f, type: 2}
   tags:
   - tag: 0
     weight: 1
-  - tag: 3
-    weight: 1
-  requiredTags: 0300000000000000
-  holderRequiredTags: 03000000
-  holderRequiredClass: 02000000
+  requiredTags: 00000000
+  holderRequiredTags: 00000000
+  holderRequiredClass: 00000000
   caracs:
-  - carac: 8
-    value: 10
+  - carac: 0
+    value: 20
   values:
-  - {fileID: 11400000, guid: 56f757bc3f66dce439ec9b17b06979e8, type: 2}
+  - {fileID: 11400000, guid: 2050b3a1ed2ecc04b890768b9df4ab98, type: 2}
