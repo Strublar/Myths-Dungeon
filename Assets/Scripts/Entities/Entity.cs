@@ -55,7 +55,7 @@ public class Entity : MonoBehaviour
         return 0;
     }
 
-    public void DealDamage(Context context) {
+    public virtual void DealDamage(Context context) {
         if (isAlive)
         {
             int damageValue = 0;

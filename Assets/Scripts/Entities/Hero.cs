@@ -55,6 +55,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
     private bool isModelActive;
     private Image modelImage;
+    private Image colorFilter;
     private Context _selfContext;
 
     #endregion
@@ -121,11 +122,18 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
     private void LoadGraphics()
     {
         if (model != null && model != definition.model)
+        {
             Destroy(model);
+        }
+
         model = Instantiate(definition.model, transform);
         model.transform.localPosition = new Vector3(.15f, -.5f);
         modelImage = model.GetComponent<Image>();
         _modelInitialPos = model.transform.localPosition;
+
+        var colorFilterModel = Instantiate(definition.model, model.transform);
+        colorFilter = colorFilterModel.GetComponent<Image>();
+        colorFilter.color = new Color(1, 1, 1, 0);
         isAlive = true;
         model.SetActive(true);
         healthBar.SetActive(true);
@@ -480,7 +488,8 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
     public bool CanEquipSkill(SkillDefinition skillDefinition)
     {
         return (!skills.Contains(skillDefinition) || skillDefinition.rarity == Rarity.Common) &&
-               (skillDefinition.holderRequiredClass.Contains(definition.heroClass) || skillDefinition.holderRequiredClass.Count == 0) &&
+               (skillDefinition.holderRequiredClass.Contains(definition.heroClass) ||
+                skillDefinition.holderRequiredClass.Count == 0) &&
                skillDefinition.holderRequiredTags.All(skillTag => SkillTags.ContainsKey(skillTag));
     }
 
@@ -516,11 +525,23 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
             });
     }
 
+    public void PlayDamageFeedback()
+    {
+        colorFilter.color = new Color(1, 0, 0, 0.6f); // rouge semi-transparent
+        colorFilter.DOFade(0f, 1f).SetEase(Ease.OutQuad);
+    }
+
     #endregion
+
+    public override void DealDamage(Context context)
+    {
+        base.DealDamage(context);
+        PlayDamageFeedback();
+    }
 
     public void SetModelActive(bool isActive)
     {
-        if(isModelActive != isActive)
+        if (isModelActive != isActive)
             PlayPunchScale();
         isModelActive = isActive;
         modelImage.color = isActive ? Color.white : Color.grey;
@@ -530,8 +551,8 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
     {
         isModelActive = false;
         var progression = 1f - (currentAbilityCooldown / definition.baseAbility.cooldown);
-        Color inactiveColor = new Color(.4f,.4f,.4f);
-        Color activeColor = new Color(.6f,.6f,.6f);
+        Color inactiveColor = new Color(.4f, .4f, .4f);
+        Color activeColor = new Color(.6f, .6f, .6f);
 
         //model.transform.localScale = Vector3.Lerp(new Vector3(.8f, .8f), new Vector3(1, 1), progression);
         modelImage.color = Color.Lerp(inactiveColor, activeColor, progression);
