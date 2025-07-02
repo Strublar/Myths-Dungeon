@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: 
   trigger: 6
-  triggerCount: 10
+  triggerCount: 30
   endTrigger: 0
   endTriggerCount: 0
   targets: {fileID: 11400000, guid: 6c1bbbeac2d54884fa11c0e2048ef209, type: 2}

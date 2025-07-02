@@ -16,7 +16,7 @@ MonoBehaviour:
   model: {fileID: 3107569203585386695, guid: 58466a7842581a240a0769d0e50d99a8, type: 3}
   isBoss: 1
   hp: 4000
-  hpPerLevel: 800
+  hpPerLevel: 400
   hpLevelExponent: 1.1
   spells:
   - {fileID: 11400000, guid: 333ca02d519186841a7ea7487af701a7, type: 2}

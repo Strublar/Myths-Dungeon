@@ -164,6 +164,17 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         }
 
         caracBonus = RunManager.instance.GetSkillCaracBonus();
+        
+        foreach (var skill in skills)
+        {
+            foreach (var caracData in skill.personalCaracs)
+            {
+                if (caracBonus.ContainsKey(caracData.carac))
+                    caracBonus[caracData.carac] += caracData.value;
+                else
+                    caracBonus[caracData.carac] = caracData.value;
+            }
+        }
     }
 
     private void ComputeStats()

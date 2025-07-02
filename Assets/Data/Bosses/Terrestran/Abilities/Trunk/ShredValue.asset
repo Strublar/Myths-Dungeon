@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ShredValue
   m_EditorClassIdentifier: 
   value: -100
-  valuePerLevel: 0
+  valuePerLevel: -5

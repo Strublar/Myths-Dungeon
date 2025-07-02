@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06846dd2ac6e489f801127972533f3f1, type: 3}
+  m_Name: Fiery blaze
+  m_EditorClassIdentifier: 
+  skillName: Fiery blaze
+  description: 'Non crit attacks grant +{0}% <b><color=#990000>critical chance</color></b>
+    for 3 seconds\n\n<b><color=#008B8B>Heroes : +10% attack speed</color></b>'
+  skillImage: {fileID: 0}
+  rarity: 0
+  passives:
+  - {fileID: 11400000, guid: 1550a7659a6d6044bb9856e616728dca, type: 2}
+  tags:
+  - tag: 4
+    weight: 1
+  requiredTags: 04000000
+  holderRequiredTags: 04000000
+  holderRequiredClass: 04000000
+  caracs:
+  - carac: 4
+    value: 10
+  values:
+  - {fileID: 11400000, guid: 147e33a0fc0eaf44abb5f84412b14e12, type: 2}

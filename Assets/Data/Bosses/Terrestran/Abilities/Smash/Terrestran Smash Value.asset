@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4046f825825d4e02b13c8c0d4cd354a8, type: 3}
   m_Name: Terrestran Smash Value
   m_EditorClassIdentifier: 
-  value: 100
-  valuePerLevel: 20
+  value: 150
+  valuePerLevel: 30

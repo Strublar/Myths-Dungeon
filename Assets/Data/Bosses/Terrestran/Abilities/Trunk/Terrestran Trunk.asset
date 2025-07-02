@@ -17,5 +17,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ed5a7d6770d976644919f7c92c3b3780, type: 2}
   - {fileID: 11400000, guid: 0b04aca52575a8249834368a1522559e, type: 2}
   - {fileID: 11400000, guid: a6934f5c736582f4a939f9bd31d1c44c, type: 2}
-  coolDown: 8
+  coolDown: 7
   targets: {fileID: 11400000, guid: bf094b9c86646d043a5f2753121c481f, type: 2}

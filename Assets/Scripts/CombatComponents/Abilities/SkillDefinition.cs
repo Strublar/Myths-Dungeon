@@ -1,9 +1,8 @@
-
 using System.Collections.Generic;
 using Misc;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewSkill", menuName = "Skill")] 
+[CreateAssetMenu(fileName = "NewSkill", menuName = "Skill")]
 public class SkillDefinition : ScriptableObject
 {
     public string skillName;
@@ -15,8 +14,10 @@ public class SkillDefinition : ScriptableObject
     public List<SkillTag> requiredTags;
     public List<SkillTag> holderRequiredTags;
     public List<HeroClass> holderRequiredClass;
-    [Header("Stats")] public List<CaracData> caracs = new();
 
-    [Header("Serialization")]
-    public List<DynamicValue> values;
+    [Header("Stats")] 
+    public List<CaracData> personalCaracs = new();
+    public List<CaracData> caracs = new();
+
+    [Header("Serialization")] public List<DynamicValue> values;
 }

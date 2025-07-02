@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0601031ccf84bb4d8052384e377f5a8, type: 3}
   m_Name: CaracEffect
   m_EditorClassIdentifier: 
-  carac: 2
-  value: {fileID: 11400000, guid: e41f98e880106874a974946ea0467885, type: 2}
-  duration: 5
+  carac: 3
+  value: {fileID: 11400000, guid: 46286e1a0ef85f0449187e2a9fbbc3be, type: 2}
+  duration: 30

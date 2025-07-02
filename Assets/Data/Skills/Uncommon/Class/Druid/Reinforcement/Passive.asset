@@ -12,17 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117da2f1d5dd34e4eb06ec66ad9b2194, type: 3}
   m_Name: Passive
   m_EditorClassIdentifier: 
-  description: 'Basic Heal : +1 Holy Power'
-  trigger: 2
+  description: 
+  trigger: 3
   triggerCount: 1
   endTrigger: 0
   endTriggerCount: 0
-  targets: {fileID: 11400000, guid: 6d4c675a7773b3348a19abd85e699b56, type: 2}
+  targets: {fileID: 11400000, guid: 30d59bf8cef47174d9ce202dc94a40a4, type: 2}
   conditions:
   - {fileID: 11400000, guid: 1895fe8def357404c8eb761235bcdd18, type: 2}
+  - {fileID: 11400000, guid: 99ba641174383044f9a869fcdfb36197, type: 2}
+  - {fileID: 11400000, guid: 673fb4961fd8f5445a0bac804dd62e81, type: 2}
   endTriggerConditions: []
   effects:
-  - {fileID: 11400000, guid: cbda595dea5b9654bbbe0739c2e3ff94, type: 2}
+  - {fileID: 11400000, guid: cb606bf228cea02449efd66ad517971f, type: 2}
   replacementAbility: {fileID: 0}
   internalCooldown: 0
   applyOutOfFight: 0

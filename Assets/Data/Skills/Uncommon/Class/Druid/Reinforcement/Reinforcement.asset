@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06846dd2ac6e489f801127972533f3f1, type: 3}
-  m_Name: Steel tempest
+  m_Name: Reinforcement
   m_EditorClassIdentifier: 
-  skillName: Steel tempest
-  description: 'Deal <b><color=#660066>{0}%</color></b> of your shield as damage
-    every 3 seconds to current target\n\n<b><color=#006600>Heroes : +20% health</color></b>'
+  skillName: Reinforcement
+  description: 'Base ability crits also increase target armor by <b><color=#660066>{0}</color></b>
+    for 5 seconds\n\n<b><color=#333333>Heroes : +10 armor</color></b>'
   skillImage: {fileID: 21300000, guid: 0c21396a46119bf4e8a2b113f7e8fbd7, type: 3}
   rarity: 1
   passives:
-  - {fileID: 11400000, guid: 549d606236668b648b3ffa0f0df0c16f, type: 2}
+  - {fileID: 11400000, guid: 4c949bd13debf0041a7dcd201dbd5e87, type: 2}
   tags:
-  - tag: 0
+  - tag: 6
     weight: 1
-  requiredTags: 00000000
-  holderRequiredTags: 00000000
-  holderRequiredClass: 00000000
+  requiredTags: 06000000
+  holderRequiredTags: 06000000
+  holderRequiredClass: 05000000
   caracs:
-  - carac: 0
-    value: 20
+  - carac: 2
+    value: 10
   values:
-  - {fileID: 11400000, guid: 2050b3a1ed2ecc04b890768b9df4ab98, type: 2}
+  - {fileID: 11400000, guid: 5417588f4e166314ba17be73bd28a5fb, type: 2}
