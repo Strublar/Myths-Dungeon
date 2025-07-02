@@ -541,7 +541,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
     public void SetModelActive(bool isActive)
     {
-        if (isModelActive != isActive)
+        if (!isModelActive && isActive)
             PlayPunchScale();
         isModelActive = isActive;
         modelImage.color = isActive ? Color.white : Color.grey;
