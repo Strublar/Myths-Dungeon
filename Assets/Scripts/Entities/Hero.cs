@@ -527,7 +527,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
     public void PlayDamageFeedback()
     {
-        colorFilter.color = new Color(1, 0, 0, 0.6f); // rouge semi-transparent
+        colorFilter.color = new Color(1, 0, 0, 0.8f); // rouge semi-transparent
         colorFilter.DOFade(0f, 1f).SetEase(Ease.OutQuad);
     }
 
