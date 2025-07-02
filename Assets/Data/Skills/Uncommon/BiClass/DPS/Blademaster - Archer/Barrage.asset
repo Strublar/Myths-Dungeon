@@ -15,7 +15,7 @@ MonoBehaviour:
   skillName: Barrage
   description: 'Swiftcuts have <b><color=#660066>{0}%</color></b> chance to give
     +1 Arrow to archer\n\n<b><color=#660066>Heroes : +10 Mastery</color></b>'
-  skillImage: {fileID: 21300000, guid: 0c21396a46119bf4e8a2b113f7e8fbd7, type: 3}
+  skillImage: {fileID: 21300000, guid: 90a18cb054750ad47905f92072ed19f0, type: 3}
   rarity: 1
   passives:
   - {fileID: 11400000, guid: 637b904b1d8ab804db46ac9a1abf785c, type: 2}
@@ -27,6 +27,7 @@ MonoBehaviour:
   requiredTags: 0200000003000000
   holderRequiredTags: 02000000
   holderRequiredClass: 03000000
+  personalCaracs: []
   caracs:
   - carac: 7
     value: 10

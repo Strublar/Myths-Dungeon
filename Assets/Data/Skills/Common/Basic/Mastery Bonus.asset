@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Mastery Bonus
   description: '<b><color=#660066>+10 Mastery\n\nHeroes : +10 Mastery</color></b>'
-  skillImage: {fileID: 21300000, guid: 0c21396a46119bf4e8a2b113f7e8fbd7, type: 3}
+  skillImage: {fileID: 21300000, guid: 7083c249673f8d046ac7110dc725c4a1, type: 3}
   rarity: 0
   passives: []
   tags: []

@@ -15,7 +15,7 @@ MonoBehaviour:
   skillName: Chain attacks
   description: 'Swiftcuts give +{0}% <b><color=#CC6600>attack</color></b> for 3 seconds\n\n<b><color=#CC6600>Heroes
     : +10% attack</color></b>'
-  skillImage: {fileID: 21300000, guid: 0c21396a46119bf4e8a2b113f7e8fbd7, type: 3}
+  skillImage: {fileID: 21300000, guid: e2abd61405d4e3e42a6797d64105771d, type: 3}
   rarity: 1
   passives:
   - {fileID: 11400000, guid: 279d6c23e1e3ba640b6142c31c787dc8, type: 2}
@@ -25,6 +25,7 @@ MonoBehaviour:
   requiredTags: 02000000
   holderRequiredTags: 02000000
   holderRequiredClass: 03000000
+  personalCaracs: []
   caracs:
   - carac: 3
     value: 10

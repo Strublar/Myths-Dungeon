@@ -15,7 +15,7 @@ MonoBehaviour:
   skillName: Altruism
   description: 'Base Ability healing also affects other lowest health ally\n\n<b><color=#006600>Heroes
     : +20% max health</color></b>'
-  skillImage: {fileID: 21300000, guid: 0c21396a46119bf4e8a2b113f7e8fbd7, type: 3}
+  skillImage: {fileID: 21300000, guid: 3c97e0a93b402ab4c90e55f60c1aa34d, type: 3}
   rarity: 1
   passives:
   - {fileID: 11400000, guid: 4b8531ac19e8d314599facfa7f1f6aa3, type: 2}
@@ -25,6 +25,7 @@ MonoBehaviour:
   requiredTags: 01000000
   holderRequiredTags: 01000000
   holderRequiredClass: 01000000
+  personalCaracs: []
   caracs:
   - carac: 0
     value: 20

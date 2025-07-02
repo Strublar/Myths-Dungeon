@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Attack speed Bonus
   description: '<b><color=#008B8B>+10 % attack speed\n\nHeroes : +10% attack speed</color></b>'
-  skillImage: {fileID: 21300000, guid: 0c21396a46119bf4e8a2b113f7e8fbd7, type: 3}
+  skillImage: {fileID: 21300000, guid: d8e28cb98e38fe640ab373825a977408, type: 3}
   rarity: 0
   passives: []
   tags: []

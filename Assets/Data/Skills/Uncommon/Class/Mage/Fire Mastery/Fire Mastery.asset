@@ -15,7 +15,7 @@ MonoBehaviour:
   skillName: Fire Mastery
   description: 'Gain <b><color=#660066>+{0}%</color></b> critical damage\n\n<b><color=#660066>Heroes
     : +10 Mastery</color></b>'
-  skillImage: {fileID: 21300000, guid: 0c21396a46119bf4e8a2b113f7e8fbd7, type: 3}
+  skillImage: {fileID: 21300000, guid: 39d44135befc9034c9e1945fc8d72772, type: 3}
   rarity: 1
   passives:
   - {fileID: 11400000, guid: 38337d54beba7c446acb4ced8c7c1122, type: 2}
@@ -25,6 +25,7 @@ MonoBehaviour:
   requiredTags: 04000000
   holderRequiredTags: 04000000
   holderRequiredClass: 04000000
+  personalCaracs: []
   caracs:
   - carac: 7
     value: 10

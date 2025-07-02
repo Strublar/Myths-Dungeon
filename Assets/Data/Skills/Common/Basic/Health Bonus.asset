@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Health Bonus
   description: '<b><color=#006600>+20% max health\n\nHeroes : +20% max health</color></b>'
-  skillImage: {fileID: 21300000, guid: 0c21396a46119bf4e8a2b113f7e8fbd7, type: 3}
+  skillImage: {fileID: 21300000, guid: e23b42f17cd4f5e4583c305528171d53, type: 3}
   rarity: 0
   passives: []
   tags: []

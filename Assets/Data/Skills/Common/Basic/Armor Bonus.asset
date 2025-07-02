@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Armor Bonus
   description: '<b><color=#333333>+10 armor\n\nHeroes : +10 armor</color></b>'
-  skillImage: {fileID: 21300000, guid: 0c21396a46119bf4e8a2b113f7e8fbd7, type: 3}
+  skillImage: {fileID: 21300000, guid: 0a4d40605db66c446a3d4563911cc9fb, type: 3}
   rarity: 0
   passives: []
   tags: []

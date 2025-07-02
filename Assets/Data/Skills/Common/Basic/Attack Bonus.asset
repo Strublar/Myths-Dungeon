@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Attack Bonus
   description: '<b><color=#CC6600>+10% attack\n\nHeroes : +10% attack</color></b>'
-  skillImage: {fileID: 21300000, guid: 0c21396a46119bf4e8a2b113f7e8fbd7, type: 3}
+  skillImage: {fileID: 21300000, guid: 13daeadd76befc5459ec076197ecdadf, type: 3}
   rarity: 0
   passives: []
   tags: []

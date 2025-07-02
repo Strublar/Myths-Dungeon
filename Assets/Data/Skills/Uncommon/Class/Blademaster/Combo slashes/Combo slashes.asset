@@ -15,7 +15,7 @@ MonoBehaviour:
   skillName: Combo slashes
   description: 'Base ability unlocks 1 additional Swiftcut\n\nHeroes : +10 ability
     haste'
-  skillImage: {fileID: 21300000, guid: 0c21396a46119bf4e8a2b113f7e8fbd7, type: 3}
+  skillImage: {fileID: 21300000, guid: d3e82b15ae9818442bae8b9c529ebb83, type: 3}
   rarity: 1
   passives:
   - {fileID: 11400000, guid: a90f49ef67f9e7d4d9a5a3098b413ef3, type: 2}
@@ -25,6 +25,7 @@ MonoBehaviour:
   requiredTags: 02000000
   holderRequiredTags: 02000000
   holderRequiredClass: 03000000
+  personalCaracs: []
   caracs:
   - carac: 8
     value: 10

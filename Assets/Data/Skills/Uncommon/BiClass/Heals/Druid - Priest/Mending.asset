@@ -15,7 +15,7 @@ MonoBehaviour:
   skillName: Mending
   description: 'Base ability : heal <b><color=#CC6600>{0}</color></b> health per
     second for 3 seconds\n\nHeroes : +10 ability haste'
-  skillImage: {fileID: 21300000, guid: 0c21396a46119bf4e8a2b113f7e8fbd7, type: 3}
+  skillImage: {fileID: 21300000, guid: 76eb1f0d0536d9b48b0a7dfbed88615b, type: 3}
   rarity: 1
   passives:
   - {fileID: 11400000, guid: 1c24f4410e3ec664e94253270875c974, type: 2}
@@ -27,6 +27,7 @@ MonoBehaviour:
   requiredTags: 0600000005000000
   holderRequiredTags: 05000000
   holderRequiredClass: 06000000
+  personalCaracs: []
   caracs:
   - carac: 8
     value: 10

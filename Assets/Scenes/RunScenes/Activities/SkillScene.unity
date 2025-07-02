@@ -706,8 +706,8 @@ MonoBehaviour:
   - {fileID: 1084076983}
   - {fileID: 341143700}
   selectedSkill: {fileID: 752371697042637838}
-  commonProbability: 100
-  uncommonProbability: 0
+  commonProbability: 40
+  uncommonProbability: 60
   rareProbability: 0
   epicProbability: 0
   legendaryProbability: 0

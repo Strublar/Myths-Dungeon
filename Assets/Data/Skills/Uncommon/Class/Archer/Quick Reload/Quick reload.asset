@@ -15,7 +15,7 @@ MonoBehaviour:
   skillName: Quick reload
   description: 'Your attacks have <b><color=#660066>{0}% chance</color></b> to give
     1 Arrow\n\n<b><color=#008B8B>Heroes : +10% attack speed</color></b>'
-  skillImage: {fileID: 21300000, guid: 0c21396a46119bf4e8a2b113f7e8fbd7, type: 3}
+  skillImage: {fileID: 21300000, guid: ce0167424fc110c45b2c4f6bfff0e368, type: 3}
   rarity: 1
   passives:
   - {fileID: 11400000, guid: 4187e1349695a2341bc3740ce9f13f3d, type: 2}
@@ -25,6 +25,7 @@ MonoBehaviour:
   requiredTags: 03000000
   holderRequiredTags: 03000000
   holderRequiredClass: 02000000
+  personalCaracs: []
   caracs:
   - carac: 4
     value: 10
