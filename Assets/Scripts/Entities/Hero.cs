@@ -66,11 +66,12 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         currentAttackCooldown -= Time.deltaTime * Mathf.Max((GetCarac(Carac.AttackSpeed)) / 100, 0);
         currentAbilityCooldown -= Time.deltaTime * Mathf.Max((GetCarac(Carac.AbilityHaste)) / 100, 0);
 
-        if (CanAttack() && RunManager.instance.fightStarted)
+        //Attack temporarily disabled
+        /*if (CanAttack() && RunManager.instance.fightStarted)
         {
             currentTarget = definition.attackTargetSelector.GetTargets(_selfContext)[0];
             Attack(currentTarget);
-        }
+        }*/
 
         if (Input.touchCount > 0)
         {
