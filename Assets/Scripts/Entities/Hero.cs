@@ -17,6 +17,7 @@ public enum HeroType
     Heal,
     DPS
 }
+
 public enum HeroClass
 {
     Warrior,
@@ -52,6 +53,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
     private Vector3 _modelInitialPos;
     public OrbitSpawner orbitSpawner;
 
+    private bool isModelActive;
     private Image modelImage;
     private Context _selfContext;
 
@@ -86,9 +88,12 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
             model.transform.localPosition = _modelInitialPos;
         }
 
-        if(RunManager.instance.fightStarted)
+        if (RunManager.instance.fightStarted)
         {
-            SetModelActive(CanCast());
+            if (CanCast())
+                SetModelActive(CanCast());
+            else
+                UpdateModelCooldownFeedback();
         }
     }
 
@@ -164,7 +169,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         }
 
         caracBonus = RunManager.instance.GetSkillCaracBonus();
-        
+
         foreach (var skill in skills)
         {
             foreach (var caracData in skill.personalCaracs)
@@ -191,7 +196,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
             if (caracBonus.TryGetValue(carac, out int bonusValue))
             {
-                switch(carac)
+                switch (carac)
                 {
                     //Percent
                     case Carac.MaxHp:
@@ -211,7 +216,6 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
-
             }
         }
 
@@ -350,7 +354,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
         if (!validTarget || !target.isAlive) return;
         if (abilityToCast == definition.baseAbility) currentAbilityCooldown = abilityToCast.cooldown;
-        if(target is Enemy) Pull(target);
+        if (target is Enemy) Pull(target);
 
         Context context = new Context
         {
@@ -366,7 +370,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         if (context.isCritical)
             TriggerManager.triggerMap[Trigger.OnCrit].Invoke(context);
     }
-    
+
     public void Pull(Entity target)
     {
         if (!RunManager.instance.fightStarted)
@@ -475,8 +479,8 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
     public bool CanEquipSkill(SkillDefinition skillDefinition)
     {
-        return (!skills.Contains(skillDefinition) || skillDefinition.rarity == Rarity.Common) && 
-               skillDefinition.holderRequiredClass.Contains(definition.heroClass) && 
+        return (!skills.Contains(skillDefinition) || skillDefinition.rarity == Rarity.Common) &&
+               (skillDefinition.holderRequiredClass.Contains(definition.heroClass) || skillDefinition.holderRequiredClass.Count == 0) &&
                skillDefinition.holderRequiredTags.All(skillTag => SkillTags.ContainsKey(skillTag));
     }
 
@@ -499,10 +503,37 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
             .OnComplete(() => transform.rotation = Quaternion.identity);
     }
 
+    public void PlayPunchScale()
+    {
+        model.transform.DOKill(true);
+        model.transform.localScale = Vector3.one;
+        model.transform.DOScale(model.transform.localScale * 1.4f, .1f)
+            .SetEase(Ease.OutCubic)
+            .OnComplete(() =>
+            {
+                model.transform.DOScale(Vector3.one, .2f)
+                    .SetEase(Ease.InOutQuad);
+            });
+    }
+
     #endregion
 
     public void SetModelActive(bool isActive)
     {
+        if(isModelActive != isActive)
+            PlayPunchScale();
+        isModelActive = isActive;
         modelImage.color = isActive ? Color.white : Color.grey;
+    }
+
+    public void UpdateModelCooldownFeedback()
+    {
+        isModelActive = false;
+        var progression = 1f - (currentAbilityCooldown / definition.baseAbility.cooldown);
+        Color inactiveColor = new Color(.4f,.4f,.4f);
+        Color activeColor = new Color(.6f,.6f,.6f);
+
+        //model.transform.localScale = Vector3.Lerp(new Vector3(.8f, .8f), new Vector3(1, 1), progression);
+        modelImage.color = Color.Lerp(inactiveColor, activeColor, progression);
     }
 }

@@ -339,8 +339,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -1.3721313, y: 367.4172}
-  m_SizeDelta: {x: -126.4901, y: 471.1992}
+  m_AnchoredPosition: {x: 0, y: 367.4172}
+  m_SizeDelta: {x: -40, y: 471.1992}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &356690132
 MonoBehaviour:
@@ -415,8 +415,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 158.24149}
-  m_SizeDelta: {x: -40, y: -416.7928}
+  m_AnchoredPosition: {x: 0, y: 143.2225}
+  m_SizeDelta: {x: -40, y: -386.7549}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1009821166
 MonoBehaviour:
@@ -438,7 +438,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Item Name
+  m_text: 'Item Name
+
+    Ontwolines'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f166646435b9df240977b3a1a8fef31b, type: 2}
   m_sharedMaterial: {fileID: 6955258260545066293, guid: f166646435b9df240977b3a1a8fef31b, type: 2}
@@ -704,8 +706,8 @@ MonoBehaviour:
   - {fileID: 1084076983}
   - {fileID: 341143700}
   selectedSkill: {fileID: 752371697042637838}
-  commonProbability: 40
-  uncommonProbability: 60
+  commonProbability: 100
+  uncommonProbability: 0
   rareProbability: 0
   epicProbability: 0
   legendaryProbability: 0
@@ -863,8 +865,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -33.47}
-  m_SizeDelta: {x: -40, y: -142.18}
+  m_AnchoredPosition: {x: 0, y: -48.49}
+  m_SizeDelta: {x: -40, y: -172.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1505519940
 MonoBehaviour:
@@ -886,13 +888,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Stat 1
+  m_text: 'Very long desciption of a skill with various effects and a lot of conditions
+    that needs 4 lines
 
-    Stat 2
+
+    Ability : Has also al lot of effects nd conditions thtattakes
+    a lot of place
 
 
-    Passive bla bla bla blabbla bla blabbla bla blabbla
-    bla blabbla bla '
+    Heroes : gain a lot of stats on two lines'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f166646435b9df240977b3a1a8fef31b, type: 2}
   m_sharedMaterial: {fileID: 6955258260545066293, guid: f166646435b9df240977b3a1a8fef31b, type: 2}

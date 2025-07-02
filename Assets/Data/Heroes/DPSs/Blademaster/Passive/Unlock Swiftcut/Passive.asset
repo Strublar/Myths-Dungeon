@@ -28,6 +28,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ae906dc028f3b884696d55148f4a646c, type: 2}
   replacementAbility: {fileID: 11400000, guid: f5dec044056c6914b8d979406a498446, type: 2}
   internalCooldown: 0
+  applyOutOfFight: 0
   model: {fileID: 3491571946111663575, guid: ccffbc0d140e21f4b9de7fe90e81494f, type: 3}
-  orbitalObjectModel: {fileID: 5377772450291379954, guid: 88d0301fdd2036540aca48bece2e35b1, type: 3}
+  orbitalObjectModel: {fileID: 5377772450291379954, guid: a385551589c02824bb0c86a54134c691, type: 3}
+  passiveTypes: 
   values: []
