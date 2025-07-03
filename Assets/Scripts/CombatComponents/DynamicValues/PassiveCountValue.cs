@@ -8,7 +8,7 @@ public class PassiveCountValue : DynamicValue
 {
     public TargetSelector entities;
     public PassiveDefinition passiveDef;
-    public override int computeValue(Context context)
+    public override int ComputeValue(Context context)
     {
         var targets = entities.GetTargets(context);
         var value = 0;

@@ -36,10 +36,7 @@ MonoBehaviour:
     value: 100
   - carac: 8
     value: 100
-  attackTargetSelector: {fileID: 11400000, guid: 6c1bbbeac2d54884fa11c0e2048ef209, type: 2}
-  attackPassive: {fileID: 11400000, guid: 57cd02c0604c87741948c340d719eb6c, type: 2}
   baseAbility: {fileID: 11400000, guid: c475c1298c58b034095c161f997045bf, type: 2}
-  passives:
-  - {fileID: 11400000, guid: c4360f837e86b78449da6c5ac4bbf8d6, type: 2}
+  passives: []
   skillTag: 3
   cooldownBarColor: {r: 0, g: 0, b: 0, a: 0}

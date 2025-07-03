@@ -5,12 +5,12 @@ using UnityEngine;
 public class MultiplyDynamicValue : DynamicValue
 {
     public List<DynamicValue> values;
-    public override int computeValue(Context context)
+    public override int ComputeValue(Context context)
     {
         var finalValue = 1;
         foreach (var dynamicValue in values)
         {
-            finalValue *= dynamicValue.computeValue(context);
+            finalValue *= dynamicValue.ComputeValue(context);
         }
 
         return finalValue;

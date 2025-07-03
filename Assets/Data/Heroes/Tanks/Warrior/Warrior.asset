@@ -16,6 +16,7 @@ MonoBehaviour:
   heroImage: {fileID: -2823817046287055957, guid: 9cbaf84559ea2e04d9bbfd6c9090c233, type: 3}
   model: {fileID: 3278287855122211867, guid: 7b90ca6966ae2dd4eaca3189529781a8, type: 3}
   type: 0
+  heroClass: 0
   isVagabond: 0
   attackCooldown: 3
   caracs:
@@ -35,10 +36,7 @@ MonoBehaviour:
     value: 100
   - carac: 8
     value: 100
-  attackTargetSelector: {fileID: 11400000, guid: 6c1bbbeac2d54884fa11c0e2048ef209, type: 2}
-  attackPassive: {fileID: 11400000, guid: faae1dfe8dba5954394ddb52dfce7223, type: 2}
   baseAbility: {fileID: 11400000, guid: 6b43e669c134e6a4b9fdd291d7e3ab4c, type: 2}
-  passives:
-  - {fileID: 11400000, guid: 2ec5bcc42228bac488689f078be2671a, type: 2}
+  passives: []
   skillTag: 0
   cooldownBarColor: {r: 0.6981132, g: 0, b: 0, a: 1}

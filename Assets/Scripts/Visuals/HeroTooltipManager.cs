@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Misc;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class HeroTooltipManager : MonoBehaviour
@@ -13,7 +14,7 @@ public class HeroTooltipManager : MonoBehaviour
     [Header("HeroTooltip")] public TMP_Text heroName;
     public Image heroImage;
     //Stats
-    public TMP_Text attack;
+    [FormerlySerializedAs("attack")] public TMP_Text power;
     public TMP_Text attackCooldown;
     public TMP_Text health;
     public TMP_Text armor;
@@ -42,32 +43,29 @@ public class HeroTooltipManager : MonoBehaviour
         
         heroName.text = hero.definition.heroName;
         heroImage.sprite = hero.definition.heroImage;
-        attack.text = "<b><color=#CC6600>Attack\n\n" + hero.GetCarac(Carac.Attack) + "</color></b>";
-        attackCooldown.text = "<b><color=#008B8B>At.CD\n\n" +
-                              (hero.definition.attackCooldown * 100 / hero.GetCarac(Carac.AttackSpeed)).ToString("F2") + "s</color></b>";
+        power.text = "<b><color=#CC6600>Power\n\n" + hero.GetCarac(Carac.Power) + "</color></b>";
         health.text = "<b><color=#006600>Health\n\n" + hero.GetCarac(Carac.MaxHp) + "</color></b>";
         armor.text = "<b><color=#333333>Armor\n\n" + hero.GetCarac(Carac.Armor) + "</color></b>";
         critChance.text = "<b><color=#990000>Crit%\n\n" + hero.GetCarac(Carac.CritChance) + "</color></b>";
         mastery.text = "<b><color=#660066>Mast.\n\n" + hero.GetCarac(Carac.Mastery) + "</color></b>";
         
-        var formatListAbility = new string[hero.ability.linkedPassives[0].values.Count];
-        for (int i = 0; i < hero.ability.linkedPassives[0].values.Count; i++)
+        var formatListAbility = new string[hero.ability.values.Count];
+        for (int i = 0; i < hero.ability.values.Count; i++)
         {
-            formatListAbility[i] = hero.ability.linkedPassives[0].values[i].computeValue(context).ToString();
+            formatListAbility[i] = hero.ability.values[i].ComputeString(context);
         }
 
-        ability.text = "Ability :\n\n"+string.Format(hero.ability.linkedPassives[0].description.Replace("\\n", "\n"), formatListAbility)+"\n\n"+
+        ability.text = "Ability :\n\n"+string.Format(hero.ability.description.Replace("\\n", "\n"), formatListAbility)+"\n\n"+
                        (hero.ability.cooldown * 100 / hero.GetCarac(Carac.AbilityHaste)).ToString("F2")+"s cooldown";
 
-        var passiveDefinition = hero.definition.passives[0];
-
+        /*var passiveDefinition = hero.definition.passives[0];
         string[] formatListPassive = new string[passiveDefinition.values.Count];
         for (int i = 0; i < passiveDefinition.values.Count; i++)
         {
-            formatListPassive[i] = passiveDefinition.values[i].computeValue(context).ToString();
+            formatListPassive[i] = passiveDefinition.values[i].ComputeString(context);
         }
 
-        passive.text = "Passive :\n\n"+string.Format(passiveDefinition.description.Replace("\\n", "\n"), formatListPassive);
+        passive.text = "Passive :\n\n"+string.Format(passiveDefinition.description.Replace("\\n", "\n"), formatListPassive);*/
 
         /*string[] formatListItem = Array.Empty<string>();
         if (hero.item.definition != null)

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text;
 using Misc;
 using UnityEngine;
 
@@ -20,4 +21,27 @@ public class SkillDefinition : ScriptableObject
     public List<CaracData> caracs = new();
 
     [Header("Serialization")] public List<DynamicValue> values;
+
+    public string BuildCaracsString()
+    {
+        var builder = new StringBuilder();
+
+        if (personalCaracs.Count > 0)
+            builder.Append("\n");
+        foreach (var caracData in personalCaracs)
+        {
+            builder.Append("\n");
+            builder.Append(caracData.ToString());
+        }
+
+        if (caracs.Count > 0)
+            builder.Append("\n");
+        foreach (var caracData in personalCaracs)
+        {
+            builder.Append("\nHeroes : ");
+            builder.Append(caracData.ToString());
+        }
+        return builder.ToString();
+
+    }
 }

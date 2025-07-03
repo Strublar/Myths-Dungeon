@@ -9,7 +9,7 @@ public class RandomEffects : Effect
     public List<Effect> childEffects;
     public override void Apply(Context context)
     {
-        if(Random.Range(0,100) <= probability.computeValue(context))
+        if(Random.Range(0,100) <= probability.ComputeValue(context))
         {
             foreach (var effect in childEffects)
             {

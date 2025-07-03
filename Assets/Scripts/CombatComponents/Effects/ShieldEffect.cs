@@ -14,9 +14,9 @@ public class ShieldEffect : Effect
         float critModifier = canCrit && context.isCritical && context.source is Hero heroSource
             ? heroSource.GetCarac(Carac.CritPower)
             : 100;        
-        int shieldValue = Mathf.RoundToInt(value.computeValue(context) * critModifier/100f);
+        int shieldValue = Mathf.RoundToInt(value.ComputeValue(context) * critModifier/100f);
         
-        context.target.AddShield(shieldValue,duration.computeValue(context));
+        context.target.AddShield(shieldValue,duration.ComputeValue(context));
 
         if (context.source is Hero hero)
         {

@@ -64,12 +64,14 @@ public class SkillLootManager : MonoBehaviour
         string[] formatListSkill = new string[selectedSkill.definition.values.Count];
         for (int i = 0; i < selectedSkill.definition.values.Count; i++)
         {
-            formatListSkill[i] = selectedSkill.definition.values[i].computeValue(context).ToString();
+            formatListSkill[i] = selectedSkill.definition.values[i].ComputeString(context);
         }
 
         skillDescriptionText.text =
             string.Format(selectedSkill.definition.description.Replace("\\n", "\n"), formatListSkill);
 
+        skillDescriptionText.text += selectedSkill.definition.BuildCaracsString();
+        
         skillNameText.text = selectedSkill.definition.skillName;
     }
 

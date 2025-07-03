@@ -57,7 +57,7 @@ public class Enemy : Entity
     }
 
 
-    public void Update()
+    public new void Update()
     {
         base.Update();
         if (RunManager.instance.fightStarted && isAlive)

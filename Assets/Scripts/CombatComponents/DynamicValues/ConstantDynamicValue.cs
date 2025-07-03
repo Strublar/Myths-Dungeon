@@ -13,7 +13,7 @@ public class ConstantDynamicValue : DynamicValue
         dynamicValue.value = constValue;
         return dynamicValue;
     }
-    public override int computeValue(Context context)
+    public override int ComputeValue(Context context)
     {
         return value + valuePerLevel * (context.level - 1);
     }

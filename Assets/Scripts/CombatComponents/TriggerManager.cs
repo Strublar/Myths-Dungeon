@@ -7,7 +7,6 @@ public enum Trigger
 {
     Never,
     OnPull,
-    OnAttack,
     OnUseAbility,
     OnHeal,
     EveryTick,
@@ -41,7 +40,6 @@ public class TriggerManager : MonoBehaviour
     public static TriggerManager instance;
     public static UnityEvent<Context> Never = new UnityEvent<Context>();
     public static UnityEvent<Context> OnPull = new UnityEvent<Context>();
-    public static UnityEvent<Context> OnAttack = new UnityEvent<Context>();
     public static UnityEvent<Context> OnUseAbility = new UnityEvent<Context>();
     public static UnityEvent<Context> OnHealed = new UnityEvent<Context>();
     public static UnityEvent<Context> EverySecond = new UnityEvent<Context>();
@@ -56,7 +54,6 @@ public class TriggerManager : MonoBehaviour
     {
         { Trigger.Never,Never},
         { Trigger.OnPull,OnPull},
-        { Trigger.OnAttack,OnAttack},
         { Trigger.OnUseAbility,OnUseAbility},
         { Trigger.OnHeal,OnHealed},
         { Trigger.EveryTick,EverySecond},

@@ -10,7 +10,7 @@ public class TauntEffect : Effect
         FightManager.instance.ResetThreat();
         if (context.source is Hero hero)
         {
-            hero.threat += hero.GetCarac(Carac.Attack) * 10;
+            hero.threat += hero.GetCarac(Carac.Power) * 20;
             FightManager.instance.UpdateMostThreatHero(hero);
         }
     }

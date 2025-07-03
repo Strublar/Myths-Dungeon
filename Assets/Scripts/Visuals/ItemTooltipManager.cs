@@ -63,7 +63,7 @@ public class ItemTooltipManager : MonoBehaviour
         string[] formatListItem = new string[lootedItem.item.values.Count];
         for (int i = 0; i < lootedItem.item.values.Count; i++)
         {
-            formatListItem[i] = lootedItem.item.values[i].computeValue(context).ToString();
+            formatListItem[i] = lootedItem.item.values[i].ComputeValue(context).ToString();
         }
 
         return string.Format(lootedItem.item.description, formatListItem);

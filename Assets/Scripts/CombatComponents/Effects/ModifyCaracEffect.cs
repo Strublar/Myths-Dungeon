@@ -10,7 +10,7 @@ public class ModifyCaracEffect : Effect
     public int duration;
     public override void Apply(Context context)
     {
-        int modif = value.computeValue(context);
+        int modif = value.ComputeValue(context);
         context.target.caracs[carac] += modif;
 
         if (duration != 0)

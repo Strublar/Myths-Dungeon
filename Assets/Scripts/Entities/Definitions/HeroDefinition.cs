@@ -17,8 +17,7 @@ public class HeroDefinition : ScriptableObject
     [Header("Stats")] public float attackCooldown;
     public List<CaracData> caracs;
 
-    [Header("Abilities and Passives")] public TargetSelector attackTargetSelector;
-    public PassiveDefinition attackPassive;
+    [Header("Passives")]
     public AbilityDefinition baseAbility;
     public List<PassiveDefinition> passives;
 

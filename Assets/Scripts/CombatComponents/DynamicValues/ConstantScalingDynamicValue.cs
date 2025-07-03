@@ -8,7 +8,7 @@ public class ConstantScalingDynamicValue : DynamicValue
 
     public int value;
     public Carac scalingCarac;
-    public override int computeValue(Context context)
+    public override int ComputeValue(Context context)
     {
         if (context.passiveHolder == null) return value;
         if (context.passiveHolder is Hero hero)
@@ -35,5 +35,10 @@ public class ConstantScalingDynamicValue : DynamicValue
             return value * (context.passiveHolder.GetCarac(scalingCarac) + offset) / (baseCaracValue.value+offset);
         } 
         return value * context.passiveHolder.GetCarac(scalingCarac)/100;
+    }
+
+    public override string ComputeString(Context context)
+    {
+        return $"<b><color=#{Utils.GetCaracColor(scalingCarac)}>{base.ComputeString(context)}</color></b>";
     }
 }

@@ -8,7 +8,7 @@ public class CaracDynamicValue : DynamicValue
 {
     public TargetSelector entities;
     [FormerlySerializedAs("stat")] public Carac carac;
-    public override int computeValue(Context context)
+    public override int ComputeValue(Context context)
     {
         var targets = entities.GetTargets(context);
         var value = 0;

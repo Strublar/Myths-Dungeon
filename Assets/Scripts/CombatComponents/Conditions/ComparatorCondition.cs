@@ -23,17 +23,17 @@ public class ComparatorCondition : Condition
         switch (operation)
         {
             case Operation.equals:
-                return value1.computeValue(context) == value2.computeValue(context);
+                return value1.ComputeValue(context) == value2.ComputeValue(context);
             case Operation.notEquals:
-                return value1.computeValue(context) != value2.computeValue(context);
+                return value1.ComputeValue(context) != value2.ComputeValue(context);
             case Operation.superior:
-                return value1.computeValue(context) > value2.computeValue(context);
+                return value1.ComputeValue(context) > value2.ComputeValue(context);
             case Operation.inferior:
-                return value1.computeValue(context) < value2.computeValue(context);
+                return value1.ComputeValue(context) < value2.ComputeValue(context);
             case Operation.supEquals:
-                return value1.computeValue(context) >= value2.computeValue(context);
+                return value1.ComputeValue(context) >= value2.ComputeValue(context);
             case Operation.infEquals:
-                return value1.computeValue(context) <= value2.computeValue(context);
+                return value1.ComputeValue(context) <= value2.ComputeValue(context);
             default:
                 throw new ArgumentOutOfRangeException();
         }

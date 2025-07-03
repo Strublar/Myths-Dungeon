@@ -43,7 +43,6 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
     [Header("Fight Stats")] public Entity currentTarget;
     public float threat;
-    [HideInInspector] public float currentAttackCooldown = 0f;
     [HideInInspector] public float currentAbilityCooldown = 0f;
 
     [Header("Component objects")] public GameObject model;
@@ -60,19 +59,11 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
     #endregion
 
-    public void Update()
+    public new void Update()
     {
         base.Update();
-        currentAttackCooldown -= Time.deltaTime * Mathf.Max((GetCarac(Carac.AttackSpeed)) / 100, 0);
         currentAbilityCooldown -= Time.deltaTime * Mathf.Max((GetCarac(Carac.AbilityHaste)) / 100, 0);
-
-        //Attack temporarily disabled
-        /*if (CanAttack() && RunManager.instance.fightStarted)
-        {
-            currentTarget = definition.attackTargetSelector.GetTargets(_selfContext)[0];
-            Attack(currentTarget);
-        }*/
-
+        
         if (Input.touchCount > 0)
         {
             if (_isDragging)
@@ -145,7 +136,6 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
     {
         ability = definition.baseAbility;
         var passives = new List<PassiveDefinition>(definition.passives);
-        passives.Add(definition.attackPassive);
         foreach (var skill in skills)
         {
             foreach (var passive in skill.passives)
@@ -153,12 +143,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
                 passives.Add(passive);
             }
         }
-
-        foreach (var passive in ability.linkedPassives)
-        {
-            passives.Add(passive);
-        }
-
+        
         foreach (PassiveDefinition passive in passives)
         {
             Passive newPassive = PassivePool.instance.GetObject(transform);
@@ -212,8 +197,6 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
                     case Carac.CurrentHp:
                     case Carac.AbilityHaste:
                     case Carac.Mastery:
-                    case Carac.AttackSpeed:
-                    case Carac.Attack:
                         caracs[carac] = Mathf.RoundToInt(caracs[carac] * ((100f + bonusValue) / 100f));
                         break;
                     //Flat
@@ -227,13 +210,6 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
                 }
             }
         }
-
-        /*caracs[Carac.maxHp] = baseCaracs[Carac.maxHp] * (100 + caracBonus[Carac.maxHp]) / 100;
-        caracs[Carac.armor] = baseCaracs[Carac.armor] * (100 + caracBonus[Carac.armor]) / 100;
-        caracs[Carac.attack] = baseCaracs[Carac.attack] * (100 + caracBonus[Carac.attack]) / 100;
-        caracs[Carac.critChance] = baseCaracs[Carac.critChance] * (100 + caracBonus[Carac.critChance]) / 100;
-        caracs[Carac.critPower] = baseCaracs[Carac.critPower] * (100 + caracBonus[Carac.critPower]) / 100;*/
-
 
         /*if (item.definition != null)
         {
@@ -255,7 +231,6 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         }*/
 
         currentAbilityCooldown = 0f;
-        currentAttackCooldown = 0f;
         caracs[Carac.CurrentHp] = GetCarac(Carac.MaxHp);
     }
 
@@ -285,29 +260,6 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         }
 
         return canCast;
-    }
-
-    private bool CanAttack()
-    {
-        return currentAttackCooldown < 0 && RunManager.instance.fightStarted;
-    }
-
-
-    private void Attack(Entity target)
-    {
-        currentAttackCooldown = definition.attackCooldown;
-        //PlayPunch();
-
-        Context context = new Context
-        {
-            source = this,
-            target = target,
-            passiveHolder = null,
-            isCritical = Random.Range(0, 100) <= GetCarac(Carac.CritChance),
-        };
-        TriggerManager.triggerMap[Trigger.OnAttack].Invoke(context);
-        if (context.isCritical)
-            TriggerManager.triggerMap[Trigger.OnCrit].Invoke(context);
     }
 
     public void PlayPunch()
@@ -369,12 +321,17 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         {
             source = this,
             target = target,
-            passiveHolder = null,
+            passiveHolder = this,
             isCritical = Random.Range(0, 100) <= GetCarac(Carac.CritChance),
             abilityCast = abilityToCast,
             underlyingPassive = underlyingPassive,
             replacementAbilityPassive = underlyingPassive
         };
+        foreach (var effect in abilityToCast.effects)
+        {
+            effect.Apply(context);
+        }
+        
         TriggerManager.triggerMap[Trigger.OnUseAbility].Invoke(context);
         if (context.isCritical)
             TriggerManager.triggerMap[Trigger.OnCrit].Invoke(context);

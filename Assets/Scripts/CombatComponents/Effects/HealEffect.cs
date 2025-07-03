@@ -15,7 +15,7 @@ public class HealEffect : Effect
         float critModifier = canCrit && context.isCritical && context.source is Hero heroSource
             ? heroSource.GetCarac(Carac.CritPower)
             : 100;        
-        int healValue = Mathf.RoundToInt(value.computeValue(context) * critModifier/100f);
+        int healValue = Mathf.RoundToInt(value.ComputeValue(context) * critModifier/100f);
         context.value = healValue;
         context.target.Heal(context);
 
