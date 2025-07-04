@@ -25,16 +25,14 @@ MonoBehaviour:
   - carac: 2
     value: 100
   - carac: 3
-    value: 75
+    value: 100
   - carac: 4
-    value: 100
+    value: 0
   - carac: 5
-    value: 10
-  - carac: 6
     value: 200
-  - carac: 7
+  - carac: 6
     value: 100
-  - carac: 8
+  - carac: 7
     value: 100
   baseAbility: {fileID: 11400000, guid: 6b43e669c134e6a4b9fdd291d7e3ab4c, type: 2}
   passives: []

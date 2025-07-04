@@ -21,10 +21,6 @@ MonoBehaviour:
   requiredTags: 
   holderRequiredTags: 
   holderRequiredClass: 
-  personalCaracs:
-  - carac: 8
-    value: 10
-  caracs:
-  - carac: 8
-    value: 10
+  personalCaracs: []
+  caracs: []
   values: []
