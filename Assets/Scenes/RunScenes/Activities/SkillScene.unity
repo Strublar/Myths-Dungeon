@@ -674,33 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af28acc3d9399a34f9ca65a911a25380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableSkills:
-  - {fileID: 11400000, guid: 18e67bf7b72b27346bbf8b82c465460e, type: 2}
-  - {fileID: 11400000, guid: c76b4748d09e841428981c09e3e3b36d, type: 2}
-  - {fileID: 11400000, guid: 2ad33e84fbe7cc24a91d5843c9b17e5d, type: 2}
-  - {fileID: 11400000, guid: 3ce71ef5709ce774faefee0c5ad357b3, type: 2}
-  - {fileID: 11400000, guid: b55e6d4dee5bf1547aad11795c95b09c, type: 2}
-  - {fileID: 11400000, guid: c09bd507536e99646b25c46a0551ce10, type: 2}
-  - {fileID: 11400000, guid: cb7a22a7a59a41647bbe8cd98fe1c902, type: 2}
-  - {fileID: 11400000, guid: a99b42c437a92f44aa716cb52e46a230, type: 2}
-  - {fileID: 11400000, guid: e52b52608bd6ea44dba6df53cbcc4e3f, type: 2}
-  - {fileID: 11400000, guid: 72288636a644efa42a1f2d31c9c0bb18, type: 2}
-  - {fileID: 11400000, guid: e32e88cc2a700244eb7674e6f20a6c28, type: 2}
-  - {fileID: 11400000, guid: b780798ad4a4302448d8babcb51fe51f, type: 2}
-  - {fileID: 11400000, guid: 14204fdb4a21aba4a8f218d1ce1db3e3, type: 2}
-  - {fileID: 11400000, guid: 9cb5f5e52109b154db737df8821255dd, type: 2}
-  - {fileID: 11400000, guid: 8d80e15a5292bc042861a77596ab4831, type: 2}
-  - {fileID: 11400000, guid: 312f21f69fa66674f9b3b7c26e6f211c, type: 2}
-  - {fileID: 11400000, guid: d7d3cf4deac4a25489a8f1db2d15a734, type: 2}
-  - {fileID: 11400000, guid: a61dee7841ba58e4e9baeccc075419a9, type: 2}
-  - {fileID: 11400000, guid: 5216058f00539e6409e2a0c4e412ec7d, type: 2}
-  - {fileID: 11400000, guid: c1b97f0e7261a404b9b33c0e085783d8, type: 2}
-  - {fileID: 11400000, guid: 4b0c2e0de2c384643a4429219bd3212a, type: 2}
-  - {fileID: 11400000, guid: 06fb6888df0c9fa468f7355644f65c21, type: 2}
-  - {fileID: 11400000, guid: bc3fe0891064c324ba21462448646bb1, type: 2}
-  - {fileID: 11400000, guid: 3239c2f3dada3314fb6bdf702b631c8e, type: 2}
-  - {fileID: 11400000, guid: c129df63f4f8c5646a616815911b6fda, type: 2}
-  - {fileID: 11400000, guid: 028d731ee31ca85478b387694dea056d, type: 2}
+  availableSkills: []
   lootedSkills:
   - {fileID: 752371697042637838}
   - {fileID: 1084076983}
