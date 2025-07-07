@@ -8,7 +8,7 @@ public class ConstantScalingDynamicValue : DynamicValue
 
     public int value;
     public Carac scalingCarac;
-    public override int ComputeValue(Context context)
+    protected override int ComputeValue(Context context)
     {
         if (context.passiveHolder == null) return value;
         if (context.passiveHolder is Hero hero)

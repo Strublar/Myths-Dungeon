@@ -12,6 +12,8 @@ public class Passive : MonoBehaviour
     public float currentCooldown = 0;
     public GameObject model;
 
+    public Dictionary<DynamicValue, DynamicValue> replacedDynamicValues = new();
+
     public float clock = 0.1f;
     public float clockEnd = 0.1f;
 
@@ -73,6 +75,7 @@ public class Passive : MonoBehaviour
 
     public void Execute(Context context)
     {
+        context.replacedDynamicValues = replacedDynamicValues;
         triggerCount++;
         if (triggerCount >= definition.triggerCount && definition.triggerCount != 0 &&
             currentCooldown <= definition.internalCooldown)
@@ -109,6 +112,7 @@ public class Passive : MonoBehaviour
 
     public void OnEndTrigger(Context context)
     {
+        context.replacedDynamicValues = replacedDynamicValues;
         endTriggerCount++;
         if (endTriggerCount >= definition.endTriggerCount && definition.endTriggerCount != 0)
         {
@@ -132,6 +136,7 @@ public class Passive : MonoBehaviour
 
     public void Delete(Context context)
     {
+        context.replacedDynamicValues = replacedDynamicValues;
         TriggerManager.triggerMap[definition.trigger].RemoveListener(Execute);
         TriggerManager.triggerMap[definition.endTrigger].RemoveListener(OnEndTrigger);
         if (definition.orbitalObjectModel != null && holder is Hero hero)
@@ -148,6 +153,7 @@ public class Passive : MonoBehaviour
         if (context.passiveHolder != null)
             holder.passives.Remove(this);
         
+        replacedDynamicValues = new Dictionary<DynamicValue, DynamicValue>();
         PassivePool.instance.ReturnObject(this);
     }
 }

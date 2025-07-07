@@ -4,10 +4,22 @@
 
 public abstract class DynamicValue : ScriptableObject
 {
-    public abstract int ComputeValue(Context context);
+    public int Compute(Context context)
+    {
+        if (context.replacedDynamicValues != null &&
+            context.replacedDynamicValues.ContainsKey(this))
+        {
+            return context.replacedDynamicValues[this].ComputeValue(context);
+        }
+        else
+        {
+            return ComputeValue(context);
+        }
+    }
+    protected abstract int ComputeValue(Context context);
 
     public virtual string ComputeString(Context context)
     {
-        return ComputeValue(context).ToString();
+        return Compute(context).ToString();
     } 
 }

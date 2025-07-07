@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Test ability
   description: Deal {0} damage
+  projectilePrefab: {fileID: 2213904028435209327, guid: 1e557dc0f35ae454d9eac5fa309f8df0, type: 3}
   castConditions: []
   cooldown: 1
   effects:

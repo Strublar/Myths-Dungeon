@@ -3,14 +3,12 @@ using System.Text;
 using Misc;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewSkill", menuName = "Skill")]
-public class SkillDefinition : ScriptableObject
+public abstract class SkillDefinition : ScriptableObject
 {
     public string skillName;
     public string description;
     public Sprite skillImage;
     public Rarity rarity;
-    public List<PassiveDefinition> passives;
     public List<SkillTagData> tags;
     public List<SkillTag> requiredTags;
     public List<SkillTag> holderRequiredTags;

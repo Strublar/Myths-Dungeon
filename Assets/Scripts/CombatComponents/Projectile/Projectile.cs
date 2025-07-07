@@ -15,15 +15,15 @@ public class Projectile : MonoBehaviour
     public float targetDuration = 1f;
     public List<Effect> effects;
     public Context context;
-    public Image image;
+    public GameObject model;
 
-    public void Init(Context context, List<Effect> effects, Sprite sprite, float targetDuration)
+    public void Init(Context context, List<Effect> effects, GameObject model, float targetDuration)
     {
         lifeTime = 0;
         this.context = context;
-        this.effects = effects;        
-        image.sprite = sprite;
-
+        this.effects = effects;
+        this.model = Instantiate(model, transform);
+        
         var uiCamera = GameManager.instance.mainCamera;
         Vector3 screenOrigin = RectTransformUtility.WorldToScreenPoint(uiCamera, context.source.transform.position);
         Vector3 screenTarget = RectTransformUtility.WorldToScreenPoint(uiCamera, context.target.transform.position);
@@ -53,6 +53,8 @@ public class Projectile : MonoBehaviour
             {
                 effect.Apply(context);
             }
+
+            Destroy(model);
             ProjectileManager.instance.ReturnObject(this);
         }
         

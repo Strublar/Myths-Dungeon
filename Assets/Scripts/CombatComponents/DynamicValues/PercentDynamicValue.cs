@@ -7,8 +7,8 @@ public class PercentDynamicValue : DynamicValue
 {
     public DynamicValue from;
     public DynamicValue percentage;
-    public override int ComputeValue(Context context)
+    protected override int ComputeValue(Context context)
     {
-        return Mathf.RoundToInt(from.ComputeValue(context) * percentage.ComputeValue(context) / 100.0f);
+        return Mathf.RoundToInt(from.Compute(context) * percentage.Compute(context) / 100.0f);
     }
 }

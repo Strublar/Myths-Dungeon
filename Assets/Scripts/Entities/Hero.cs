@@ -63,7 +63,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
     {
         base.Update();
         currentAbilityCooldown -= Time.deltaTime * Mathf.Max((GetCarac(Carac.AbilityHaste)) / 100, 0);
-        
+
         if (Input.touchCount > 0)
         {
             if (_isDragging)
@@ -138,12 +138,10 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         var passives = new List<PassiveDefinition>(definition.passives);
         foreach (var skill in skills)
         {
-            foreach (var passive in skill.passives)
-            {
-                passives.Add(passive);
-            }
+            if (!(skill is PassiveSkillDefinition passiveSkill)) continue;
+            passives.AddRange(passiveSkill.passives);
         }
-        
+
         foreach (PassiveDefinition passive in passives)
         {
             Passive newPassive = PassivePool.instance.GetObject(transform);
@@ -271,9 +269,8 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
             .OnComplete(() => model.transform.DOScale(Vector3.one, .05f).SetEase(Ease.InOutQuad));
     }
 
-    private void TryCastAbility(Entity target)
+    public void TryCastAbility(AbilityDefinition abilityToCast, Entity target)
     {
-        AbilityDefinition abilityToCast = null;
         Passive underlyingPassive = null;
         if (currentAbilityCooldown <= 0)
         {
@@ -314,8 +311,20 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         }
 
         if (!validTarget || !target.isAlive) return;
-        if (abilityToCast == definition.baseAbility) currentAbilityCooldown = abilityToCast.cooldown;
-        if (target is Enemy) Pull(target);
+        if (abilityToCast == definition.baseAbility)
+        {
+            var updatedCooldown = abilityToCast.cooldown;
+            foreach (var skill in skills)
+            {
+                if (skill is CooldownModificationSkillDefinition cdMod &&
+                    cdMod.linkedAbility == abilityToCast)
+                    updatedCooldown += cdMod.cooldownModification;
+            }
+
+            currentAbilityCooldown = updatedCooldown;
+        }
+
+        Pull(target);
 
         Context context = new Context
         {
@@ -325,13 +334,30 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
             isCritical = Random.Range(0, 100) <= GetCarac(Carac.CritChance),
             abilityCast = abilityToCast,
             underlyingPassive = underlyingPassive,
-            replacementAbilityPassive = underlyingPassive
+            replacementAbilityPassive = underlyingPassive,
+            replacedDynamicValues = GetReplacedDynamicValues(abilityToCast)
         };
-        foreach (var effect in abilityToCast.effects)
+
+        var effectsToExecute = new List<Effect>(abilityToCast.effects);
+
+        foreach (var skill in skills)
         {
-            effect.Apply(context);
+            if (skill is not AddAbilityEffectsSkillDefinition addEffect ||
+                addEffect.linkedAbility != abilityToCast) continue;
+            addEffect.effects.ForEach(e => effectsToExecute.Add(e));
         }
-        
+
+        if (abilityToCast.projectile == null || context.source == context.target)
+        {
+            effectsToExecute.ForEach(e => e.Apply(context));
+        }
+        else
+        {
+            Projectile projectile = ProjectileManager.instance.GetObject();
+            projectile.Init(context, effectsToExecute, abilityToCast.projectile, abilityToCast.travelTime);
+        }
+
+
         TriggerManager.triggerMap[Trigger.OnUseAbility].Invoke(context);
         if (context.isCritical)
             TriggerManager.triggerMap[Trigger.OnCrit].Invoke(context);
@@ -371,8 +397,13 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (CanCast())
-            _isDragging = true;
+        if (!CanCast())
+            return;
+
+        _isDragging = true;
+        var position = eventData.position;
+        /*Vector3 newPos = GameManager.instance.mainCamera.ScreenToWorldPoint(new Vector3(position.x,
+            position.y, 1f));*/
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -380,13 +411,12 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         _isDragging = false;
 
         if (!isAlive || !CanCast()) return;
-
+        Vector3 newPos = GameManager.instance.mainCamera.ScreenToWorldPoint(new Vector3(eventData.position.x,
+            eventData.position.y, 1f));
 
         Entity target = PlayerController.GetTarget<Entity>(eventData);
 
-        if (target == null) return;
-
-        TryCastAbility(target);
+        TryCastAbility(ability, target);
 
         if (FightManager.instance.mostThreatHero == null)
         {
@@ -415,7 +445,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         else
         {
             if (!isAlive || !CanCast()) return;
-            TryCastAbility(this);
+            TryCastAbility(ability, this);
         }
     }
 
@@ -455,6 +485,18 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
     {
         skills.Add(skillDefinition);
         RunManager.instance.ReloadHeroes();
+    }
+
+    public Dictionary<DynamicValue, DynamicValue> GetReplacedDynamicValues(AbilityDefinition ability)
+    {
+        var replacedDynamicValues = new Dictionary<DynamicValue, DynamicValue>();
+        foreach (var skill in skills)
+        {
+            if (skill is ReplaceDynamicValueSkillDefinition replaceSkill && replaceSkill.linkedAbility == ability)
+                replacedDynamicValues.Add(replaceSkill.toReplace, replaceSkill.replaceWith);
+        }
+
+        return replacedDynamicValues;
     }
 
     #region Feedbacks

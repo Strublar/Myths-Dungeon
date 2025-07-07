@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ProjectileEffect", menuName = "Effects/Projectile")]
 public class ProjectileEffect : Effect
 {
-    public Sprite sprite;
+    public GameObject model;
     public float travelTime = 0.3f;
     public List<Effect> effects;
 
@@ -20,7 +20,7 @@ public class ProjectileEffect : Effect
         else
         {
             Projectile projectile = ProjectileManager.instance.GetObject();
-            projectile.Init(context, effects, sprite, travelTime);
+            projectile.Init(context, effects, model, travelTime);
         }
     }
 }

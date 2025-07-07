@@ -12,8 +12,8 @@ public class NegativeDynamicValue : DynamicValue
         return dynamicValue;
     }
 
-    public override int ComputeValue(Context context)
+    protected override int ComputeValue(Context context)
     {
-        return -1 * value.ComputeValue(context);
+        return -1 * value.Compute(context);
     }
 }

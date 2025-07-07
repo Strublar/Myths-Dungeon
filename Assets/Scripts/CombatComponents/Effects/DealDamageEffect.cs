@@ -23,7 +23,7 @@ public class DealDamageEffect : Effect
         float critModifier = canCrit && context.isCritical && context.source is Hero heroSource
             ? heroSource.GetCarac(Carac.CritPower)
             : 100;
-        int damageValue = Mathf.RoundToInt(value.ComputeValue(context) *  critModifier / 100f);
+        int damageValue = Mathf.RoundToInt(value.Compute(context) *  critModifier / 100f);
         context.value = damageValue;
         context.damageType = damageType;
         context.target.DealDamage(context);

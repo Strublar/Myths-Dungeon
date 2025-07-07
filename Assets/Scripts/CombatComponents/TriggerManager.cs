@@ -33,6 +33,7 @@ public struct Context
     public Passive underlyingPassive;
     public PassiveDefinition passiveGained;
     public Passive replacementAbilityPassive;
+    public Dictionary<DynamicValue, DynamicValue> replacedDynamicValues;
 }
 
 public class TriggerManager : MonoBehaviour

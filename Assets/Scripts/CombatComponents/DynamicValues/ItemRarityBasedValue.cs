@@ -7,11 +7,11 @@ public class ItemRarityBasedValue : DynamicValue
 {
     public DynamicValue baseValue;
     public DynamicValue valuePerLevel;
-    public override int ComputeValue(Context context)
+    protected override int ComputeValue(Context context)
     {
 
         //TODO
-        var value = baseValue.ComputeValue(context);
+        var value = baseValue.Compute(context);
         /*if (context.source is Hero hero)
         {
             value += hero.item.qualityLevel * valuePerLevel.computeValue(context);

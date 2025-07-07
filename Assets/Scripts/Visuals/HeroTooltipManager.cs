@@ -38,7 +38,7 @@ public class HeroTooltipManager : MonoBehaviour
         var context = new Context
         {
             source = hero,
-            passiveHolder = hero
+            passiveHolder = hero,
         };
         
         heroName.text = hero.definition.heroName;
@@ -48,7 +48,8 @@ public class HeroTooltipManager : MonoBehaviour
         armor.text = "<b><color=#333333>Armor\n\n" + hero.GetCarac(Carac.Armor) + "</color></b>";
         critChance.text = "<b><color=#990000>Crit%\n\n" + hero.GetCarac(Carac.CritChance) + "</color></b>";
         mastery.text = "<b><color=#660066>Mast.\n\n" + hero.GetCarac(Carac.Mastery) + "</color></b>";
-        
+
+        context.replacedDynamicValues = hero.GetReplacedDynamicValues(hero.ability);
         var formatListAbility = new string[hero.ability.values.Count];
         for (int i = 0; i < hero.ability.values.Count; i++)
         {

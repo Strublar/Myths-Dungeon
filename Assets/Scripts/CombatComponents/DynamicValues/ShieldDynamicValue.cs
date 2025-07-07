@@ -6,7 +6,7 @@ public class ShieldDynamicValue : DynamicValue
 {
 
     public TargetSelector targetSelector;
-    public override int ComputeValue(Context context)
+    protected override int ComputeValue(Context context)
     {
         return targetSelector.GetTargets(context).Sum(t => t.ComputeShieldValue());;
     }

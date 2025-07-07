@@ -8,7 +8,7 @@ using UnityEngine.Serialization;
 public class PercentHpValue : DynamicValue
 {
     public TargetSelector targetSelector;
-    public override int ComputeValue(Context context)
+    protected override int ComputeValue(Context context)
     {
         var targets = targetSelector.GetTargets(context);
         if (targets.Count != 1)
