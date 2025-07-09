@@ -13,6 +13,7 @@ public abstract class SkillDefinition : ScriptableObject
     public List<SkillTag> requiredTags;
     public List<SkillTag> holderRequiredTags;
     public List<HeroClass> holderRequiredClass;
+    public List<SkillDefinition> holderRequiredSkills;
 
     [Header("Stats")] 
     public List<CaracData> personalCaracs = new();
@@ -34,7 +35,7 @@ public abstract class SkillDefinition : ScriptableObject
 
         if (caracs.Count > 0)
             builder.Append("\n");
-        foreach (var caracData in personalCaracs)
+        foreach (var caracData in caracs)
         {
             builder.Append("\nHeroes : ");
             builder.Append(caracData.ToString());

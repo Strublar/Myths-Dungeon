@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca61f0287dde43ad8afc6f35b38edf83, type: 3}
+  m_Name: Slash
+  m_EditorClassIdentifier: 
+  abilityName: Slash
+  description: Deal {0} damage
+  projectilePrefab: {fileID: 2213904028435209327, guid: 1e557dc0f35ae454d9eac5fa309f8df0, type: 3}
+  castConditions: []
+  cooldown: 5
+  effects:
+  - {fileID: 11400000, guid: ee6008a01b5ea4c44953186a3044c585, type: 2}
+  abilityTarget: 3
+  projectile: {fileID: 6824414390272176956, guid: 53b9fec168f4ff34c9493aa3f4192eb7, type: 3}
+  travelTime: 0.2
+  values:
+  - {fileID: 11400000, guid: ebd30afde68ab0444950f9e6e38f31f1, type: 2}

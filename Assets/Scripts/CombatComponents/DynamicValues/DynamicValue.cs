@@ -6,20 +6,24 @@ public abstract class DynamicValue : ScriptableObject
 {
     public int Compute(Context context)
     {
-        if (context.replacedDynamicValues != null &&
-            context.replacedDynamicValues.ContainsKey(this))
+        if (context.modifiedDynamicValues != null &&
+            context.modifiedDynamicValues.ContainsKey(this))
         {
-            return context.replacedDynamicValues[this].ComputeValue(context);
+            var modification = 0;
+            context.modifiedDynamicValues[this].ForEach(d => modification += d.ComputeValue(context));
+            return Mathf.RoundToInt(ComputeValue(context) *
+                (100f + modification) / 100);
         }
         else
         {
             return ComputeValue(context);
         }
     }
+
     protected abstract int ComputeValue(Context context);
 
     public virtual string ComputeString(Context context)
     {
         return Compute(context).ToString();
-    } 
+    }
 }

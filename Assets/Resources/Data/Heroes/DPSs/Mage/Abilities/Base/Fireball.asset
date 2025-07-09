@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca61f0287dde43ad8afc6f35b38edf83, type: 3}
+  m_Name: Fireball
+  m_EditorClassIdentifier: 
+  abilityName: Fireball
+  description: Deal {0} damage
+  projectilePrefab: {fileID: 2213904028435209327, guid: 1e557dc0f35ae454d9eac5fa309f8df0, type: 3}
+  castConditions: []
+  cooldown: 8
+  effects:
+  - {fileID: 11400000, guid: 39f9f4b8c39d22541b19d4f78c6b7b64, type: 2}
+  abilityTarget: 3
+  projectile: {fileID: 1506434370367036875, guid: f569a65a98c19ef4db7b7285bbda1bb2, type: 3}
+  travelTime: 0.2
+  values:
+  - {fileID: 11400000, guid: 06a5e512c07e5a44ba148e3bc4f1ae5e, type: 2}

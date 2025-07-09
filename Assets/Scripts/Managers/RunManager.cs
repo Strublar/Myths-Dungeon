@@ -106,7 +106,7 @@ public class RunManager : MonoBehaviour
 
         foreach (var hero in heroes)
         {
-            foreach (var skillTagPair in hero.SkillTags)
+            foreach (var skillTagPair in hero.skillTags)
             {
                 if (tags.ContainsKey(skillTagPair.Key))
                 {

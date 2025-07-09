@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b020f6478d9e43cc8e84c5c3b51798f4, type: 3}
+  m_Name: Sharp blade III
+  m_EditorClassIdentifier: 
+  skillName: Sharp blade III
+  description: +{0}% Slash damage
+  skillImage: {fileID: 21300000, guid: 27ed58a50823c6544a572dde7ba27482, type: 3}
+  rarity: 1
+  tags:
+  - tag: 2
+    weight: 1
+  requiredTags: 02000000
+  holderRequiredTags: 02000000
+  holderRequiredClass: 03000000
+  holderRequiredSkills:
+  - {fileID: 11400000, guid: 63a529d9d1aa9784fa0a6086db3ecd7c, type: 2}
+  personalCaracs: []
+  caracs:
+  - carac: 3
+    value: 10
+  values:
+  - {fileID: 11400000, guid: aef9a4bee47e0c74094abf7a75531ba7, type: 2}
+  linkedAbility: {fileID: 11400000, guid: 018eb81d8e34e6f4d9cc2f3050b87010, type: 2}
+  toReplace: {fileID: 11400000, guid: ebd30afde68ab0444950f9e6e38f31f1, type: 2}
+  modification: {fileID: 11400000, guid: b211777654881354491c9a95ea167d69, type: 2}

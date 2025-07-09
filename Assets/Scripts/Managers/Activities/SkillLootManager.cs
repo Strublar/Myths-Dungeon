@@ -27,6 +27,8 @@ public class SkillLootManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        SkillDefinition[] loadedSkills = Resources.LoadAll<SkillDefinition>("Data/Skills");
+        availableSkills = new List<SkillDefinition>(loadedSkills);
     }
 
     public void SelectSkill(LootedSkill newSelectedSkill)

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed23d1232cf42c88bba464cc5714542, type: 3}
+  m_Name: Health buff
+  m_EditorClassIdentifier: 
+  skillName: Health buff
+  description: 
+  skillImage: {fileID: 21300000, guid: e23b42f17cd4f5e4583c305528171d53, type: 3}
+  rarity: 0
+  tags: []
+  requiredTags: 
+  holderRequiredTags: 
+  holderRequiredClass: 
+  personalCaracs:
+  - carac: 0
+    value: 10
+  caracs:
+  - carac: 0
+    value: 10
+  values: []
+  passives: []

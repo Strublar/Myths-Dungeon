@@ -14,7 +14,6 @@ public class HeroDefinition : ScriptableObject
     public HeroClass heroClass;
     public bool isVagabond;
 
-    [Header("Stats")] public float attackCooldown;
     public List<CaracData> caracs;
 
     [Header("Passives")]

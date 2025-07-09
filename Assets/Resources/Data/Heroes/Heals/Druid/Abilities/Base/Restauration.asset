@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca61f0287dde43ad8afc6f35b38edf83, type: 3}
+  m_Name: Restauration
+  m_EditorClassIdentifier: 
+  abilityName: Restauration
+  description: Heal {0} health
+  projectilePrefab: {fileID: 2213904028435209327, guid: 1e557dc0f35ae454d9eac5fa309f8df0, type: 3}
+  castConditions: []
+  cooldown: 5
+  effects:
+  - {fileID: 11400000, guid: a07f9496e341a1c4d9232ed4ad6adc86, type: 2}
+  abilityTarget: 1
+  projectile: {fileID: 6497901912677897158, guid: 7a9e42b06e67ad1409b8ac533c346e44, type: 3}
+  travelTime: 0.2
+  values:
+  - {fileID: 11400000, guid: 6c8c5dbf095c3af4db1811c30cd55565, type: 2}

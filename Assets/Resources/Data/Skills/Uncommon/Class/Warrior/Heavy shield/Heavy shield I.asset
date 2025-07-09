@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b020f6478d9e43cc8e84c5c3b51798f4, type: 3}
+  m_Name: Heavy shield I
+  m_EditorClassIdentifier: 
+  skillName: Heavy shield I
+  description: +{0}% Bash damage
+  skillImage: {fileID: 21300000, guid: 24ac5fb538bfc4843a8894b41ccdf5a6, type: 3}
+  rarity: 1
+  tags:
+  - tag: 0
+    weight: 1
+  requiredTags: 00000000
+  holderRequiredTags: 00000000
+  holderRequiredClass: 00000000
+  holderRequiredSkills: []
+  personalCaracs: []
+  caracs:
+  - carac: 3
+    value: 10
+  values:
+  - {fileID: 11400000, guid: 60dc5570469e29648a48831750257c97, type: 2}
+  linkedAbility: {fileID: 11400000, guid: 6b43e669c134e6a4b9fdd291d7e3ab4c, type: 2}
+  toReplace: {fileID: 11400000, guid: ca996e9f0145faf439c4e7eb7937125d, type: 2}
+  modification: {fileID: 11400000, guid: 60dc5570469e29648a48831750257c97, type: 2}

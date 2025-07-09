@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662586b450e2eb8468cb314300f4a955, type: 3}
+  m_Name: Priest
+  m_EditorClassIdentifier: 
+  heroName: Priest
+  heroImage: {fileID: -5137005131209321331, guid: a76b1dfc72231354e95bd8835ba2d798, type: 3}
+  model: {fileID: 8461778819654013387, guid: 49dfeb9e07ef421428c546a8a16bf3b6, type: 3}
+  type: 1
+  heroClass: 6
+  isVagabond: 0
+  caracs:
+  - carac: 0
+    value: 800
+  - carac: 2
+    value: 0
+  - carac: 3
+    value: 100
+  - carac: 4
+    value: 10
+  - carac: 5
+    value: 200
+  - carac: 6
+    value: 100
+  - carac: 7
+    value: 100
+  baseAbility: {fileID: 11400000, guid: 044ee52a0f2f03d4896362aea2d997df, type: 2}
+  passives: []
+  skillTag: 5
+  cooldownBarColor: {r: 0, g: 0, b: 0, a: 0}

@@ -37,7 +37,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
     public ItemDefinition item;
     public List<SkillDefinition> skills;
     public AbilityDefinition ability;
-    public Dictionary<SkillTag, int> SkillTags;
+    public Dictionary<SkillTag, int> skillTags;
     private Dictionary<Carac, int> baseCaracs;
     private Dictionary<Carac, int> caracBonus;
 
@@ -192,6 +192,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
                 {
                     //Percent
                     case Carac.MaxHp:
+                    case Carac.Power:
                     case Carac.CurrentHp:
                     case Carac.AbilityHaste:
                     case Carac.Mastery:
@@ -335,7 +336,7 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
             abilityCast = abilityToCast,
             underlyingPassive = underlyingPassive,
             replacementAbilityPassive = underlyingPassive,
-            replacedDynamicValues = GetReplacedDynamicValues(abilityToCast)
+            modifiedDynamicValues = GetModifiedDynamicValues(abilityToCast)
         };
 
         var effectsToExecute = new List<Effect>(abilityToCast.effects);
@@ -454,20 +455,20 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
 
     public void RefreshSkillTags()
     {
-        SkillTags = new();
-        SkillTags.Add(definition.skillTag, 1);
+        skillTags = new();
+        skillTags.Add(definition.skillTag, 1);
 
         foreach (var skillDefinition in skills)
         {
             foreach (var tagData in skillDefinition.tags)
             {
-                if (SkillTags.ContainsKey(tagData.tag))
+                if (skillTags.ContainsKey(tagData.tag))
                 {
-                    SkillTags[tagData.tag] += tagData.weight;
+                    skillTags[tagData.tag] += tagData.weight;
                 }
                 else
                 {
-                    SkillTags[tagData.tag] = tagData.weight;
+                    skillTags[tagData.tag] = tagData.weight;
                 }
             }
         }
@@ -478,7 +479,8 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         return (!skills.Contains(skillDefinition) || skillDefinition.rarity == Rarity.Common) &&
                (skillDefinition.holderRequiredClass.Contains(definition.heroClass) ||
                 skillDefinition.holderRequiredClass.Count == 0) &&
-               skillDefinition.holderRequiredTags.All(skillTag => SkillTags.ContainsKey(skillTag));
+               skillDefinition.holderRequiredSkills.All(skill => skills.Contains(skill)) &&
+               skillDefinition.holderRequiredTags.All(skillTag => skillTags.ContainsKey(skillTag));
     }
 
     public void AddSkill(SkillDefinition skillDefinition)
@@ -487,16 +489,27 @@ public class Hero : Entity, IBeginDragHandler, IEndDragHandler, IDragHandler, IP
         RunManager.instance.ReloadHeroes();
     }
 
-    public Dictionary<DynamicValue, DynamicValue> GetReplacedDynamicValues(AbilityDefinition ability)
+    public Dictionary<DynamicValue, List<DynamicValue>> GetModifiedDynamicValues(AbilityDefinition ability)
     {
-        var replacedDynamicValues = new Dictionary<DynamicValue, DynamicValue>();
+        var modifiedDynamicValues = new Dictionary<DynamicValue, List<DynamicValue>>();
         foreach (var skill in skills)
         {
-            if (skill is ReplaceDynamicValueSkillDefinition replaceSkill && replaceSkill.linkedAbility == ability)
-                replacedDynamicValues.Add(replaceSkill.toReplace, replaceSkill.replaceWith);
+            if (skill is ModifyDynamicValueSkillDefinition modificationSkill &&
+                modificationSkill.linkedAbility == ability)
+            {
+                if (modifiedDynamicValues.ContainsKey(modificationSkill.toReplace))
+                {
+                    modifiedDynamicValues[modificationSkill.toReplace].Add(modificationSkill.modification);
+                }
+                else
+                {
+                    modifiedDynamicValues.Add(modificationSkill.toReplace,
+                        new List<DynamicValue>() { modificationSkill.modification });
+                }
+            }
         }
 
-        return replacedDynamicValues;
+        return modifiedDynamicValues;
     }
 
     #region Feedbacks
