@@ -19,6 +19,7 @@ MonoBehaviour:
   cooldown: 7
   effects:
   - {fileID: 11400000, guid: 56fd90767d313cb46a34bf5636e3cdfd, type: 2}
+  - {fileID: 11400000, guid: 84dcd3d328418e74e9487c1255f5499e, type: 2}
   abilityTarget: 3
   projectile: {fileID: 6824414390272176956, guid: 53b9fec168f4ff34c9493aa3f4192eb7, type: 3}
   travelTime: 0.2

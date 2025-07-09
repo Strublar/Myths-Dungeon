@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cac5cb35e014b9580ade49be6adb240, type: 3}
+  m_Name: Defensive stance III
+  m_EditorClassIdentifier: 
+  skillName: Defensive stance III
+  description: Bash also gives an additional {0} shield
+  skillImage: {fileID: 21300000, guid: e94d8940a7276aa459145a9ec8d04c92, type: 3}
+  rarity: 1
+  tags:
+  - tag: 0
+    weight: 1
+  requiredTags: 00000000
+  holderRequiredTags: 00000000
+  holderRequiredClass: 00000000
+  holderRequiredSkills:
+  - {fileID: 11400000, guid: 6f88e0ab2bf2de94f9fd4e6e765d9369, type: 2}
+  personalCaracs: []
+  caracs:
+  - carac: 0
+    value: 10
+  values:
+  - {fileID: 11400000, guid: 263b30d25387124419b330d8bc921920, type: 2}
+  linkedAbility: {fileID: 11400000, guid: 6b43e669c134e6a4b9fdd291d7e3ab4c, type: 2}
+  effects:
+  - {fileID: 11400000, guid: 82065a0737cabb0418fae552fba4bf3e, type: 2}
